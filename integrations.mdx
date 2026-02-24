@@ -1,0 +1,164 @@
+---
+title: Integrations and Extensions
+description: Connect ModelBoard to external services and apps to streamline your workflow, monetization, and professional outreach.
+---
+
+## Overview
+
+ModelBoard offers seamless integrations to enhance your professional workflow in the adult entertainment industry. Connect your profiles to social platforms, booking apps, business directories, and custom webhooks. These extensions help you manage collaborations, notifications, and outreach efficiently.
+
+<Callout kind="tip">
+Start with link-in-bio pages for quick social sharing, then configure webhooks for automated project updates.
+</Callout>
+
+## Available Integrations
+
+Explore key integrations via these quick-start cards.
+
+<Columns cols={2}>
+  <Card title="Link-in-Bio Pages" icon="link" href="#link-in-bio">
+    Add social links to your ModelBoard profile for easy sharing.
+  </Card>
+  <Card title="MB Apps" icon="calendar" href="#mb-apps">
+    Sync bookings and events across platforms.
+  </Card>
+  <Card title="Business Directory" icon="map-pin" href="#business-directory">
+    List services and connect with industry pros.
+  </Card>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Receive real-time notifications for projects.
+  </Card>
+</Columns>
+
+## Link-in-Bio Pages
+
+Set up a customizable link-in-bio page to direct fans to your social profiles and ModelBoard content.
+
+<Steps>
+  <Step title="Access Profile Settings" icon="settings">
+    Navigate to your ModelBoard dashboard at `https://dashboard.modelboard.net/profile`.
+  </Step>
+  <Step title="Add Social Links">
+    In the `{links}` section, enter URLs for platforms like OnlyFans or Twitter.
+    
+````json
+{
+  "instagram": "https://instagram.com/yourhandle",
+  "onlyfans": "https://onlyfans.com/yourpage"
+}
+````
+  </Step>
+  <Step title="Generate Link-in-Bio" icon="link">
+    Click "Publish" to get your shareable URL: `https://modelboard.net/l/yourusername`.
+  </Step>
+</Steps>
+
+## MB Apps for Bookings and Events
+
+Integrate ModelBoard apps to handle bookings and events. Use platform-specific setups.
+
+<Tabs>
+  <Tab title="Calendar Apps" icon="calendar">
+    Connect Google Calendar or iCal for event syncing.
+    
+    <CodeGroup tabs="Google,iCal">
+````javascript
+// Google Calendar API setup
+const event = {
+  summary: 'Collab Shoot',
+  start: { dateTime: '2024-10-15T10:00:00' }
+};
+gapi.client.calendar.events.insert({ calendarId: 'primary', resource: event });
+````
+````ics
+BEGIN:VEVENT
+SUMMARY:ModelBoard Booking
+DTSTART:20241015T100000
+END:VEVENT
+````
+    </CodeGroup>
+  </Tab>
+  <Tab title="Booking Platforms" icon="book-open">
+    Link to scheduling tools like Calendly.
+    
+    <ParamField query="modelboard_token" param-type="string" required="true">
+      Your ModelBoard API token for auth.
+    </ParamField>
+  </Tab>
+</Tabs>
+
+## Business Directory Listings
+
+Utilize the ModelBoard business directory to list services and attract clients.
+
+1. Go to `https://dashboard.modelboard.net/directory/listing`.
+2. Select your account type (Model, Business, Studio, Enterprise).
+3. Add details like services, rates, and portfolio links.
+4. Submit for verification.
+
+<Expandable title="Advanced Listing Tips" default-open="false">
+Use keywords like "content collaboration" or "2257 compliant production" to improve visibility. Listings appear in searches across ModelBoard's network.
+</Expandable>
+
+## Webhook Configuration
+
+Configure webhooks to notify external services about project updates, such as new collaborations.
+
+### Setup Steps
+
+<Steps>
+  <Step title="Create Webhook" icon="plus">
+    In dashboard: `https://dashboard.modelboard.net/webhooks/new`.
+  </Step>
+  <Step title="Configure Endpoint">
+    Enter your URL, e.g., `https://your-webhook-url.com/modelboard`.
+    
+    <ParamField header="X-ModelBoard-Signature" param-type="string" required="false">
+      HMAC signature for verification.
+    </ParamField>
+  </Step>
+  <Step title="Test Delivery">
+    Trigger a test event for "project.created".
+  </Step>
+</Steps>
+
+### Sample Payloads
+
+<Response tabs="project.created,booking.confirmed">
+```json
+{
+  "event": "project.created",
+  "data": {
+    "id": "proj_123abc",
+    "title": "Photo Shoot Collab",
+    "participants": ["model_xyz", "studio_456"]
+  }
+}
+```
+
+```json
+{
+  "event": "booking.confirmed",
+  "data": {
+    "bookingId": "book_789def",
+    "date": "2024-10-20",
+    "model": "model_xyz"
+  }
+}
+```
+</Response>
+
+<Callout kind="alert">
+Secure your webhook endpoints with signature verification to prevent unauthorized access.
+</Callout>
+
+## Next Steps
+
+Customize these integrations to fit your workflow. For advanced setups, check the [API Reference](/api) or contact support.
+
+````mermaid
+sequenceDiagram
+    ModelBoard->>+YourApp: POST /webhook (project.created)
+    YourApp->>-ModelBoard: 200 OK
+    Note right of YourApp: Process notification
+````
