@@ -9,96 +9,144 @@
     }
   },
   "navigation": {
-    "tabs": [
+    "products": [
       {
-        "tab": "Documentation",
-        "icon": "book",
-        "groups": [
+        "product": "Creator",
+        "tabs": [
           {
-            "group": "Getting Started",
-            "icon": "rocket",
+            "tab": "Documentation",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "icon": "rocket",
+                "pages": [
+                  {
+                    "title": "Introduction",
+                    "path": "introduction",
+                    "icon": "home"
+                  },
+                  {
+                    "title": "Quickstart",
+                    "path": "quickstart",
+                    "icon": "zap"
+                  }
+                ]
+              },
+              {
+                "group": "Core Concepts",
+                "icon": "layers",
+                "pages": [
+                  {
+                    "title": "Features",
+                    "path": "features",
+                    "icon": "file-text"
+                  },
+                  {
+                    "title": "Integrations",
+                    "path": "integrations",
+                    "icon": "link"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "icon": "code",
+            "groups": [
+              {
+                "group": "Endpoints",
+                "openapi": "api-reference/openapi.yaml"
+              }
+            ]
+          },
+          {
+            "tab": "Help Center",
+            "icon": "help-circle",
             "pages": [
               {
-                "title": "Introduction",
-                "path": "introduction",
+                "title": "Help Center",
+                "path": "help-center",
                 "icon": "home"
               },
               {
-                "title": "Quickstart",
-                "path": "quickstart",
-                "icon": "zap"
-              }
-            ]
-          },
-          {
-            "group": "Core Concepts",
-            "icon": "layers",
-            "pages": [
-              {
-                "title": "Features",
-                "path": "features",
-                "icon": "file-text"
+                "group": "FAQs",
+                "icon": "help-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "How to Create a Board",
+                    "path": "help-center/faq/how-to-create-board"
+                  }
+                ]
               },
               {
-                "title": "Integrations",
-                "path": "integrations",
-                "icon": "link"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "icon": "code",
-        "groups": [
-          {
-            "group": "Endpoints",
-            "openapi": "api-reference/openapi.yaml"
-          }
-        ]
-      },
-      {
-        "tab": "Help Center",
-        "icon": "help-circle",
-        "pages": [
-          {
-            "title": "Help Center",
-            "path": "help-center",
-            "icon": "home"
-          },
-          {
-            "group": "FAQs",
-            "icon": "help-circle",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "How to Create a Board",
-                "path": "help-center/faq/how-to-create-board"
+                "group": "Troubleshooting",
+                "icon": "alert-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "Page Not Loading",
+                    "path": "help-center/troubleshooting/page-not-loading"
+                  }
+                ]
               }
             ]
           },
           {
-            "group": "Troubleshooting",
-            "icon": "alert-circle",
-            "expandable": false,
+            "tab": "Changelog",
+            "icon": "clock",
             "pages": [
               {
-                "title": "Page Not Loading",
-                "path": "help-center/troubleshooting/page-not-loading"
+                "title": "Release History",
+                "path": "changelog",
+                "icon": "history"
               }
             ]
           }
         ]
       },
       {
-        "tab": "Changelog",
-        "icon": "clock",
-        "pages": [
+        "product": "Business",
+        "tabs": [
           {
-            "title": "Release History",
-            "path": "changelog",
-            "icon": "history"
+            "tab": "Organization Owner Account",
+            "pages": []
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "product": "Studio",
+        "tabs": [
+          {
+            "tab": "Organization Owner Account",
+            "pages": []
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "product": "Enterprise",
+        "versions": [
+          {
+            "pages": [],
+            "version": "Agency"
+          },
+          {
+            "version": "Holding",
+            "pages": []
+          },
+          {
+            "version": "Platform",
+            "pages": []
           }
         ]
       }
