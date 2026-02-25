@@ -27,6 +27,11 @@
                     "icon": "home"
                   },
                   {
+                    "title": "Getting Started Guide",
+                    "path": "getting-started",
+                    "icon": "map"
+                  },
+                  {
                     "title": "Quickstart",
                     "path": "quickstart",
                     "icon": "zap"
