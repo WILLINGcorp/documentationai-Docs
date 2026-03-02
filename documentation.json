@@ -9,9 +9,8 @@
     }
   },
   "navigation": {
-    "products": [
+    "dropdowns": [
       {
-        "product": "Creator",
         "tabs": [
           {
             "tab": "Documentation",
@@ -39,13 +38,23 @@
                 ]
               },
               {
-                "group": "Core Concepts",
+                "group": "Core Features",
+                "pages": [
+                  {
+                    "title": "Core Features",
+                    "path": "features",
+                    "icon": "file-text"
+                  }
+                ]
+              },
+              {
+                "group": "MB Apps",
                 "icon": "layers",
                 "pages": [
                   {
-                    "title": "Features",
-                    "path": "features",
-                    "icon": "file-text"
+                    "title": "MB App Store",
+                    "path": "mb-apps",
+                    "icon": "lucide-store"
                   },
                   {
                     "title": "Integrations",
@@ -110,10 +119,10 @@
               }
             ]
           }
-        ]
+        ],
+        "dropdown": "Creator"
       },
       {
-        "product": "Business",
         "tabs": [
           {
             "tab": "Organization Owner Account",
@@ -123,10 +132,10 @@
             "tab": "Organization Staff Account",
             "pages": []
           }
-        ]
+        ],
+        "dropdown": "Business"
       },
       {
-        "product": "Studio",
         "tabs": [
           {
             "tab": "Organization Owner Account",
@@ -136,10 +145,10 @@
             "tab": "Organization Staff Account",
             "pages": []
           }
-        ]
+        ],
+        "dropdown": "Studio"
       },
       {
-        "product": "Enterprise",
         "versions": [
           {
             "pages": [],
@@ -153,7 +162,8 @@
             "version": "Platform",
             "pages": []
           }
-        ]
+        ],
+        "dropdown": "Enterprise"
       }
     ]
   },
