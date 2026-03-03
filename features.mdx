@@ -34,31 +34,9 @@ ModelBoard provides essential tools designed for the adult entertainment industr
   </Card>
 
   <Card title="Industry Network" href="/networking" icon="lucide-network" cta="Discover Grid & Directories" horizontal="false" target="_self">
-    Discover Models, or Browse our Studio or Business Directories.
+    Discover Models, or Browse our Studio and Business Directories.
   </Card>
 </Columns>
-
-## Building Verified Profiles and Portfolios
-
-Create a professional profile to showcase your work, reviews, and credentials. Verification ensures trust in the network.
-
-<Steps>
-  <Step title="Sign Up" icon="user-plus" title-type="p">
-    Choose your account type: Model, Business, Studio, or Enterprise.
-  </Step>
-
-  <Step title="Verify Identity" icon="check-circle" title-type="p">
-    Upload required documents for 2257-compliant verification.
-  </Step>
-
-  <Step title="Build Portfolio" icon="image" title-type="p">
-    Add photos, videos, and links to your content library.
-  </Step>
-
-  <Step title="Publish Profile" icon="globe" title-type="p">
-    Go live and start networking with industry professionals.
-  </Step>
-</Steps>
 
 <Tabs>
   <Tab title="Model Account" icon="star">
@@ -70,34 +48,7 @@ Create a professional profile to showcase your work, reviews, and credentials. V
   </Tab>
 </Tabs>
 
-## Collaboration Workflows for Projects
-
 Coordinate content production with real-time tools. Invite collaborators, assign tasks, and track progress.
-
-```mermaid
-graph TD
-    A[Start Project] --> B[Invite Collaborators]
-    B --> C[Assign Tasks]
-    C --> D[Share Assets]
-    D --> E[Review & Approve]
-    E --> F[Publish]
-```
-
-<Expandable title="Advanced Workflow Options" default-open="false">
-  Customize permissions for assets and set deadlines.
-
-  ```javascript
-  // Example: Create project via API
-  const project = await fetch('https://api.example.com/v1/projects', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
-    body: JSON.stringify({
-      name: 'New Collab Shoot',
-      collaborators: ['user1', 'user2']
-    })
-  });
-  ```
-</Expandable>
 
 ## Managing 2257 Compliance
 
@@ -108,48 +59,4 @@ Maintain records effortlessly with automated verification flows. ModelBoard hand
 </Callout>
 
 Use the dashboard to upload and link records to profiles.
-
-<CodeGroup show-lines="true" tabs={[]}>
-  ```javascript
-  // Upload compliance record
-  const formData = new FormData();
-  formData.append('record', file);
-  formData.append('modelId', 'model-123');
-
-  await fetch('https://api.example.com/v1/compliance/2257', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
-    body: formData
-  });
-  ```
-
-  ```bash
-  curl -X POST https://api.example.com/v1/compliance/2257 \
-    -H "Authorization: Bearer YOUR_TOKEN" \
-    -F "record=@/path/to/record.pdf" \
-    -F "modelId=model-123"
-  ```
-</CodeGroup>
-
-## Casting Calls and Talent Database
-
-Post casting calls and search verified talent. Filter by skills, location, and availability.
-
-| Feature          | Description                               |
-| ---------------- | ----------------------------------------- |
-| Talent Search    | Advanced filters for models and pros      |
-| Casting Posts    | Public or private calls with applications |
-| Credits Database | Track industry experience                 |
-
-<Expandable title="Integration Example" default-open="false">
-  Connect your CRM via webhooks.
-
-  ```javascript
-  // Webhook handler example
-  app.post('/webhook/casting', (req, res) => {
-    const { applicantId, callId } = req.body;
-    // Process application
-  });
-  ```
-</Expandable>
 

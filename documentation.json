@@ -26,6 +26,11 @@
                     "icon": "home"
                   },
                   {
+                    "title": "Account Types",
+                    "path": "account-types",
+                    "icon": "circle-user-round"
+                  },
+                  {
                     "title": "Getting Started Guide",
                     "path": "getting-started",
                     "icon": "map"
