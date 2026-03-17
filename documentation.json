@@ -1,1 +1,227 @@
-{"name":"ModelBoard","colors":{"light":{"brand":"#E50914"},"dark":{"brand":"#F45860"}},"navigation":{"products":[{"product":"Creator","tabs":[{"tab":"Documentation","icon":"book","groups":[{"group":"Getting Started","icon":"rocket","pages":[{"title":"Introduction","path":"introduction","icon":"home"},{"title":"Getting Started Guide","path":"getting-started","icon":"map"},{"title":"Quickstart","path":"quickstart","icon":"zap"}]},{"group":"Core Concepts","icon":"layers","pages":[{"title":"Features","path":"features","icon":"file-text"},{"title":"Collaboration Workflow","path":"collaboration-workflow","icon":"git-branch"},{"title":"Integrations","path":"integrations","icon":"link"}]}]},{"tab":"API Reference","icon":"code","groups":[{"group":"Endpoints","openapi":"api-reference/openapi.yaml"}]},{"tab":"Help Center","icon":"help-circle","pages":[{"title":"Help Center","path":"help-center","icon":"home"},{"group":"FAQs","icon":"help-circle","expandable":false,"pages":[{"title":"How to Create a Board","path":"help-center/faq/how-to-create-board"}]},{"group":"Troubleshooting","icon":"alert-circle","expandable":false,"pages":[{"title":"Page Not Loading","path":"help-center/troubleshooting/page-not-loading"}]}]},{"tab":"Changelog","icon":"clock","pages":[{"title":"Release History","path":"changelog","icon":"history"}]}]},{"product":"Business","tabs":[{"tab":"Organization Owner Account","pages":[]},{"tab":"Organization Staff Account","pages":[]}]},{"product":"Studio","tabs":[{"tab":"Organization Owner Account","pages":[]},{"tab":"Organization Staff Account","pages":[]}]},{"product":"Enterprise","versions":[{"pages":[],"version":"Agency"},{"version":"Holding","pages":[]},{"version":"Platform","pages":[]}]}]},"ai":{"ai-assistant:enabled":false},"navbar":{"actions":{"primary":{"title":"Get Started","link":"https://modelboard.net/signup"},"links":[{"title":"Login","link":"https://modelboard.net/auth"}]}},"logo-dark":"https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat","logo-light":"https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat","favicon":"https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat"}
+{
+  "name": "ModelBoard",
+  "colors": {
+    "light": {
+      "brand": "#E50914",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#d3363e",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
+  "navigation": {
+    "dropdowns": [
+      {
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "icon": "rocket",
+                "pages": [
+                  {
+                    "title": "Introduction",
+                    "path": "introduction",
+                    "icon": "home"
+                  },
+                  {
+                    "title": "Account Types",
+                    "path": "account-types",
+                    "icon": "circle-user-round"
+                  },
+                  {
+                    "title": "Getting Started Guide",
+                    "path": "getting-started",
+                    "icon": "map"
+                  },
+                  {
+                    "title": "Quickstart",
+                    "path": "quickstart",
+                    "icon": "zap"
+                  }
+                ]
+              },
+              {
+                "group": "Core Features",
+                "pages": [
+                  {
+                    "title": "Core Features",
+                    "path": "features",
+                    "icon": "file-text"
+                  }
+                ]
+              },
+              {
+                "group": "MB Apps",
+                "icon": "layers",
+                "pages": [
+                  {
+                    "title": "MB App Store",
+                    "path": "mb-apps",
+                    "icon": "lucide-store"
+                  },
+                  {
+                    "title": "Integrations",
+                    "path": "integrations",
+                    "icon": "link"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "icon": "code",
+            "groups": [
+              {
+                "group": "Endpoints",
+                "openapi": "api-reference/openapi.yaml"
+              }
+            ]
+          },
+          {
+            "tab": "Help Center",
+            "icon": "help-circle",
+            "pages": [
+              {
+                "title": "Help Center",
+                "path": "help-center",
+                "icon": "home"
+              },
+              {
+                "group": "FAQs",
+                "icon": "help-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "How to Create a Board",
+                    "path": "help-center/faq/how-to-create-board"
+                  }
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "alert-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "Page Not Loading",
+                    "path": "help-center/troubleshooting/page-not-loading"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "icon": "clock",
+            "pages": [
+              {
+                "title": "Release History",
+                "path": "changelog",
+                "icon": "history"
+              }
+            ]
+          }
+        ],
+        "dropdown": "Creator"
+      },
+      {
+        "tabs": [
+          {
+            "tab": "Organization Owner Account",
+            "pages": [
+              {
+                "group": "Business Platform",
+                "pages": [
+                  {
+                    "title": "Business Page",
+                    "path": "business-page"
+                  },
+                  {
+                    "title": "Services",
+                    "path": "services"
+                  },
+                  {
+                    "title": "Products",
+                    "path": "products"
+                  },
+                  {
+                    "title": "Special Offers",
+                    "path": "special-offers"
+                  },
+                  {
+                    "title": "Targeted Advertisement",
+                    "path": "targeted-advertisement"
+                  }
+                ],
+                "icon": "lucide-briefcase-business"
+              }
+            ]
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ],
+        "dropdown": "Business"
+      },
+      {
+        "tabs": [
+          {
+            "tab": "Organization Owner Account",
+            "pages": []
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ],
+        "dropdown": "Studio"
+      },
+      {
+        "versions": [
+          {
+            "pages": [],
+            "version": "Agency"
+          },
+          {
+            "version": "Holding",
+            "pages": []
+          },
+          {
+            "version": "Platform",
+            "pages": []
+          }
+        ],
+        "dropdown": "Enterprise"
+      }
+    ]
+  },
+  "ai": {
+    "ai-assistant:enabled": false
+  },
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "Get Started",
+        "link": "https://modelboard.net/signup"
+      },
+      "links": [
+        {
+          "title": "Login",
+          "link": "https://modelboard.net/auth"
+        }
+      ]
+    }
+  },
+  "logo-dark": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-light": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
+  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat",
+  "template": "atlas"
+}

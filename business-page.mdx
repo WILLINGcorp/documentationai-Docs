@@ -1,0 +1,665 @@
+---
+title: Business listings and pages
+description: Set up a business listing that appears in the Business Directory and links to a detailed Business Page with your services, products, and contact info.
+---
+
+## Understand business listings and pages
+
+Business listings give your organization visibility in the public Business Directory and link through to a detailed Business Page.
+
+<Tabs>
+<Tab title="For visitors" icon="users">
+
+Visitors discover and evaluate businesses through two main surfaces:
+
+- **Business Directory** at `/business-directory`
+- **Business Page** at `/business/:id` (one page per business)
+
+</Tab>
+
+<Tab title="For business owners" icon="briefcase">
+
+As an organization owner, you manage a single business profile that powers both:
+
+- The **card** shown in the directory
+- The **full profile** shown on your Business Page
+
+You edit this profile from **Business Management** at `/business-management`.
+
+</Tab>
+</Tabs>
+
+### Business Directory (`/business-directory`)
+
+The Business Directory at `/business-directory` shows a grid of business cards with filters and search so visitors can find relevant providers.
+
+Each card typically includes:
+
+- Banner, logo, or avatar
+- Business name
+- Category badge
+- Location
+- Short description snippet
+- Service and product counts
+- Optional badges such as featured, sponsored, or verified
+
+When a visitor clicks a card, they go to the corresponding Business Page at `/business/:id`.
+
+### Business Page (`/business/:id`)
+
+The Business Page at `/business/:id` is the detailed profile for your organization.
+
+The page layout includes:
+
+- A hero banner with your logo or avatar
+- Business name and primary category badge
+- Verified badge (when applicable)
+- Tabs to organize content:
+  - **About**: description, categories, and location
+  - **Contact**: address, phone, website, contact email, social media
+  - **Services**: list of services you offer
+  - **Products**: list of products you offer
+
+## Prerequisites
+
+<Callout kind="info">
+
+To create and publish a business listing, you need:
+
+- An **Organization Owner** account
+- A **Business account** with access to the Business Platform
+- Permission to represent the organization and publish its details
+
+You manage all business data from **Business Management** at `/business-management`.
+
+</Callout>
+
+## Create and publish your business listing
+
+Follow this flow once to get your business discoverable in the directory.
+
+<Steps>
+  <Step title="Register or confirm your business account" icon="check-circle">
+
+Start by confirming that you are using an Organization Owner account with access to the Business Platform.
+
+- Sign in and navigate to the Business Platform area.
+- Confirm that you see **Business Management** at `/business-management`.
+- If needed, complete any initial business onboarding required by your plan.
+
+Success looks like: you can open `/business-management` and see your business profile settings.
+
+  </Step>
+
+  <Step title="Fill out your business profile" icon="edit">
+
+Next, complete the core profile information that powers both the directory card and your Business Page.
+
+- Open `/business-management`.
+- Enter your **business name** and select at least one **category**.
+- Add a **description**, **location**, and **contact information**.
+- Upload your **logo/avatar** and **banner** images.
+
+Success looks like: your profile shows a clear name, category, description, location, and visuals without placeholder data.
+
+  </Step>
+
+  <Step title="Add services and products" icon="package">
+
+Add what you actually offer so visitors can understand and compare your business.
+
+- In Business Management, open the **Services** section and add your key services with descriptions and prices.
+- Open the **Products** section and list any products, again with clear descriptions and prices.
+- Respect any visible service or product limits based on your subscription.
+
+Success looks like: the Services and Products sections each show at least one well-described item.
+
+  </Step>
+
+  <Step title="Review visibility and moderation status" icon="info">
+
+Before your listing appears publicly, it may go through moderation.
+
+- Check the **moderation status** of your business profile.
+- Confirm that your profile content complies with any content and quality guidelines.
+- Update any fields that could cause confusion or rejection.
+
+Success looks like: your moderation status is set to `approved` and not `pending` or `rejected`.
+
+  </Step>
+
+  <Step title="Publish and verify appearance in the directory" icon="play-circle">
+
+Once approved, your business will appear in the public directory.
+
+- Open `/business-directory`.
+- Use search, category, or location filters to find your business card.
+- Click your card to confirm that the Business Page at `/business/:id` loads correctly.
+
+Success looks like: your business appears in search and filters, and all tabs on your Business Page display your content correctly.
+
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+
+If your business does not appear in `/business-directory`, first confirm that your moderation status is `approved`. If the status is `pending` or `rejected`, update your profile and follow any guidance provided in Business Management.
+
+</Callout>
+
+## Business listing fields and how they appear
+
+Your business listing is stored as a business profile and exposed across the directory and Business Page.
+
+### Core profile fields
+
+<ParamField body="business_name" param-type="string" required="true" show-location="false">
+
+Public business name shown prominently:
+
+- As the main title on the Business Page hero
+- On the Business Directory card
+
+Use the exact name visitors expect to search for.
+
+</ParamField>
+
+<ParamField body="category" param-type="enum" required="true" show-location="false">
+
+Primary business category (for example, `agency`, `marketing_pr`):
+
+- Shown as a **category badge** near your name on both the Business Directory card and Business Page
+- Used for category filtering in the directory
+
+Choose the category that best matches your main business activity.
+
+</ParamField>
+
+<ParamField body="categories" param-type="string[]" show-location="false">
+
+Optional additional categories:
+
+- May be shown on the About tab to describe your focus areas
+- Can improve how well visitors understand your specialization
+
+Add only relevant categories to avoid confusing visitors.
+
+</ParamField>
+
+<ParamField body="description" param-type="string" show-location="false">
+
+Short to medium description of your business:
+
+- A shortened version appears as the **description snippet** on the directory card
+- The full text appears on the **About** tab of your Business Page
+
+Focus on what you do, who you serve, and what makes you a good fit.
+
+</ParamField>
+
+<ParamField body="location" param-type="string" show-location="false">
+
+High-level location (for example, city and country):
+
+- Displayed on the Business Directory card
+- Appears on the About or Contact sections on the Business Page
+
+Use a format visitors recognize and that matches how they filter in the directory.
+
+</ParamField>
+
+<ParamField body="address" param-type="string" show-location="false">
+
+Detailed street address:
+
+- Shown in the **Contact** tab on the Business Page
+- Not always shown on the directory card depending on layout
+
+Include this if in-person visits or a physical office matter to your business.
+
+</ParamField>
+
+### Contact and online presence
+
+<ParamField body="phone" param-type="string" show-location="false">
+
+Public phone number:
+
+- Shown on the **Contact** tab on the Business Page
+- May appear as a quick-contact item in some layouts
+
+Use a number that is actively monitored during your business hours.
+
+</ParamField>
+
+<ParamField body="website" param-type="string" show-location="false">
+
+Primary website URL:
+
+- Displayed on the **Contact** tab on the Business Page
+- Often a key entry point for visitors who want to learn more or convert
+
+Link to a page that speaks directly to the audience you expect from the directory.
+
+</ParamField>
+
+<ParamField body="contact_email" param-type="string" show-location="false">
+
+Public contact email:
+
+- Listed in the **Contact** tab
+- Used by visitors to send inquiries from outside the platform
+
+Use a shared inbox or role-based email so multiple team members can respond.
+
+</ParamField>
+
+<ParamField body="social_media" param-type="map" show-location="false">
+
+Map of social media profiles (for example, keys for `linkedin`, `twitter`, `instagram`):
+
+- Links appear on the **Contact** or **About** tab of your Business Page
+- Help visitors validate your presence and see recent activity
+
+Include profiles that are active and aligned with your brand.
+
+</ParamField>
+
+### Images and branding
+
+<ParamField body="avatar_url" param-type="string" show-location="false">
+
+Avatar or small logo image:
+
+- Shown in the Business Page hero beside your name
+- Often appears on the Business Directory card
+
+Use a clear, square image that is readable at small sizes.
+
+</ParamField>
+
+<ParamField body="logo_url" param-type="string" show-location="false">
+
+Primary logo image (if different from avatar):
+
+- May be used on larger displays of your brand
+- Supports more complex branding than a simple avatar
+
+Prefer a logo with good contrast against both light and dark backgrounds.
+
+</ParamField>
+
+<ParamField body="banner_url" param-type="string" show-location="false">
+
+Hero banner image:
+
+- Displayed as the background at the top of your Business Page
+- Sets visual context for your brand
+
+Avoid heavy text in the banner; keep it visually clean so your name and badges stay readable.
+
+</ParamField>
+
+### Services
+
+Services define what you deliver and how, and they appear in the **Services** tab.
+
+<ParamField body="services" param-type="ServiceItem[]" show-location="false">
+
+Array of services you offer:
+
+- Each service appears as a card or row under the **Services** tab on your Business Page
+- The total count may appear on your Business Directory card
+
+Respect any `service_limit` associated with your subscription tier.
+
+</ParamField>
+
+<ParamField body="services[].name" param-type="string" show-location="false">
+
+Service name:
+
+- Shown as the title of each service entry in the Services tab
+- Used by visitors to scan and compare offerings quickly
+
+Make names specific and outcome-focused, not generic.
+
+</ParamField>
+
+<ParamField body="services[].description" param-type="string" show-location="false">
+
+Service description:
+
+- Appears under the service name on your Business Page
+- Explains what is included and who it is for
+
+Keep this concise but concrete (scope, format, and main value).
+
+</ParamField>
+
+<ParamField body="services[].price" param-type="string|number" show-location="false">
+
+Service price:
+
+- Displayed alongside each service in the **Services** tab
+- Helps filter out misaligned leads before they contact you
+
+Use a currency and format that matches your primary market.
+
+</ParamField>
+
+<ParamField body="services[].features" param-type="string[]" show-location="false">
+
+List of key service features:
+
+- Often displayed as bullet points in the service detail
+- Highlights inclusions and differentiators
+
+Use features to clarify scope and avoid misunderstandings.
+
+</ParamField>
+
+<ParamField body="services[].picture" param-type="string" show-location="false">
+
+Optional service image:
+
+- Shown in the service card where supported
+- Gives visual context for the service
+
+Prefer simple visuals that align with your overall branding.
+
+</ParamField>
+
+<ParamField body="services[].processing_time" param-type="string" show-location="false">
+
+Expected duration or delivery time for the service:
+
+- Displayed in service details on your Business Page
+- Helps set expectations up front
+
+Use concrete ranges (for example, "5–7 business days") instead of vague terms.
+
+</ParamField>
+
+<ParamField body="services[].extras" param-type="string[]" show-location="false">
+
+Optional add-ons or extras for the service:
+
+- Shown in service details where supported
+- Encourages visitors to consider higher-value packages
+
+Describe extras clearly so visitors know what they are paying for.
+
+</ParamField>
+
+<ParamField body="services[].warranty" param-type="string" show-location="false">
+
+Warranty or guarantee details:
+
+- Displayed as part of the service description
+- Builds trust and clarifies what happens if expectations are not met
+
+Keep this aligned with your actual terms.
+
+</ParamField>
+
+<ParamField body="services[].revision_rounds" param-type="number" show-location="false">
+
+Number of included revision rounds (for creative or iterative work):
+
+- Appears in the service details
+- Prevents disagreements later by setting clear limits
+
+Use an integer that reflects your standard process.
+
+</ParamField>
+
+### Products
+
+Products appear in the **Products** tab of your Business Page.
+
+<ParamField body="products" param-type="ProductItem[]" show-location="false">
+
+Array of products you offer:
+
+- Each product appears as a card or row under the **Products** tab
+- The total count may be referenced on your Business Directory card
+
+Subscription tiers may enforce a `product_limit`.
+
+</ParamField>
+
+<ParamField body="products[].name" param-type="string" show-location="false">
+
+Product name:
+
+- Shown as the title of each product entry
+- Used by visitors to quickly scan your catalog
+
+Choose names that are recognizable and descriptive.
+
+</ParamField>
+
+<ParamField body="products[].description" param-type="string" show-location="false">
+
+Product description:
+
+- Appears under the product name
+- Explains what the product is and when to use it
+
+Focus on benefits and key specs, not internal jargon.
+
+</ParamField>
+
+<ParamField body="products[].price" param-type="string|number" show-location="false">
+
+Product price:
+
+- Displayed with each product in the **Products** tab
+- Helps visitors self-qualify before contacting you
+
+Use your standard price or a clear starting price.
+
+</ParamField>
+
+<ParamField body="products[].image" param-type="string" show-location="false">
+
+Product image:
+
+- Shown in the product card
+- Improves scanning and recognition
+
+Use high-quality images that accurately represent the product.
+
+</ParamField>
+
+## Moderation, verification, and visibility
+
+Visibility in the directory depends on moderation status and flags on your business profile.
+
+### Moderation status
+
+<ParamField body="moderation_status" param-type="enum" show-location="false">
+
+Overall review status of your business profile. Typical values:
+
+- `pending`: your listing is submitted but not yet approved; it may not be visible in `/business-directory`.
+- `approved`: your listing passed review and appears in the directory and on your Business Page.
+- `rejected`: your listing did not meet requirements; you may need to update content before resubmitting.
+
+Check and manage this status from Business Management.
+
+</ParamField>
+
+<Callout kind="info">
+
+If your moderation status is `rejected`, look for any messages or guidelines in Business Management, adjust your profile content, and resubmit. Focus on clear, accurate descriptions and compliant content.
+
+</Callout>
+
+### Verification and featured placement
+
+<ParamField body="verified" param-type="boolean" show-location="false">
+
+Indicates whether your business has been verified:
+
+- When true, shows a **verified badge** next to your business name on the Business Page
+- May also show on the Business Directory card
+
+Verification helps visitors trust that the business is legitimate and controlled by an authorized owner.
+
+</ParamField>
+
+<ParamField body="featured" param-type="boolean" show-location="false">
+
+Indicates whether your business is marked as featured:
+
+- Featured businesses can receive prominent placement in `/business-directory`
+- Some layouts may label these cards as **featured** or **sponsored**
+
+Featured status is usually controlled by your plan, promotions, or platform settings.
+
+</ParamField>
+
+<ParamField body="service_limit" param-type="number" show-location="false">
+
+Maximum number of services you can publish:
+
+- Enforced in Business Management when adding services
+- Tied to your current subscription tier
+
+Prioritize your most important or highest-converting services if you hit this limit.
+
+</ParamField>
+
+<ParamField body="product_limit" param-type="number" show-location="false">
+
+Maximum number of products you can publish:
+
+- Enforced in Business Management when adding products
+- Also tied to your subscription tier
+
+List only the products that best represent your catalog for new visitors.
+
+</ParamField>
+
+## Manage staff for your business
+
+Staff accounts let multiple people help manage your business profile without sharing one login.
+
+All staff management happens inside **Business Management** at `/business-management`. Staff details are **not exposed** on the public Business Page unless you explicitly add team information elsewhere (for example, in the About description).
+
+<ParamField body="business_staff" param-type="object[]" show-location="false">
+
+Staff members linked to your business:
+
+- Managed only in Business Management
+- Used to grant access to edit your profile, services, products, analytics, and settings
+
+</ParamField>
+
+<ParamField body="business_staff[].job_title" param-type="string" show-location="false">
+
+Role or job title for the staff member:
+
+- Helps you understand who is responsible for what internally
+- Not automatically shown on your public Business Page
+
+Use real roles (for example, "Marketing Manager", "Sales Lead").
+
+</ParamField>
+
+<ParamField body="business_staff[].permissions" param-type="string[]" show-location="false">
+
+List of permission flags for the staff member:
+
+- Controls what they can do in Business Management (for example, edit profile, manage services, view analytics)
+- Lets you delegate specific duties without granting full owner access
+
+Assign only the permissions needed for each role.
+
+</ParamField>
+
+<ParamField body="business_staff[].active" param-type="boolean" show-location="false">
+
+Whether the staff member's access is currently active:
+
+- Active staff can sign in and manage the business based on their permissions
+- Inactive staff keep their record but lose access
+
+Set `active` to false when someone leaves or no longer needs access.
+
+</ParamField>
+
+<Callout kind="tip">
+
+Review staff permissions regularly so only the right people can change your business profile, services, and products. This reduces the risk of incorrect public information.
+
+</Callout>
+
+## Tips to improve discovery and conversion
+
+Use these practical adjustments to help more visitors find and choose your business.
+
+1. **Align categories with your real focus**  
+   Pick the primary category that best matches your main service line, and use additional categories sparingly to avoid diluting your positioning.
+
+2. **Write a focused, visitor-first description**  
+   Lead with who you help and what outcomes you deliver. Avoid internal jargon and generic claims; show specific expertise and typical client scenarios.
+
+3. **Complete your Services and Products tabs**  
+   Add at least 3–5 of your most requested services or products, each with a clear description and price. This lets visitors self-qualify before contacting you.
+
+4. **Use high-quality, consistent images**  
+   Upload a readable logo/avatar and a clean banner. For services and products, use images that match your brand style and make it obvious what is being offered.
+
+5. **Keep contact information current and simple**  
+   Provide one primary email, one phone number, and a website that leads directly to relevant information or an inquiry form. Test that all links and phone numbers work.
+
+6. **Activate only relevant social media links**  
+   Link to profiles where you are active and responsive. Inactive or outdated profiles can hurt trust and conversion.
+
+7. **Maintain accurate location details**  
+   Use a city and region that match how your target customers search. If you operate remotely, make that clear in your description while still setting a base location.
+
+8. **Monitor moderation status and iterate**  
+   If your listing is pending or rejected, adjust your content based on the platform's expectations. Cleaner, more specific descriptions usually perform better and are easier to approve.
+
+## Related
+
+<Columns cols={3}>
+
+  <Card
+    title="Account types"
+    href="/account-types"
+    icon="users"
+    cta="Choose the right role"
+  >
+
+Understand the differences between organization owner and staff accounts before inviting your team.
+
+  </Card>
+
+  <Card
+    title="Getting started with the platform"
+    href="/getting-started"
+    icon="rocket"
+    cta="Set up your workspace"
+  >
+
+Walk through initial setup so your organization account is ready before you publish a listing.
+
+  </Card>
+
+  <Card
+    title="Core features overview"
+    href="/features"
+    icon="book-open"
+    cta="Explore capabilities"
+  >
+
+See how business listings fit with other features available to your organization.
+
+  </Card>
+
+</Columns>
