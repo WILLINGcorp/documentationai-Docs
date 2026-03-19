@@ -2,19 +2,16 @@
   "name": "ModelBoard",
   "colors": {
     "light": {
-      "brand": "#E50914",
-      "heading": "#1a1a1a",
-      "text": "#374151"
+      "brand": "#E50914"
     },
     "dark": {
-      "brand": "#d3363e",
-      "heading": "#f2f2f2",
-      "text": "#c1c1c1"
+      "brand": "#F45860"
     }
   },
   "navigation": {
-    "dropdowns": [
+    "products": [
       {
+        "product": "Creator",
         "tabs": [
           {
             "tab": "Documentation",
@@ -30,11 +27,6 @@
                     "icon": "home"
                   },
                   {
-                    "title": "Account Types",
-                    "path": "account-types",
-                    "icon": "circle-user-round"
-                  },
-                  {
                     "title": "Getting Started Guide",
                     "path": "getting-started",
                     "icon": "map"
@@ -47,22 +39,32 @@
                 ]
               },
               {
-                "group": "Core Features",
+                "group": "Core Concepts",
+                "icon": "layers",
                 "pages": [
                   {
-                    "title": "Core Features",
+                    "title": "Features",
                     "path": "features",
                     "icon": "file-text"
+                  },
+                  {
+                    "title": "Collaboration Workflow",
+                    "path": "collaboration-workflow",
+                    "icon": "git-branch"
                   }
                 ]
               },
               {
-                "group": "MB Apps",
-                "icon": "layers",
+                "group": "Extend Functionalities",
                 "pages": [
                   {
-                    "title": "MB App Store",
-                    "path": "mb-apps",
+                    "group": "MB App Store",
+                    "pages": [
+                      {
+                        "title": "MB BioLink",
+                        "path": "mb-biolink"
+                      }
+                    ],
                     "icon": "lucide-store"
                   },
                   {
@@ -128,50 +130,10 @@
               }
             ]
           }
-        ],
-        "dropdown": "Creator"
+        ]
       },
       {
-        "tabs": [
-          {
-            "tab": "Organization Owner Account",
-            "pages": [
-              {
-                "group": "Business Platform",
-                "pages": [
-                  {
-                    "title": "Business Page",
-                    "path": "business-page"
-                  },
-                  {
-                    "title": "Services",
-                    "path": "services"
-                  },
-                  {
-                    "title": "Products",
-                    "path": "products"
-                  },
-                  {
-                    "title": "Special Offers",
-                    "path": "special-offers"
-                  },
-                  {
-                    "title": "Targeted Advertisement",
-                    "path": "targeted-advertisement"
-                  }
-                ],
-                "icon": "lucide-briefcase-business"
-              }
-            ]
-          },
-          {
-            "tab": "Organization Staff Account",
-            "pages": []
-          }
-        ],
-        "dropdown": "Business"
-      },
-      {
+        "product": "Business",
         "tabs": [
           {
             "tab": "Organization Owner Account",
@@ -181,10 +143,23 @@
             "tab": "Organization Staff Account",
             "pages": []
           }
-        ],
-        "dropdown": "Studio"
+        ]
       },
       {
+        "product": "Studio",
+        "tabs": [
+          {
+            "tab": "Organization Owner Account",
+            "pages": []
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "product": "Enterprise",
         "versions": [
           {
             "pages": [],
@@ -198,8 +173,7 @@
             "version": "Platform",
             "pages": []
           }
-        ],
-        "dropdown": "Enterprise"
+        ]
       }
     ]
   },
@@ -222,6 +196,5 @@
   },
   "logo-dark": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
   "logo-light": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
-  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat",
-  "template": "atlas"
+  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat"
 }
