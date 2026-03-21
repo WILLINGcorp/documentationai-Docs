@@ -11,7 +11,7 @@
   "navigation": {
     "products": [
       {
-        "product": "Creator",
+        "product": "General",
         "tabs": [
           {
             "tab": "Documentation",
@@ -27,14 +27,14 @@
                     "icon": "home"
                   },
                   {
-                    "title": "Getting Started Guide",
-                    "path": "getting-started",
-                    "icon": "map"
-                  },
-                  {
                     "title": "Quickstart",
                     "path": "quickstart",
                     "icon": "zap"
+                  },
+                  {
+                    "title": "Getting Started Guide",
+                    "path": "getting-started",
+                    "icon": "map"
                   }
                 ]
               },
@@ -46,11 +46,6 @@
                     "title": "Features",
                     "path": "features",
                     "icon": "file-text"
-                  },
-                  {
-                    "title": "Collaboration Workflow",
-                    "path": "collaboration-workflow",
-                    "icon": "git-branch"
                   }
                 ]
               },
@@ -133,6 +128,21 @@
         ]
       },
       {
+        "product": "Creator",
+        "groups": [
+          {
+            "group": "Core Concepts",
+            "pages": [
+              {
+                "title": "Collaboration Workflow",
+                "path": "collaboration-workflow",
+                "icon": "git-branch"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "product": "Business",
         "tabs": [
           {
@@ -147,19 +157,6 @@
       },
       {
         "product": "Studio",
-        "tabs": [
-          {
-            "tab": "Organization Owner Account",
-            "pages": []
-          },
-          {
-            "tab": "Organization Staff Account",
-            "pages": []
-          }
-        ]
-      },
-      {
-        "product": "Enterprise",
         "versions": [
           {
             "pages": [],
@@ -174,6 +171,10 @@
             "pages": []
           }
         ]
+      },
+      {
+        "product": "Enterprise",
+        "pages": []
       }
     ]
   },
