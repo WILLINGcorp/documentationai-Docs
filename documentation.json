@@ -2,16 +2,19 @@
   "name": "ModelBoard",
   "colors": {
     "light": {
-      "brand": "#E50914"
+      "brand": "#E50914",
+      "heading": "#1a1a1a",
+      "text": "#374151"
     },
     "dark": {
-      "brand": "#F45860"
+      "brand": "#d3363e",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
     }
   },
   "navigation": {
     "products": [
       {
-        "product": "General",
         "tabs": [
           {
             "tab": "Documentation",
@@ -27,39 +30,39 @@
                     "icon": "home"
                   },
                   {
-                    "title": "Quickstart",
-                    "path": "quickstart",
-                    "icon": "zap"
+                    "title": "Account Types",
+                    "path": "account-types",
+                    "icon": "circle-user-round"
                   },
                   {
                     "title": "Getting Started Guide",
                     "path": "getting-started",
                     "icon": "map"
+                  },
+                  {
+                    "title": "Quickstart",
+                    "path": "quickstart",
+                    "icon": "zap"
                   }
                 ]
               },
               {
                 "group": "Core Concepts",
-                "icon": "layers",
                 "pages": [
                   {
-                    "title": "Features",
+                    "title": "Core Features",
                     "path": "features",
                     "icon": "file-text"
                   }
                 ]
               },
               {
-                "group": "Extend Functionalities",
+                "group": "MB Apps",
+                "icon": "layers",
                 "pages": [
                   {
-                    "group": "MB App Store",
-                    "pages": [
-                      {
-                        "title": "MB BioLink",
-                        "path": "mb-biolink"
-                      }
-                    ],
+                    "title": "MB App Store",
+                    "path": "mb-apps",
                     "icon": "lucide-store"
                   },
                   {
@@ -125,25 +128,70 @@
               }
             ]
           }
-        ]
+        ],
+        "product": "General"
       },
       {
-        "product": "Creator",
-        "groups": [
+        "tabs": [
           {
-            "group": "Core Concepts",
-            "pages": [
+            "tab": "Organization Owner Account",
+            "groups": [
               {
-                "title": "Collaboration Workflow",
-                "path": "collaboration-workflow",
-                "icon": "git-branch"
+                "group": "Core Concepts",
+                "pages": [
+                  {
+                    "title": "Organizations",
+                    "path": "organizations",
+                    "icon": "align-end-horizontal"
+                  },
+                  {
+                    "title": "Sub-Accounts",
+                    "path": "sub-accounts",
+                    "icon": "circle-user-round"
+                  },
+                  {
+                    "group": "Business Platform",
+                    "pages": [
+                      {
+                        "title": "Business Listing",
+                        "path": "business-page"
+                      },
+                      {
+                        "title": "Services",
+                        "path": "services"
+                      },
+                      {
+                        "title": "Products",
+                        "path": "products"
+                      },
+                      {
+                        "title": "Special Offers",
+                        "path": "special-offers"
+                      },
+                      {
+                        "title": "Targeted Advertisement",
+                        "path": "targeted-advertisement"
+                      }
+                    ],
+                    "icon": "lucide-briefcase-business"
+                  },
+                  {
+                    "group": "Workflows",
+                    "pages": [],
+                    "icon": "lucide-workflow"
+                  }
+                ]
               }
             ]
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
           }
-        ]
+        ],
+        "product": "Creator"
       },
       {
-        "product": "Business",
         "tabs": [
           {
             "tab": "Organization Owner Account",
@@ -153,10 +201,10 @@
             "tab": "Organization Staff Account",
             "pages": []
           }
-        ]
+        ],
+        "product": "Studio"
       },
       {
-        "product": "Studio",
         "versions": [
           {
             "pages": [],
@@ -170,11 +218,8 @@
             "version": "Platform",
             "pages": []
           }
-        ]
-      },
-      {
-        "product": "Enterprise",
-        "pages": []
+        ],
+        "product": "Enterprise"
       }
     ]
   },
@@ -197,5 +242,6 @@
   },
   "logo-dark": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
   "logo-light": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
-  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat"
+  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat",
+  "template": "atlas"
 }
