@@ -58,6 +58,22 @@
                       {
                         "title": "MB BioLink",
                         "path": "mb-biolink"
+                      },
+                      {
+                        "title": "MB Events",
+                        "path": "mb-events"
+                      },
+                      {
+                        "title": "MB Casting Forms",
+                        "path": "mb-casting-forms"
+                      },
+                      {
+                        "title": "MB Studio News",
+                        "path": "mb-studio-news"
+                      },
+                      {
+                        "title": "MB Licensing",
+                        "path": "mb-licensing"
                       }
                     ],
                     "icon": "lucide-store"
@@ -134,8 +150,28 @@
             "group": "Core Concepts",
             "pages": [
               {
-                "title": "Collaboration Workflow",
-                "path": "collaboration-workflow",
+                "title": "Creator Dashboard",
+                "path": "creator-dashboard",
+                "icon": "layout-dashboard"
+              },
+              {
+                "title": "Creator Profiles",
+                "path": "creator-profiles",
+                "icon": "circle-user"
+              },
+              {
+                "title": "Portfolios",
+                "path": "portfolios",
+                "icon": "book-image"
+              }
+            ]
+          },
+          {
+            "group": "Collaboration Workflow",
+            "pages": [
+              {
+                "title": "Collaboration Hub",
+                "path": "collaboration-hub",
                 "icon": "git-branch"
               },
               {
@@ -158,12 +194,12 @@
                     "path": "schedule"
                   },
                   {
-                    "title": "Screenplay",
-                    "path": "screenplay"
-                  },
-                  {
                     "title": "Moodboard",
                     "path": "moodboard"
+                  },
+                  {
+                    "title": "Screenplay",
+                    "path": "screenplay"
                   },
                   {
                     "title": "Pro Services",
@@ -199,10 +235,23 @@
       },
       {
         "product": "Studio",
+        "tabs": [
+          {
+            "tab": "Organization Owner Account",
+            "pages": []
+          },
+          {
+            "tab": "Organization Staff Account",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "product": "Enterprise",
         "versions": [
           {
-            "pages": [],
-            "version": "Agency"
+            "version": "Agency",
+            "pages": []
           },
           {
             "version": "Holding",
@@ -213,10 +262,6 @@
             "pages": []
           }
         ]
-      },
-      {
-        "product": "Enterprise",
-        "pages": []
       }
     ]
   },
