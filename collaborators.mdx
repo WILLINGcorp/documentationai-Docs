@@ -1,0 +1,217 @@
+---
+title: Collaborators tab
+description: Manage who can access a Collabs project, how to invite collaborators, set permissions, and track invite acceptance from the Collaborators tab.
+---
+
+## Purpose
+
+Use the Collaborators tab on a Collabs project page at `/collab/{id}` to control who is involved in the project and what they can do.
+
+The tab shows current collaborators, their permissions, and the status of any pending invitations. Changes here directly affect what people can see, comment on, and upload in the other workflow tabs.
+
+## Invite collaborators
+
+Add collaborators from the Collaborators tab by searching for existing ModelBoard users or inviting by email.
+
+<Steps>
+
+<Step title="Open the Collaborators tab" icon="users">
+
+- Go to your project at a URL like `/collab/{id}`.
+- Select the **Collaborators** tab from the project navigation.
+
+Success looks like: you see a list of existing collaborators (if any) and controls to add new ones.
+
+</Step>
+
+<Step title="Add an existing user by profile" icon="search">
+
+- Use the search box in the Collaborators tab.
+- Type the collaborator's profile `display_name` or `username`.
+- Select the correct person from the search results to add them to the invite list.
+
+Success looks like: the selected user appears in your pending invite row with permission toggles.
+
+</Step>
+
+<Step title="Invite by email" icon="mail">
+
+- In the same area, enter the collaborator's email address.
+- Confirm the email is correct, then add it to the invite list.
+
+If the email matches an existing user, ModelBoard sends an in-app collaboration request. If it does not match any user, ModelBoard sends an external email invite that links back to the project.
+
+Success looks like: the email appears in your pending invite row with permission toggles.
+
+</Step>
+
+<Step title="Set permissions for each invite" icon="settings">
+
+- For each pending invite row, choose what the collaborator can do:
+  - Keep **View** enabled so they can open the project.
+  - Toggle **Comment** if they should leave feedback.
+  - Toggle **Upload** if they should add files in Files and related tabs.
+- Review the combination of permissions for each person before sending.
+
+Success looks like: each invite shows the correct combination of View, Comment, and Upload enabled.
+
+</Step>
+
+<Step title="Send invites and check status" icon="send">
+
+- Send the collaboration invites from the Collaborators tab.
+- ModelBoard stores or updates a proposal with `status: 'pending'` for each receiver.
+- The system triggers a `collaboration_request` notification for any in-app receivers.
+
+Success looks like: the invite rows now show as pending, and you can see which collaborators have not accepted yet.
+
+</Step>
+
+</Steps>
+
+## Permissions
+
+Permissions on the Collaborators tab control what each collaborator can do across the project workflow.
+
+<Callout kind="info">
+
+Grant only the permissions each collaborator needs. Start with the minimum access that lets them do their work, and expand if necessary.
+
+</Callout>
+
+### Permission types
+
+- **View**  
+  - Always enabled for collaborators so they can open the project and see its content.  
+  - Required for any other permission to be meaningful.
+
+- **Comment**  
+  - Allows collaborators to leave comments wherever comments are supported in the workflow.  
+  - Use this for reviewers or stakeholders who need to give feedback but do not need to upload files.
+
+- **Upload**  
+  - Allows collaborators to upload or add files in the Files and related tabs.  
+  - Use this for contributors who will provide assets, references, or other project materials.
+
+Permission changes you make in the Collaborators tab immediately affect what those users can do in other tabs like Files, Moodboard, or Screenplay.
+
+## How acceptance works
+
+Invites created from the Collaborators tab follow the collaboration proposal lifecycle.
+
+### Proposal statuses
+
+- **`pending`**  
+  After you send an invite, ModelBoard stores or updates a proposal with `status: 'pending'`.  
+  This means the receiver has not accepted the collaboration yet.
+
+- **`accepted`**  
+  When the receiver accepts the collaboration request, the proposal moves to `accepted`.  
+  This activates their permissions across all workflow tabs.
+
+Other statuses like `completed` and `archived` indicate later stages of the collaboration, but they do not change how you send invites from the Collaborators tab.
+
+### What senders vs receivers see
+
+<Tabs>
+
+<Tab title="Project owner (sender)" icon="settings">
+
+As the project owner or sender:
+
+- Use the Collaborators tab to:
+  - Add new collaborators by profile search or email.
+  - Set or adjust View, Comment, and Upload permissions.
+  - See which invites are still `pending` and which collaborators are active.
+- When you send invites:
+  - ModelBoard creates or updates proposals with `status: 'pending'`.
+  - In-app receivers get a `collaboration_request` notification.
+- When receivers accept:
+  - Status moves to `accepted`.
+  - Their permissions become active across other project tabs.
+
+</Tab>
+
+<Tab title="Collaborator (receiver)" icon="users">
+
+As a collaborator receiving an invite:
+
+- If you already use ModelBoard:
+  - You receive an in-app `collaboration_request` notification.
+  - Accepting the request sets the proposal to `accepted`.
+  - The project appears in your collaboration view with the permissions the sender configured.
+- If you receive an external email invite:
+  - The email links back to the project and ModelBoard.
+  - After creating or logging into your account, you can accept the collaboration request.
+  - Once accepted, your access matches the permissions assigned in the invite.
+
+</Tab>
+
+</Tabs>
+
+## Best practices
+
+Use the Collaborators tab to keep projects organized and secure while enabling smooth teamwork.
+
+- **Map permissions to roles**  
+  - Give **View + Comment** to directors, clients, or reviewers who only need to see work and give feedback.  
+  - Add **Upload** for collaborators who must share references, casting materials, or deliverables.
+
+- **Review permissions as the project evolves**  
+  - When collaboration shifts (for example, from planning to production), revisit the Collaborators tab.  
+  - Adjust Comment or Upload as responsibilities change.
+
+- **Watch pending invites before key milestones**  
+  - Check for `pending` status before reviews, shoots, or deadlines.  
+  - Follow up with collaborators who have not accepted so they do not get blocked.
+
+## Troubleshooting
+
+Use these checks when collaboration invites from the Collaborators tab do not behave as expected.
+
+<ExpandableGroup>
+
+<Expandable title="Invite stays pending for too long" default-open="true">
+
+- Confirm you sent the invite from the correct project and Collaborators tab.
+- Ask the receiver to check for a `collaboration_request` notification in ModelBoard if they already use the platform.
+- Resend communication outside ModelBoard (chat, email) asking them to accept the request.
+- If the collaborator missed the original email invite, send a new invite to the same address from the Collaborators tab.
+
+</Expandable>
+
+<Expandable title="Receiver cannot find the project after accepting">
+
+- Ask the receiver which account they used to accept the invite and confirm it matches the email or profile you invited.
+- Verify in your Collaborators tab that their invite shows as `accepted` rather than `pending`.
+- If you see the wrong collaborator profile, remove that confusion by re-inviting the correct profile or email address.
+
+</Expandable>
+
+<Expandable title="Collaborator has the wrong permissions">
+
+- Open the Collaborators tab for the project and locate the collaborator.
+- Check which of **View**, **Comment**, and **Upload** are enabled for them.
+- Toggle Comment or Upload to match what they actually need, keeping View enabled so they can still open the project.
+- Ask the collaborator to refresh their project view and try the action again.
+
+</Expandable>
+
+<Expandable title="External invite recipient is not on ModelBoard yet">
+
+- Let the recipient know they must follow the email link to ModelBoard.
+- They may need to create a new account before they can accept the collaboration request.
+- After they sign up and accept, the proposal moves from `pending` to `accepted` and their permissions become active.
+- If they cannot find the email, send a new invite from the Collaborators tab and confirm the address is correct.
+
+</Expandable>
+
+<Expandable title="Multiple invites sent to the same collaborator">
+
+- Check the Collaborators tab for duplicate entries with the same profile or email.
+- Use the most recent invite as the source of truth for permissions.
+- Ask the collaborator which notification or email they accepted, and keep that path as the active collaboration.
+
+</Expandable>
+
+</ExpandableGroup>
