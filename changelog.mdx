@@ -1,9 +1,10 @@
 ---
 title: Changelog
-description: Stay updated with the latest releases, new features, and improvements in ModelBoard.
+description: >-
+  Stay updated with the latest releases, new features, and improvements in
+  ModelBoard.
 ---
-
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Check this changelog regularly to stay informed about new features, improvements, and fixes that enhance your ModelBoard experience.
 </Callout>
 
@@ -11,103 +12,153 @@ description: Stay updated with the latest releases, new features, and improvemen
 
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
-<Columns cols={3}>
-  <Card title="v1.3.0" icon="zap" href="#v1-3-0">
-    Latest release with collaboration enhancements.
+<Columns cols="3">
+  <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
+    Massive Collab Workflow Feature upgrade & redesign.
   </Card>
-  <Card title="v1.2.0" icon="settings" href="#v1-2-0">
-    Compliance and profile improvements.
+
+  <Card title="v0.39.19" href="#v0-39-19" icon="lucide-file-code" horizontal="false" target="_self">
+    Implementing all new Passwordless & Credless Passkey Auth.
   </Card>
-  <Card title="v1.1.0" icon="check-circle" href="#v1-1-0">
-    Networking and account management fixes.
+
+  <Card title="v0.39.16" href="#v0-39-16" icon="file-code-icon" horizontal="false" target="_self">
+    Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
 
-<Update label="2024-11-15" description="v1.3.0" tags={["feature", "improvement"]}>
+<Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
+  ### This latest update of the **ModelBoard** **Platform** introduces various *new features*, additions to *existing features*, fixes *bugs*, and *removals* of overlapping elements or unnecessary UI elements cluttering the app.
 
-## New Features
+  ## New Features
 
-- Added real-time collaboration invites for models and studios, streamlining content production workflows.
-- Introduced universal 2257 compliance export directly from profile dashboards.
-- New enterprise-level bulk user management for talent agencies.
+  - Added real-time collaboration invites for models and studios, streamlining content production workflows.
 
-## Improvements
+  - Introduced universal 2257 compliance export directly from profile dashboards.
 
-- Enhanced professional networking search with advanced filters for account types (Model, Business, Studio, Enterprise).
-- Optimized portfolio upload speeds by `>40%` for large media files.
-- Updated UI for account type selection with preview cards.
+  - New enterprise-level bulk user management for talent agencies.
 
-## Bug Fixes
+  ## Improvements
 
-- Fixed casting application sync issues between studios and models.
-- Resolved notification delays in collab workflow approvals.
-- Corrected profile verification flow for business accounts.
+  - Enhanced professional networking search with advanced filters for account types (Model, Business, Studio, Enterprise).
 
+  - Optimized portfolio upload speeds by `>40%` for large media files.
+
+  - Updated UI for account type selection with preview cards.
+
+  ## Bug Fixes
+
+  - Fixed casting application sync issues between studios and models.
+
+  - Resolved notification delays in collab workflow approvals.
+
+  - Corrected profile verification flow for business accounts.
 </Update>
 
-<Update label="2024-10-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+<Update label="2026-02-16" description="v0.39.19" tags={["New Features","Fixes","Improvements","Deletions"]}>
+  ### This latest update of the **ModelBoard** **Platform** introduces various *new features*, additions to *existing features*, fixes *bugs*, and *removals* of overlapping elements or unnecessary UI elements cluttering the app.
 
-## New Features
+  ## New Features
 
-- Profile portfolios now support embedded video previews from major platforms.
-- Added review and rating system for business-service collaborations.
-- Integrated webhook support for custom notifications: `https://your-webhook-url.com/webhook`.
+  ✅ **NEW** Project configuration wizard on first-time opening of the project for the project sender.  
 
-## Improvements
+  ✅ **NEW** Wizard sets the type of ownership.  
 
-- Streamlined compliance verification logic for platform-agnostic 2257 records.
-- Better mobile responsiveness for networking feeds.
+  ✅ **NEW** Wizard asks to add extra collaborators to the project, either by searching for an existing user or by sending an email invite to a collaborator not yet on ModelBoard.  
 
-## Bug Fixes
+  ✅ **NEW** Created a whole new release form signature flow accessible directly from the Compliance tab of the Collab workflow. 
 
-- Fixed enterprise dashboard access for multi-studio holdings.
-- Patched credential exposure in shared collab links.
-- Resolved search indexing delays for new profiles.
+  ✅ **NEW** Signed release forms are backed up in an all new dedicated vAulth section.
 
+  ✅ **NEW** Added more data to vAulth account overview.  
+
+  ✅ **NEW** Updates log trail to the Collab project overview tab, allowing all project collaborators to view every edit applied to the project.  
+
+  ✅ **NEW** Backup codes and account security subtab on the Settings page, allowing users to generate 10 backup codes and download them as a PDF.  
+
+  ✅ **NEW** Implemented Email-less, One-click Passwordless Passkey Authentication for new Passkey registrations. 
+
+  ##### ⚠️ *Existing Passkeys must be deleted and Regenerated to allow for Email-less, One-click Passwordless Passkey Authentication.*
+
+  ## Improvements
+
+  �&#xDE84;**&#x20;Added** Refactored model grid for desktop. New horizontal layout with more detail for each model without opening their profile.  
+
+  🪄 **Added** Implemented the capability to remove a collaborator from a Collab project.  
+
+  🪄 **Added** When<u> two passkeys</u> are registered in the account, *plus* backup codes are<u> generated + downloaded</u>, your account automatically switches to passkey-only authentication for enhanced security.
+
+  ##### ⚠️ *Please make sure to have your Email up to date and to carefully save your Backup Codes in a safe location, whether digitally or on print / handwritten note.*
+
+
+
+  🪄 **Added** Fallback login methods when Passkeys are Not available (ex.: for new devices or for recovery purposes) through Email-OTP, or backup codes.
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** New vAulth notification menu.  
+
+  🛠️ **Fixed** Replaced the second authentication factor with passkeys. Passkeys for ModelBoard are now synced with vAulth. Passkeys are stronger than TOTP  (phishing-resistant, and hardware-backed).  
+
+  🛠️ **Fixed** vAulth's tab navigation.  
+
+  ## Deleted
+
+  **🗑️ Deleted** Decluttered vAulth's interface by removing unnecessary widgets.
+
+  \--- 
+
+  ###### *This version may also include more undocumented changes fixing various small bugs and implementing minor security upgrades.*
 </Update>
 
-<Update label="2024-09-10" description="v1.1.0" tags={["improvement", "bugfix"]}>
+<Update label="2026-02-03" description="v0.39.16" tags={["Fixes","Improvements","New Features"]}>
+  ### This latest update of the ModelBoard Platform introduces many new features, fixes various bugs and corrections.
 
-## New Features
+  ## New Features
 
-- Account type selector with guided onboarding flows.
-- Basic API endpoints for profile data: `GET /api/profiles/{id}`.
+  ✅ ***NEW&#x20;*** "Props" sub-tab for Props Management accessible from the Screenplay Tab
 
-## Improvements
+  ✅ ***NEW &#x20;***&#x52;elease Assets Storage is now permanent with Unlimited Storage Capacity and no file-size limitation for **Pro&#x20;**&#x41;ccounts, Supports up to 4K resolution.
 
-- Performance boosts in content production timelines.
-- Enhanced security for industry credits sharing.
+  ✅ ***NEW &#x20;***&#x46;ully featured User Sub-Account System for Business / Studio / Enterprise Organizations Accounts
 
-## Bug Fixes
+  ## Improvements
 
-- Corrected login redirects for studio admins.
-- Fixed portfolio image cropping artifacts.
+  🪄 **Added** Autosuggestions for Locations (City, Country)
 
-```javascript
-// Example API usage for new profile endpoint
-const response = await fetch('https://api.modelboard.net/api/profiles/123', {
-  headers: { Authorization: `Bearer YOUR_TOKEN` }
-});
-const profile = await response.json();
-console.log(profile);
-```
+  🪄 **Added** Randomized attribution of unused Featured Ad Spots at every page load on the network page
 
+  ####  Significant Upgrade of the Collab Workflow with more in the
+
+  #### &#x20;Upcoming Version
+
+  🪄 **Added** Dedicated Button and Flow for Drafts & Solo Projects
+
+  🪄 **Added** + New Collaboration Button now opening a new Modal to Search a Collaborator by Handle or Stage Name ***or*** Optionally send an invite to a non-user by email
+
+  🪄 **Added** Pending proposals are now editable (similar to drafts) by the sender allowing to start setting it up even if not yet accepted
+
+  🪄 **Added** New Filter Tab for Solo & Draft Projects
+
+  🪄 **Added** Collab Project Overview inline editing capability
+
+  🪄 **Added** Refined Ownership Models for Rights and Intellectual Property
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** Portfolio Video Playback and animated thumbnails not showing
+
+  🛠️ **Fixed** Travel Plans Cards Buttons on the "My Location" Page
+
+  🛠️ **Fixed** Travel Plans are now automatically archived to the Travel Log once completed (the day following the End of the plan)
 </Update>
 
 ## Upcoming Changes
 
 <Expandable title="Preview: v1.4.0 (ETA December 2024)" default-open="true">
-
-Expect AI-powered matching for collaborations, advanced analytics dashboards, and full SDK support for custom integrations. Prepare by reviewing your current workflows.
-
+  Expect AI-powered matching for collaborations, advanced analytics dashboards, and full SDK support for custom integrations. Prepare by reviewing your current workflows.
 </Expandable>
 
-| Version | Release Date | Key Changes | Tags |
-|---------|--------------|-------------|------|
-| v1.3.0 | 2024-11-15 | Collab invites, 2257 export | feature, improvement |
-| v1.2.0 | 2024-10-20 | Video portfolios, webhooks | feature, bugfix |
-| v1.1.0 | 2024-09-10 | Account selector, API basics | improvement, bugfix |
-
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   To update your instance, check the dashboard settings or contact support for enterprise deployments. Provide feedback via our [feedback form](https://modelboard.net/feedback).
 </Callout>
+
