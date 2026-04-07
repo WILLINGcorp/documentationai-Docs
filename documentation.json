@@ -1,5 +1,5 @@
 {
-  "name": "ModelBoard",
+  "name": "ModelBoard Docs",
   "colors": {
     "light": {
       "brand": "#E50914"
@@ -284,5 +284,8 @@
   },
   "logo-dark": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
   "logo-light": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976022589-lu3dig02eo-modelboard-logo.png?q=85&fm=auto&auto=compress%2Cformat",
-  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat"
+  "favicon": "https://blob-cdn.documentation.ai/org-c77119bd-dd78-457f-9957-e38a80f16b9e/doc-660b71b7-0b11-435e-ae68-2fb1ba0d5702/1771976044636-jyidqmvo1ef-MB_favicon.png?q=85&fm=auto&auto=compress%2Cformat",
+  "title": "ModelBoard Docs",
+  "description": "The one and only source of truth for everything related to the ModelBoard Platform and ecosystem.",
+  "initialRoute": "introduction"
 }
