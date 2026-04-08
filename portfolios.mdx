@@ -1,0 +1,320 @@
+---
+title: Portfolios
+description: Structure focused portfolios that showcase your best work, connect them to your creator profile, and use them inside collaboration projects.
+---
+
+## Overview
+
+Portfolios group your best work into focused sections that you can share from your creator profile, proposals, and collaboration projects.
+
+Portfolios help casting directors, brands, and collaborators understand what you are great at without scrolling through your entire archive. Each portfolio highlights a curated set of assets, with context that makes them relevant to specific opportunities.
+
+<Callout kind="info">
+
+Portfolios work alongside your creator profile and collaboration projects. Use your profile for who you are, and portfolios for what you want to be booked for.
+
+</Callout>
+
+## How to structure portfolios
+
+Structure each portfolio around a clear purpose so collaborators immediately see why the work matters.
+
+### What to include
+
+Focus on a small set of high-signal pieces instead of uploading everything you have.
+
+- **Curated best work** that matches the kind of jobs you want.
+- **Range within a theme** (different looks, locations, moods) that still feels cohesive.
+- **Credits and context** such as role, client type, and shoot style.
+- **Recent projects** that reflect how you look and work now.
+
+<Callout kind="tip">
+
+Aim for the "starter section" approach from the getting started guide: a single, focused portfolio that shows 8–20 of your strongest, most relevant items, each with a short title and description.
+
+</Callout>
+
+### What to avoid
+
+Keep the portfolio tight and professional by avoiding:
+
+- **Entire archives** or every shot from a project.
+- **Low-resolution, duplicate, or near-identical images.**
+- **Unclear or empty descriptions** that force viewers to guess context.
+- **Off-brand content** that does not match how you want to be cast or booked.
+
+### Strategy comparison
+
+Use different portfolio strategies depending on who will view the work.
+
+<Tabs>
+
+<Tab title="Casting-ready" icon="users">
+
+Casting-ready portfolios focus on helping casting teams quickly decide if you fit a role.
+
+- Prioritize **clear, well-lit images** that show your face and body in relevant poses.
+- Group content by **role type** (commercial, fashion, lifestyle, character).
+- Add descriptions that reference **age range, style, and niche skills**.
+- Keep the selection compact so casting can review the full set in one pass.
+
+</Tab>
+
+<Tab title="Brand-friendly" icon="shield">
+
+Brand-friendly portfolios are designed for agencies, advertisers, and long-term partnerships.
+
+- Highlight **campaign-level work** and editorial stories, not single test shots.
+- Include **client or project type** in titles so brands can scan for relevance.
+- Mix **studio and on-location** work to show flexibility and production value.
+- Avoid content that conflicts with the brand-safe image you want to maintain.
+
+</Tab>
+
+<Tab title="Collab-specific" icon="git-branch">
+
+Collab-specific portfolios support proposals and in-progress projects in the collaboration hub.
+
+- Build **one portfolio per theme or project type** you pitch often.
+- Choose items that **match the moodboards and references** you share in projects.
+- Add notes that make it easy to reference assets in the **File Sharing** tab.
+- Update these portfolios regularly as collab projects complete and you get new results.
+
+</Tab>
+
+</Tabs>
+
+## Portfolio fields and settings
+
+Portfolios include a small set of fields that control how they appear and how collaborators understand them. Exact labels can vary, but these are the common types of information you will configure.
+
+<ParamField body="title" param-type="string" required="true" show-location="false">
+
+Public name of the portfolio. Use a clear, purpose-driven title such as `Commercial Beauty`, `Casting – Film Drama`, or `Brand Partnerships`.
+
+</ParamField>
+
+<ParamField body="summary" param-type="string" show-location="false">
+
+Short description that explains what the viewer should pay attention to. Mention niche, strengths, and ideal use cases in 1–3 sentences.
+
+</ParamField>
+
+<ParamField body="visibility" param-type="enum" show-location="false">
+
+Controls who can view the portfolio. Typical options include public (shown on your profile), link-only (for specific proposals), or restricted (for internal reference).
+
+</ParamField>
+
+<ParamField body="coverItem" param-type="reference" show-location="false">
+
+Asset you choose as the main thumbnail or banner. Pick a strong, representative image that still looks good at small sizes.
+
+</ParamField>
+
+<ParamField body="sections" param-type="array" show-location="false">
+
+Optional grouping of items inside the portfolio, such as `Campaigns`, `Tests`, or `Behind the Scenes`. Use sections sparingly so navigation stays simple.
+
+</ParamField>
+
+<ParamField body="items" param-type="array" required="true" show-location="false">
+
+The individual works (images, video, or other media) displayed in the portfolio. For each item, add a concise title and a short description that covers role, context, and standout details.
+
+</ParamField>
+
+<ParamField body="tags" param-type="array<string>" show-location="false">
+
+Keywords that help you filter and re-use portfolios across your creator dashboard and collaborations, such as `beauty`, `editorial`, or `ugc`.
+
+</ParamField>
+
+<ParamField body="priority" param-type="integer" show-location="false">
+
+Optional ordering value that controls how this portfolio appears relative to others on your creator profile or dashboard views.
+
+</ParamField>
+
+<Callout kind="tip">
+
+Update summaries, cover items, and tags whenever your focus shifts. Keeping metadata in sync with your goals makes portfolios easier to route into the right collaborations.
+
+</Callout>
+
+## Create your first portfolio
+
+Use this flow to build a focused starter portfolio that matches the getting started guidelines.
+
+<Steps>
+
+<Step title="Open your creator tools" icon="layout-dashboard" title-type="p">
+
+- Sign in to your creator account.
+- Go to your **Creator Dashboard** at `/creator-dashboard`.
+- Navigate to the area where you manage your profile and work.
+
+Success: you see your dashboard with access to your creator profile and content management tools.
+
+</Step>
+
+<Step title="Decide the focus" icon="map" title-type="p">
+
+- Choose one clear goal for this portfolio: for example, "commercial beauty casting" or "brand UGC".
+- List 10–25 pieces that best support that goal.
+- Remove any items that are outdated or off-brand, even if you like them personally.
+
+Success: you have a short list of work that clearly fits one theme or booking goal.
+
+</Step>
+
+<Step title="Add portfolio details" icon="edit" title-type="p">
+
+- Create a new portfolio and set a clear **title** that reflects the focus.
+- Write a 1–3 sentence **summary** that explains what this portfolio is for and what makes it different.
+- Choose a strong **cover item** that still reads well at small size and on mobile.
+
+Success: your new portfolio appears in your dashboard with a recognizable title and cover image.
+
+</Step>
+
+<Step title="Curate and arrange items" icon="package" title-type="p">
+
+- Add 8–20 items from your short list, starting with your absolute strongest work.
+- For each item, add a short **title** and **description** that call out your role and the project type.
+- Reorder items so the first 4–6 pieces show your range while still feeling cohesive.
+
+Success: when you scroll the portfolio, every item feels intentional and supports the same narrative.
+
+</Step>
+
+<Step title="Connect to your profile and collabs" icon="git-branch" title-type="p">
+
+- Confirm the portfolio is visible where you want it on your **Creator Profile** at `/creator-profiles`.
+- When you next send or respond to a proposal in the **Collaboration Hub** at `/collaboration-hub`, reference this portfolio as your primary work sample.
+- Adjust visibility or tags if you need separate versions for public viewing and collab-only use.
+
+Success: collaborators who click through from your profile or a proposal see this portfolio and understand exactly what you offer.
+
+</Step>
+
+</Steps>
+
+## Portfolios inside collaborations
+
+Portfolios play a supporting role in collaboration projects by giving teams a shared reference for your capabilities.
+
+When you work through the **Collaboration Hub** at `/collaboration-hub`, each project at `/collab/{id}` uses tabs such as Overview, Collaborators, Compliance, File Sharing, and Licensing. Use portfolios to keep those spaces focused and efficient.
+
+### Where portfolios help most
+
+- **Before proposals:** share a link to a collab-specific portfolio so organizers can decide quickly whether to invite you into a project.
+- **During planning:** reference specific portfolio items in project Overview or moodboard-style conversations to align on visual direction.
+- **While sharing files:** match items in your portfolio with related uploads in the **File Sharing** tab at `/file-sharing` so teams can map inspiration to actual deliverables.
+- **For compliance and rights:** when a portfolio item turns into a real deliverable, make sure agreements in the **Compliance** tab at `/compliance` and terms in the **Licensing** tab at `/licensing` reflect how that work will be used.
+
+<Callout kind="info">
+
+Portfolios show what you can do; collaboration tabs control how project files, compliance, and licensing are handled. Use them together: reference your portfolio when planning, then move final assets and agreements into File Sharing, Compliance, and Licensing.
+
+</Callout>
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+<Expandable title="My portfolio looks cluttered or inconsistent" default-open="true">
+
+If the portfolio feels messy, you are probably mixing too many themes or including too many similar shots.
+
+- Remove items that repeat the same angle, outfit, or setup unless they add new information.
+- Split different niches into separate portfolios (for example, one for beauty, one for lifestyle).
+- Reorder so the first six items tell the clearest story about how you should be booked.
+
+</Expandable>
+
+<Expandable title="Collaborators say they cannot find the right work">
+
+When collaborators struggle to find relevant examples, the portfolio focus or metadata usually does not match their needs.
+
+- Re-check the **title** and **summary** so they align with the types of collabs you are pitching.
+- Create a dedicated collab-specific portfolio that mirrors the mood and requirements of current projects.
+- Add or adjust **tags** so you can quickly filter and share the right portfolio from your dashboard.
+
+</Expandable>
+
+<Expandable title="My portfolio does not match current compliance or licensing terms">
+
+If a portfolio item has moved from "inspiration" to "deliverable", your compliance and licensing settings in collab projects may need updates.
+
+- Check the relevant project at `/collaboration-hub` and open its **Compliance** tab at `/compliance` to confirm agreements cover the final work.
+- Review the **Licensing** tab at `/licensing` to ensure allowed uses match how you expect portfolio pieces to appear in campaigns or public channels.
+- If terms changed after you built the portfolio, update item descriptions so they reflect any limitations or special conditions.
+
+</Expandable>
+
+<Expandable title="The page for portfolios or collabs will not load">
+
+For general loading or access issues, use the help content instead of continuing to troubleshoot alone.
+
+- Visit the **Help Center** at `/help-center` and open the troubleshooting section.
+- Check known issues related to the creator dashboard or collaboration hub.
+- If the problem persists, contact support using the instructions in the Help Center and mention that you are working with portfolios and collab projects.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+<Columns cols="2">
+
+<Card
+  title="Creator Dashboard"
+  href="/creator-dashboard"
+  icon="layout-dashboard"
+  horizontal="false"
+  cta="Manage your work"
+>
+
+Review all your portfolios, reorder them, and connect them to the parts of your account where they matter most.
+
+</Card>
+
+<Card
+  title="Creator Profiles"
+  href="/creator-profiles"
+  icon="circle-user"
+  horizontal="false"
+  cta="Refine your public presence"
+>
+
+Decide how portfolios appear on your public profile and align them with your bio, stats, and featured content.
+
+</Card>
+
+<Card
+  title="Collaboration Hub"
+  href="/collaboration-hub"
+  icon="git-branch"
+  horizontal="false"
+  cta="Use portfolios in projects"
+>
+
+See how your portfolios support proposals, planning, and delivery across collaborative projects.
+
+</Card>
+
+<Card
+  title="Help Center"
+  href="/help-center"
+  icon="help-circle"
+  horizontal="false"
+  cta="Get more help"
+>
+
+Find troubleshooting guides, FAQs, and contact options if you run into issues with portfolios or collaborations.
+
+</Card>
+
+</Columns>
