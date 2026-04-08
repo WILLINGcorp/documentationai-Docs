@@ -43,6 +43,16 @@
                 "icon": "layers",
                 "pages": [
                   {
+                    "title": "Account Types",
+                    "path": "account-types",
+                    "icon": "lucide-users"
+                  },
+                  {
+                    "title": "Organizations",
+                    "path": "organizations",
+                    "icon": "building2"
+                  },
+                  {
                     "title": "Features",
                     "path": "features",
                     "icon": "file-text"
