@@ -1,0 +1,300 @@
+---
+title: Compliance tab
+description: Track release forms, 2257 verification, and boundaries and consent for each collaborator in a Collab project using the Compliance tab.
+---
+
+## Where the Compliance tab lives
+
+Open the Compliance tab from any Collab project workflow to track required documentation and agreements for everyone involved in the project.
+
+- Go to your Collabs hub at `/collabs`.
+- Select a project to open the workflow page at `/collab/{id}`.
+- Switch to the **Compliance** tab in the project header.
+
+The Compliance tab is vAulth-branded and focuses on project compliance tracking rather than showing raw legal documents.
+
+<Callout kind="info">
+
+The Compliance tab integrates with vAulth to verify documentation and signatures. Sensitive documents stay encrypted and are not displayed directly in the UI.
+
+</Callout>
+
+## What the Compliance tab shows
+
+The Compliance tab is organized into two main parts:
+
+- A **release form signing** section for the project as a whole.
+- **Per-collaborator compliance cards** for 2257 documentation, boundaries and consent, and QR scan activity.
+
+### Release form signing section
+
+The release form signing section tracks who has signed the project release form and when the project-level form is ready to download as a signed PDF.
+
+You see:
+
+- A **signature progress indicator** such as `2 of 4 signed`.
+- A **signer list** with each collaborator, their role, and signed status.
+- A **self-sign action** that opens a modal to add your legal name, contact details, role, and signature.
+- A **generate/download signed PDF** action that stays disabled until all required signatures are complete.
+
+<Callout kind="tip">
+
+After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+
+</Callout>
+
+### Collaborator compliance cards
+
+Each participant in the project has a compliance card showing their verification state and available actions.
+
+Every card includes:
+
+- Avatar and name.
+- A **You** badge on your own card.
+- Separate mini-cards for:
+  - 2257 documentation.
+  - Boundaries and consent.
+  - QR scan status (for other collaborators).
+
+The UI surfaces encrypted or tamper-proof indicators and verification links instead of raw document contents.
+
+## Recommended workflow for project owners
+
+Use the Compliance tab throughout the lifecycle of a Collab project to keep documentation on track.
+
+<Steps>
+
+<Step title="Confirm required signers" icon="users" title-type="p">
+
+Open the project at `/collab/{id}` and switch to the Compliance tab. Review the release form signer list and confirm that all required participants appear with the correct roles before you start collecting signatures.
+
+</Step>
+
+<Step title="Sign your own release form" icon="edit" title-type="p">
+
+Find your entry in the release form section and use the self-sign action to open the signing modal. Enter your legal name, contact details, role in the project, and signature, then submit to update your signed status.
+
+</Step>
+
+<Step title="Monitor signature progress" icon="bar-chart" title-type="p">
+
+Watch the signature progress indicator to see how many collaborators have signed. Use the signer list to follow up with anyone still pending and keep the project timeline aligned with your shoot or delivery schedule.
+
+</Step>
+
+<Step title="Verify 2257 documentation per collaborator" icon="shield" title-type="p">
+
+In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified, and confirm that their status updates to verified and encrypted.
+
+</Step>
+
+<Step title="Collect boundaries and consent" icon="check-circle" title-type="p">
+
+Review the boundaries and consent status for each collaborator. Complete your own consent form where required, and use reminder actions to prompt others whose status shows action required or missing.
+
+</Step>
+
+<Step title="Use QR scans on set or in person" icon="monitor" title-type="p">
+
+When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in `project_compliance_scans` and keep an auditable record of in-person verification.
+
+</Step>
+
+<Step title="Download the fully signed release form" icon="download" title-type="p">
+
+After all required signers complete the release form, generate the signed PDF and download it from the Compliance tab. Store this file with your project records alongside any internal archives.
+
+</Step>
+
+</Steps>
+
+## Compliance items and statuses
+
+These are the key compliance elements you track on the Compliance tab and how to interpret them.
+
+### Release form and signatures
+
+<ParamField body="signature-progress" param-type="string" show-location="false">
+
+Overall release form status for the project, shown as counts such as `2 of 4 signed`. Use this to see at a glance how many required signers have completed their part.
+
+</ParamField>
+
+<ParamField body="signer-list" param-type="array" show-location="false">
+
+List of collaborators expected to sign the release form. Each entry includes the collaborator name, role, signed or pending status, and the signed date when available.
+
+</ParamField>
+
+<ParamField body="self-sign-modal" param-type="ui-flow" show-location="false">
+
+Dialog that lets you sign your own release form entry by providing your legal name, contact information, role in the project, and signature. Submitting updates your record in the signer list.
+
+</ParamField>
+
+<ParamField body="signed-pdf" param-type="file-link" show-location="false">
+
+Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+
+</ParamField>
+
+### 2257 documentation
+
+<ParamField body="2257-status" param-type="enum" show-location="false">
+
+Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), or missing (no documentation attached yet). When verified, the UI may display a tamper-proof hash and verification public key.
+
+</ParamField>
+
+<ParamField body="2257-hash-and-key" param-type="metadata" show-location="false">
+
+Optional technical details attached to verified documentation, such as a cryptographic hash and a corresponding public key used to confirm that the record has not been tampered with.
+
+</ParamField>
+
+<ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
+
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+
+</ParamField>
+
+### Boundaries and consent
+
+<ParamField body="boundaries-consent-status" param-type="enum" show-location="false">
+
+Status of the boundaries and consent information for a collaborator. Common values include completed (all required questions answered), action required (some steps still pending), or missing (no form submitted).
+
+</ParamField>
+
+<ParamField body="boundaries-consent-form" param-type="form" show-location="false">
+
+Interactive form that collaborators complete to record their boundaries and consent preferences for the project. You complete your own form through your card; you do not fill this on behalf of others.
+
+</ParamField>
+
+<ParamField body="reminder-action" param-type="ui-action" show-location="false">
+
+Action available on other collaborators' cards to send them a reminder when their boundaries and consent status is action required or missing.
+
+</ParamField>
+
+### QR scans and in-person verification
+
+<ParamField body="qr-scan-option" param-type="ui-action" show-location="false">
+
+Control on another collaborator's card that opens a QR scanner modal when their compliance status is unverified. Use this during in-person sessions to scan their QR code.
+
+</ParamField>
+
+<ParamField body="project-compliance-scans" param-type="log" show-location="false">
+
+Internal record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+
+</ParamField>
+
+<Callout kind="info">
+
+The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results and links. It does not show underlying identification documents directly.
+
+</Callout>
+
+## Legal disclaimer
+
+<Callout kind="alert">
+
+Compliance information in ModelBoard, including 2257 status, boundaries and consent records, release forms, and vAulth integration, is provided to help you organize and track documentation. It does not constitute legal advice and does not guarantee that your project satisfies all applicable laws or regulations. Consult your own legal counsel to understand your obligations and ensure your use of this tool aligns with the requirements in your jurisdiction.
+
+</Callout>
+
+## Troubleshooting and FAQs
+
+<ExpandableGroup>
+
+<Expandable title="Why is the signed PDF download disabled?" default-open="true">
+
+The signed PDF download stays disabled until all required signers in the release form section have completed their signatures.
+
+Check that:
+
+- The signature progress indicator shows that every required signer is marked signed.
+- No collaborators have been removed and re-added without signing again.
+- You refreshed the page after the last signature to allow the signed PDF to generate.
+
+If the download remains disabled even though all signers appear signed, try reloading the `/collab/{id}` page. If the issue continues, contact support and mention that the release form PDF is not generating for the project.
+
+</Expandable>
+
+<Expandable title="A collaborator shows missing 2257 documentation. What should I do?">
+
+When a collaborator's 2257 status shows as missing, ask them to complete the verification flow using the 2257 section on their compliance card.
+
+You can:
+
+- Use the verification action on their card to route them through vAulth.
+- Confirm that their status updates to verified and encrypted after they complete the flow.
+
+If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
+
+</Expandable>
+
+<Expandable title="Boundaries and consent is stuck at action required">
+
+A status of action required usually means the collaborator started but did not submit the full boundaries and consent form.
+
+Ask the collaborator to:
+
+- Reopen the form from their compliance card.
+- Review any incomplete sections or required questions.
+- Submit again until the status updates to completed.
+
+You can send a reminder from their card to prompt them if they have not returned to finish the form.
+
+</Expandable>
+
+<Expandable title="QR scan is not available for a collaborator">
+
+The QR scan option only appears for other collaborators when their status requires verification and when a QR-based flow is available.
+
+You might not see the QR scan action if:
+
+- You are viewing your own card.
+- The collaborator is already fully verified.
+- The project does not require QR-based in-person verification for that collaborator.
+
+If you still believe a QR scan should be available, confirm the collaborator's current compliance status and project requirements before contacting support.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+Use these related pages to understand the rest of the Collab workflow around the Compliance tab.
+
+<Columns cols={2}>
+
+<Card title="Collaboration Hub overview" href="/collaboration-hub" icon="git-branch" cta="Open guide" horizontal="false">
+
+See how `/collabs` organizes all your projects and how the workflow at `/collab/{id}` connects tabs like Overview, Collaborators, Compliance, and more.
+
+</Card>
+
+<Card title="Manage collaborators" href="/collaborators" icon="users" cta="Manage roles" horizontal="false">
+
+Learn how to add collaborators, adjust roles, and control who appears in the signer list and on compliance cards for each project.
+
+</Card>
+
+<Card title="File Sharing" href="/file-sharing" icon="folder" cta="Manage files" horizontal="false">
+
+Move assets between collaborators, keep track of versions, and see how file sharing connects to compliance and licensing for each project.
+
+</Card>
+
+<Card title="Licensing" href="/licensing" icon="file-text" cta="Review licensing" horizontal="false">
+
+Understand how to manage licenses, usage rights, and downstream distribution for assets created in your Collab projects.
+
+</Card>
+
+</Columns>

@@ -1,0 +1,305 @@
+---
+title: Licensing
+description: Understand the Collab Licensing tab, what is live today, and what the planned LicenseGenerationForm wizard will capture for distribution-ready usage rights.
+---
+
+## Where Licensing fits in the Collab workflow
+
+Use the Licensing tab in a Collab project to centralize how you define who may use your content, where it can appear, and under what commercial terms.
+
+From the app, follow this path:
+
+- `/collabs` → select a project
+- `/collab/{id}` → **Distribution**
+- **Licensing** tab
+
+Today this tab shows a Coming Soon placeholder. The planned experience will add a guided license-generation flow so you can capture license terms consistently alongside your compliance records and shared files.
+
+<Callout kind="alert">
+
+Licensing in the Collab Distribution area is not yet active. You cannot currently create or sign licenses inside the Licensing tab. Use your existing legal contracts and processes in the meantime.
+
+</Callout>
+
+## What you see today in Licensing
+
+The current Licensing tab shows a static Coming Soon message:
+
+> "Manage content licensing agreements, territories, and usage rights."
+
+There are no interactive fields or actions yet:
+
+- No buttons to add or edit licenses
+- No way to upload existing contracts
+- No PDF or document generation
+- No reporting or exports
+
+Treat the tab as a preview of where licensing controls will live once the feature ships, not as a replacement for your existing legal workflows yet.
+
+## What Licensing is planned to cover
+
+Licensing is designed to sit alongside File Sharing and Compliance so that each Collab project keeps:
+
+- **Compliance artifacts** (IDs, releases, age verification) in the **Compliance** tab
+- **Deliverables and source files** in the **File Sharing** tab
+- **Usage rights and commercial terms** in the **Licensing** tab
+
+The planned Licensing experience will revolve around a guided wizard (`LicenseGenerationForm`) that captures:
+
+- Who is licensed (licensee details)
+- Where they may publish (authorized platforms)
+- When and how they may use the content (dates and usage rights)
+- How they pay you (fees and revenue share)
+- What kind of license applies (license type)
+- A generated PDF summary and a stored license record
+
+<Callout kind="info">
+
+Everything described in this section is planned, not currently available in the app. Details may evolve before public release.
+
+</Callout>
+
+### Planned license types
+
+The license wizard is planned to support several license types so you can match terms to your business model:
+
+- **non_exclusive** — You may license the same content to multiple licensees at the same time.
+- **exclusive** — You grant one licensee exclusive rights under the agreed scope, usually for a defined period or territory.
+- **commercial** — The licensee may use the content in monetized or promotional contexts, subject to the agreed fee and/or revenue share.
+- **editorial** — The licensee may use the content in non-commercial, editorial, or journalistic contexts, typically with stricter usage constraints.
+
+You will choose one of these license types when configuring the license so the generated document reflects the correct framing.
+
+### Planned authorized platforms
+
+Authorized platforms define where the licensee may distribute or publish the content. The planned options mirror common creator platforms plus a flexible custom option:
+
+- **OnlyFans**
+- **Fansly**
+- **ManyVids**
+- **Clips4Sale**
+- **AVN Stars**
+- **Custom Platform** — When selected, the wizard will prompt for a custom platform URL so you can capture destinations outside the predefined list.
+
+Use these as a reference when drafting your own contracts so your platform list stays aligned with what Licensing will support.
+
+### Planned usage rights
+
+Usage rights describe what the licensee is allowed to do with the content. The planned wizard uses named switches for each right:
+
+- **distribution** — Distribution Rights: right to distribute content on authorized platforms.
+- **modification** — Modification Rights: right to edit or modify the content.
+- **sublicensing** — Sublicensing: right to sublicense to third parties.
+- **commercial_use** — Commercial Use: right to use for commercial purposes.
+- **derivative_works** — Derivative Works: right to create derivative works.
+
+Expect these to appear as individual toggles so the license PDF and record can show which rights you granted.
+
+## Planned license generation flow
+
+The LicenseGenerationForm is designed as a four-step wizard. This section outlines the expected flow so you can anticipate the data you will need when the feature becomes available.
+
+<Callout kind="info">
+
+This flow is planned and not yet wired into the Licensing tab. Use it as guidance for what information to gather, not as an instruction for the current product.
+
+</Callout>
+
+<Steps>
+
+<Step title="Licensee information" icon="users" title-type="p">
+
+Collect the basic identity and contact details for the party receiving the license.
+
+</Step>
+
+<Step title="Authorized platforms" icon="monitor" title-type="p">
+
+Specify where the licensee may distribute or publish the content, including major platforms and any custom destinations.
+
+</Step>
+
+<Step title="Dates and usage rights" icon="calendar" title-type="p">
+
+Define when the license starts, how long it lasts, and what the licensee is allowed to do with the content.
+
+</Step>
+
+<Step title="Commercial terms and summary" icon="file-text" title-type="p">
+
+Describe the commercial structure (flat fees and/or revenue share), then review a structured summary that will be used to generate a PDF and store the license record.
+
+</Step>
+
+</Steps>
+
+### Planned fields and options
+
+The following fields are implemented in the LicenseGenerationForm component but not yet exposed in the Licensing tab UI. Use them as a checklist when preparing your own contracts today.
+
+#### 1. Licensee information
+
+<ParamField body="licensee_name" param-type="string" required="true" show-location="false">
+
+Legal or business name of the licensee who will receive rights to the content.
+
+</ParamField>
+
+<ParamField body="licensee_contact_email" param-type="string" required="true" show-location="false">
+
+Primary contact email for the licensee. Use a monitored address for notices, renewals, and issue escalation.
+
+</ParamField>
+
+#### 2. Authorized platforms
+
+<ParamField body="authorized_platforms" param-type="array&lt;string&gt;" required="true" show-location="false">
+
+List of platforms where the licensee is permitted to publish or distribute content. Planned checkbox options are OnlyFans, Fansly, ManyVids, Clips4Sale, AVN Stars, and a Custom Platform option that reveals a custom URL input when selected.
+
+</ParamField>
+
+#### 3. Dates and usage rights
+
+<ParamField body="start_date" param-type="date" required="true" show-location="false">
+
+Date the license becomes effective. Usage before this date is outside the license scope.
+
+</ParamField>
+
+<ParamField body="license_duration_months" param-type="integer" show-location="false">
+
+Optional duration in whole months. Combine with `start_date` to infer an end date, or leave empty for licenses that renew or terminate under separate conditions in your contract.
+
+</ParamField>
+
+<ParamField body="usage_rights" param-type="record&lt;string, boolean&gt;" show-location="false">
+
+Set of boolean flags keyed by usage right ID. Planned keys are `distribution`, `modification`, `sublicensing`, `commercial_use`, and `derivative_works`, each corresponding to a labeled toggle in the wizard.
+
+</ParamField>
+
+<ParamField body="license_type" param-type="enum" required="true" show-location="false">
+
+Type of license to apply. Supported values are `non_exclusive`, `exclusive`, `commercial`, and `editorial`.
+
+</ParamField>
+
+#### 4. Commercial terms and summary
+
+<ParamField body="license_fee_amount" param-type="integer" show-location="false">
+
+Upfront license fee amount in cents. For example, use `250000` to represent a USD 2,500 license fee. Use `0` when you rely fully on revenue share or non-monetary consideration defined outside the wizard.
+
+</ParamField>
+
+<ParamField body="revenue_sharing_percentage" param-type="number" show-location="false">
+
+Percentage of revenue (as defined in your contract) paid to you by the licensee. For example, `30` for a 30 percent share.
+
+</ParamField>
+
+<Callout kind="alert">
+
+Planned license PDFs and stored license records are not yet available. Continue using your own contract templates and document storage until Licensing is released.
+
+</Callout>
+
+## How to prepare now using existing tabs
+
+Until Licensing is active, use a combination of Compliance and File Sharing to support your licensing workflows and keep your project distribution-ready.
+
+### 1. Capture all compliance artifacts
+
+Use the **Compliance** tab on `/collab/{id}` to store legal documentation that underpins any license you grant:
+
+- Identity documents and model releases for performers
+- Age verification records for all required parties
+- Location-specific disclosures and consents where relevant
+
+This gives you a compliance anchor for any external licensee who receives content from the project.
+
+### 2. Organize deliverables in File Sharing
+
+Use the **File Sharing** tab to keep all licensed assets clearly organized:
+
+- Group files by shoot, set, or deliverable batch
+- Use folder naming that aligns with how you describe content in your contracts
+- Keep master exports and derivative files together for easier auditing
+
+You can then reference these folders and file names in your external license agreements so both parties know exactly which assets are covered.
+
+### 3. Mirror the planned Licensing fields in your contracts
+
+Even before the Licensing tab becomes interactive, you can mirror the planned structure in your own templates:
+
+- Add clear **licensee details** sections (name and contact email)
+- Spell out **platforms**, including any **custom destinations** with URLs
+- Define **start date** and **duration in months**, plus renewal conditions
+- List **usage rights** aligned with distribution, modification, sublicensing, commercial use, and derivative works
+- Separate **license fees** in currency from **revenue sharing percentages**
+- Specify the **license type** (for example, non_exclusive or commercial)
+
+Aligning your templates with this structure will make it easier to migrate into the built-in Licensing experience when it launches.
+
+<Callout kind="alert">
+
+Documentation here is for workflow planning only and does not constitute legal advice. Consult a qualified attorney to draft or review your licensing contracts and ensure they meet your jurisdictional requirements.
+
+</Callout>
+
+## FAQs about Licensing in Collabs
+
+<ExpandableGroup>
+
+<Expandable title="Can I create or sign licenses inside the Licensing tab today?" default-open="true">
+
+No. The current Licensing tab only shows a Coming Soon message and does not allow you to create, edit, sign, or store licenses. Continue using your existing contract tools and upload relevant PDFs or documents to File Sharing or your own storage system.
+
+</Expandable>
+
+<Expandable title="Will the Licensing tab replace my legal contracts?">
+
+No. The planned Licensing features are meant to help you structure and track key terms, not to replace professionally drafted contracts. Treat any generated PDF as a record of agreed terms that should complement, not substitute, your legal documents.
+
+</Expandable>
+
+<Expandable title="How will Licensing relate to Compliance and File Sharing?">
+
+Compliance will continue to store identity, releases, and verification documents. File Sharing will continue to hold your content assets. Licensing is intended to bridge these by describing who can use which content, where, when, and under what commercial terms.
+
+</Expandable>
+
+<Expandable title="Can I track different licenses for the same content?">
+
+The planned design supports `non_exclusive` and `exclusive` license types, which implies multiple licenses for the same content will be possible in non-exclusive scenarios. Exact UX and record management behavior may change before release, so treat this as directional guidance rather than a guarantee.
+
+</Expandable>
+
+<Expandable title="How should I get ready for Licensing now?">
+
+Start by aligning your contract templates to the planned license fields: `licensee_name`, `licensee_contact_email`, `authorized_platforms`, `start_date`, `license_duration_months`, `usage_rights`, `license_type`, `license_fee_amount`, and `revenue_sharing_percentage`. Keep your Collab projects tidy by using Compliance for paperwork and File Sharing for well-labeled asset folders.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+Use these related pages to complete the rest of your Collab distribution setup.
+
+<Columns cols={2}>
+
+<Card title="File Sharing in Collabs" href="/file-sharing" icon="folder" cta="Organize deliverables" horizontal="false">
+
+Understand how to structure folders and files so you can reference them in current and future licensing agreements.
+
+</Card>
+
+<Card title="Compliance in Collabs" href="/compliance" icon="shield" cta="Verify participants" horizontal="false">
+
+Review how to capture IDs, releases, and verification data that support your licensing obligations.
+
+</Card>
+
+</Columns>
