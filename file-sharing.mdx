@@ -1,0 +1,341 @@
+---
+title: File Sharing
+description: Share project files and release assets inside a Collab project, with review statuses, download tracking, and compliance-gated access.
+---
+
+## Where File Sharing lives in a Collab project
+
+Access File Sharing from your Collab project so your team can exchange footage, images, and deliverables in one place.
+
+- Go to the **Collabs hub** at `/collabs`.
+- Open a project at `/collab/{id}`.
+- In the left sidebar, under **Distribution**, select **File Sharing**.
+
+The File Sharing tab has two subtabs:
+
+- **Project Files** — working files, dailies, references, and deliverables you exchange with collaborators.
+- **Release Assets** — files tied to signed releases and compliance, such as approved exports you deliver to clients or platforms.
+
+<Callout kind="info">
+
+The File Sharing tab reflects the current project workflow and permissions. Basic collaborators see a view-only version, while Pro users on the project can upload and manage files.
+
+</Callout>
+
+## Project Files subtab
+
+Project Files is the main workspace for exchanging images, footage, and deliverables during production and post.
+
+### Layout and key elements
+
+You see several consistent elements at the top of the Project Files subtab.
+
+#### Account storage bar
+
+The **account storage bar** shows how much shared storage your account is using across projects. Use it to understand when you are nearing limits so you can archive or remove old material.
+
+#### Uploader (Pro-only)
+
+Pro users see a resumable **file uploader** at the top of the list. Drag and drop or click to add files such as stills, clips, and exports.
+
+<Callout kind="tip">
+
+Uploads use resumable transfers. Large files continue from where they left off if your connection drops, rather than restarting from zero.
+
+</Callout>
+
+If your account does not have Pro features, you see an upgrade prompt that links to `/settings?tab=subscription` instead of the uploader.
+
+#### Filters, search, and sorting
+
+Use the toolbar above the file list to quickly narrow down what you see:
+
+- **Search** — filter by filename or tags.
+- **File type filter** — limit the view to broad types (for example, images or video), or show all.
+- **Sort** — adjust the order of files so recent uploads or key material are easier to find.
+- **Status filter** — focus on files that are still being reviewed versus material that is already cleared.
+
+These controls apply to the file list within the current workflow group (for example, Share Pictures vs. Share Footage) and help you focus on the material that matters right now.
+
+#### Policy notice and expiration
+
+A collapsible **policy notice** explains how long Project Files are retained and when they may be auto-deleted.
+
+<Callout kind="alert">
+
+Project Files may expire and be automatically deleted after a short retention period (around 14 days). Always check the policy notice in the app for the current behavior before treating Project Files as long-term storage.
+
+</Callout>
+
+Use Project Files for active collaboration, and move final masters or archival material to your own long-term storage if needed.
+
+### File list and workflow groupings
+
+The file list is grouped by **workflow steps**, such as:
+
+- **Share Pictures** — image stills, reference photos, look ideas.
+- **Share Footage** — clips, dailies, and takes for review.
+
+Within each workflow group, files appear as cards with consistent metadata and actions so you can quickly scan, review, and download the right assets.
+
+#### File card details
+
+Each asset card shows:
+
+- A **preview or thumbnail** (image frame or video still).
+- **Uploader** details (who uploaded the file).
+- **Metadata**:
+  - Filename
+  - File size
+  - Duration (for video)
+  - Resolution (for images or video)
+- **Version number** and a **version history** control.
+- **Tags**, which you can edit.
+- A **review status** control.
+- A **comments** drawer.
+- A **download** button that generates a short-lived signed link.
+- A **downloaders list** with timestamps.
+
+Use these fields together to track what the file is, where it belongs in the workflow, and who has interacted with it.
+
+### File metadata and statuses
+
+The following fields appear on most file cards.
+
+<ParamField body="filename" param-type="string" show-location="false">
+
+Human-readable name of the file. This usually matches the uploaded filename and is used in search.
+
+</ParamField>
+
+<ParamField body="size" param-type="string" show-location="false">
+
+Approximate file size (for example, `2.3 GB`). Use this to understand transfer time and storage impact.
+
+</ParamField>
+
+<ParamField body="duration" param-type="string" show-location="false">
+
+Length of a video clip (for example, `00:01:32`). Not shown for still images.
+
+</ParamField>
+
+<ParamField body="resolution" param-type="string" show-location="false">
+
+Dimensions of the image or video (for example, `3840x2160`). Helps you confirm if a file meets delivery specs.
+
+</ParamField>
+
+<ParamField body="version" param-type="integer" show-location="false">
+
+The current version number of the file. Use the version history control to view or switch between older versions.
+
+</ParamField>
+
+<ParamField body="tags" param-type="array<string>" show-location="false">
+
+Project-specific labels you edit directly on the card (for example, `close-up`, `scene-3`, `select`). Tags improve filtering and search.
+
+</ParamField>
+
+<ParamField body="reviewStatus" param-type="enum" show-location="false">
+
+The current review state of the file. Typical values distinguish material that still needs review from files that are cleared for downstream use.
+
+</ParamField>
+
+<ParamField body="uploader" param-type="string" show-location="false">
+
+Name or profile of the collaborator who uploaded the file. Use this to route questions or feedback.
+
+</ParamField>
+
+<ParamField body="downloaders" param-type="array<object>" show-location="false">
+
+Audit trail of who downloaded the file and when. Each entry includes a user and timestamp to support compliance and client reporting.
+
+</ParamField>
+
+### Basic mode vs. full access
+
+Some collaborators only see a **basic mode** of the File Sharing tab.
+
+- In **basic mode**, collaborators have **view-only access** to the file list and can see the **activity feed** for context, but they do not upload or edit metadata.
+- With **full access** (typically Pro users or project owners), collaborators can upload, edit tags, change review statuses, open comments, and manage versions.
+
+Project owners set these permissions when they add collaborators and when they choose which roles need upload or review capabilities.
+
+## Recommended workflow in Project Files
+
+Use the following pattern to keep assets organized and reviews trackable across the project.
+
+<Steps>
+
+<Step title="Upload working assets" icon="upload" title-type="p">
+
+Drag footage, stills, or exports into the uploader on the **Project Files** subtab. Use the correct workflow group (for example, Share Footage for clips, Share Pictures for stills) so collaborators know where to look. Wait for the upload to complete; resumable uploads allow large files to finish even if your connection briefly drops.
+
+</Step>
+
+<Step title="Tag and categorize files" icon="edit" title-type="p">
+
+Add descriptive tags on each file card, such as scene numbers, shot types, or notes like `client-select`. Tags make it easier to filter later using search and status filters, especially when the project holds dozens or hundreds of assets.
+
+</Step>
+
+<Step title="Set review statuses" icon="check-circle" title-type="p">
+
+Use the **review status** control to move files from in-review to approved once the team signs off. Keep statuses up-to-date so downstream collaborators know which version is safe to use for edits, color, sound, or delivery.
+
+</Step>
+
+<Step title="Discuss in comments" icon="message-square" title-type="p">
+
+Open the **comments drawer** on a file to capture feedback, change requests, or technical notes. Mention the uploader or other collaborators as needed. This keeps file-specific discussion attached directly to the asset instead of scattered in messages.
+
+</Step>
+
+<Step title="Download with audit trail" icon="download" title-type="p">
+
+Use the **Download** action on each file card. Downloads use short-lived signed links and the platform logs who downloaded the file and when in the **downloaders** list. This audit trail is useful for client reporting, security reviews, and matching downloads to signed releases.
+
+</Step>
+
+<Step title="Move approved assets to Release Assets" icon="arrow-right" title-type="p">
+
+Once a file is approved and associated with the right release forms, move or re-upload it into the **Release Assets** subtab for downstream distribution. This keeps Project Files focused on work-in-progress and short-term collaboration while Release Assets holds what you are comfortable delivering or publishing.
+
+</Step>
+
+</Steps>
+
+<Callout kind="info">
+
+Because Project Files may expire, do not use this area as your only backup for critical masters. Treat it as a working area that feeds into Release Assets and your own archival storage.
+
+</Callout>
+
+## Release Assets subtab
+
+Release Assets focuses on files you deliver externally, often tied to signed releases collected via the **Compliance** tab.
+
+Use Release Assets for:
+
+- Final exports you are delivering to clients or platforms.
+- Media that is explicitly covered by signed model, location, or content releases.
+- Bundles of assets you share with partners under a license.
+
+The UI mirrors Project Files but emphasizes assets that are cleared for use and can be gated by compliance.
+
+### Relationship with Compliance and Licensing
+
+Release Assets ties together files with the legal agreements that allow you to use them.
+
+- The **Compliance** tab tracks release forms and signatures for models, locations, or content.
+- The **Release Assets** subtab uses that information to decide which files are safe to deliver or download.
+- The **Licensing** tab describes how those assets can be used commercially.
+
+<Callout kind="alert">
+
+Downloads or other actions for some release assets may be **gated by release form signatures**. Collaborators or external recipients may need certain releases signed and approved in the Compliance tab before they can access specific assets.
+
+</Callout>
+
+When a release requirement is not met, the UI may restrict downloads or show messages directing you back to Compliance to finish collecting signatures.
+
+### Download tracking and audits
+
+Just like Project Files, Release Assets track every download.
+
+- Each file shows who downloaded it and when.
+- The audit log pairs naturally with release records and licenses when you need to prove who received which assets.
+
+If you work with agencies, brands, or distributors, this tracking helps you answer questions such as "Who received the 4K master for Campaign A?" without guessing.
+
+## FAQs and troubleshooting
+
+Use this section to solve common questions and issues with the File Sharing tab.
+
+<ExpandableGroup>
+
+<Expandable title="Why do some collaborators see a view-only version of File Sharing?" default-open="false">
+
+Collaborators in **basic mode** only have view access to Project Files and the activity feed. They cannot upload, rename, or change statuses.
+
+If someone needs to upload or manage assets, the project owner should adjust their role or upgrade to a plan that includes Pro upload features. Changes take effect the next time they open the project at `/collab/{id}` and navigate to **Distribution → File Sharing**.
+
+</Expandable>
+
+<Expandable title="Why do files disappear from Project Files after a while?" default-open="false">
+
+Project Files is meant for **short-term collaboration**, not permanent storage. Files may **expire and be auto-deleted** after a limited retention window.
+
+Always check the **policy notice** at the top of the Project Files subtab for the current rules. For long-term storage, keep a copy in your own archive and move approved files to **Release Assets** or your delivery pipeline.
+
+</Expandable>
+
+<Expandable title="I cannot upload files even though I am on the project. What should I check?" default-open="false">
+
+If you do not see the uploader or get blocked when you try to add files:
+
+- Confirm you are not in **basic mode**. Basic collaborators only see the file list and activity feed.
+- Verify that the project or account has **Pro features** enabled. The uploader is Pro-gated; non-Pro users see an upgrade prompt linking to `/settings?tab=subscription`.
+- Check whether the **storage bar** indicates you are at or near capacity. If you are out of storage, remove old files or upgrade your plan.
+
+If uploads still fail, try smaller batches or reloading the page so resumable uploads can restart from a clean state.
+
+</Expandable>
+
+<Expandable title="Why are some downloads or actions blocked or marked as gated by compliance?" default-open="false">
+
+When an asset requires a **signed release** before distribution, File Sharing may gate downloads or related actions until the corresponding forms are complete and approved.
+
+Visit the **Compliance** tab in the same project to review which releases are missing, unsigned, or under review. Once you finalize the required forms, return to **Release Assets** and retry the download or action. The gateway updates automatically based on the latest compliance status.
+
+</Expandable>
+
+<Expandable title="How can I tell which version of a file I should use?" default-open="false">
+
+Use the **version number** and **review status** on each file card:
+
+- Pick the **highest version** that is clearly marked as approved or final.
+- Use the **version history** control to inspect older versions if you need to compare changes.
+- If multiple versions are cleared, check comments and tags for hints like `client-final` or `alt-cut`.
+
+When in doubt, ask the uploader or project owner in the comments drawer so the decision is documented on the file itself.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+Use these related areas to complete your Collab workflow around files and releases.
+
+<Columns cols={2}>
+
+<Card
+  title="Compliance"
+  href="/compliance"
+  icon="shield"
+  cta="Collect and track releases"
+  horizontal="false"
+>
+
+Connect your files to signed releases, review compliance status, and understand which assets are cleared for use before you share or publish them.
+
+</Card>
+
+<Card
+  title="Licensing"
+  href="/licensing"
+  icon="file-text"
+  cta="Configure asset usage"
+  horizontal="false"
+>
+
+Define how approved assets can be used commercially, align usage with contracts, and keep client rights and restrictions organized.
+
+</Card>
+
+</Columns>
