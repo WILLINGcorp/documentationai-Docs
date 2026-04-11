@@ -1,0 +1,416 @@
+---
+title: Creator Compliance
+description: Understand how creator compliance works in ModelBoard, how to stay verified, and how to reduce friction when joining collaborations and projects.
+---
+
+## What creator compliance means in ModelBoard
+
+Creator compliance describes how your Model account meets the checks collaborators expect before they invite you to sensitive or higher‑risk projects.
+
+Compliance signals help other collaborators quickly understand whether you are ready for work that requires identity verification, age and documentation checks, or additional consent flows.
+
+On ModelBoard, these signals appear in three main places:
+
+- Your creator dashboard, where you manage verification and upload documents
+- Your creator profile, where collaborators see a summary status
+- Individual Collab projects, where you complete project‑specific compliance tasks
+
+<Callout kind="info">
+
+Creator compliance on this page applies to Model or Creator accounts only. Studios, businesses, and enterprise organizations have additional compliance programs that are documented separately.
+
+</Callout>
+
+## Where to manage compliance as a creator
+
+You use a few core areas of ModelBoard to stay on top of compliance and show collaborators you are ready to work.
+
+### Creator dashboard compliance and verification
+
+Your creator dashboard includes a Compliance or Verification area where you complete the main checks for your account.
+
+Typical actions include:
+
+- Uploading identity documents
+- Providing any required business or agency paperwork relevant to your account type
+- Starting age or 2257‑related checks when they apply to your work
+- Tracking which items are still pending or in review
+
+These actions feed into the status collaborators see on your profile and inside projects.
+
+### Compliance signals on your creator profile
+
+Your creator profile exposes a high‑level compliance and verification signal to others in the Collaboration Hub.
+
+<ParamField body="verificationStatus" param-type="string" required="false" show-location="false">
+
+A summary indicator of your account verification and compliance status as surfaced from the Compliance area. Collaborators use this as a trust and readiness signal when deciding whom to invite into projects.
+
+</ParamField>
+
+When you keep your Compliance area up to date, your profile shows a clearer, more confident verification status that helps reduce back‑and‑forth before a collaborator sends you an invitation.
+
+### Compliance elements inside a Collab project
+
+When you join a specific Collab project, you complete additional compliance tasks tied to that project.
+
+The Compliance tab in a project integrates with vAulth to verify documentation and signatures. Sensitive documents stay encrypted and do not display directly in the UI.
+
+From a creator point of view, you typically see:
+
+- A release form signing section that tracks your signature
+- A personal compliance card showing your 2257 documentation status, boundaries and consent status, and QR scan activity
+- A progress view that helps the project owner confirm everyone has completed what they need
+
+Your job is to complete each item on your card so the project can move forward without delays.
+
+## Recommended creator compliance setup flow
+
+Use this sequence as a baseline to stay ready for invitations and reduce friction when a collaborator wants to work with you.
+
+<Steps>
+
+<Step title="Complete your creator profile basics" icon="users" title-type="p">
+
+Start by making your creator profile accurate and consistent with your legal documents.
+
+**What to do**
+
+- Open your [Creator Dashboard](/creator-dashboard)
+- Confirm your name, stage name, and primary contact details are correct
+- Align your profile information with the details on your government ID and any registered business or agency paperwork
+- Add a clear profile photo and relevant portfolio links without exposing personal addresses or sensitive data
+
+**Success looks like**
+
+Your profile feels complete, matches your documents, and you would be comfortable sharing it with collaborators as the first impression of your professional identity.
+
+</Step>
+
+<Step title="Start verification and compliance in your dashboard" icon="shield" title-type="p">
+
+Use the Compliance or Verification section to trigger the checks required for your creator account.
+
+**What to do**
+
+- From your dashboard, open the Compliance or Verification section
+- Review which checks apply to your creator account type
+- Upload the primary documents requested, such as ID, business registration, or studio or agency paperwork
+- Confirm that each upload is clear, readable, and correctly categorized
+- Submit any required forms and wait for the status to update
+
+**Success looks like**
+
+You see a clear verification status such as `in review` or `approved`, with a list of remaining items if anything is still pending. Your creator profile shows an updated verificationStatus indicator.
+
+<Callout kind="info">
+
+Verification reviews can take time and may vary by region and account type. If your status stays pending longer than expected, confirm that your documents are valid, unexpired, and match your profile details before you contact support.
+
+</Callout>
+
+</Step>
+
+<Step title="Keep sensitive documents current with vAulth flows" icon="lock" title-type="p">
+
+Some checks, such as 2257 documentation, rely on vAulth to store and verify sensitive records.
+
+**What to do**
+
+- Follow any prompts that open a vAulth flow from your Compliance area or a project
+- Upload requested documentation into vAulth when you receive the prompt, rather than sharing it via messages or external links
+- Periodically review which documents may be expiring soon and update them before they lapse
+
+**Success looks like**
+
+Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation.
+
+</Step>
+
+<Step title="Respond quickly to project‑specific compliance requests" icon="play-circle" title-type="p">
+
+When you join a specific Collab project, you often need to sign project‑level forms or confirm boundaries.
+
+**What to do**
+
+- Open the project and navigate to the Compliance tab
+- Look for your personal compliance card and complete any pending items such as the release form, boundaries and consent questionnaire, or QR scan steps
+- Confirm your information is accurate and consistent with what you provided during account verification
+- Ask the project organizer to clarify anything you do not understand before you sign
+
+**Success looks like**
+
+Your project compliance card shows completed or ready statuses for each item, and the release form section reflects your signature as part of the overall signature progress.
+
+</Step>
+
+</Steps>
+
+## Creator‑visible compliance elements and statuses
+
+These fields summarize what you see as a creator across your profile and within Collab projects.
+
+### Profile‑level compliance signals
+
+Use these as a quick check that your account is in a good state before taking on new work.
+
+<ParamField body="verificationStatus" param-type="string" required="false" show-location="false">
+
+High‑level indicator of your account verification and compliance standing, surfaced on your creator profile and in the Collaboration Hub. Typical values may include states like `not started`, `in review`, or `verified`, depending on how ModelBoard represents statuses in your region.
+
+</ParamField>
+
+### Project‑level compliance actions and statuses
+
+Inside a Collab project's Compliance tab, you focus on the elements linked specifically to that project.
+
+<ParamField body="selfSignReleaseForm" param-type="boolean" required="true" show-location="false">
+
+Indicates whether you have self‑signed the project release form. When `true`, your name appears as completed in the signer list, and the project release signature progress moves forward.
+
+</ParamField>
+
+<ParamField body="releaseFormSignatureStatus" param-type="string" required="false" show-location="false">
+
+Human‑readable status for your release form signing, such as `pending`, `signed`, or `declined` if the workflow supports declines. Use this as your single source of truth instead of relying on messages or screenshots.
+
+</ParamField>
+
+<ParamField body="project2257Status" param-type="string" required="false" show-location="false">
+
+Status of your 2257 documentation as it relates to the current project. This surfaces vAulth‑backed checks in a simple label, such as `needed`, `submitted`, or `current`, without exposing the underlying documents.
+
+</ParamField>
+
+<ParamField body="boundariesConsentStatus" param-type="string" required="false" show-location="false">
+
+Indicates whether you have completed the project's boundaries and consent steps. Expect statuses like `not started`, `in progress`, or `completed`, depending on how detailed the project organizer has made the questionnaire.
+
+</ParamField>
+
+<ParamField body="qrScanStatus" param-type="string" required="false" show-location="false">
+
+Summarizes any QR scan activity or in‑person verification tied to this project, such as `not scanned` or `verified`. Use this as confirmation that required in‑person or on‑set checks have been recorded.
+
+</ParamField>
+
+<ParamField body="signedReleasePdfAvailable" param-type="boolean" required="false" show-location="false">
+
+Shows whether a fully signed project release PDF is available for you to generate or download. This typically becomes `true` only after all required participants have signed the release form.
+
+</ParamField>
+
+<ParamField body="signedReleasePdfDownloadLink" param-type="string" required="false" show-location="false">
+
+When present, represents the action or link you use to download the signed project release PDF from within the Compliance tab. The button or link stays disabled until all signatures are complete.
+
+</ParamField>
+
+## What you may be asked to do in a Collab project
+
+Every project can configure its own mix of compliance requirements, but most creator experiences fall into a few patterns.
+
+### Sign the project release form
+
+Most collaborations require a release form to cover how images, video, and other content will be used.
+
+You normally:
+
+- Review the release form text from within the project's Compliance tab
+- Confirm that the parties and terms match your understanding of the project
+- Apply your signature through the platform flow, often with a self‑sign action that updates your signature status
+
+As more collaborators sign, the project sees a signature progress indicator move toward completion. The final signed PDF becomes available only after all required signatures are complete.
+
+### Complete vAulth‑backed 2257 documentation
+
+For work that involves 2257‑relevant content, projects rely on vAulth to handle document storage, verification, and audit‑readiness.
+
+From a creator perspective:
+
+- You may receive prompts to complete or update 2257‑related documentation through a vAulth window or redirect
+- Your actual documents stay encrypted and are not visible to other collaborators in ModelBoard
+- The project only sees a status such as `pending` or `current` on your compliance card
+
+Use these flows instead of sending ID photos or documents through messages or external channels.
+
+### Confirm boundaries and consent
+
+Boundaries and consent steps help everyone align on comfort levels, limits, and expectations before a shoot or collaboration.
+
+Inside the project, you may:
+
+- Answer a set of questions about your boundaries and what you are or are not comfortable with
+- Confirm any hard limits and negotiable items
+- Review changes if the organizer updates terms, and re‑confirm consent where needed
+
+Your boundaries and consent status then updates to reflect completion, helping organizers verify that everyone has agreed to the same understanding.
+
+### Participate in QR scan or in‑person verification
+
+Some organizers add QR scans or similar in‑person checks to confirm that the person on set matches the person associated with the documents.
+
+As a creator, you might:
+
+- Scan a QR code onsite with your device
+- Confirm a small set of identity or project details as prompted
+- Wait for the system to register the scan and update your `qrScanStatus` on the project card
+
+These steps add another layer of assurance without requiring collaborators to handle your raw documents.
+
+## Privacy and safety guidance for creators
+
+Treat compliance steps as part of protecting yourself, not just something you do for others.
+
+<Callout kind="tip">
+
+Respect your own boundaries as much as you respect the project's requirements. If something feels off, slow down and ask questions.
+
+</Callout>
+
+Keep these practices in mind:
+
+- **Avoid posting personal information publicly.** Keep addresses, full legal names, and ID numbers out of public portfolios, social posts, or project moodboards.
+- **Use platform flows for sensitive documents.** Upload ID scans and 2257 paperwork only through official ModelBoard or vAulth interfaces tied to your account or project.
+- **Check every document before you submit.** Confirm that photos are clear, not edited in a misleading way, and match your actual details.
+- **Read release forms carefully.** Do not sign anything you do not understand. Ask the organizer to clarify language or provide context instead of guessing.
+- **Exit or pause if you feel unsafe.** If a collaborator pressures you to bypass platform flows, send private copies of documents, or sign something outside the system, stop and reach out to support.
+
+<Callout kind="alert">
+
+If you ever feel that a project or collaborator is misusing your information, bypassing compliance tools, or creating a safety risk, contact ModelBoard support immediately from your dashboard or Help Center and describe the situation.
+
+</Callout>
+
+## Legal disclaimer
+
+<Callout kind="alert">
+
+Compliance information in ModelBoard, including 2257 status, boundaries and consent records, release forms, QR scan activity, and vAulth integration, is provided to help you organize and track documentation. It does not constitute legal advice and does not guarantee that your projects satisfy all applicable laws or regulations. Consult your own legal counsel to understand your obligations and confirm that your use of these tools aligns with requirements in your jurisdiction.
+
+</Callout>
+
+## FAQs
+
+<ExpandableGroup>
+
+<Expandable title="My verification status is stuck in review. What should I check first?" default-open="true">
+
+When your `verificationStatus` stays in review longer than expected, start by confirming that your uploaded documents are valid and match your profile.
+
+Check the following:
+
+- Your ID or document is not expired and the image is readable
+- Your profile name and birthdate line up with what appears on your documents
+- You uploaded the right document type for each requested item
+- You completed any linked vAulth flows and reached the final confirmation screens
+
+If everything looks correct and the status has been stuck for a while, contact support from your dashboard and include which documents you updated and when.
+
+</Expandable>
+
+<Expandable title="My profile verification badge looks unclear to collaborators. How can I improve it?" default-open="false">
+
+If collaborators say your profile verification or compliance badge is confusing, focus on cleaning up the underlying Compliance area.
+
+Steps that usually help:
+
+- Finish any partially completed steps in the dashboard Compliance section
+- Remove old or incorrect documents and re‑upload clear, up‑to‑date versions where the system allows it
+- Avoid multiple conflicting names or personas across documents, your profile, and your portfolios
+- Let collaborators know you are in review and share when you expect an update
+
+As your verificationStatus moves toward a confirmed state, the profile signal becomes more straightforward for collaborators to interpret.
+
+</Expandable>
+
+<Expandable title="I signed the release form, but I cannot download the signed PDF." default-open="false">
+
+If you have already self‑signed the release form but do not see a download option:
+
+- Open the project Compliance tab and check the overall signature progress indicator
+- Confirm that your own releaseFormSignatureStatus shows as signed or completed
+- Verify that other required collaborators have also signed; the signedReleasePdfAvailable flag may stay false until everyone has completed their part
+- Look for the generate or download button and confirm it is not still disabled because signatures are missing
+
+If all signatures appear complete and the button is still unavailable after a short delay, notify the project organizer and contact support with the project link.
+
+</Expandable>
+
+<Expandable title="The project says I am missing 2257 documents. What should I do?" default-open="false">
+
+When a project shows your project2257Status as needed or incomplete:
+
+- Follow any prompts from the project to open the vAulth flow directly
+- Upload the requested 2257 documentation inside vAulth, not via chat or external file‑sharing tools
+- Double‑check that the documents you submit clearly show the required details and are in the correct category
+- Wait for the project2257Status indicator to update from pending to a more complete state
+
+If the status does not update after you complete the vAulth flow, confirm with the organizer that they see the same status and then reach out to support for help reconciling the view.
+
+</Expandable>
+
+<Expandable title="My boundaries and consent status is incomplete, but I answered all the questions." default-open="false">
+
+If your boundariesConsentStatus still shows incomplete:
+
+- Reopen the project's boundaries and consent section to confirm that you reached the final confirmation step
+- Look for any questions or sections marked as required that you might have skipped
+- Save your responses again and wait briefly for the status to refresh in your compliance card
+- Ask the project organizer whether they recently updated the questionnaire, which may require you to confirm new items
+
+If everything appears completed and the status does not change, capture screenshots and contact support so they can investigate.
+
+</Expandable>
+
+<Expandable title="Do collaborators see my actual documents or only statuses?" default-open="false">
+
+Collaborators primarily see statuses and indicators, not your underlying documents.
+
+The Compliance tab integrates with vAulth so that:
+
+- Sensitive records, such as IDs and 2257 documents, remain encrypted and out of the main UI
+- Project participants see only the fact that a check is complete, pending, or expired
+- Downloadable items like signed release PDFs are available only after all required signatures are collected
+
+If someone asks you to send raw copies of your documents outside these flows, treat that as a red flag and consider involving support.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+Use these pages to deepen your understanding of creator workflows and see how compliance ties into your broader presence on ModelBoard.
+
+<Columns cols={4}>
+
+<Card
+  title="Creator Dashboard"
+  href="/creator-dashboard"
+  icon="layout-dashboard"
+  cta="Review your dashboard"
+/>
+
+<Card
+  title="Creator Profiles"
+  href="/creator-profiles"
+  icon="circle-user"
+  cta="Tune your profile"
+/>
+
+<Card
+  title="Collaboration Hub"
+  href="/collaboration-hub"
+  icon="git-branch"
+  cta="Explore collaborations"
+/>
+
+<Card
+  title="Collab Project Compliance"
+  href="/compliance"
+  icon="shield"
+  cta="See project‑level details"
+/>
+
+</Columns>
