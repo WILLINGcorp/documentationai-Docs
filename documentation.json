@@ -160,14 +160,14 @@
             "group": "Core Concepts",
             "pages": [
               {
-                "title": "Creator Compliance",
-                "path": "creator-compliance",
-                "icon": "activity-icon"
-              },
-              {
                 "title": "Creator Dashboard",
                 "path": "creator-dashboard",
                 "icon": "layout-dashboard"
+              },
+              {
+                "title": "Creator Compliance",
+                "path": "creator-compliance",
+                "icon": "activity-icon"
               },
               {
                 "title": "Creator Profiles",
