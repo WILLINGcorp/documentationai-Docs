@@ -86,7 +86,8 @@
                         "path": "mb-licensing"
                       }
                     ],
-                    "icon": "lucide-store"
+                    "icon": "lucide-store",
+                    "path": "mb-apps"
                   },
                   {
                     "title": "Integrations",
