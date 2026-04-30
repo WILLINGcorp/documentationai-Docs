@@ -230,7 +230,8 @@
                     "path": "licensing"
                   }
                 ],
-                "icon": "table-properties"
+                "icon": "users",
+                "path": "collab-projects"
               }
             ]
           }
