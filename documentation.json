@@ -168,7 +168,7 @@
               {
                 "title": "Creator Compliance",
                 "path": "creator-compliance",
-                "icon": "activity-icon"
+                "icon": "scale"
               },
               {
                 "title": "Creator Profiles",
@@ -235,7 +235,8 @@
               }
             ]
           }
-        ]
+        ],
+        "path": "creator-accounts"
       },
       {
         "product": "Business",
