@@ -1,6 +1,8 @@
 ---
 title: Creator Compliance
-description: Understand how creator compliance works in ModelBoard, how to stay verified, and how to reduce friction when joining collaborations and projects.
+description: >-
+  Understand how creator compliance works in ModelBoard, how to stay verified,
+  and how to reduce friction when joining collaborations and projects.
 ---
 
 ## What creator compliance means in ModelBoard
@@ -33,8 +35,12 @@ Typical actions include:
 
 - Uploading identity documents
 - Providing any required business or agency paperwork relevant to your account type
-- Starting age or 2257‑related checks when they apply to your work
-- Tracking which items are still pending or in review
+- Completing age or 2257‑related checks when they apply to your work
+- Entering your date of birth and any requested document expiration date using the verification dropdown fields and confirming they match your ID
+- Capturing the front of your ID, and the back as well when your document type requires it, by choosing either **Take Photo** or **Upload**, keeping the document upright in portrait orientation and following the crop frame so every edge stays visible
+- Reviewing the consent flow for automated 2257 signature delegation when ModelBoard offers it for your account
+- Managing automatic 2257 signing from settings, where you can enable it for future eligible paperwork or revoke it at any time
+- Checking the vault or compliance audit view to confirm whether delegation is pending, active, used on a document, or revoked
 
 These actions feed into the status collaborators see on your profile and inside projects.
 
@@ -59,7 +65,7 @@ The Compliance tab in a project integrates with vAulth to verify documentation a
 From a creator point of view, you typically see:
 
 - A release form signing section that tracks your signature
-- A personal compliance card showing your 2257 documentation status, boundaries and consent status, and QR scan activity
+- A personal compliance card showing your 2257 documentation status, delegated signing status when it applies, boundaries and consent status, and QR scan activity
 - A progress view that helps the project owner confirm everyone has completed what they need
 
 Your job is to complete each item on your card so the project can move forward without delays.
@@ -95,17 +101,28 @@ Use the Compliance or Verification section to trigger the checks required for yo
 
 - From your dashboard, open the Compliance or Verification section
 - Review which checks apply to your creator account type
-- Upload the primary documents requested, such as ID, business registration, or studio or agency paperwork
-- Confirm that each upload is clear, readable, and correctly categorized
+- Enter your legal details exactly as they appear on your documents, including your date of birth and any requested document expiration date using the dropdown fields
+- Choose the correct ID type before you continue
+- Capture the front of your ID with **Take Photo** or **Upload**, keeping the document upright in portrait orientation and aligned to the crop frame
+- Capture the back of your ID as well when the document type requires it, using the same portrait framing so every edge stays visible
+- Confirm that each image is clear, readable, and correctly categorized before you continue
+- Read the automated 2257 signature delegation consent flow carefully if it appears during verification
+- Choose whether to allow automatic signing for eligible 2257 paperwork, knowing you can change that choice later from settings
 - Submit any required forms and wait for the status to update
 
 **Success looks like**
 
-You see a clear verification status such as `in review` or `approved`, with a list of remaining items if anything is still pending. Your creator profile shows an updated verificationStatus indicator.
+You see a clear verification status such as `in review` or `approved`, along with any delegation status that applies to future 2257 signing. Your creator profile shows an updated verificationStatus indicator, and your settings reflect whether automatic signing is currently enabled.
 
 <Callout kind="info">
 
 Verification reviews can take time and may vary by region and account type. If your status stays pending longer than expected, confirm that your documents are valid, unexpired, and match your profile details before you contact support.
+
+</Callout>
+
+<Callout kind="tip">
+
+If the verification flow does not let you continue, check that every required ID image is attached, that your document fits fully inside the crop frame, and that your date fields were selected from the dropdowns rather than left blank.
 
 </Callout>
 
@@ -119,11 +136,12 @@ Some checks, such as 2257 documentation, rely on vAulth to store and verify sens
 
 - Follow any prompts that open a vAulth flow from your Compliance area or a project
 - Upload requested documentation into vAulth when you receive the prompt, rather than sharing it via messages or external links
+- Review the vault or compliance audit view when you need to confirm when automated 2257 signing was authorized, used, or revoked
 - Periodically review which documents may be expiring soon and update them before they lapse
 
 **Success looks like**
 
-Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation.
+Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and the audit view gives you a clear history of delegation activity without exposing the underlying documents.
 
 </Step>
 
@@ -229,8 +247,11 @@ For work that involves 2257‑relevant content, projects rely on vAulth to handl
 From a creator perspective:
 
 - You may receive prompts to complete or update 2257‑related documentation through a vAulth window or redirect
+- If your account is eligible, you may also see a consent flow that lets ModelBoard automatically sign future 2257 paperwork on your behalf
+- You can later enable or revoke that automatic signing choice from settings
+- The vault or compliance area shows an audit view so you can confirm when delegation was granted, used, or revoked
 - Your actual documents stay encrypted and are not visible to other collaborators in ModelBoard
-- The project only sees a status such as `pending` or `current` on your compliance card
+- The project only sees a status such as `pending`, `current`, or waiting on manual action on your compliance card
 
 Use these flows instead of sending ID photos or documents through messages or external channels.
 
@@ -344,9 +365,10 @@ When a project shows your project2257Status as needed or incomplete:
 - Follow any prompts from the project to open the vAulth flow directly
 - Upload the requested 2257 documentation inside vAulth, not via chat or external file‑sharing tools
 - Double‑check that the documents you submit clearly show the required details and are in the correct category
+- If the project expects delegated signing, confirm in settings whether automatic signing is still enabled for your account
 - Wait for the project2257Status indicator to update from pending to a more complete state
 
-If the status does not update after you complete the vAulth flow, confirm with the organizer that they see the same status and then reach out to support for help reconciling the view.
+If the status does not update after you complete the vAulth flow, confirm with the organizer that they see the same status, review the delegation audit view for recent activity, and then reach out to support for help reconciling the view.
 
 </Expandable>
 

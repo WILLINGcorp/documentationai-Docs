@@ -1,6 +1,8 @@
 ---
 title: Compliance tab
-description: Track release forms, 2257 verification, and boundaries and consent for each collaborator in a Collab project using the Compliance tab.
+description: >-
+  Track release forms, 2257 verification, and boundaries and consent for each
+  collaborator in a Collab project using the Compliance tab.
 ---
 
 ## Where the Compliance tab lives
@@ -24,7 +26,7 @@ The Compliance tab integrates with vAulth to verify documentation and signatures
 The Compliance tab is organized into two main parts:
 
 - A **release form signing** section for the project as a whole.
-- **Per-collaborator compliance cards** for 2257 documentation, boundaries and consent, and QR scan activity.
+- **Per-collaborator compliance cards** for 2257 documentation, delegated signing status when it applies, boundaries and consent, and QR scan activity.
 
 ### Release form signing section
 
@@ -39,7 +41,8 @@ You see:
 
 <Callout kind="tip">
 
-After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+After everyone signs, the platform generates the signed PDF and makes a download link available from the Compliance tab.
+
 
 </Callout>
 
@@ -53,6 +56,7 @@ Every card includes:
 - A **You** badge on your own card.
 - Separate mini-cards for:
   - 2257 documentation.
+  - Delegated signing status when automated 2257 signing is enabled for that collaborator.
   - Boundaries and consent.
   - QR scan status (for other collaborators).
 
@@ -84,7 +88,7 @@ Watch the signature progress indicator to see how many collaborators have signed
 
 <Step title="Verify 2257 documentation per collaborator" icon="shield" title-type="p">
 
-In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified, and confirm that their status updates to verified and encrypted.
+In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified. When a collaborator has approved automated 2257 signature delegation, eligible paperwork can move forward without a separate manual signing step, and the vault or compliance area records that activity in the delegation audit view. If they revoke that setting, expect manual action again.
 
 </Step>
 
@@ -134,7 +138,8 @@ Dialog that lets you sign your own release form entry by providing your legal na
 
 <ParamField body="signed-pdf" param-type="file-link" show-location="false">
 
-Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+Downloadable project release form generated after all required signatures are collected. The action stays disabled until signature progress is complete, then the Compliance tab provides a download link.
+
 
 </ParamField>
 
@@ -142,7 +147,7 @@ Downloadable project release form generated after all required signatures are co
 
 <ParamField body="2257-status" param-type="enum" show-location="false">
 
-Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), or missing (no documentation attached yet). When verified, the UI may display a tamper-proof hash and verification public key.
+Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), missing (no documentation attached yet), or waiting on manual action when automated signing is not available for the current paperwork.
 
 </ParamField>
 
@@ -154,7 +159,13 @@ Optional technical details attached to verified documentation, such as a cryptog
 
 <ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
 
-Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow can also present the consent step for automated 2257 signature delegation when that option is available to the collaborator.
+
+</ParamField>
+
+<ParamField body="delegation-audit-view" param-type="log" show-location="false">
+
+Audit view in the vault or compliance area that records when automated 2257 signing was authorized, used, or revoked for project paperwork.
 
 </ParamField>
 
@@ -194,7 +205,7 @@ Internal record of QR scans associated with the project. Each entry links a scan
 
 <Callout kind="info">
 
-The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results and links. It does not show underlying identification documents directly.
+The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results, delegation history, and links. It does not show underlying identification documents directly.
 
 </Callout>
 
@@ -232,6 +243,8 @@ You can:
 
 - Use the verification action on their card to route them through vAulth.
 - Confirm that their status updates to verified and encrypted after they complete the flow.
+- Ask them to review their settings if the project expects automated signing and the card still shows waiting on manual action.
+- Check the delegation audit view for recent authorization or revocation activity before you escalate the issue.
 
 If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
 
