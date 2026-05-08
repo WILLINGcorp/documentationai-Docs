@@ -1,6 +1,8 @@
 ---
 title: Creator Compliance
-description: Understand how creator compliance works in ModelBoard, how to stay verified, and how to reduce friction when joining collaborations and projects.
+description: >-
+  Understand how creator compliance works in ModelBoard, how to stay verified,
+  and how to reduce friction when joining collaborations and projects.
 ---
 
 ## What creator compliance means in ModelBoard
@@ -34,7 +36,8 @@ Typical actions include:
 - Uploading identity documents
 - Providing any required business or agency paperwork relevant to your account type
 - Starting age or 2257‑related checks when they apply to your work
-- Tracking which items are still pending or in review
+- Reviewing any prompt to authorize an Automated 2257 Signature after verification
+- Tracking which items are still pending, complete, or ready for your next action
 
 These actions feed into the status collaborators see on your profile and inside projects.
 
@@ -54,7 +57,7 @@ When you keep your Compliance area up to date, your profile shows a clearer, mor
 
 When you join a specific Collab project, you complete additional compliance tasks tied to that project.
 
-The Compliance tab in a project integrates with vAulth to verify documentation and signatures. Sensitive documents stay encrypted and do not display directly in the UI.
+The Compliance tab in a project integrates with vAulth to verify documentation, signatures, and 2257 readiness. Sensitive documents stay encrypted and do not display directly in the UI.
 
 From a creator point of view, you typically see:
 
@@ -96,12 +99,20 @@ Use the Compliance or Verification section to trigger the checks required for yo
 - From your dashboard, open the Compliance or Verification section
 - Review which checks apply to your creator account type
 - Upload the primary documents requested, such as ID, business registration, or studio or agency paperwork
-- Confirm that each upload is clear, readable, and correctly categorized
+- Capture your ID in portrait orientation when the mobile verification flow asks for a document photo
+- Enter the ID expiration date in the format the form requests; ISO-style dates such as `YYYY-MM-DD` are accepted when shown by your document or system keyboard
+- Complete the vAulth mobile flow if the desktop screen sends you to your phone
 - Submit any required forms and wait for the status to update
 
 **Success looks like**
 
-You see a clear verification status such as `in review` or `approved`, with a list of remaining items if anything is still pending. Your creator profile shows an updated verificationStatus indicator.
+You see a clear verification status such as `in review`, `verified`, or `approved`, with a list of remaining items if anything is still pending. Your creator profile shows an updated verificationStatus indicator.
+
+<Callout kind="info">
+
+If you begin verification on desktop and continue on mobile, keep the desktop window open. The desktop experience waits for the full mobile verification and signature authorization flow to finish before it shows the Thank You or completion state.
+
+</Callout>
 
 <Callout kind="info">
 
@@ -113,17 +124,26 @@ Verification reviews can take time and may vary by region and account type. If y
 
 <Step title="Keep sensitive documents current with vAulth flows" icon="lock" title-type="p">
 
-Some checks, such as 2257 documentation, rely on vAulth to store and verify sensitive records.
+Some checks, such as 2257 documentation, rely on vAulth to store, verify, and authorize sensitive records.
 
 **What to do**
 
 - Follow any prompts that open a vAulth flow from your Compliance area or a project
 - Upload requested documentation into vAulth when you receive the prompt, rather than sharing it via messages or external links
+- Review the Automated 2257 Signature prompt if it appears after verification completes
+- Choose whether to authorize or decline the automated signature authorization; either choice allows the verification completion flow to continue
+- Manage or revoke the authorization later from your settings if your consent changes
 - Periodically review which documents may be expiring soon and update them before they lapse
 
 **Success looks like**
 
-Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation.
+Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and automated signature activity appears in your vAulth dashboard when it applies to your account.
+
+<Callout kind="tip">
+
+Revoking Automated 2257 Signature authorization does not erase completed verification. Future documents may require manual signing after revocation, so review new project prompts carefully.
+
+</Callout>
 
 </Step>
 
@@ -182,6 +202,14 @@ Status of your 2257 documentation as it relates to the current project. This sur
 
 </ParamField>
 
+### Automated 2257 Signature authorization
+
+Shows whether you authorized Automated 2257 Signature use after verification. Authorizing or declining this prompt does not block verification completion, and you can manage or revoke authorization later from settings.
+
+### Automated signature activity
+
+Summarizes automated signature activity when it applies to your account. Review the vAulth dashboard for activity history and use settings if you need to change your authorization.
+
 <ParamField body="boundariesConsentStatus" param-type="string" required="false" show-location="false">
 
 Indicates whether you have completed the project's boundaries and consent steps. Expect statuses like `not started`, `in progress`, or `completed`, depending on how detailed the project organizer has made the questionnaire.
@@ -224,15 +252,18 @@ As more collaborators sign, the project sees a signature progress indicator move
 
 ### Complete vAulth‑backed 2257 documentation
 
-For work that involves 2257‑relevant content, projects rely on vAulth to handle document storage, verification, and audit‑readiness.
+For work that involves 2257‑relevant content, projects rely on vAulth to handle document storage, verification, signature authorization, and audit‑readiness.
 
 From a creator perspective:
 
 - You may receive prompts to complete or update 2257‑related documentation through a vAulth window or redirect
+- Verification completion may ask whether you want to authorize an Automated 2257 Signature for eligible future documents
+- Authorizing or declining the prompt still lets the verification completion flow continue
 - Your actual documents stay encrypted and are not visible to other collaborators in ModelBoard
 - The project only sees a status such as `pending` or `current` on your compliance card
+- Automated signature activity appears in the vAulth dashboard when it applies to your account
 
-Use these flows instead of sending ID photos or documents through messages or external channels.
+Use these flows instead of sending ID photos or documents through messages or external channels. If you revoke authorization later, expect some future 2257 documents to ask for a manual signature before the project can treat them as complete.
 
 ### Confirm boundaries and consent
 
@@ -274,6 +305,7 @@ Keep these practices in mind:
 - **Use platform flows for sensitive documents.** Upload ID scans and 2257 paperwork only through official ModelBoard or vAulth interfaces tied to your account or project.
 - **Check every document before you submit.** Confirm that photos are clear, not edited in a misleading way, and match your actual details.
 - **Read release forms carefully.** Do not sign anything you do not understand. Ask the organizer to clarify language or provide context instead of guessing.
+- **Review automated signature prompts before you authorize them.** Automated 2257 Signature authorization can reduce repeat signing friction, but you should understand what you are approving and revoke it from settings if your consent changes.
 - **Exit or pause if you feel unsafe.** If a collaborator pressures you to bypass platform flows, send private copies of documents, or sign something outside the system, stop and reach out to support.
 
 <Callout kind="alert">
@@ -301,7 +333,9 @@ When your `verificationStatus` stays in review longer than expected, start by co
 Check the following:
 
 - Your ID or document is not expired and the image is readable
+- Your ID capture followed the mobile flow's portrait-first guidance
 - Your profile name and birthdate line up with what appears on your documents
+- Your expiration date uses an accepted format, including ISO-style dates such as `YYYY-MM-DD` when the field supports them
 - You uploaded the right document type for each requested item
 - You completed any linked vAulth flows and reached the final confirmation screens
 
@@ -343,10 +377,21 @@ When a project shows your project2257Status as needed or incomplete:
 
 - Follow any prompts from the project to open the vAulth flow directly
 - Upload the requested 2257 documentation inside vAulth, not via chat or external file‑sharing tools
+- Review any Automated 2257 Signature prompt that appears after verification completes
 - Double‑check that the documents you submit clearly show the required details and are in the correct category
 - Wait for the project2257Status indicator to update from pending to a more complete state
 
 If the status does not update after you complete the vAulth flow, confirm with the organizer that they see the same status and then reach out to support for help reconciling the view.
+
+</Expandable>
+
+<Expandable title="What happens if I decline or revoke Automated 2257 Signature authorization?" default-open="false">
+
+Declining the authorization prompt does not stop verification from completing. It means eligible future 2257 documents may need your manual signature instead of using automated signature authorization.
+
+If you authorize the prompt and later change your mind, manage or revoke the authorization from settings. After revocation, review new project compliance prompts carefully because future documents may ask you to sign manually before they can be treated as complete.
+
+When automated signatures apply, activity is surfaced in your vAulth dashboard so you can review what happened without exposing sensitive documents in the main project UI.
 
 </Expandable>
 

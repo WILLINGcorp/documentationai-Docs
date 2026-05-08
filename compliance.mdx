@@ -1,6 +1,8 @@
 ---
 title: Compliance tab
-description: Track release forms, 2257 verification, and boundaries and consent for each collaborator in a Collab project using the Compliance tab.
+description: >-
+  Track release forms, vAulth-backed 2257 verification, automated signature
+  authorization, and consent for each Collab project collaborator.
 ---
 
 ## Where the Compliance tab lives
@@ -15,7 +17,7 @@ The Compliance tab is vAulth-branded and focuses on project compliance tracking 
 
 <Callout kind="info">
 
-The Compliance tab integrates with vAulth to verify documentation and signatures. Sensitive documents stay encrypted and are not displayed directly in the UI.
+The Compliance tab integrates with vAulth to verify documentation, signatures, and 2257 authorization activity. Sensitive documents stay encrypted and hidden while the project view surfaces statuses, next actions, and audit indicators.
 
 </Callout>
 
@@ -39,7 +41,7 @@ You see:
 
 <Callout kind="tip">
 
-After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+After everyone signs, the release form becomes available as a signed PDF from the Compliance tab. Use the download action once the signer list shows every required participant as signed.
 
 </Callout>
 
@@ -84,7 +86,7 @@ Watch the signature progress indicator to see how many collaborators have signed
 
 <Step title="Verify 2257 documentation per collaborator" icon="shield" title-type="p">
 
-In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified, and confirm that their status updates to verified and encrypted.
+In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified. The vAulth flow may include an Automated 2257 Signature authorization step, and the project card updates when verification and authorization are complete.
 
 </Step>
 
@@ -96,13 +98,13 @@ Review the boundaries and consent status for each collaborator. Complete your ow
 
 <Step title="Use QR scans on set or in person" icon="monitor" title-type="p">
 
-When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in `project_compliance_scans` and keep an auditable record of in-person verification.
+When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to add an audit indicator to the project and show that an in-person verification check occurred.
 
 </Step>
 
 <Step title="Download the fully signed release form" icon="download" title-type="p">
 
-After all required signers complete the release form, generate the signed PDF and download it from the Compliance tab. Store this file with your project records alongside any internal archives.
+After all required signers complete the release form, generate the signed PDF and download it from the Compliance tab. Store this file with your project records according to your organization's compliance process.
 
 </Step>
 
@@ -134,7 +136,7 @@ Dialog that lets you sign your own release form entry by providing your legal na
 
 <ParamField body="signed-pdf" param-type="file-link" show-location="false">
 
-Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+Downloadable project release form generated after all required signatures are collected. The generation action stays disabled until the signature progress is complete, then the Compliance tab makes the signed PDF available to download.
 
 </ParamField>
 
@@ -142,19 +144,19 @@ Downloadable project release form generated after all required signatures are co
 
 <ParamField body="2257-status" param-type="enum" show-location="false">
 
-Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), or missing (no documentation attached yet). When verified, the UI may display a tamper-proof hash and verification public key.
+Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted, pending authorization, or missing. When verified, the UI may display audit indicators that confirm documentation is on file without exposing the sensitive documents themselves.
 
 </ParamField>
 
-<ParamField body="2257-hash-and-key" param-type="metadata" show-location="false">
+<ParamField body="2257-audit-indicators" param-type="metadata" show-location="false">
 
-Optional technical details attached to verified documentation, such as a cryptographic hash and a corresponding public key used to confirm that the record has not been tampered with.
+Verification details shown after vAulth confirms the collaborator's 2257 status. These indicators help project teams see that the record has been checked while keeping identity documents hidden.
 
 </ParamField>
 
 <ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
 
-Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing, pending, or unverified. This flow can include identity checks, document upload, and Automated 2257 Signature authorization in vAulth.
 
 </ParamField>
 
@@ -186,15 +188,15 @@ Control on another collaborator's card that opens a QR scanner modal when their 
 
 </ParamField>
 
-<ParamField body="project-compliance-scans" param-type="log" show-location="false">
+<ParamField body="qr-scan-audit-indicator" param-type="log" show-location="false">
 
-Internal record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+Project-visible indicator that a QR scan was completed for a collaborator. Use it as supporting context for in-person verification without exposing private document contents.
 
 </ParamField>
 
 <Callout kind="info">
 
-The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results and links. It does not show underlying identification documents directly.
+The Compliance tab shows verification results, audit indicators, and vAulth links only. Review automated signature activity in vAulth rather than through screenshots, forwarded files, or other side channels.
 
 </Callout>
 
@@ -226,14 +228,15 @@ If the download remains disabled even though all signers appear signed, try relo
 
 <Expandable title="A collaborator shows missing 2257 documentation. What should I do?">
 
-When a collaborator's 2257 status shows as missing, ask them to complete the verification flow using the 2257 section on their compliance card.
+When a collaborator's 2257 status shows as missing or pending, ask them to complete the verification flow using the 2257 section on their compliance card.
 
 You can:
 
 - Use the verification action on their card to route them through vAulth.
-- Confirm that their status updates to verified and encrypted after they complete the flow.
+- Ask them to complete any Automated 2257 Signature authorization step shown in vAulth.
+- Confirm that their project status updates to verified and encrypted after they complete the flow.
 
-If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
+If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab. Review signature activity and verification details in vAulth instead of requesting screenshots or copies of sensitive documents.
 
 </Expandable>
 

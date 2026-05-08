@@ -1,28 +1,79 @@
 ---
 title: Page Not Loading
-description: Resolve blank page or content not appearing in ModelBoard.
+description: Recover from blank pages, private page errors, and dashboard loading issues without losing your place in ModelBoard.
 ---
 
 ## Symptoms
 
-- Blank screen when opening a board
-- Docs not appearing
+Use this guide when a ModelBoard page opens but does not show the content you expected.
 
-## Possible Causes
+- A private page shows an error state instead of your dashboard, board, or project.
+- A dashboard area appears blank or does not finish loading.
+- A board, profile, or Help Center article does not display its content.
+- Optional dashboard prompts, reminders, or widgets are missing after login.
 
-- Internet connection
-- Browser cache issues
+## What to try first
 
-## Quick Fix
+ModelBoard can often recover from a page-level error when you move to another area of the app. Try navigating away before you refresh the browser.
 
 <Steps>
-  <Step title="Refresh the page">
-    Press `Ctrl+R` (Windows) or `Cmd+R` (Mac).
-  </Step>
-  <Step title="Clear cache">
-    Go to browser settings, clear cache, then reload ModelBoard.
-  </Step>
-  <Step title="Try incognito">
-    Open ModelBoard in a private or incognito window.
-  </Step>
+
+<Step title="Open another section from the navigation">
+
+Use the main navigation to open a different dashboard area, such as your profile, Collaboration Hub, notifications, settings, or Help Center.
+
+**Success looks like:** The new section loads normally, and you can return to the original page without seeing the same error state.
+
+</Step>
+
+<Step title="Give new accounts a moment to sync">
+
+If you recently created an account or just signed in for the first time, wait a short moment while ModelBoard finishes syncing your profile and session state. Then open the dashboard again from the navigation.
+
+**Success looks like:** Your dashboard recognizes your account type and begins showing the sections available to you.
+
+</Step>
+
+<Step title="Refresh the page if navigation does not recover it">
+
+If every private area still shows an error or blank state, refresh the browser tab with `Ctrl+R` on Windows or `Cmd+R` on Mac.
+
+**Success looks like:** The current page reloads and displays the expected dashboard, board, or article content.
+
+</Step>
+
+<Step title="Clear cache and reopen ModelBoard">
+
+If refreshing does not help, clear your browser cache, close the tab, and open ModelBoard again.
+
+**Success looks like:** ModelBoard loads a fresh session instead of returning to the same stale page state.
+
+</Step>
+
+<Step title="Try a private or incognito window">
+
+Open ModelBoard in a private or incognito window to check whether an extension, cookie, or cached session is blocking the page.
+
+**Success looks like:** The same page loads in the private window, which means the issue is likely tied to your normal browser session.
+
+</Step>
+
 </Steps>
+
+<Callout kind="info">
+
+Optional dashboard prompts may stay hidden if they fail to load. This keeps the main dashboard usable, but you may not see every reminder until the prompt service recovers or you revisit the dashboard later.
+
+</Callout>
+
+## Account-specific dashboard behavior
+
+The dashboard you land on depends on your account type. Model or Creator accounts should land on the Creator Dashboard, while Enterprise users should expect to land on the enterprise dashboard instead.
+
+If the dashboard looks different from the Creator Dashboard documentation, confirm your account type before treating the page as broken. Business, Studio, and Enterprise accounts expose different tools and may not show creator profile widgets.
+
+## When to contact support
+
+Contact support through the Help Center if the same private page keeps failing after you navigate to another section, refresh, clear cache, and try an incognito window.
+
+Include the page you were trying to open, your account type, what you clicked before the error appeared, and whether other dashboard sections still load.
