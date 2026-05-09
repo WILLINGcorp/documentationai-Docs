@@ -1,28 +1,60 @@
 ---
 title: Page Not Loading
-description: Resolve blank page or content not appearing in ModelBoard.
+description: Recover from ModelBoard loading errors by using the right on-screen action, refreshing safely, and navigating away from broken routes.
 ---
 
-## Symptoms
+## What you might see
 
-- Blank screen when opening a board
-- Docs not appearing
+ModelBoard now shows a recovery screen when a page, route, or dashboard section cannot finish loading. Use the action on the screen first because it is matched to the type of failure you are seeing.
 
-## Possible Causes
+| Screen message | What it means | First action to try |
+| --- | --- | --- |
+| "This page hit an error" | The current route failed while loading. | Select **Try again** once, then select **Go home** if the page does not recover. |
+| "Loading Error" | A page section or lazy-loaded feature did not load. | Select **Try Again**, then use **Refresh Page** if the prompt remains. |
+| "Page Not Found" | The page URL no longer points to an available page. | Select **Return to Dashboard** or **Return Home**, or select **Reload** if you expected the page to exist. |
+| A dashboard widget does not load | One dashboard card or section failed while the rest of your account remains available. | Continue working in the available dashboard areas, then retry or refresh the affected widget. |
 
-- Internet connection
-- Browser cache issues
+<Callout kind="info">
 
-## Quick Fix
+A failed dashboard widget does not mean your account is unsafe or your data is gone. It usually means one section could not finish loading, while the rest of ModelBoard remains available.
+
+</Callout>
+
+## Recover the page
 
 <Steps>
-  <Step title="Refresh the page">
-    Press `Ctrl+R` (Windows) or `Cmd+R` (Mac).
+  <Step title="Use the on-screen action first">
+
+  Select the button shown on the error screen. For most loading failures, **Try again** or **Try Again** asks ModelBoard to reload the failed page or section without changing where you are.
+
+  Success means the page, board, dashboard section, or requested content appears without the error screen returning.
+
   </Step>
-  <Step title="Clear cache">
-    Go to browser settings, clear cache, then reload ModelBoard.
+  <Step title="Refresh when the screen prompts you">
+
+  If the screen offers **Refresh Page**, use that button before clearing cache or switching browsers. You can also press `Ctrl+R` on Windows or `Cmd+R` on Mac if the page is still responsive.
+
+  Success means ModelBoard reloads and returns you to the page or dashboard area you were trying to open.
+
   </Step>
-  <Step title="Try incognito">
-    Open ModelBoard in a private or incognito window.
+  <Step title="Navigate away from route-level errors">
+
+  If you see **This page hit an error** and **Try again** does not recover the route, select **Go home**. This takes you away from the broken route so you can keep working from a stable page.
+
+  After you return home, open the page again from the dashboard or main navigation instead of reusing the same browser tab state.
+
+  </Step>
+  <Step title="Use browser recovery if the screen still fails">
+
+  If the same error returns after using the on-screen actions, clear your browser cache and reload ModelBoard. If the problem continues, open ModelBoard in a private or incognito window to rule out stale browser data or extensions.
+
+  Contact support if the same page still fails after these steps, especially if multiple pages show the same error.
+
   </Step>
 </Steps>
+
+## When to contact support
+
+Contact support if the recovery screen keeps returning after you try the matching on-screen action, refresh the page, and open ModelBoard in a private or incognito window.
+
+Include the screen message you saw, the page you were trying to open, and whether **Try again**, **Refresh Page**, **Go home**, **Return to Dashboard**, or **Reload** changed anything. These details help support identify whether the issue affects one route, one dashboard widget, or your full session.

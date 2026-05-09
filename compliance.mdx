@@ -1,6 +1,8 @@
 ---
 title: Compliance tab
-description: Track release forms, 2257 verification, and boundaries and consent for each collaborator in a Collab project using the Compliance tab.
+description: >-
+  Track release forms, 2257 verification, and boundaries and consent for each
+  collaborator in a Collab project using the Compliance tab.
 ---
 
 ## Where the Compliance tab lives
@@ -39,7 +41,7 @@ You see:
 
 <Callout kind="tip">
 
-After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+After everyone signs, ModelBoard generates the signed release PDF and exposes the download action from the Compliance tab.
 
 </Callout>
 
@@ -74,6 +76,8 @@ Open the project at `/collab/{id}` and switch to the Compliance tab. Review the 
 
 Find your entry in the release form section and use the self-sign action to open the signing modal. Enter your legal name, contact details, role in the project, and signature, then submit to update your signed status.
 
+If the signing flow offers automated 2257 signature delegation, review it separately from the current release. You can authorize vAulth or ModelBoard to save and reuse the signature solely for future automated 2257 document generation, or decline and continue the current signing flow.
+
 </Step>
 
 <Step title="Monitor signature progress" icon="bar-chart" title-type="p">
@@ -86,6 +90,8 @@ Watch the signature progress indicator to see how many collaborators have signed
 
 In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified, and confirm that their status updates to verified and encrypted.
 
+When collaborators complete mobile ID capture, they should hold the phone upright and align the document with the landscape guide frame shown in the vAulth flow; they do not need to rotate the phone manually. They may also be asked whether to authorize saved signature reuse for future automated 2257 document generation.
+
 </Step>
 
 <Step title="Collect boundaries and consent" icon="check-circle" title-type="p">
@@ -96,7 +102,7 @@ Review the boundaries and consent status for each collaborator. Complete your ow
 
 <Step title="Use QR scans on set or in person" icon="monitor" title-type="p">
 
-When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in `project_compliance_scans` and keep an auditable record of in-person verification.
+When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in the project's audit history and keep a record of in-person verification.
 
 </Step>
 
@@ -128,13 +134,13 @@ List of collaborators expected to sign the release form. Each entry includes the
 
 <ParamField body="self-sign-modal" param-type="ui-flow" show-location="false">
 
-Dialog that lets you sign your own release form entry by providing your legal name, contact information, role in the project, and signature. Submitting updates your record in the signer list.
+Dialog that lets you sign your own release form entry by providing your legal name, contact information, role in the project, and signature. Submitting updates your record in the signer list. If automated 2257 signature delegation is offered, the authorization prompt appears as a separate choice after you draw your signature.
 
 </ParamField>
 
 <ParamField body="signed-pdf" param-type="file-link" show-location="false">
 
-Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download action appears in the Compliance tab when the file is ready.
 
 </ParamField>
 
@@ -142,7 +148,8 @@ Downloadable project release form generated after all required signatures are co
 
 <ParamField body="2257-status" param-type="enum" show-location="false">
 
-Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), or missing (no documentation attached yet). When verified, the UI may display a tamper-proof hash and verification public key.
+Overall 2257 documentation state for a collaborator. Typical states include missing, in progress, under review, verified and encrypted, or delegated signature pending, depending on where the collaborator is in the vAulth flow. When verified, the UI may display a tamper-proof hash and verification public key.
+
 
 </ParamField>
 
@@ -154,9 +161,29 @@ Optional technical details attached to verified documentation, such as a cryptog
 
 <ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
 
-Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. The flow handles identity checks, mobile ID capture, signature capture, and document upload outside of the core project UI.
 
 </ParamField>
+
+<ParamField body="automated-signature-authorization" param-type="consent" show-location="false">
+
+Optional authorization that lets vAulth or ModelBoard save and reuse a collaborator's drawn signature solely for future automated 2257 document generation. The collaborator can decline authorization without blocking the current verification flow, may be asked for browser geolocation to record authorization context, can revoke authorization later from settings, and can review automated uses in Vault audit history.
+
+
+</ParamField>
+
+### Mobile capture and delegated 2257 signatures
+
+Use the 2257 section as the source of truth for whether each collaborator has finished the vAulth flow. A collaborator may move through intermediate states while they complete mobile ID capture, submit documents, review signature authorization, or wait for verification.
+
+As the project owner, you do not handle the collaborator's raw ID photos or saved signature. You initiate or remind them to complete the vAulth flow, then monitor the resulting status in the Compliance tab. Automated 2257 signature delegation means the collaborator has authorized saved signature reuse for eligible 2257 document generation; it does not let another collaborator sign a release form on their behalf.
+
+<Callout kind="info">
+
+A project QR scan and vAulth mobile ID capture are separate actions. QR scan records an in-person project verification event. Mobile ID capture collects document photos inside the vAulth verification flow.
+
+
+</Callout>
 
 ### Boundaries and consent
 
@@ -186,9 +213,9 @@ Control on another collaborator's card that opens a QR scanner modal when their 
 
 </ParamField>
 
-<ParamField body="project-compliance-scans" param-type="log" show-location="false">
+<ParamField body="qr-scan-audit-history" param-type="log" show-location="false">
 
-Internal record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+Audit record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide a record of in-person verification activity.
 
 </ParamField>
 
@@ -231,9 +258,18 @@ When a collaborator's 2257 status shows as missing, ask them to complete the ver
 You can:
 
 - Use the verification action on their card to route them through vAulth.
+- Ask them to keep their phone upright during mobile ID capture and align the document with the landscape guide frame.
 - Confirm that their status updates to verified and encrypted after they complete the flow.
 
 If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
+
+</Expandable>
+
+<Expandable title="What does automated 2257 signature authorization mean?">
+
+Automated 2257 signature authorization lets vAulth or ModelBoard save and reuse a collaborator's drawn signature solely for future automated 2257 document generation.
+
+The authorization is optional and separate from signing the current release form or completing the current verification flow. Collaborators can decline, continue the flow, and provide a signature manually when needed. If they authorize reuse, they may be asked for browser geolocation as authorization context, automated uses appear in Vault audit history, and they can revoke the authorization later from settings.
 
 </Expandable>
 

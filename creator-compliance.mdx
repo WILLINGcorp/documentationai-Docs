@@ -1,6 +1,8 @@
 ---
 title: Creator Compliance
-description: Understand how creator compliance works in ModelBoard, how to stay verified, and how to reduce friction when joining collaborations and projects.
+description: >-
+  Understand how creator compliance works in ModelBoard, how to stay verified,
+  and how to reduce friction when joining collaborations and projects.
 ---
 
 ## What creator compliance means in ModelBoard
@@ -118,12 +120,15 @@ Some checks, such as 2257 documentation, rely on vAulth to store and verify sens
 **What to do**
 
 - Follow any prompts that open a vAulth flow from your Compliance area or a project
+- When vAulth asks you to capture an ID on mobile, keep your phone in portrait orientation and fit the document into the landscape guide frame shown on screen; you do not need to rotate the phone manually
 - Upload requested documentation into vAulth when you receive the prompt, rather than sharing it via messages or external links
+- After drawing a signature, review any optional authorization to save and reuse that signature solely for future automated 2257 document generation
+- If your browser asks for location during authorization, choose whether to share it; declining location access should not stop normal completion of the current verification or signing flow
 - Periodically review which documents may be expiring soon and update them before they lapse
 
 **Success looks like**
 
-Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation.
+Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation. If you authorize automated signature reuse, future eligible 2257 document generation can use that saved signature, and each automated use appears in your Vault audit history.
 
 </Step>
 
@@ -219,8 +224,9 @@ You normally:
 - Review the release form text from within the project's Compliance tab
 - Confirm that the parties and terms match your understanding of the project
 - Apply your signature through the platform flow, often with a self‑sign action that updates your signature status
+- Decide whether to authorize vAulth or ModelBoard to save and reuse that signature solely for future automated 2257 document generation
 
-As more collaborators sign, the project sees a signature progress indicator move toward completion. The final signed PDF becomes available only after all required signatures are complete.
+As more collaborators sign, the project sees a signature progress indicator move toward completion. The final signed PDF becomes available only after all required signatures are complete. Optional automated signature authorization is separate from signing the current release: you can decline it and still complete the normal signing flow.
 
 ### Complete vAulth‑backed 2257 documentation
 
@@ -229,10 +235,32 @@ For work that involves 2257‑relevant content, projects rely on vAulth to handl
 From a creator perspective:
 
 - You may receive prompts to complete or update 2257‑related documentation through a vAulth window or redirect
+- Mobile ID capture is portrait‑first: hold your phone upright and align the document with the landscape guide frame instead of rotating the phone manually
+- After you draw a signature, you may be asked whether vAulth or ModelBoard can save and reuse that signature solely for future automated 2257 document generation
+- Authorization may request browser geolocation to record context for the authorization; you can decline geolocation and continue the normal completion flow
 - Your actual documents stay encrypted and are not visible to other collaborators in ModelBoard
 - The project only sees a status such as `pending` or `current` on your compliance card
 
-Use these flows instead of sending ID photos or documents through messages or external channels.
+Use these flows instead of sending ID photos or documents through messages or external channels. You can revoke automated signature authorization later from settings, and automated 2257 signature use appears in your Vault audit history.
+
+### Capture IDs on mobile with vAulth
+
+vAulth mobile ID capture lets you photograph required identity documents from your phone as part of a compliance or 2257 verification flow.
+
+Before you start, make sure your ID is unexpired, your camera lens is clean, and you are in a well-lit place. When the capture screen opens, keep the phone upright in portrait orientation and place the ID inside the landscape guide frame; do not rotate the phone manually. After you submit, return to the ModelBoard or vAulth flow and wait for the project or dashboard status to update.
+
+<Callout kind="info">
+
+Mobile ID capture is different from a project QR scan. ID capture collects document photos for verification. A project QR scan records an in-person verification event tied to a Collab project.
+
+
+</Callout>
+
+### Understand automated 2257 signature delegation
+
+Automated 2257 signature delegation applies to eligible 2257 document generation, not to the project release form you are reviewing and signing in the Compliance tab.
+
+When the option appears, you decide whether vAulth or ModelBoard may save and reuse your drawn signature solely for future automated 2257 document generation. If you decline, you can still complete the current verification or signing flow and provide signatures manually when required. If you authorize reuse, automated uses appear in Vault audit history, and you can revoke the authorization later from settings.
 
 ### Confirm boundaries and consent
 
@@ -273,6 +301,8 @@ Keep these practices in mind:
 - **Avoid posting personal information publicly.** Keep addresses, full legal names, and ID numbers out of public portfolios, social posts, or project moodboards.
 - **Use platform flows for sensitive documents.** Upload ID scans and 2257 paperwork only through official ModelBoard or vAulth interfaces tied to your account or project.
 - **Check every document before you submit.** Confirm that photos are clear, not edited in a misleading way, and match your actual details.
+- **Review signature authorization separately from signing.** Saving a signature for automated 2257 document generation is optional, limited to that purpose, and can be declined without blocking normal completion.
+- **Revoke authorization when your preference changes.** If you no longer want automated 2257 generation to use your saved signature, revoke that authorization from settings and review your Vault audit history for prior automated uses.
 - **Read release forms carefully.** Do not sign anything you do not understand. Ask the organizer to clarify language or provide context instead of guessing.
 - **Exit or pause if you feel unsafe.** If a collaborator pressures you to bypass platform flows, send private copies of documents, or sign something outside the system, stop and reach out to support.
 
@@ -372,8 +402,17 @@ The Compliance tab integrates with vAulth so that:
 - Sensitive records, such as IDs and 2257 documents, remain encrypted and out of the main UI
 - Project participants see only the fact that a check is complete, pending, or expired
 - Downloadable items like signed release PDFs are available only after all required signatures are collected
+- Automated 2257 signature use is tracked in Vault audit history rather than exposing your stored signature to collaborators
 
 If someone asks you to send raw copies of your documents outside these flows, treat that as a red flag and consider involving support.
+
+</Expandable>
+
+<Expandable title="Do I have to authorize saved signature reuse for automated 2257 documents?" default-open="false">
+
+No. After drawing a signature, you may be offered the option to let vAulth or ModelBoard save and reuse that signature solely for future automated 2257 document generation.
+
+Declining that authorization should not block the current verification or signing flow. If you authorize reuse, your browser may ask for geolocation as part of the authorization context, and each automated use appears in your Vault audit history. You can revoke the authorization later from settings.
 
 </Expandable>
 
