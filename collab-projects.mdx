@@ -1,113 +1,67 @@
 ---
 title: Collab Projects
-description: Manage collaboration workflow areas inside a project, including overview, files, schedule, roles, permissions, and common issues.
+description: Manage collaboration workflow areas inside a project, including Production, Post-Production, Distribution, roles, access scopes, and common issues.
 ---
 
 ## What you can do inside a project
 
-The collaboration workflow page at `/collab/{id}` is organized into tabs so you can manage different parts of the project in one place.
+The collaboration workflow page at `/collab/{id}` is organized into three stages. Each stage groups the tools you need at that point in the project.
 
-- [Overview](/overview)
+<Tabs>
+  <Tab title="Production" icon="play-circle">
 
-- [Collaborators](/collaborators)
+    Use **Production** for planning, setup, and active coordination.
 
-- [Compliance](/compliance)
+    - [Overview](/overview) keeps the project goal, scope, and context in one place.
 
-- [Schedule](/schedule)
+    - [Collaborators](/collaborators) shows who is involved and what access they have.
 
-- [Moodboard](/moodboard)
+    - [Compliance](/compliance) tracks verification, agreements, and release-related work.
 
-- [Screenplay](/screenplay)
+    - [Timeline](/schedule) keeps schedule details and key dates close to the project.
 
-- [File Sharing](/file-sharing)
+    - [Moodboard](/moodboard) organizes visual references and creative direction.
 
-- [Licensing](/licensing)
+    - [Screenplay](/screenplay) keeps script or scene planning available to the team.
 
-- [Pro Services](/pro-services)
+  </Tab>
 
-### Overview
+  <Tab title="Post-Production" icon="edit">
 
-Use the **Overview** tab to keep the core story of the project in one place.
+    Use **Post-Production** for working assets and service support after production work begins.
 
-- Summarize the project goal, scope, and timing.
+    - **Project Files** is where you exchange working files, dailies, references, and deliverables during production and post.
 
-- Add context that helps invitees decide whether to accept.
+    - [Pro Services](/pro-services) appears in this stage when you need to locate service-related options connected to the project workflow.
 
-- Keep this up to date as the project evolves so it reflects the current plan.
+  </Tab>
 
-[Learn more about the Overview tab](/overview).
+  <Tab title="Distribution" icon="upload">
 
-### Collaborators
+    Use **Distribution** for delivery preparation, asset context, and downstream usage details.
 
-The **Collaborators** tab shows who is involved and what they can do.
+    - [File Sharing](/file-sharing) is the distribution-stage area for sharing approved or delivery-ready files.
 
-- See the list of collaborators tied to the proposal.
+    - **Metadata** captures delivery context that helps identify and organize assets.
 
-- Open the invite UI to add new collaborators or adjust permissions.
+    - **Credits** keeps attribution details close to the project.
 
-- Check whether invites are still `pending` or fully accepted.
+    - [Licensing](/licensing) describes how approved assets can be used.
 
-When you change permissions here, you directly affect what those users can do in the other tabs.
+    - **Forensics & Distribution** groups distribution and forensic review surfaces where available.
 
-[Learn more about the Collaborators tab](/collaborators).
+  </Tab>
+</Tabs>
 
-### Compliance
-
-Use the **Compliance** tab to track verification and any checks associated with the collaboration.
-
-- Confirm that collaborators meet your verification expectations.
-
-- Reference compliance-related details while you review or share assets.
-
-- Keep compliance information close to the project instead of in separate documents.
-
-[Learn more about the Compliance tab](/compliance).
-
-### Files
-
-The **Files** tab surfaces project files through components such as `ProjectFilesTab`.
-
-- Upload or manage files relevant to the collaboration.
-
-- Keep reference material and deliverables attached to the project.
-
-- Use permissions to control who can upload or only view files.
-
-[Learn more about file sharing in Collab Projects](/file-sharing).
-
-### Release Assets
-
-The **Release Assets** tab is for assets that are closer to final or approved.
-
-- Collect files intended for publishing or delivery.
-
-- Separate in-progress work (in Files) from assets ready to release.
-
-### Schedule
-
-Use the **Schedule** tab to keep time-based details in context.
-
-- Track key dates related to the project (for example, shoots, internal milestones, launch dates).
-
-- Reference schedule information while discussing or updating the project.
-
-[Learn more about the Schedule tab](/schedule).
-
-### Project chat
-
-Chat components such as `ProjectChat` provide conversation directly inside the project.
-
-- Use chat to discuss decisions, ask questions, and share quick updates.
-
-- Keep project communication attached to the collaboration instead of in separate messaging tools.
+**Project Chat** is available from the project header rather than as a workflow tab. Collaborator Project Chat access is enabled automatically and is not user-toggleable per invite.
 
 <Callout kind="info" collapsed="false">
-  Different tabs may be more or less important depending on your role. Owners typically focus on Collaborators, Compliance, and Release Assets, while collaborators spend more time in Files, and project chat.
+  Different stages may matter more depending on your role. Owners typically focus on collaborators, compliance, and distribution readiness, while contributors may spend more time in Project Files and Project Chat.
 </Callout>
 
-## Roles, ownership, and permissions
+## Roles, ownership, and access scopes
 
-Different people see the same collaboration through different lenses, but the feature centers on **project owners/senders** and **collaborators/receivers**, with behavior shaped by permissions.
+Different people see the same collaboration through different lenses, but the feature centers on **project owners/senders** and **collaborators/receivers**, with behavior shaped by Compliance Role and Access Scope.
 
 <Tabs>
   <Tab title="Project owner (sender)" icon="shield">
@@ -115,33 +69,33 @@ Different people see the same collaboration through different lenses, but the fe
 
     - Start new projects from `/collabs` and configure the Overview before sending invites.
 
-    - Use the invite UI to search profiles or send email invites, choosing **View**, **Comment**, and **Upload** permissions intentionally.
+    - Use the invite UI to search profiles or send email invites, choosing **On-Screen** or **Off-Screen** Compliance Role and a **Viewer**, **Contributor**, or **Editor** Access Scope intentionally.
 
-    - Monitor proposal status (`pending`, `accepted`, `completed`, `archived`) and update it as the project moves forward.
+    - Monitor proposal status using the UI labels **Pending**, **Accepted**, **Completed**, and **Archived**, then update it as the project moves forward.
 
-    - Adjust collaborator permissions when responsibilities change instead of sharing accounts.
+    - Adjust collaborator roles and access scopes when responsibilities change instead of sharing accounts.
 
-    - Close out projects by setting them to `completed` and archiving when they are no longer active.
+    - Close out projects by marking them **Completed** and archiving them when they are no longer active.
   </Tab>
 
   <Tab title="Collaborator (receiver)" icon="user">
-    **Focus:** Respond to collaboration requests and contribute within the permissions you have.
+    **Focus:** Respond to collaboration requests and contribute within your assigned role and access scope.
 
-    - Watch for `collaboration_request` notifications or email invites linking to the project.
+    - Watch for collaboration request notifications or email invites linking to the project.
 
     - Review the Overview and, where applicable, Compliance details before accepting.
 
-    - Check your permissions in the Collaborators tab:
+    - Check your **Compliance Role** and **Access Scope** in the Collaborators tab:
 
-      - With **View**, you can open the project, see content across tabs, and follow progress.
+      - **Viewer** is for read-focused collaborators who need project visibility.
 
-      - With **Comment**, you can leave feedback where comments are supported.
+      - **Contributor** is for collaborators who provide materials, references, or deliverables.
 
-      - With **Upload**, you can add files through the Files and related tabs.
+      - **Editor** is for collaborators who help manage more of the project workflow.
 
-    - Use project chat for questions and clarifications instead of separate channels.
+    - Use Project Chat for questions and clarifications instead of separate channels. Project Chat access is locked on for collaborators.
 
-    - Let the owner know if your permissions do not match what you need to do the work.
+    - Let the owner know if your role or access scope does not match what you need to do the work.
   </Tab>
 
   <Tab title="Shared expectations" icon="info">
@@ -153,24 +107,26 @@ Different people see the same collaboration through different lenses, but the fe
 
     - Expect that ownership stays with the sender: they control status changes and archiving.
 
-    - Use permissions as a guide for behavior: do not work around **View**-only access by asking others to upload on your behalf.
+    - Use Access Scope as a guide for behavior: do not work around a limited scope by asking others to upload or change items on your behalf.
   </Tab>
 </Tabs>
 
-## Permissions, privacy, and compliance
+## Access, privacy, and compliance
 
 Collabs projects are shared workspaces, not public content. Only people explicitly added as collaborators on a project should see its internal details.
 
-The invite UI exposes three permission toggles:
+The invite UI now centers on role and scope rather than separate View, Comment, and Upload toggles:
 
-- **View** – always enabled; gives read access to the project surfaces you are allowed to see.
+- **Compliance Role** – choose **On-Screen** for collaborators who appear in the content, or **Off-Screen** for collaborators who support the project without appearing in it.
 
-- **Comment** – allows you to leave feedback where comments are supported.
+- **Access Scope** – choose **Viewer**, **Contributor**, or **Editor** based on how much project participation the collaborator needs.
 
-- **Upload** – allows you to add files or assets in the Files and related tabs.
+- **Locked capabilities** – **View Only Mode**, **Stream Release Assets**, and **Project Chat Access** stay enabled automatically and cannot be toggled per invite.
 
 <Callout kind="info" collapsed="false">
-  Use **View** for anyone who needs visibility, **Comment** for people providing feedback or approvals, and **Upload** for collaborators responsible for delivering files. Grant the higher levels only when they are necessary.
+
+  Use **Viewer** for visibility, **Contributor** for people providing materials or deliverables, and **Editor** for collaborators who help manage the workflow. Grant broader scope only when it is necessary.
+
 </Callout>
 
 Respect privacy when you include personal information, images, or project details in a collaboration.
@@ -189,13 +145,13 @@ Respect privacy when you include personal information, images, or project detail
 
 <ExpandableGroup>
   <Expandable title="An invite stays pending and the collaborator has not joined" default-open="false">
-    When a proposal stays in the `pending` state, the receiver may not have seen or acted on the invite.
+    When a proposal stays **Pending**, the receiver may not have seen or acted on the invite.
 
     - Confirm that the collaborator’s email or profile you invited is correct in the Collaborators tab.
 
-    - Ask the collaborator to check their in-app notifications for a `collaboration_request`.
+    - Ask the collaborator to check their in-app notifications for a collaboration request.
 
-    - If you used email, ask them to check their inbox (and spam) for the external invite.
+    - If you used email, ask them to check their inbox and spam folder for the external invite.
 
     - Resend the invite or create a new one if you suspect the original email address was wrong.
 
@@ -207,29 +163,33 @@ Respect privacy when you include personal information, images, or project detail
 
     - Ask them to open `/collabs` while logged in with the same account that received the invite.
 
-    - Confirm that the proposal status is `accepted` and that their profile appears in the Collaborators tab.
+    - Confirm that the proposal is **Accepted** and that their profile appears in the Collaborators tab.
 
     - Share the direct `/collab/{id}` link with them once they have account access.
 
     If the project still does not appear, verify that they did not accidentally use a different email or account when signing up.
   </Expandable>
 
-  <Expandable title="A collaborator has the wrong permissions (cannot comment or upload)" default-open="false">
-    If someone cannot perform an action you expect, check their permissions on the project.
+  <Expandable title="A collaborator has the wrong role or access scope" default-open="false">
 
-    - Open the Collaborators tab and review their **View**, **Comment**, and **Upload** toggles.
+    If someone cannot perform an action you expect, check their role and scope on the project.
 
-    - Enable **Comment** if they need to leave feedback inside the workflow.
+    - Open the Collaborators tab and review their **Compliance Role** and **Access Scope**.
 
-    - Enable **Upload** if they are responsible for adding or updating files.
+    - Move them to **Viewer**, **Contributor**, or **Editor** based on the work they need to perform.
+
+    - Confirm whether they should be **On-Screen** or **Off-Screen** for compliance handling.
+
+    - Remember that **View Only Mode**, **Stream Release Assets**, and **Project Chat Access** are locked on for collaborators.
 
     - Save changes and ask them to refresh the `/collab/{id}` page.
 
-    Avoid sharing files or feedback through side channels as a workaround; update permissions so the work happens in the project.
+    Avoid sharing files or feedback through side channels as a workaround; update the role or scope so the work happens in the project.
+
   </Expandable>
 
   <Expandable title="An external invite recipient is not on ModelBoard yet" default-open="false">
-    External invites send a branded email with a link (for example, to `/communications?proposal={id}`) so the recipient can respond.
+    External invites send a branded email with a link, such as `/communications?proposal={id}`, so the recipient can respond.
 
     - Ask the recipient to follow the link from the email and complete any required signup or login.
 
@@ -245,7 +205,7 @@ Respect privacy when you include personal information, images, or project detail
 
     - Review the project on `/collab/{id}` to confirm assets and communication are up to date.
 
-    - Change the proposal status to **completed** when the main work is finished.
+    - Mark the project **Completed** when the main work is finished.
 
     - Archive the project so it no longer appears in your active list but stays available for reference.
 
