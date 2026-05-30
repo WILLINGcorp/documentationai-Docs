@@ -27,11 +27,6 @@
                     "icon": "home"
                   },
                   {
-                    "title": "Quickstart",
-                    "path": "quickstart",
-                    "icon": "zap"
-                  },
-                  {
                     "title": "Getting Started Guide",
                     "path": "getting-started",
                     "icon": "map"
@@ -45,15 +40,10 @@
                   {
                     "title": "Account Types",
                     "path": "account-types",
-                    "icon": "lucide-users"
+                    "icon": "circle-user-round"
                   },
                   {
-                    "title": "Organizations",
-                    "path": "organizations",
-                    "icon": "building2"
-                  },
-                  {
-                    "title": "Features",
+                    "title": "Core Features",
                     "path": "features",
                     "icon": "file-text"
                   }
@@ -158,94 +148,6 @@
         "product": "Creator",
         "groups": [
           {
-            "group": "Core Concepts",
-            "pages": [
-              {
-                "title": "Creator Dashboard",
-                "path": "creator-dashboard",
-                "icon": "layout-dashboard"
-              },
-              {
-                "title": "Creator Compliance",
-                "path": "creator-compliance",
-                "icon": "scale"
-              },
-              {
-                "title": "Creator Profiles",
-                "path": "creator-profiles",
-                "icon": "circle-user"
-              },
-              {
-                "title": "Portfolios",
-                "path": "portfolios",
-                "icon": "book-image"
-              }
-            ]
-          },
-          {
-            "group": "Collaboration Workflow",
-            "pages": [
-              {
-                "title": "Collaboration Hub",
-                "path": "collaboration-hub",
-                "icon": "git-branch"
-              },
-              {
-                "group": "Collab Projects",
-                "pages": [
-                  {
-                    "title": "Overview",
-                    "path": "overview"
-                  },
-                  {
-                    "title": "Collaborators",
-                    "path": "collaborators"
-                  },
-                  {
-                    "title": "Compliance",
-                    "path": "compliance"
-                  },
-                  {
-                    "title": "Schedule",
-                    "path": "schedule"
-                  },
-                  {
-                    "title": "Moodboard",
-                    "path": "moodboard"
-                  },
-                  {
-                    "title": "Screenplay",
-                    "path": "screenplay"
-                  },
-                  {
-                    "title": "Pro Services",
-                    "path": "pro-services"
-                  },
-                  {
-                    "title": "File Sharing",
-                    "path": "file-sharing"
-                  },
-                  {
-                    "title": "Licensing",
-                    "path": "licensing"
-                  }
-                ],
-                "icon": "users",
-                "path": "collab-projects"
-              }
-            ]
-          }
-        ],
-        "path": "creator-accounts"
-      },
-      {
-        "product": "Business",
-        "tabs": [
-          {
-            "tab": "Organization Owner Account",
-            "pages": []
-          },
-          {
             "tab": "Organization Staff Account",
             "pages": []
           }
@@ -262,24 +164,29 @@
             "tab": "Organization Staff Account",
             "pages": []
           }
+        ],
+        "product": "Business"
+      },
+      {
+        "product": "Studio",
+        "dropdowns": [
+          {
+            "pages": [],
+            "dropdown": "Agency"
+          },
+          {
+            "pages": [],
+            "dropdown": "Holding"
+          },
+          {
+            "pages": [],
+            "dropdown": "Platform"
+          }
         ]
       },
       {
         "product": "Enterprise",
-        "versions": [
-          {
-            "version": "Agency",
-            "pages": []
-          },
-          {
-            "version": "Holding",
-            "pages": []
-          },
-          {
-            "version": "Platform",
-            "pages": []
-          }
-        ]
+        "pages": []
       }
     ]
   },
