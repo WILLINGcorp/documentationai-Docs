@@ -35,11 +35,11 @@ You see:
 - A **signature progress indicator** such as `2 of 4 signed`.
 - A **signer list** with each collaborator, their role, and signed status.
 - A **self-sign action** that opens a modal to add your legal name, contact details, role, and signature.
-- A **generate/download signed PDF** action that stays disabled until all required signatures are complete.
+- A **download signed release form** action for the consolidated project-level PDF that stays disabled until all required signatures are complete.
 
 <Callout kind="tip">
 
-After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+After everyone signs, use the project-level download action in the Compliance tab. If secure download access has expired, ModelBoard refreshes access when needed so you can retrieve the current signed release PDF without managing file links yourself.
 
 </Callout>
 
@@ -84,7 +84,13 @@ Watch the signature progress indicator to see how many collaborators have signed
 
 <Step title="Verify 2257 documentation per collaborator" icon="shield" title-type="p">
 
-In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified, and confirm that their status updates to verified and encrypted.
+In each collaborator card, check the 2257 documentation status. Use the verification action to route collaborators through vAulth if their documentation is missing or unverified. During the vAulth flow, collaborators manage their stored signature, authorize or revoke automated 2257 signing, and complete any consent prompts tied to the record.
+
+</Step>
+
+<Step title="Review 2257 signing status" icon="check-circle" title-type="p">
+
+After collaborators complete vAulth verification, check the 2257 signing status or log information on their compliance card. Confirm whether automated signing is authorized, pending, revoked, or completed before you treat the record as ready.
 
 </Step>
 
@@ -96,13 +102,13 @@ Review the boundaries and consent status for each collaborator. Complete your ow
 
 <Step title="Use QR scans on set or in person" icon="monitor" title-type="p">
 
-When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in `project_compliance_scans` and keep an auditable record of in-person verification.
+When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in the project compliance history and keep an auditable record of in-person verification.
 
 </Step>
 
 <Step title="Download the fully signed release form" icon="download" title-type="p">
 
-After all required signers complete the release form, generate the signed PDF and download it from the Compliance tab. Store this file with your project records alongside any internal archives.
+After all required signers complete the release form, use the consolidated project-level download action in the Compliance tab. Store the signed PDF with your project records alongside any internal archives.
 
 </Step>
 
@@ -134,7 +140,7 @@ Dialog that lets you sign your own release form entry by providing your legal na
 
 <ParamField body="signed-pdf" param-type="file-link" show-location="false">
 
-Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+Downloadable project release form available after all required signatures are collected. The project-level download action stays disabled until signature progress is complete, and ModelBoard refreshes secure download access when needed.
 
 </ParamField>
 
@@ -154,7 +160,25 @@ Optional technical details attached to verified documentation, such as a cryptog
 
 <ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
 
-Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks, document upload, consent prompts, and signature delegation choices outside of the core UI.
+
+</ParamField>
+
+<ParamField body="stored-signature" param-type="signature" show-location="false">
+
+vAulth-backed signature saved by the collaborator for 2257-related signing. Collaborators manage their own stored signature and can update it when their legal name, signing preference, or signature image changes.
+
+</ParamField>
+
+<ParamField body="automated-2257-signing" param-type="consent" show-location="false">
+
+Collaborator-controlled authorization that lets vAulth apply the stored signature to eligible 2257 records. Collaborators can authorize automated signing during verification and revoke that authorization later if they no longer want automated 2257 signing enabled.
+
+</ParamField>
+
+<ParamField body="2257-signing-status" param-type="log" show-location="false">
+
+Status and log information showing whether automated 2257 signing is authorized, pending, revoked, or completed for the collaborator. Use this to understand whether a signing action is waiting on consent, already completed, or blocked by a revoked authorization.
 
 </ParamField>
 
@@ -188,7 +212,7 @@ Control on another collaborator's card that opens a QR scanner modal when their 
 
 <ParamField body="project-compliance-scans" param-type="log" show-location="false">
 
-Internal record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+Project compliance history for QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
 
 </ParamField>
 
@@ -218,9 +242,10 @@ Check that:
 
 - The signature progress indicator shows that every required signer is marked signed.
 - No collaborators have been removed and re-added without signing again.
-- You refreshed the page after the last signature to allow the signed PDF to generate.
+- You are using the consolidated project-level download action in the Compliance tab.
+- You refreshed the page after the last signature so the signed PDF availability can update.
 
-If the download remains disabled even though all signers appear signed, try reloading the `/collab/{id}` page. If the issue continues, contact support and mention that the release form PDF is not generating for the project.
+If all signers appear complete but the download does not open, reload the `/collab/{id}` page and try the project-level download action again. ModelBoard refreshes secure download access when needed, so you do not need to look for or manage a separate stored file URL. If the issue continues, contact support and mention that the signed release PDF is unavailable for the project.
 
 </Expandable>
 
@@ -231,9 +256,11 @@ When a collaborator's 2257 status shows as missing, ask them to complete the ver
 You can:
 
 - Use the verification action on their card to route them through vAulth.
+- Ask them to manage their stored signature and review any automated 2257 signing authorization prompts during verification.
 - Confirm that their status updates to verified and encrypted after they complete the flow.
+- Check signing status or log information if the record is waiting on consent, has been signed automatically, or shows revoked authorization.
 
-If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
+If the collaborator reports issues in the vAulth flow, have them check their connection, identity details, signature settings, and consent choices, then retry from the Compliance tab.
 
 </Expandable>
 

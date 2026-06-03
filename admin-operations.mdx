@@ -1,0 +1,529 @@
+---
+title: Admin operations
+description: Manage users, memberships, moderation, security monitoring, and OAuth client origins from the ModelBoard admin workspace.
+---
+
+## Admin workspace overview
+
+Use the admin workspace to review accounts, take staff-only user actions, monitor security signals, and manage OAuth client access for connected applications.
+
+<Callout kind="info">
+
+Admin tools are available only to staff accounts with admin access. If you do not see the admin workspace or an expected tab, confirm your staff role before asking another admin to change account settings on your behalf.
+
+
+
+</Callout>
+
+The primary admin area is available at `/admin`. The workflows in this guide focus on the **Users**, **Ambassadors**, and **SSO** admin tabs, plus the security monitoring dashboard where it is enabled in your deployment.
+
+## Manage users from the Users tab
+
+The **Users** tab gives staff a paginated account list with filters, status badges, and a row action menu for account support and moderation tasks.
+
+### Find the right account
+
+Use filtering before taking an account action so you can verify the correct user, organization, or sub-account.
+
+<Steps>
+
+<Step title="Open the Users tab" icon="users" title-type="p">
+
+Go to `/admin` and select **Users**. The list loads in pages of 25 users and shows the current range, total count, and page number.
+
+
+
+</Step>
+
+<Step title="Search by name or username" icon="search" title-type="p">
+
+Use the search field to match a user's display name or username. The list updates against the matching accounts and resets to the first page when the filter changes.
+
+
+
+</Step>
+
+<Step title="Filter by account type" icon="filter" title-type="p">
+
+Use the **Type** filter to narrow the list to a specific account category. Available filters include all users, creators, business accounts, studio accounts, and enterprise accounts by agency, holding, or platform type.
+
+
+
+</Step>
+
+<Step title="Move through pages" icon="chevron-right" title-type="p">
+
+Use **Previous** and **Next** to review additional results. The page controls show the current result range so you can confirm whether you are reviewing the full filtered set.
+
+
+
+</Step>
+
+</Steps>
+
+### Read badges before acting
+
+Each row includes badges that summarize the account before you open actions.
+
+<ParamField body="type-badge" param-type="status" show-location="false">
+
+Shows whether the account is a creator, business, studio, enterprise account, or sub-account. Enterprise badges include the enterprise subtype when available.
+
+
+
+</ParamField>
+
+<ParamField body="role-badge" param-type="status" show-location="false">
+
+Shows the user's role context. Organization accounts display owner status, sub-accounts display owner or staff, and creator accounts display active status.
+
+
+
+</ParamField>
+
+<ParamField body="subscription-badge" param-type="status" show-location="false">
+
+Shows whether the account is on Pro, Pro expired, or Free. Review this badge before granting, extending, or revoking membership.
+
+
+
+</ParamField>
+
+### Use the row action menu
+
+Open the row action menu from the more-options button on the user row. The menu groups actions by purpose so support, membership, moderation, and destructive actions stay separate.
+
+<Tabs>
+
+<Tab title="Navigation and support" icon="external-link">
+
+Use these actions when you need to inspect or contact an account without changing status.
+
+- **View public profile** opens the user's public profile in a new tab.
+- **Copy user ID** copies the account UUID for support tickets or internal follow-up.
+- **Copy email** copies the account email address.
+- **Send email** opens a new email message to the user.
+- **Send password reset** starts the password reset confirmation flow.
+
+
+
+</Tab>
+
+<Tab title="Membership" icon="crown">
+
+Use these actions to manage paid access and ambassador status.
+
+- **Grant Pro membership** or **Extend Pro membership** opens a dialog where you enter the number of days to add. The default value is 30 days.
+- **Revoke Pro** appears for current Pro users and immediately returns the account to Free after confirmation.
+- **Make Ambassador** or **Remove Ambassador** toggles the user's ambassador status and records when ambassador access is enabled.
+
+
+
+</Tab>
+
+<Tab title="Moderation" icon="shield">
+
+Use these actions when account access or platform safety requires intervention.
+
+- **Suspend account** requires a reason and changes the account status to suspended.
+- **Ban account** requires a reason and changes the account status to banned.
+- **Reinstate account** appears for suspended or banned accounts and returns the account to active status.
+
+
+
+</Tab>
+
+<Tab title="Danger zone" icon="trash">
+
+Use destructive actions only after verifying the account and confirming the request through the appropriate internal process.
+
+- **Delete account** opens a confirmation dialog that names the account and warns that the deletion is permanent.
+- The final button is labeled **Delete permanently** and removes the user and associated account data.
+
+
+
+</Tab>
+
+</Tabs>
+
+<Callout kind="alert">
+
+Account deletion cannot be undone from the admin workspace. Use suspension or banning when you need to restrict access while preserving the account for review.
+
+
+
+</Callout>
+
+## Run common user operations
+
+Use the shortest workflow that resolves the user's issue while keeping an audit-friendly reason for moderation changes.
+
+### Send a password reset
+
+<Steps>
+
+<Step title="Open the user row menu" icon="users" title-type="p">
+
+Find the account in the **Users** tab and open the row action menu.
+
+
+
+</Step>
+
+<Step title="Choose Send password reset" icon="key-round" title-type="p">
+
+Select **Send password reset**. The confirmation dialog shows the email address that will receive the reset message.
+
+
+
+</Step>
+
+<Step title="Confirm the reset email" icon="mail" title-type="p">
+
+Confirm the action. ModelBoard sends the user a reset email that redirects them back to the login flow.
+
+
+
+</Step>
+
+</Steps>
+
+### Grant, extend, or revoke Pro membership
+
+<Steps>
+
+<Step title="Review the subscription badge" icon="check-circle" title-type="p">
+
+Confirm whether the account is currently Free, Pro, or Pro expired before changing membership.
+
+
+
+</Step>
+
+<Step title="Open the membership action" icon="crown" title-type="p">
+
+Choose **Grant Pro membership** for Free accounts or **Extend Pro membership** for accounts that already have Pro access. Enter the number of days to add and confirm.
+
+
+
+</Step>
+
+<Step title="Use Revoke Pro when access should end now" icon="x-circle" title-type="p">
+
+If Pro access should be removed immediately, choose **Revoke Pro** and confirm the destructive action. The account returns to Free and premium access dates are cleared.
+
+
+
+</Step>
+
+</Steps>
+
+### Moderate an account
+
+<Steps>
+
+<Step title="Choose the appropriate moderation action" icon="shield" title-type="p">
+
+Use **Suspend account** for temporary access restriction, **Ban account** for stronger enforcement, and **Reinstate account** when a suspended or banned account should return to active status.
+
+
+
+</Step>
+
+<Step title="Enter a clear reason" icon="edit" title-type="p">
+
+Suspension and ban actions require a reason. Write the reason as a concise internal note that explains the trigger, evidence, or policy basis for the action.
+
+
+
+</Step>
+
+<Step title="Confirm the updated status" icon="check" title-type="p">
+
+After saving, verify that the row status reflects the expected account state before moving to the next support or safety task.
+
+
+
+</Step>
+
+</Steps>
+
+## Manage ambassadors
+
+Ambassador status can be toggled directly from the user row menu, and broader ambassador review happens from the **Ambassadors** tab in the admin workspace.
+
+The **Ambassadors** tab organizes ambassador work into application review, active ambassador management, and agreements approaching expiration. Use the row action menu when you only need to make or remove an ambassador flag for a specific account; use the dedicated tab when you need the full ambassador queue.
+
+## Monitor security signals
+
+Security monitoring gives admins a practical snapshot of platform risk and recent security events. Where the security dashboard is enabled, it separates summary status, real-time monitoring, and audit logs.
+
+<Columns cols={3}>
+
+<Card title="Overview" href="/admin" icon="bar-chart" cta="Open admin" horizontal="false">
+
+Review total events, security events, active users, and the current threat level at a glance.
+
+
+
+</Card>
+
+<Card title="Real-time monitoring" href="/admin" icon="shield" cta="Review signals" horizontal="false">
+
+Check the security score, threat level, session status, rate limiting activity, blocked requests, and recommendations.
+
+
+
+</Card>
+
+<Card title="Audit logs" href="/admin" icon="file-text" cta="Review logs" horizontal="false">
+
+Review recent security events with event type, timestamp, and available metadata such as page, reason, or IP address.
+
+
+
+</Card>
+
+
+
+</Columns>
+
+### Triage security alerts
+
+Use the monitoring cards to decide whether the alert requires immediate investigation, continued observation, or escalation.
+
+<Steps>
+
+<Step title="Start with the threat level" icon="alert-triangle" title-type="p">
+
+Review whether the current threat level is low, medium, or high. A higher level can be driven by blocked requests, a lower security score, or session security concerns.
+
+
+
+</Step>
+
+<Step title="Inspect blocked requests" icon="x-circle" title-type="p">
+
+If the blocked requests card appears, review the affected keys, attempt counts, and reset times. Repeated blocks against the same key usually need closer review.
+
+
+
+</Step>
+
+<Step title="Read the recommendation" icon="info" title-type="p">
+
+Use the recommendation panel to identify the next action. Recommendations call out score issues, elevated threat levels, session security concerns, or an all-clear state.
+
+
+
+</Step>
+
+<Step title="Check the audit log" icon="file-text" title-type="p">
+
+Open the audit log and compare recent security events against the active alert. Look for repeated event types, suspicious page activity, or related metadata that explains the alert.
+
+
+
+</Step>
+
+<Step title="Escalate when the pattern is active or unclear" icon="users" title-type="p">
+
+Escalate to the appropriate internal owner when high-risk events repeat, affect sensitive routes, or cannot be explained by a known user action.
+
+
+
+</Step>
+
+</Steps>
+
+<Callout kind="info">
+
+The current admin interface surfaces security signals and recommendations. A dedicated alert queue with acknowledge, dismiss, or assign actions was not visible in the reviewed product behavior.
+
+
+
+</Callout>
+
+### Detection thresholds and audit history
+
+The requested configurable-threshold and threshold-audit workflows are not currently exposed as admin-facing workflows in the verified product source. This guide documents the supported staff workflow: review the security events generated by the existing thresholds, escalate threshold changes to the implementation owner, and keep threshold-change decisions in your internal operations records.
+
+<Callout kind="info">
+
+Source verification: `src/utils/enhanced-security.ts` defines failed-login, rapid-request, and suspicious-pattern thresholds in application code; `src/components/security/SecurityAuditLog.tsx` shows read-only security events from `activity_events`; `src/pages/SecurityDashboard.tsx` contains overview, real-time monitoring, and audit-log tabs without threshold editing controls; and `supabase/functions/oauth-security/index.ts` includes a rate-limit update handler that returns success without persisting configuration.
+
+
+
+</Callout>
+
+<ParamField body="failed-logins" param-type="threshold" show-location="false">
+
+Evaluated automatically by the security monitoring code. Admins can review resulting security events, but the current admin interface does not provide a field, dialog, or save action for changing this value.
+
+
+
+</ParamField>
+
+<ParamField body="rapid-requests" param-type="threshold" show-location="false">
+
+Contributes to blocked request and rate-limiting signals. Admins can review affected keys, attempt counts, and reset times from the monitoring dashboard, but cannot persist a new threshold value from `/admin`.
+
+
+
+</ParamField>
+
+<ParamField body="suspicious-patterns" param-type="threshold" show-location="false">
+
+Contributes to threat scoring and recommendations. Admins can compare related audit log entries before escalating, but the reviewed interface does not include threshold configuration controls.
+
+
+
+</ParamField>
+
+#### Escalate a threshold change
+
+<Steps>
+
+<Step title="Confirm the operational need" icon="alert-triangle" title-type="p">
+
+Collect the security events, blocked request details, timestamps, affected routes, and support cases that show why the current threshold is too strict or too permissive.
+
+
+
+</Step>
+
+<Step title="Check whether the issue is event-specific" icon="file-text" title-type="p">
+
+Use the security audit log to confirm whether the pattern repeats across users, routes, IP addresses, or time windows. If the issue is isolated, handle it as an alert triage case instead of requesting a threshold change.
+
+
+
+</Step>
+
+<Step title="Send the evidence to the implementation owner" icon="users" title-type="p">
+
+Escalate the proposed change to the engineering or security owner responsible for ModelBoard security monitoring. Because threshold values are code-defined in the verified source, changing them requires a reviewed product change and deployment.
+
+
+
+</Step>
+
+<Step title="Record the approved decision outside ModelBoard" icon="check-circle" title-type="p">
+
+Log the requested value, approver, deployment reference, and expected user impact in your team's operational system. Use that record as the threshold-change audit trail until ModelBoard exposes a product-level threshold history view.
+
+
+
+</Step>
+
+</Steps>
+
+#### Review threshold-related history
+
+Use the general security audit log to investigate the events that thresholds produce. Compare event type, timestamp, page metadata, reason, and IP address against the alert you are triaging, then cross-reference any threshold-change decision with your internal change ticket or deployment record.
+
+<Callout kind="alert">
+
+Do not treat the security audit log as a threshold-change audit log. The current admin interface shows security events, not historical edits to threshold configuration.
+
+
+
+</Callout>
+
+## Manage OAuth clients and allowed origins
+
+The **SSO** tab manages OAuth clients, API keys, active sessions, developer resources, and security-related panels. Allowed origins are managed through each OAuth client's redirect URI list.
+
+### Add or edit allowed origins
+
+<Steps>
+
+<Step title="Open the SSO tab" icon="shield" title-type="p">
+
+Go to `/admin` and select **SSO**, then open the **OAuth Clients** sub-tab.
+
+
+
+</Step>
+
+<Step title="Create or edit a client" icon="edit" title-type="p">
+
+Choose **Create OAuth Client** for a new application or use the edit action on an existing client.
+
+
+
+</Step>
+
+<Step title="Update Redirect URIs" icon="link" title-type="p">
+
+Enter allowed redirect URIs in the **Redirect URIs** field, one URI per line. Treat this list as the allowed origin configuration for the client.
+
+
+
+</Step>
+
+<Step title="Review scopes and client type" icon="settings" title-type="p">
+
+Confirm the requested scopes and whether the client is confidential or public before saving. Scopes may include profile, email, collaborators, creator platforms, verification status, and domains.
+
+
+
+</Step>
+
+<Step title="Verify the saved client" icon="check-circle" title-type="p">
+
+After saving, review the client card. Confirm the client ID, masked client secret, redirect URI list, allowed scope badges, and status badge.
+
+
+
+</Step>
+
+</Steps>
+
+<Callout kind="tip">
+
+Keep redirect URI lists narrow. Remove origins that are no longer used by the integration, staging environment, or partner application.
+
+
+
+</Callout>
+
+## Operational checklist
+
+Use this checklist before closing an admin task.
+
+<ExpandableGroup>
+
+<Expandable title="Before changing a user account" default-open="true">
+
+Confirm the account identity, account type, role badge, subscription badge, and the reason for the requested change. For moderation actions, write the reason in a way another staff member can understand later.
+
+
+
+</Expandable>
+
+<Expandable title="Before deleting an account">
+
+Confirm that deletion is the required outcome, not suspension or banning. Re-read the confirmation dialog and make sure the named account matches the support case or internal request.
+
+
+
+</Expandable>
+
+<Expandable title="Before changing OAuth client origins">
+
+Confirm the requesting application, environment, and exact redirect URI. Remove stale origins when you add new ones so the client does not keep unnecessary callback destinations.
+
+
+
+</Expandable>
+
+<Expandable title="Before escalating a security alert">
+
+Capture the threat level, affected blocked request keys, relevant audit log entries, timestamps, and any page or IP metadata shown in the admin interface.
+
+
+
+</Expandable>
+
+</ExpandableGroup>
