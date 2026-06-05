@@ -15,7 +15,7 @@ The Compliance tab is vAulth-branded and focuses on project compliance tracking 
 
 <Callout kind="info">
 
-The Compliance tab integrates with vAulth to verify documentation and signatures. Sensitive documents stay encrypted and are not displayed directly in the UI.
+The Compliance tab integrates with vAulth to verify documentation, collect release form signatures, and support automated 2257 signature delegation. Sensitive documents stay encrypted and are not displayed directly in the UI.
 
 </Callout>
 
@@ -24,22 +24,24 @@ The Compliance tab integrates with vAulth to verify documentation and signatures
 The Compliance tab is organized into two main parts:
 
 - A **release form signing** section for the project as a whole.
-- **Per-collaborator compliance cards** for 2257 documentation, boundaries and consent, and QR scan activity.
+- **Per-collaborator compliance cards** for 2257 documentation, automated signature authorization, boundaries and consent, and QR scan activity.
 
 ### Release form signing section
 
-The release form signing section tracks who has signed the project release form and when the project-level form is ready to download as a signed PDF.
+The release form signing section tracks who has signed the project release form and when the project-level form is ready to generate or download as a signed PDF.
 
 You see:
 
 - A **signature progress indicator** such as `2 of 4 signed`.
 - A **signer list** with each collaborator, their role, and signed status.
 - A **self-sign action** that opens a modal to add your legal name, contact details, role, and signature.
-- A **generate/download signed PDF** action that stays disabled until all required signatures are complete.
+- A **Generate PDF** action after all required signatures are complete.
+- A **Download** action after the signed PDF is generated.
+- A **Pro Only** or **Awaiting Signatures** state when the account or project is not yet eligible to generate the final PDF.
 
 <Callout kind="tip">
 
-After everyone signs, the system generates a signed PDF via the internal `process-compliance-pdf` function and exposes a download link using the stored `signed_pdf_url`.
+After everyone signs, use Generate PDF to create the final release form. When generation finishes, Download creates a fresh signed link for the stored PDF instead of relying on an older View action.
 
 </Callout>
 
@@ -52,11 +54,11 @@ Every card includes:
 - Avatar and name.
 - A **You** badge on your own card.
 - Separate mini-cards for:
-  - 2257 documentation.
+  - 2257 documentation and signature authorization.
   - Boundaries and consent.
   - QR scan status (for other collaborators).
 
-The UI surfaces encrypted or tamper-proof indicators and verification links instead of raw document contents.
+The UI surfaces encrypted or tamper-proof indicators, authorization state, and verification links instead of raw document contents.
 
 ## Recommended workflow for project owners
 
@@ -88,6 +90,12 @@ In each collaborator card, check the 2257 documentation status. Use the verifica
 
 </Step>
 
+<Step title="Review automated 2257 signature authorization" icon="lock" title-type="p">
+
+Check whether collaborators have authorized automated 2257 signature delegation during verification. If a collaborator has not authorized the flow or later revokes it from settings, route them back through the appropriate vAulth or account settings flow before relying on delegated signatures.
+
+</Step>
+
 <Step title="Collect boundaries and consent" icon="check-circle" title-type="p">
 
 Review the boundaries and consent status for each collaborator. Complete your own consent form where required, and use reminder actions to prompt others whose status shows action required or missing.
@@ -96,13 +104,13 @@ Review the boundaries and consent status for each collaborator. Complete your ow
 
 <Step title="Use QR scans on set or in person" icon="monitor" title-type="p">
 
-When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in `project_compliance_scans` and keep an auditable record of in-person verification.
+When working in person, use the QR scan option on unverified collaborators to open the scanner modal. Scan their QR code to record the event in the project's QR scan history and keep an auditable record of in-person verification.
 
 </Step>
 
-<Step title="Download the fully signed release form" icon="download" title-type="p">
+<Step title="Generate and download the fully signed release form" icon="download" title-type="p">
 
-After all required signers complete the release form, generate the signed PDF and download it from the Compliance tab. Store this file with your project records alongside any internal archives.
+After all required signers complete the release form, use Generate PDF from the Compliance tab. When the action changes to Download, download the signed file through the fresh signed link and store it with your project records alongside any internal archives.
 
 </Step>
 
@@ -132,17 +140,23 @@ Dialog that lets you sign your own release form entry by providing your legal na
 
 </ParamField>
 
-<ParamField body="signed-pdf" param-type="file-link" show-location="false">
+<ParamField body="release-pdf-action" param-type="enum" show-location="false">
 
-Downloadable project release form generated after all required signatures are collected. The generation is disabled until the signature progress is complete, and the download uses the stored signed PDF link.
+Current release form button state. Common states include Generate PDF when all signatures are complete, Download after the PDF is ready, Pro Only when the account does not have the required access, and Awaiting Signatures while required signers are still pending.
 
 </ParamField>
 
-### 2257 documentation
+<ParamField body="signed-pdf" param-type="file-link" show-location="false">
+
+Downloadable project release form generated after all required signatures are collected. The generation action stays disabled until signature progress is complete, and the download action creates a fresh signed link for the stored PDF.
+
+</ParamField>
+
+### 2257 documentation and signature delegation
 
 <ParamField body="2257-status" param-type="enum" show-location="false">
 
-Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted (documentation on file and validated), or missing (no documentation attached yet). When verified, the UI may display a tamper-proof hash and verification public key.
+Overall 2257 documentation state for a collaborator. Typical states include verified and encrypted when documentation is on file and validated, or missing when no documentation is attached yet. When verified, the UI may display a tamper-proof hash and verification public key.
 
 </ParamField>
 
@@ -154,7 +168,19 @@ Optional technical details attached to verified documentation, such as a cryptog
 
 <ParamField body="get-verified-action" param-type="ui-flow" show-location="false">
 
-Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks and document upload outside of the core UI.
+Action that starts the vAulth verification flow for a collaborator whose 2257 documentation is missing or unverified. This flow handles identity checks, document upload, and any required 2257 signature authorization outside of the core project UI.
+
+</ParamField>
+
+<ParamField body="automated-2257-signature-authorization" param-type="boolean" show-location="false">
+
+Indicates whether the collaborator authorized ModelBoard to apply automated 2257 signatures for eligible records. Collaborators grant this during verification and can revoke it later from account settings.
+
+</ParamField>
+
+<ParamField body="automated-2257-signature-activity" param-type="log" show-location="false">
+
+Audit-style history of delegated 2257 signature activity. Use this to confirm when an automated signature was applied and whether the action came from an active authorization.
 
 </ParamField>
 
@@ -162,7 +188,7 @@ Action that starts the vAulth verification flow for a collaborator whose 2257 do
 
 <ParamField body="boundaries-consent-status" param-type="enum" show-location="false">
 
-Status of the boundaries and consent information for a collaborator. Common values include completed (all required questions answered), action required (some steps still pending), or missing (no form submitted).
+Status of the boundaries and consent information for a collaborator. Common values include completed when all required questions are answered, action required when some steps are still pending, or missing when no form has been submitted.
 
 </ParamField>
 
@@ -186,15 +212,16 @@ Control on another collaborator's card that opens a QR scanner modal when their 
 
 </ParamField>
 
-<ParamField body="project-compliance-scans" param-type="log" show-location="false">
+<ParamField body="project-qr-scan-history" param-type="log" show-location="false">
 
-Internal record of QR scans associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+Project QR scan history associated with the project. Each entry links a scan event to a collaborator to provide an auditable trail of in-person verification activity.
+
 
 </ParamField>
 
 <Callout kind="info">
 
-The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results and links. It does not show underlying identification documents directly.
+The Compliance tab indicates whether documentation is encrypted or tamper-proof and exposes only verification results, authorization state, activity summaries, and links. It does not show underlying identification documents directly.
 
 </Callout>
 
@@ -202,7 +229,7 @@ The Compliance tab indicates whether documentation is encrypted or tamper-proof 
 
 <Callout kind="alert">
 
-Compliance information in ModelBoard, including 2257 status, boundaries and consent records, release forms, and vAulth integration, is provided to help you organize and track documentation. It does not constitute legal advice and does not guarantee that your project satisfies all applicable laws or regulations. Consult your own legal counsel to understand your obligations and ensure your use of this tool aligns with the requirements in your jurisdiction.
+Compliance information in ModelBoard, including 2257 status, boundaries and consent records, release forms, automated signature delegation, and vAulth integration, is provided to help you organize and track documentation. It does not constitute legal advice and does not guarantee that your project satisfies all applicable laws or regulations. Consult your own legal counsel to understand your obligations and ensure your use of this tool aligns with the requirements in your jurisdiction.
 
 </Callout>
 
@@ -212,15 +239,17 @@ Compliance information in ModelBoard, including 2257 status, boundaries and cons
 
 <Expandable title="Why is the signed PDF download disabled?" default-open="true">
 
-The signed PDF download stays disabled until all required signers in the release form section have completed their signatures.
+The signed PDF controls depend on signature progress, account access, and whether the PDF has already been generated.
 
 Check that:
 
 - The signature progress indicator shows that every required signer is marked signed.
+- The button shows Generate PDF before you expect Download.
+- The button does not show Pro Only, which means the project needs the required account access before generating the PDF.
 - No collaborators have been removed and re-added without signing again.
-- You refreshed the page after the last signature to allow the signed PDF to generate.
+- You refreshed the page after the last signature to allow the button state to update.
 
-If the download remains disabled even though all signers appear signed, try reloading the `/collab/{id}` page. If the issue continues, contact support and mention that the release form PDF is not generating for the project.
+If all signers appear signed, click Generate PDF first. When generation completes, use Download to create a fresh signed link for the PDF. If the issue continues, contact support and mention the current button state in the Compliance tab.
 
 </Expandable>
 
@@ -231,9 +260,18 @@ When a collaborator's 2257 status shows as missing, ask them to complete the ver
 You can:
 
 - Use the verification action on their card to route them through vAulth.
+- Ask them to review and authorize automated 2257 signatures if the verification flow requires it.
 - Confirm that their status updates to verified and encrypted after they complete the flow.
 
 If the collaborator reports issues in the vAulth flow, have them check their connection and identity details, then retry from the Compliance tab.
+
+</Expandable>
+
+<Expandable title="A collaborator revoked automated 2257 signature authorization. What changes?">
+
+Revoking authorization stops future delegated 2257 signatures from being applied through that authorization. It does not remove the need to keep 2257 documentation current for the project.
+
+Ask the collaborator to open account settings if they need to review or change their authorization state. For audit questions, use the automated signature activity history to confirm which delegated signatures were applied before revocation.
 
 </Expandable>
 

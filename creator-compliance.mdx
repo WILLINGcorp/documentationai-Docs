@@ -118,12 +118,15 @@ Some checks, such as 2257 documentation, rely on vAulth to store and verify sens
 **What to do**
 
 - Follow any prompts that open a vAulth flow from your Compliance area or a project
+- When verification asks for 2257 signature authorization, review what ModelBoard can sign on your behalf before you authorize
 - Upload requested documentation into vAulth when you receive the prompt, rather than sharing it via messages or external links
 - Periodically review which documents may be expiring soon and update them before they lapse
+- Use account settings to revoke automated 2257 signature authorization if you no longer want delegated signatures applied to future eligible records
+- Review automated signature activity in your compliance or settings area so you can confirm when the system used your authorization
 
 **Success looks like**
 
-Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, and you do not see repeated prompts for the same documentation.
+Your vAulth‑connected checks show a completed or current status in your Compliance area or project compliance card, your automated signature authorization state is clear, and you do not see repeated prompts for the same documentation.
 
 </Step>
 
@@ -182,6 +185,18 @@ Status of your 2257 documentation as it relates to the current project. This sur
 
 </ParamField>
 
+<ParamField body="automated2257SignatureAuthorization" param-type="boolean" required="false" show-location="false">
+
+Shows whether you authorized ModelBoard to apply automated 2257 signatures for eligible records during verification. You can review this authorization later and revoke it from account settings.
+
+</ParamField>
+
+<ParamField body="automated2257SignatureActivity" param-type="log" required="false" show-location="false">
+
+Audit-style history of automated 2257 signature activity tied to your authorization. Review this record when you need to confirm whether a delegated signature was applied and when it happened.
+
+</ParamField>
+
 <ParamField body="boundariesConsentStatus" param-type="string" required="false" show-location="false">
 
 Indicates whether you have completed the project's boundaries and consent steps. Expect statuses like `not started`, `in progress`, or `completed`, depending on how detailed the project organizer has made the questionnaire.
@@ -224,13 +239,16 @@ As more collaborators sign, the project sees a signature progress indicator move
 
 ### Complete vAulth‑backed 2257 documentation
 
-For work that involves 2257‑relevant content, projects rely on vAulth to handle document storage, verification, and audit‑readiness.
+For work that involves 2257‑relevant content, projects rely on vAulth to handle document storage, verification, authorization, and audit‑readiness.
 
 From a creator perspective:
 
 - You may receive prompts to complete or update 2257‑related documentation through a vAulth window or redirect
+- During verification, you may be asked to authorize automated 2257 signatures for eligible records so the platform can apply your delegated signature without requiring you to repeat the same step for every qualifying item
 - Your actual documents stay encrypted and are not visible to other collaborators in ModelBoard
 - The project only sees a status such as `pending` or `current` on your compliance card
+- You can revoke automated 2257 signature authorization later in settings if your preference changes
+- You can review automated signature activity to confirm when delegated signatures were applied
 
 Use these flows instead of sending ID photos or documents through messages or external channels.
 
@@ -262,16 +280,20 @@ These steps add another layer of assurance without requiring collaborators to ha
 
 Treat compliance steps as part of protecting yourself, not just something you do for others.
 
+Sensitive verification, contact, and address details are handled through protected fields rather than raw public profile content. ModelBoard encrypts these values automatically, shows protected or encrypted indicators where appropriate, and may mask the exact value in read-only views that only need a verification or completion signal.
+
 <Callout kind="tip">
 
 Respect your own boundaries as much as you respect the project's requirements. If something feels off, slow down and ask questions.
+
 
 </Callout>
 
 Keep these practices in mind:
 
-- **Avoid posting personal information publicly.** Keep addresses, full legal names, and ID numbers out of public portfolios, social posts, or project moodboards.
-- **Use platform flows for sensitive documents.** Upload ID scans and 2257 paperwork only through official ModelBoard or vAulth interfaces tied to your account or project.
+- **Avoid posting personal information publicly.** Keep addresses, full legal names, ID numbers, and private contact details out of public portfolios, social posts, project moodboards, and profile bio text.
+- **Use platform flows for sensitive documents.** Upload ID scans, 2257 paperwork, and verification details only through official ModelBoard or vAulth interfaces tied to your account or project.
+- **Recognize protected fields.** Encrypted or masked values mean the platform is limiting unnecessary exposure; they are not per-field sharing controls you need to configure.
 - **Check every document before you submit.** Confirm that photos are clear, not edited in a misleading way, and match your actual details.
 - **Read release forms carefully.** Do not sign anything you do not understand. Ask the organizer to clarify language or provide context instead of guessing.
 - **Exit or pause if you feel unsafe.** If a collaborator pressures you to bypass platform flows, send private copies of documents, or sign something outside the system, stop and reach out to support.
@@ -331,7 +353,8 @@ If you have already self‑signed the release form but do not see a download opt
 - Open the project Compliance tab and check the overall signature progress indicator
 - Confirm that your own releaseFormSignatureStatus shows as signed or completed
 - Verify that other required collaborators have also signed; the signedReleasePdfAvailable flag may stay false until everyone has completed their part
-- Look for the generate or download button and confirm it is not still disabled because signatures are missing
+- Check the button state: you may see Generate PDF, Download, Pro Only, or Awaiting Signatures depending on project status and account access
+- Use Download when it appears; the platform creates a fresh signed link instead of relying on an old View action
 
 If all signatures appear complete and the button is still unavailable after a short delay, notify the project organizer and contact support with the project link.
 
@@ -343,10 +366,19 @@ When a project shows your project2257Status as needed or incomplete:
 
 - Follow any prompts from the project to open the vAulth flow directly
 - Upload the requested 2257 documentation inside vAulth, not via chat or external file‑sharing tools
+- Review any automated 2257 signature authorization prompt before you approve it
 - Double‑check that the documents you submit clearly show the required details and are in the correct category
 - Wait for the project2257Status indicator to update from pending to a more complete state
 
 If the status does not update after you complete the vAulth flow, confirm with the organizer that they see the same status and then reach out to support for help reconciling the view.
+
+</Expandable>
+
+<Expandable title="Can I revoke automated 2257 signature authorization?" default-open="false">
+
+Yes. If you authorized automated 2257 signatures during verification, open your account settings and revoke the authorization from the compliance or signature authorization controls.
+
+Revoking authorization stops future delegated signatures from being applied through that authorization. Review the automated signature activity history if you need to confirm which records were signed before revocation.
 
 </Expandable>
 
