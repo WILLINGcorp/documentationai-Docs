@@ -1,0 +1,325 @@
+---
+title: Admin Security Monitoring
+description: Review security alerts, audit history, detection thresholds, and authentication rate-limit behavior from the vAulth admin tools.
+---
+
+## Monitor security activity in vAulth
+
+Security Monitoring gives admins a live view of suspicious authentication, document access, and verification activity that may need review.
+
+Open it from the vAulth admin tools at `/admin/security-alerts`. You must be signed in with an admin or moderator role. If your account does not have admin access, vAulth redirects you away from the page and shows an access-denied message.
+
+<Callout kind="alert">
+
+Security alerts can involve account access, identity verification, and compliance-sensitive workflows. Review alerts from the correct admin account, avoid sharing screenshots that expose user identifiers, and preserve audit history when escalating an incident.
+
+
+</Callout>
+
+## What the dashboard shows
+
+The Security Monitoring page starts with summary cards, then shows filterable alert activity and threshold controls.
+
+<Tabs>
+
+<Tab title="Alert feed" icon="shield">
+
+Use the alert feed to review open and historical security alerts. New alerts appear in near real time, and high or critical alerts trigger a stronger notification so admins can respond quickly.
+
+The feed includes:
+
+- Open alert count
+- High and critical open alert count
+- Events from the last 24 hours
+- Total loaded alerts matching the current filters
+- A table with time, type, severity, subject user, details, status, and available actions
+
+
+</Tab>
+
+<Tab title="Thresholds" icon="settings">
+
+Use detection thresholds to tune how sensitive each rule is. Threshold changes take effect immediately for future detection and do not require a redeploy.
+
+Each rule includes an enable switch, threshold value, time window, last-updated details, a Defaults action, and a Save action that becomes available only after you change a value.
+
+
+</Tab>
+
+<Tab title="Audit history" icon="clock">
+
+Use audit history to see which admin acknowledged, dismissed, or resolved an alert. Each history entry records the action, previous status, new status, timestamp, acting admin, and admin IP when available.
+
+Threshold changes also have a separate audit log that records created, updated, enabled, and disabled changes for detection rules.
+
+
+</Tab>
+
+</Tabs>
+
+## Alert types and severity
+
+Security Monitoring groups alerts by the behavior that triggered them. Use the alert type to understand what happened, then use severity and status to decide how quickly to respond.
+
+<ParamField body="failed_login_burst" param-type="alert type" show-location="false">
+
+Multiple failed sign-in attempts occurred within the configured window. Treat high-volume failures as possible credential stuffing, password guessing, or a user locked in a retry loop.
+
+
+</ParamField>
+
+<ParamField body="doc_access_new_ip" param-type="alert type" show-location="false">
+
+A protected document was accessed from an IP pattern not previously associated with that activity. Review the affected account and recent document activity before assuming the access is legitimate.
+
+
+</ParamField>
+
+<ParamField body="verification_failure_burst" param-type="alert type" show-location="false">
+
+Multiple verification attempts failed within the configured window. Check whether a user is stuck in verification, whether a document is being repeatedly rejected, or whether the activity looks automated.
+
+
+</ParamField>
+
+<ParamField body="threshold_changed" param-type="alert type" show-location="false">
+
+A detection threshold was changed. Review this alert when you need to confirm whether sensitivity changes were intentional and made by the right admin.
+
+
+</ParamField>
+
+### Severity levels
+
+| Severity | Typical response |
+| --- | --- |
+| Critical | Review immediately and escalate if account, document, or verification access may be at risk. |
+| High | Review promptly and confirm whether the activity matches expected user behavior. |
+| Medium | Review during normal admin monitoring and correlate with other alerts. |
+| Low | Keep for context unless the same subject or source repeats. |
+
+## Triage an alert
+
+Use a consistent triage flow so every alert leaves a clear record of what happened and what the admin team decided.
+
+<Steps>
+
+<Step title="Filter to the alerts that need action" icon="filter">
+
+Start with **Status: Open**, then narrow by severity or alert type if the feed is busy. High and critical open alerts should be reviewed before lower-priority informational activity.
+
+A focused table helps you avoid missing an urgent alert while reviewing older resolved items.
+
+
+</Step>
+
+<Step title="Open the alert details" icon="eye">
+
+Click the Details summary or the view action to open the detail dialog. Review the severity, status, resource type, subject user, resource identifier, resolved timestamp, and event data.
+
+Use the labeled event fields first. Expand Raw JSON only when support or engineering asks for the complete event payload.
+
+
+</Step>
+
+<Step title="Compare the alert with expected activity" icon="search">
+
+Check whether the alert lines up with a known admin action, user support case, verification retry, or recent configuration change. If the activity is unexpected, preserve the alert and escalate through your security or compliance process.
+
+For account access issues, avoid telling a user whether a specific email address exists. vAulth uses generic authentication errors to prevent account enumeration.
+
+
+</Step>
+
+<Step title="Set the alert status" icon="check-circle">
+
+Choose the status that matches your review outcome:
+
+- **Ack** means an admin has seen the alert and is investigating.
+- **Dismiss** means the alert does not need further action.
+- **Resolve** means the alert has been handled and no longer needs attention.
+
+The table updates after the status change and vAulth records the admin action in audit history.
+
+
+</Step>
+
+<Step title="Review audit history before escalation" icon="clock">
+
+Open the history action to see previous admin decisions for the alert. Confirm whether another admin already acknowledged, dismissed, or resolved the issue before duplicating work.
+
+When you escalate, include the alert type, severity, status, subject user, and relevant audit history instead of exporting unnecessary personal data.
+
+
+</Step>
+
+</Steps>
+
+## Alert statuses and actions
+
+Alert actions depend on the current status. Resolved alerts are retained for history but no longer offer status actions.
+
+| Current status | Available actions | Use when |
+| --- | --- | --- |
+| Open | Ack, Dismiss, Resolve | The alert has not been reviewed yet. |
+| Acknowledged | Dismiss, Resolve | An admin has started review but the alert is not closed. |
+| Dismissed | Resolve | The alert was dismissed but later needs to be closed as resolved. |
+| Resolved | None | The alert is complete and retained for audit history. |
+
+<Callout kind="tip">
+
+Acknowledge first when an alert needs investigation. Resolve only after the team has completed the required review or mitigation.
+
+
+</Callout>
+
+## Detection thresholds
+
+Detection thresholds control when vAulth creates alerts for repeated or unusual activity. Keep thresholds strict enough to catch meaningful risk, but not so strict that admins ignore the feed because of noise.
+
+<ParamField body="failed-login-burst" param-type="rule" show-location="false">
+
+Default rule for repeated failed logins. The default threshold is 5 failed attempts within 10 minutes.
+
+
+</ParamField>
+
+<ParamField body="document-access-from-new-ip" param-type="rule" show-location="false">
+
+Default rule for document access from a new IP pattern. The default threshold is 1 prior visit required with a 90-day lookback window.
+
+
+</ParamField>
+
+<ParamField body="verification-failure-burst" param-type="rule" show-location="false">
+
+Default rule for repeated verification failures. The default threshold is 3 failed runs within 60 minutes.
+
+
+</ParamField>
+
+### Change a threshold
+
+<Steps>
+
+<Step title="Review the current rule" icon="search">
+
+Open the Detection thresholds card and find the rule you want to adjust. Check whether the rule is enabled, when it was last updated, and who made the last change.
+
+
+</Step>
+
+<Step title="Adjust sensitivity" icon="settings">
+
+Change the threshold, window, or enabled state. Values must be at least 1. Use Defaults if you need to restore the factory values before saving.
+
+
+</Step>
+
+<Step title="Save and confirm" icon="check">
+
+Select Save. vAulth shows a success message for the updated rule, and the threshold change audit log records the change.
+
+Future detection uses the new threshold immediately. Existing alerts keep their original history.
+
+
+</Step>
+
+</Steps>
+
+<Callout kind="alert">
+
+Changing thresholds affects future alert volume and security visibility. Coordinate threshold changes with the team responsible for account security and compliance review.
+
+
+</Callout>
+
+## Authentication rate-limit responses
+
+vAulth rate-limits authentication attempts to reduce credential stuffing and automated passkey abuse. Admins may see these events in security monitoring or support reports when users retry too often.
+
+| Authentication flow | Condition | What the user sees | Typical wait |
+| --- | --- | --- | --- |
+| Password sign-in | Too many requests from the same source | Too many requests. Please try again later. | About 10 minutes |
+| Password sign-in | Too many failed attempts for the same email and source | Too many sign-in attempts. Please try again later. | About 30 minutes |
+| Passkey sign-in | Too many requests from the same source | Too many requests. Please try again later. | About 10 minutes |
+| Passkey sign-in | Too many attempts for the same email and source | Too many attempts. Please try again later. | About 30 minutes |
+
+Successful password sign-in clears the per-credential failure counter. If a user is rate-limited, ask them to wait for the retry window instead of repeatedly submitting the form.
+
+<Callout kind="info">
+
+Password sign-in intentionally shows the same invalid-credentials message for an unknown email and a wrong password. This protects users by preventing attackers from confirming whether an email address is registered.
+
+
+</Callout>
+
+## Security audit events
+
+vAulth records security audit events for rate-limit hits, failed authentication attempts, passkey failures, and rejected OAuth origins. These events are designed for admin review and do not expose full raw identifiers to ordinary clients.
+
+Audit events can include:
+
+- Hashed IP indicators instead of raw client IP in security-event records
+- Hashed email indicators instead of raw email in authentication security records
+- Origin hostname for rejected OAuth origins
+- Coarse user-agent category, such as browser, mobile, bot, or other
+- Stable reason code for the event type
+
+Use these records to correlate activity without overexposing sensitive user data.
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+<Expandable title="I cannot open Security Monitoring" default-open="true">
+
+Confirm that you are signed in and that your account has an admin or moderator role. Non-admin users are redirected away from admin routes and may see an access-denied message.
+
+If you believe you should have access, ask an existing admin to confirm your staff role before retrying.
+
+
+</Expandable>
+
+<Expandable title="A threshold will not save">
+
+Check that every numeric value is at least 1. If the Save action is disabled, the current inputs may match the saved rule values.
+
+Use Defaults to reset the rule, then save again if you want to restore the default sensitivity.
+
+
+</Expandable>
+
+<Expandable title="A user says they are locked out after repeated sign-in attempts">
+
+Ask the user to stop retrying and wait for the rate-limit window to expire. Repeated attempts can extend the time before a successful login is possible.
+
+Do not confirm whether an email address exists. Use generic language such as, "Wait a few minutes, then try signing in again with the correct email and password."
+
+
+</Expandable>
+
+<Expandable title="An alert keeps returning after dismissal">
+
+A dismissal closes the current alert, but it does not change the underlying behavior. If the same activity continues, vAulth may create new alerts.
+
+Review the subject user, event data, and thresholds. If the activity is expected, consider whether the threshold should be adjusted. If it is suspicious, escalate instead of repeatedly dismissing it.
+
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Related administration page
+
+<Columns cols={1}>
+
+<Card title="OAuth Allowed Origins" href="oauth-allowed-origins" icon="lock" cta="Manage OAuth origins">
+
+Control which exact origins and preview URL patterns vAulth trusts when issuing OAuth redirect URIs.
+
+
+</Card>
+
+
+</Columns>

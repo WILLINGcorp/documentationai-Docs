@@ -17,6 +17,20 @@ title: Help Center
   </Card>
 </Columns>
 
+## Diagnostic monitoring and session replay
+
+ModelBoard uses error monitoring and limited session replay to help support teams understand crashes, failed page loads, and navigation problems. These diagnostics are used to reproduce what went wrong, identify affected workflows, and confirm when a fix is working.
+
+<Callout kind="info">
+
+Session replay is limited in production. Sessions connected to errors may be captured more often so support can troubleshoot a specific issue, but routine browsing is sampled at a lower rate.
+
+</Callout>
+
+Diagnostic reports may include the account, organization, browser, device, route, and session context needed to investigate a support request. Text content is masked, media is blocked, and replay data is intended to show interaction patterns rather than private page content.
+
+If you contact support about a page that will not load or an action that failed, include the approximate time, affected account or organization, and the page or workflow you were using. This helps the team match your report with the relevant diagnostic event.
+
 ## Contact Support
 
 <Columns cols={2}>

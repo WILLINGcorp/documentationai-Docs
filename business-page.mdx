@@ -66,11 +66,11 @@ The page layout includes:
 
 To create and publish a business listing, you need:
 
-- An **Organization Owner** account
 - A **Business account** with access to the Business Platform
+- Owner access, or staff access with the right organization capabilities enabled
 - Permission to represent the organization and publish its details
 
-You manage all business data from **Business Management** at `/business-management`.
+You manage all business data from **Business Management** at `/business-management`. If an action is unavailable, ask an owner to review the organization's Capability Matrix.
 
 </Callout>
 
@@ -543,57 +543,51 @@ List only the products that best represent your catalog for new visitors.
 
 </ParamField>
 
-## Manage staff for your business
+## Manage staff access for your business
 
 Staff accounts let multiple people help manage your business profile without sharing one login.
 
-All staff management happens inside **Business Management** at `/business-management`. Staff details are **not exposed** on the public Business Page unless you explicitly add team information elsewhere (for example, in the About description).
+Business staff access follows the organization's role and capability model. Owners always have full access. Staff can manage business work only when the relevant staff capabilities are enabled in the organization's Capability Matrix.
 
-<ParamField body="business_staff" param-type="object[]" show-location="false">
+All staff management happens inside **Business Management** at `/business-management` and the organization's team or settings area. Staff details are **not exposed** on the public Business Page unless you explicitly add team information elsewhere (for example, in the About description).
 
-Staff members linked to your business:
+Use the unified [Sub-accounts](/sub-accounts) workflow to add, approve, transfer, and manage staff access for your business. Business staff are organization sub-accounts, so owners manage access through **Sub-Account Requests** and the **Capability Matrix** instead of editing per-staff permission fields on the Business Page.
 
-- Managed only in Business Management
-- Used to grant access to edit your profile, services, products, analytics, and settings
+<Steps>
 
-</ParamField>
+  <Step title="Open Sub-Account Requests" icon="users">
 
-<ParamField body="business_staff[].job_title" param-type="string" show-location="false">
+From your organization team or settings area, open **Sub-Account Requests** to review access items for the business.
 
-Role or job title for the staff member:
+Use **Invites** for pending legacy invitations, **Join** for new staff requests, **Incoming** for transfers into your organization, and **Outgoing** for transfers away from it.
 
-- Helps you understand who is responsible for what internally
-- Not automatically shown on your public Business Page
 
-Use real roles (for example, "Marketing Manager", "Sales Lead").
+  </Step>
 
-</ParamField>
+  <Step title="Send, approve, or reject access" icon="check-circle">
 
-<ParamField body="business_staff[].permissions" param-type="string[]" show-location="false">
+Choose the action that matches the request. **Send** completes pending legacy invitations by emailing the invitee a password setup flow. **Approve** grants the requested membership or transfer approval. **Reject** closes a request without granting access.
 
-List of permission flags for the staff member:
+Success looks like: the person can switch into the business organization only after the required approval or invite flow is complete.
 
-- Controls what they can do in Business Management (for example, edit profile, manage services, view analytics)
-- Lets you delegate specific duties without granting full owner access
 
-Assign only the permissions needed for each role.
+  </Step>
 
-</ParamField>
+  <Step title="Review staff capabilities" icon="shield">
 
-<ParamField body="business_staff[].active" param-type="boolean" show-location="false">
+After the staff member has access, review the organization's **Capability Matrix**. Staff receive the default staff capability set unless an owner changes it.
 
-Whether the staff member's access is currently active:
+Owners can toggle staff capabilities, save or discard changes, reset defaults, and apply saved changes immediately to every staff sub-account in the organization.
 
-- Active staff can sign in and manage the business based on their permissions
-- Inactive staff keep their record but lose access
 
-Set `active` to false when someone leaves or no longer needs access.
+  </Step>
+</Steps>
 
-</ParamField>
+Staff can view their available capabilities in the organization context. If staff need approval access or another sensitive capability, an owner must enable the relevant capability in the Capability Matrix.
 
 <Callout kind="tip">
 
-Review staff permissions regularly so only the right people can change your business profile, services, and products. This reduces the risk of incorrect public information.
+Review the Capability Matrix regularly so only the right people can change your business profile, services, products, and related organization data. Capability changes apply immediately to every staff sub-account in the organization.
 
 </Callout>
 
@@ -630,13 +624,13 @@ Use these practical adjustments to help more visitors find and choose your busin
 <Columns cols={3}>
 
   <Card
-    title="Account types"
-    href="/account-types"
+    title="Sub-accounts"
+    href="/sub-accounts"
     icon="users"
-    cta="Choose the right role"
+    cta="Manage team access"
   >
 
-Understand the differences between organization owner and staff accounts before inviting your team.
+Understand organization owner and staff access before inviting your team or changing staff capabilities.
 
   </Card>
 

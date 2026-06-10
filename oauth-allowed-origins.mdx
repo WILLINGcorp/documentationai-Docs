@@ -1,0 +1,323 @@
+---
+title: OAuth Allowed Origins
+description: Configure trusted exact origins and preview URL patterns that vAulth can use when issuing OAuth redirect URIs.
+---
+
+## Control which origins OAuth can trust
+
+OAuth Allowed Origins lets admins define which browser origins vAulth trusts when it creates OAuth redirect URIs.
+
+Open it from the vAulth admin tools at `/admin/oauth-origins`. You must be signed in with an admin role. Changes apply to new OAuth requests after the configuration cache refreshes, which can take about 30 seconds.
+
+<Callout kind="alert">
+
+Only add origins you control. A trusted origin can receive OAuth redirects, so incorrect rules can send authentication traffic to the wrong place.
+
+
+
+</Callout>
+
+## How origin matching works
+
+vAulth supports two rule kinds: exact origins and regular expression patterns. Use the narrowest rule that covers the environment you need.
+
+<Tabs>
+
+<Tab title="Exact origin" icon="lock">
+
+Use an exact origin for a fixed production, staging, or internal domain.
+
+An exact rule must match the request origin character for character. The rule should include the protocol and host, and it must not end with a trailing slash.
+
+Good exact origins:
+
+- `https://vaulth.id`
+- `https://vaulth.modelboard.net`
+- `https://admin.vaulth.id`
+
+Avoid using an exact rule when you need to trust many temporary preview domains. Add each permanent domain explicitly instead of relying on broad patterns.
+
+
+
+</Tab>
+
+<Tab title="Regex pattern" icon="code">
+
+Use a regex pattern when vAulth needs to trust a controlled family of preview URLs or development hosts.
+
+The pattern is tested against the incoming origin string. Write patterns that match the full origin and anchor both the beginning and end of the string.
+
+Example regex patterns:
+
+- `^https://[a-zA-Z0-9-]+\.lovableproject\.com$`
+- `^http://localhost(:\d+)?$`
+
+Keep regex rules specific. A broad pattern can accidentally trust origins outside the environment you intended.
+
+
+
+</Tab>
+
+</Tabs>
+
+## Default allowed origins
+
+New deployments include a small set of seeded allowed origins for production, published app, preview, and local development use.
+
+| Kind | Value | Label |
+| --- | --- | --- |
+| Exact | `https://vaulth.id` | Production domain |
+| Exact | `https://vaulth.modelboard.net` | ModelBoard production |
+| Exact | `https://vaulth.lovable.app` | Lovable published |
+| Regex | `^https://[a-zA-Z0-9-]+\.lovableproject\.com$` | Lovable preview pattern |
+| Regex | `^http://localhost(:\d+)?$` | Local development |
+
+<Callout kind="info">
+
+Seeded rules are still admin-managed. Disable or remove a seeded origin if the deployment no longer uses it.
+
+
+
+</Callout>
+
+## Add an allowed origin
+
+Add a rule when you launch a new trusted domain, create a new controlled preview pattern, or need local development OAuth to work for an approved environment.
+
+<Steps>
+
+<Step title="Open the add-origin dialog" icon="plus">
+
+From `/admin/oauth-origins`, select **Add origin**. The dialog asks for the rule kind, value, and optional label.
+
+Use the label to explain why the origin exists, such as Production domain, Staging preview, or Local development.
+
+
+
+</Step>
+
+<Step title="Choose exact or regex" icon="settings">
+
+Choose **Exact origin** for one fixed origin. Choose **Regex pattern** only when you need to match a controlled set of origins.
+
+If you are unsure, choose an exact origin. Exact rules are easier to audit and less likely to match an unintended domain.
+
+
+
+</Step>
+
+<Step title="Enter the value" icon="edit">
+
+For an exact origin, enter the protocol and host without a trailing slash, such as `https://admin.vaulth.id`.
+
+For a regex pattern, enter a valid JavaScript-style regular expression that matches the full origin string, such as `^https://[a-z0-9-]+\.trusted-preview\.app$`.
+
+
+
+</Step>
+
+<Step title="Save and wait for propagation" icon="check-circle">
+
+Select **Add origin**. vAulth shows an Origin added message after saving.
+
+New OAuth requests can take about 30 seconds to recognize the change. If you test immediately and the origin is still rejected, wait for the cache to refresh and try again.
+
+
+
+</Step>
+
+</Steps>
+
+## Rule fields
+
+Each allowed-origin record has a small set of fields that control matching and auditability.
+
+<ParamField body="kind" param-type="enum" required="true" show-location="false">
+
+Rule type. Use `exact` for one fixed origin or `regex` for a regular expression pattern.
+
+
+
+</ParamField>
+
+<ParamField body="value" param-type="string" required="true" show-location="false">
+
+Origin value or regex pattern. Exact values must be valid HTTP or HTTPS origins and must not end with `/`. Regex values must be valid regular expressions.
+
+
+
+</ParamField>
+
+<ParamField body="label" param-type="string" required="false" show-location="false">
+
+Optional human-readable explanation for the rule. Use labels to make reviews easier, especially for preview patterns and temporary environments.
+
+
+
+</ParamField>
+
+<ParamField body="enabled" param-type="boolean" required="true" show-location="false">
+
+Controls whether the rule participates in origin matching. Disable a rule when you want to pause trust without deleting the record.
+
+
+
+</ParamField>
+
+## Validation rules
+
+The add-origin dialog validates values before saving. These checks prevent common mistakes that would either fail to match or trust the wrong origin.
+
+| Rule | Admin feedback |
+| --- | --- |
+| Empty value | Value is required |
+| Exact value is not a URL | Invalid URL |
+| Exact value does not use HTTP or HTTPS | Must be http(s) URL |
+| Exact value ends with a slash | Origin must not end with / |
+| Regex value is not valid | Invalid regular expression |
+
+<Callout kind="tip">
+
+For exact origins, paste only the origin portion of the URL. Do not include paths, query strings, fragments, or a trailing slash.
+
+
+
+</Callout>
+
+## Manage existing origins
+
+The OAuth Allowed Origins table shows each rule, its label, whether it is enabled, and the available actions.
+
+### Enable or disable a rule
+
+Use the Enabled switch to turn a rule on or off. vAulth shows **Origin enabled** or **Origin disabled** after the change.
+
+Disable a rule when an environment is temporarily paused but may return later. Delete a rule when the domain or preview pattern should no longer be trusted.
+
+### Delete a rule
+
+Use the delete action to remove a rule. vAulth asks you to confirm deletion before removing the origin.
+
+After deletion, wait about 30 seconds before assuming new OAuth requests will use the updated trust list.
+
+<Callout kind="alert">
+
+Do not delete production origins during active sign-in traffic unless you have confirmed that no OAuth flow depends on them. Removing a required origin can break sign-in or callback flows for that environment.
+
+
+
+</Callout>
+
+## What happens when an origin is rejected
+
+When an OAuth request comes from an origin that does not match an enabled rule, vAulth does not echo that origin into the redirect URI.
+
+Instead, vAulth uses the default callback origin and records a rejected-origin security audit event. The audit event captures the rejected origin hostname and security metadata that admins can use during review.
+
+This behavior protects OAuth redirects from being pointed at untrusted hosts while still leaving a trail for investigation.
+
+## Review and maintenance checklist
+
+Use a regular review cycle to keep trusted origins accurate.
+
+<Steps>
+
+<Step title="Review exact origins" icon="search">
+
+Confirm that every exact origin belongs to an active production, staging, admin, or partner environment that your team still controls.
+
+Remove or disable origins for retired domains.
+
+
+
+</Step>
+
+<Step title="Inspect regex scope" icon="code">
+
+Check each regex rule for anchors and a narrow domain pattern. A safe preview rule should match only the intended preview hostname family.
+
+If a regex rule is difficult to understand, replace it with explicit exact origins or a narrower pattern.
+
+
+
+</Step>
+
+<Step title="Confirm labels" icon="edit">
+
+Make sure each rule has a label that explains its purpose. Labels help future admins distinguish production domains from preview, local development, and temporary testing rules.
+
+
+
+</Step>
+
+<Step title="Test OAuth from each active environment" icon="play-circle">
+
+Start an OAuth flow from each environment that should be trusted. If a newly added origin does not work immediately, wait about 30 seconds for propagation and test again.
+
+
+
+</Step>
+
+</Steps>
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+<Expandable title="A newly added origin still fails" default-open="true">
+
+Wait about 30 seconds, then retry the OAuth flow from the same environment. vAulth caches origin rules briefly, so changes are not always visible to the next request immediately.
+
+If the origin still fails, compare the browser origin with the stored rule. Exact rules must match character for character and must not include a trailing slash.
+
+
+
+</Expandable>
+
+<Expandable title="An exact origin is rejected even though the domain looks right">
+
+Check the protocol, subdomain, port, and trailing slash. `https://app.vaulth.id` and `https://www.app.vaulth.id` are different origins, and `http://localhost:3000` is different from `http://localhost:5173` unless a regex rule covers both.
+
+Also confirm that the rule is enabled.
+
+
+
+</Expandable>
+
+<Expandable title="A regex rule is not matching preview URLs">
+
+Verify that the regex is valid and anchored to the full origin string. Include the protocol, escape literal dots, and account for any port only if the environment uses one.
+
+For example, use a pattern like `^https://[a-z0-9-]+\.trusted-preview\.app$` instead of a broad unanchored domain fragment.
+
+
+
+</Expandable>
+
+<Expandable title="A rule was changed but OAuth behavior looks unchanged">
+
+Origin changes can take about 30 seconds to propagate to new OAuth requests. Wait for the cache to refresh, then test again in a new OAuth flow.
+
+If behavior still looks unchanged, check whether another enabled rule already matches the same origin.
+
+
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Related administration page
+
+<Columns cols={1}>
+
+<Card title="Admin Security Monitoring" href="admin-security-monitoring" icon="shield" cta="Review security alerts">
+
+Review suspicious sign-in activity, verification failures, document access alerts, threshold changes, and audit history.
+
+
+
+</Card>
+
+
+
+</Columns>

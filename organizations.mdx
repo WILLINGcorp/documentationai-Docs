@@ -1,13 +1,15 @@
 ---
 title: Organizations
-description: Understand how organizations, sub-accounts, roles, and account switching work in ModelBoard for Business, Studio, and Enterprise teams.
+description: >-
+  Understand how organizations, sub-accounts, staff capabilities, and account switching work
+  in ModelBoard for Business, Studio, and Enterprise teams.
 ---
 
 ## What an organization is in ModelBoard
 
 An organization in ModelBoard represents a business, studio, or enterprise entity that coordinates work across multiple people and profiles in the adult entertainment industry.
 
-An organization has its own profile, settings, and features, and then links team members to that profile as sub-accounts with specific roles and permissions.
+An organization has its own profile, settings, and features, and then links team members to that profile as sub-accounts. Owners control team access through requests, approvals, and a Capability Matrix for staff actions.
 
 <Callout kind="info">
 
@@ -31,13 +33,13 @@ A top-level business, studio, or enterprise profile that owns settings, billing,
 </Card>
 
 <Card
-  title="Sub-accounts & roles"
+  title="Sub-accounts & capabilities"
   icon="users"
   href="sub-accounts"
   cta="Learn about sub-accounts"
 >
 
-Team members connect as sub-accounts with a role of owner or staff. Permissions are role-based, not free-form.
+Team members connect as sub-accounts with an owner or staff role. Owners can adjust staff access from the Capability Matrix.
 
 </Card>
 
@@ -75,8 +77,9 @@ Sub-accounts represent people who work within an organization:
 - Created as separate profiles linked to the organization
 - Have a **role** of owner or staff
 - Log in as themselves but act **on behalf of** the organization when switched into that context
+- Receive staff access from default capabilities plus any owner-managed overrides
 
-This design keeps each person's identity and access separate, while still letting them act inside one or more organizations.
+This design keeps each person's identity and access separate, while still letting them act inside one or more organizations. Owners can review requests, grant staff capabilities, and apply changes without sharing credentials.
 
 <Callout kind="tip">
 
@@ -84,30 +87,31 @@ Use separate sub-accounts for each person in your team. Do not share logins. Thi
 
 </Callout>
 
-## Roles in an organization: Owner vs Staff
+## Roles and the Capability Matrix
 
-ModelBoard has two organization-level roles: **Owner** and **Staff**. There is no separate admin role.
+ModelBoard has two organization-level roles: **Owner** and **Staff**. Owners always have full access, while staff access starts from a default capability set that owners can adjust.
 
-Use this section to decide who should hold which role in your organization.
+Use the **Capability Matrix** on your organization team or settings page to review what each role can do.
 
 <Tabs>
 
 <Tab title="Owner" icon="shield">
 
-Owners control the organization identity and team access. Each organization has at least one owner.
+Owners control the organization identity, team access, and sensitive settings. Each organization has at least one owner.
 
-Common responsibilities for owners:
+Owners can:
 
-- Create and configure the organization profile
-- Approve or reject **join requests** from new sub-accounts
-- Manage staff access and role changes
-- Handle sensitive settings and ownership transfers
+- Approve, reject, and invite sub-accounts
+- Review incoming and outgoing transfer requests
+- Toggle staff capabilities in the Capability Matrix
+- Reset staff capabilities back to the default set
+- Save or discard unsaved capability changes
 
-Owners are the only role that can approve membership and confirm transfers between organizations.
+Owners always retain full access, even when they turn staff capabilities off.
 
 <Callout kind="alert">
 
-Assign owner only to people you fully trust with your organization's identity, relationships, and sensitive configuration.
+Assign owner only to people you fully trust with your organization's identity, relationships, billing, compliance posture, and sensitive configuration.
 
 </Callout>
 
@@ -117,56 +121,111 @@ Assign owner only to people you fully trust with your organization's identity, r
 
 Staff accounts are team members who work inside the organization without full ownership control.
 
-Typical staff responsibilities include:
+By default, staff can perform day-to-day actions such as posting studio news, creating casting forms, uploading to organization storage, managing collaboration projects, and sending organization messages.
 
-- Operating day-to-day workflows (for example, managing shoots, collabs, or portfolios on behalf of the org)
-- Handling communication and coordination in the organization's context
-- Using apps and features assigned to the organization
-
-Staff permissions can be more granular depending on whether the organization is a Business, Studio, or Enterprise account, but staff never gains full ownership or approval rights.
+Owners can grant or remove additional staff capabilities, including approval-related access, from the Capability Matrix. When an owner saves changes, the update applies immediately to every staff sub-account in the organization.
 
 </Tab>
 
 </Tabs>
 
+### Default staff capabilities
+
+Staff access starts with a focused set of operational capabilities. Owners should treat these defaults as a starting point, then adjust them for the organization's workflow and risk level.
+
+Default staff capabilities include:
+
+- **Post studio news**
+- **Create casting forms**
+- **Upload to organization storage**
+- **Manage collaboration projects**
+- **Send organization messages**
+
+Staff do not receive sensitive capabilities by default, including editing the organization profile, managing billing, approving sub-accounts, managing BioLink, or signing compliance as the organization.
+
+<Callout kind="tip">
+
+Review the Capability Matrix after onboarding new staff, changing responsibilities, or completing a sensitive project. Capability changes apply immediately to all staff in the organization.
+
+</Callout>
+
 ## How organization membership works
 
-Membership in an organization is always **request-based** and must be approved. ModelBoard does not use open invite links or auto-join flows.
+Membership in an organization is request-based and must be reviewed. Owners manage requests from **Sub-Account Requests**, which separates legacy invitations, new join requests, and transfers into dedicated tabs.
+
+### Sub-Account Requests tabs
+
+<Tabs>
+
+<Tab title="Invites" icon="mail">
+
+The **Invites** tab shows pending legacy invitations that still need to be sent.
+
+Use **Send** to create the invited sub-account and send the invitee a password setup email. After the invitation is sent, the invitee can finish access setup from their email instead of sharing credentials with the organization.
+
+</Tab>
+
+<Tab title="Join" icon="user-plus">
+
+The **Join** tab shows new sub-account requests from people who want to join the organization.
+
+Owners review each request and choose **Approve** or **Reject**. Approving adds the person to the organization; rejecting closes the request without granting access.
+
+</Tab>
+
+<Tab title="Incoming" icon="arrow-right-left">
+
+The **Incoming** tab shows transfer requests where another organization or sub-account is asking to move into your organization.
+
+Approve only when you recognize the person or profile, understand why the transfer is happening, and are ready for the organization to become responsible for that access.
+
+</Tab>
+
+<Tab title="Outgoing" icon="arrow-right-left">
+
+The **Outgoing** tab shows transfer requests where a sub-account linked to your organization is moving away from it.
+
+Use this tab to approve or reject the release side of a transfer. Approved transfers update the sub-account's organization connection after the required approvals are complete.
+
+</Tab>
+
+</Tabs>
 
 ### Join and invite flow overview
 
 <Steps>
 
-<Step title="1. Create or identify the organization" icon="building2">
+<Step title="Create or identify the organization" icon="building2">
 
 If you are setting up the team, start by creating or claiming the **Business**, **Studio**, or **Enterprise** organization profile that represents your company.
 
-If your organization profile already exists, confirm who the current **Owner** is. They will handle approvals.
+If your organization profile already exists, confirm who the current **Owner** is. They will handle invitations, requests, and capability settings.
 
 </Step>
 
-<Step title="2. Submit a join request as a sub-account" icon="users">
+<Step title="Review the request queue" icon="users">
 
-When someone wants to join the organization, they submit a **join request** as a sub-account linked to that organization.
+Open **Sub-Account Requests** and check the tab that matches the request type: **Invites**, **Join**, **Incoming**, or **Outgoing**.
 
-This creates a **pending membership request** that signals the owner to review the new team member.
-
-</Step>
-
-<Step title="3. Owner approves or rejects the request" icon="check-circle">
-
-Organization owners review pending join requests and choose to **approve** or **reject**.
-
-- **Approve**: the sub-account becomes a member of the organization with the assigned role (owner or staff).
-- **Reject**: the pending request is closed and access is not granted.
+The pending count helps owners see how many requests still need attention.
 
 </Step>
 
-<Step title="4. Membership becomes active" icon="zap">
+<Step title="Approve, reject, or send" icon="check-circle">
 
-After approval, the new member sees the organization in their account switcher and can operate in that context according to their role.
+Choose the action that matches the request:
 
-The request-based flow ensures your organization stays secure and intentional about who has access.
+- **Send**: sends a pending legacy invitation email.
+- **Approve**: grants the requested membership or transfer approval.
+- **Reject**: closes the request and can include a reason.
+
+</Step>
+
+<Step title="Confirm active access" icon="zap">
+
+After approval, the member sees the organization in their account switcher and can operate in that context according to their role and staff capabilities.
+
+After a capability change, staff should refresh or revisit the affected area if access does not update immediately in their current session.
 
 </Step>
 
@@ -174,7 +233,7 @@ The request-based flow ensures your organization stays secure and intentional ab
 
 <Callout kind="info">
 
-All membership changes flow through explicit join requests and approvals. There are no public invite links that allow unknown users to join your organization.
+All membership changes flow through explicit requests, invitations, and approvals. There are no public invite links that allow unknown users to join your organization.
 
 </Callout>
 
@@ -184,9 +243,10 @@ Sometimes a profile needs to move from one organization to another (for example,
 
 Transfers follow an approval-based flow similar to membership:
 
-- A **transfer request** is created to move ownership or link a profile to a different organization.
-- Relevant **owners** review and approve or decline the transfer.
-- Approved transfers are recorded for auditability and future reference.
+- A **transfer request** is created to move a sub-account from one organization to another.
+- The current organization reviews the request from **Outgoing**.
+- The destination organization reviews the request from **Incoming**.
+- Approved transfers update the sub-account's organization connection and are recorded for auditability.
 
 Transfers help you keep historical continuity while still reflecting changes in how your business is structured.
 
@@ -273,19 +333,23 @@ This section describes concepts at a high level and is not an API reference. For
 - **Organization profiles** are special profiles whose type is business, studio, or enterprise.
 - **Team members** are sub-accounts linked via an internal organization identifier.
 - **Roles** are captured as owner or staff at the sub-account level; there is no third admin role.
-- **Membership changes** (joins, approvals, rejections, transfers) are handled through dedicated request objects and backend workflows.
+- **Staff capabilities** are resolved from default staff access plus owner-managed organization overrides.
+- **Membership changes** (invitations, joins, approvals, rejections, transfers) are handled through dedicated request objects and backend workflows.
 - **Enterprise-to-studio relationships** are modeled as links that allow switching from the enterprise context into a specific studio context.
 
 This model keeps every action tied to a specific profile and role, which supports clear auditing and reliable permission checks.
 
 ## Security and access control
 
-Security for organizations is based on **roles and approvals**, not shared credentials or open links.
+Security for organizations is based on **individual logins, request approvals, and owner-managed capabilities**, not shared credentials or open links.
 
 Key principles:
 
 - Each person uses their own login and becomes a **sub-account** of the organization.
-- **Owners** must approve new members and ownership or organization transfers.
+- **Owners** must approve new members and incoming or outgoing transfers.
+- **Owners** always have full access and should be assigned sparingly.
+- **Staff** receives default operational capabilities unless owners change them in the Capability Matrix.
+- **Approval access** can be granted to staff only when an owner enables the relevant capability.
 - There are **no** public invite URLs that allow unknown users to join.
 - Sensitive actions and ownership changes are recorded for auditability.
 

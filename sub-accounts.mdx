@@ -1,0 +1,254 @@
+---
+title: Sub-accounts
+description: Manage organization sub-accounts, invitations, join requests, transfers, and staff capabilities without sharing team credentials.
+---
+
+## Manage organization access without shared logins
+
+Sub-accounts let each team member sign in with their own ModelBoard profile while acting on behalf of a Business, Studio, or Enterprise organization.
+
+Every sub-account belongs to an organization, has an owner or staff role, and appears in the account switcher after access is approved. This keeps team actions tied to a person instead of a shared organization password.
+
+<Callout kind="info">
+
+Use sub-accounts for every person who needs organization access. Shared logins make approvals, capability reviews, and audit trails harder to trust.
+
+</Callout>
+
+## Roles and capabilities
+
+ModelBoard uses two sub-account roles: **Owner** and **Staff**. Owners always have full access. Staff access starts with defaults and can be changed from the organization's **Capability Matrix**.
+
+<Tabs>
+
+<Tab title="Owner" icon="shield">
+
+Owners manage the organization's identity and team access.
+
+Owners can:
+
+- Approve, reject, and invite sub-accounts
+- Review incoming and outgoing transfer requests
+- Change staff access in the Capability Matrix
+- Reset staff capability overrides to the default set
+- Manage sensitive organization settings
+
+Assign owner access only to people who should be trusted with the organization's identity, staff access, and sensitive configuration.
+
+</Tab>
+
+<Tab title="Staff" icon="users">
+
+Staff members handle operational work without receiving full ownership control.
+
+Default staff capabilities include:
+
+- Posting studio news
+- Creating casting forms
+- Uploading to organization storage
+- Managing collaboration projects
+- Sending organization messages
+
+Staff do not receive sensitive capabilities by default, including editing the organization profile, managing billing, approving sub-accounts, managing BioLink, or signing compliance as the organization.
+
+</Tab>
+
+</Tabs>
+
+### Capability Matrix behavior
+
+The Capability Matrix shows a row for each organization capability and columns for **Owner** and **Staff**. Owners always show as allowed for every capability.
+
+Owners can toggle staff capabilities, then choose **Save** to apply changes. They can also use **Discard** to abandon unsaved changes or **Reset defaults** to restore the built-in staff capability set.
+
+<Callout kind="tip">
+
+Capability changes apply immediately to every staff sub-account in the organization. Review the matrix before granting staff access to approval, billing, compliance, or profile-management actions.
+
+</Callout>
+
+## Sub-Account Requests
+
+Owners manage access requests from the **Sub-Account Requests** card. The card shows a pending count and separates work into four tabs so owners can act on the right type of request.
+
+<Tabs>
+
+<Tab title="Invites" icon="mail">
+
+The **Invites** tab contains pending legacy invitations that still need to be sent.
+
+Use **Send** to create the invited sub-account and send the invitee a password setup email. Legacy invitation rows may show a source badge so owners can understand where the pending invitation came from.
+
+</Tab>
+
+<Tab title="Join" icon="user-plus">
+
+The **Join** tab contains new sub-account requests from people who want to join the organization.
+
+Owners can **Approve** a request to grant organization access or **Reject** it to close the request without granting access. Rejections can include an optional reason.
+
+</Tab>
+
+<Tab title="Incoming" icon="arrow-right-left">
+
+The **Incoming** tab contains transfer requests where a sub-account is moving into your organization.
+
+Approve an incoming transfer only after you verify the person, the source organization, and the reason for the move.
+
+</Tab>
+
+<Tab title="Outgoing" icon="arrow-right-left">
+
+The **Outgoing** tab contains transfer requests where a sub-account linked to your organization is moving to another organization.
+
+Use this tab to approve or reject the release side of the transfer. Once the required approvals are complete, the sub-account's organization connection updates to the destination organization.
+
+</Tab>
+
+</Tabs>
+
+## Invite or approve a sub-account
+
+Use this workflow when you need to add someone to an organization or finish an existing pending invitation.
+
+<Steps>
+
+<Step title="Open the organization context" icon="building2">
+
+Switch into the Business, Studio, or Enterprise organization that should own the team member's access.
+
+Confirm you are acting as the right organization before reviewing requests or sending invitations.
+
+</Step>
+
+<Step title="Open Sub-Account Requests" icon="users">
+
+Go to the organization's team or settings area and open **Sub-Account Requests**.
+
+The pending badge shows how many invitation, join, incoming transfer, and outgoing transfer items still need owner attention.
+
+</Step>
+
+<Step title="Choose the matching tab" icon="folder">
+
+Open the tab that matches the item you need to handle:
+
+- **Invites** for pending legacy invitations.
+- **Join** for new sub-account requests.
+- **Incoming** for transfers into your organization.
+- **Outgoing** for transfers away from your organization.
+
+</Step>
+
+<Step title="Take the requested action" icon="check-circle">
+
+Choose **Send**, **Approve**, or **Reject** depending on the request type.
+
+For rejected requests, add a short reason when it will help the requester understand what to change before trying again.
+
+</Step>
+
+<Step title="Review staff capabilities" icon="shield">
+
+After access is active, review the Capability Matrix and confirm the staff capability set matches the person's responsibilities.
+
+If the person needs broader access, toggle only the capabilities they need and save the changes.
+
+</Step>
+
+</Steps>
+
+<Callout kind="alert">
+
+Do not use owner access as a shortcut for routine work. If someone only needs operational access, keep them as staff and adjust staff capabilities instead.
+
+</Callout>
+
+## Transfer a sub-account between organizations
+
+Transfers move a sub-account from one organization to another without requiring the person to start over with a new identity.
+
+A transfer can involve two sides:
+
+- **Source organization**: the organization the sub-account is leaving.
+- **Destination organization**: the organization the sub-account is joining.
+
+Owners review transfer requests from **Outgoing** when the sub-account is leaving their organization and **Incoming** when the sub-account is joining their organization. Approved transfers update the sub-account's organization connection and username for the destination organization after the required approvals are complete.
+
+## What staff can see
+
+Staff members can see the Capability Matrix in a read-only view. This helps them understand what their role can and cannot do inside the organization.
+
+Staff do not see the owner request queue unless they have approval-related access. If an action is not available, the most common reason is that the capability is not enabled for staff in that organization.
+
+<ExpandableGroup>
+
+<Expandable title="Why are approval buttons disabled?">
+
+Approve and reject actions require sub-account approval access. Owners always have that access, while staff only receive it if an owner enables the relevant capability in the Capability Matrix.
+
+</Expandable>
+
+<Expandable title="Why did staff access change for everyone at once?">
+
+The Capability Matrix controls staff capabilities at the organization level. When an owner saves staff capability changes, the update applies to every staff sub-account in that organization.
+
+</Expandable>
+
+<Expandable title="Can I delete a request instead of rejecting it?">
+
+Owners reject requests to close them. Rejection can include an optional reason so the requester understands why access was not granted.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Security checklist
+
+Use this checklist when managing organization access.
+
+- Give every team member their own login and sub-account.
+- Keep owner access limited to trusted decision-makers.
+- Review the Capability Matrix after onboarding or role changes.
+- Reject requests you do not recognize.
+- Verify source and destination organizations before approving transfers.
+- Revisit staff access after sensitive projects, staffing changes, or compliance reviews.
+
+## Related
+
+<Columns cols={3}>
+
+<Card
+  title="Organizations"
+  href="organizations"
+  icon="building2"
+  cta="Understand org structure"
+>
+
+See how organization profiles, sub-accounts, roles, and account switching fit together.
+
+</Card>
+
+<Card
+  title="Account types"
+  href="account-types"
+  icon="users"
+  cta="Compare roles"
+>
+
+Review how Business, Studio, Enterprise, and individual profiles relate across ModelBoard.
+
+</Card>
+
+<Card
+  title="Business listings and pages"
+  href="business-page"
+  icon="briefcase"
+  cta="Manage a business"
+>
+
+Understand how organization owners and staff contribute to public business profiles.
+
+</Card>
+
+</Columns>
