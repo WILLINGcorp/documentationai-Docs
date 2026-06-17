@@ -1,0 +1,214 @@
+---
+title: Authentication
+description: Sign in securely with email, passkeys, and backup access while understanding account protection, rate limits, and safe redirects.
+---
+
+## Sign in securely
+
+ModelBoard supports email and password sign-in, passkeys, and backup codes depending on your account security setup. Use the method that matches your current device and recovery needs, then follow the on-screen prompts until you reach your dashboard or onboarding flow.
+
+<Callout kind="info">
+
+Passkeys are only shown when your browser supports them. If you do not see a passkey option, use email and password, then add or manage passkeys later from Settings and Security on a supported browser.
+
+
+</Callout>
+
+## Use a passkey
+
+A passkey lets you sign in with your device or password manager instead of typing a password. Depending on your device, the browser may ask for Face ID, Touch ID, Windows Hello, Android biometrics, a device PIN, or an external security key.
+
+### Sign in with a passkey
+
+<Steps>
+
+  <Step title="Open the sign-in page" icon="lock">
+
+Go to the ModelBoard sign-in page and choose the passkey option if it appears.
+
+
+  </Step>
+  <Step title="Choose a saved passkey" icon="key-round">
+
+Use the browser or operating system prompt to select the passkey for your ModelBoard account. Some older passkeys may ask you to enter your email address first.
+
+
+  </Step>
+  <Step title="Complete the device check" icon="check-circle">
+
+Approve the prompt with your biometric, device PIN, password manager, or security key. A successful passkey sign-in takes you back to the destination you were trying to reach, or to a safe default page such as your dashboard.
+
+
+  </Step>
+</Steps>
+
+If you cancel the browser prompt, no sign-in is completed. Start the passkey flow again when you are ready.
+
+### Register a passkey
+
+You can add a passkey during onboarding or later from Settings and Security. Registration is optional unless your account security settings require stronger sign-in methods.
+
+<Steps>
+
+  <Step title="Choose where to store the passkey" icon="settings">
+
+Select the device, password manager, or security key you want to use. A device passkey works well for everyday sign-in. A hardware security key is useful if you need a portable credential that stays separate from your phone or computer.
+
+
+  </Step>
+  <Step title="Name the passkey" icon="edit">
+
+Use a name you will recognize later, such as your laptop, phone, password manager, or security key model.
+
+
+  </Step>
+  <Step title="Create the passkey" icon="plus">
+
+Follow the browser prompt to save the passkey. When registration succeeds, ModelBoard confirms that the passkey was added to your account.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+
+Create passkeys from the live ModelBoard site in a supported browser. Passkeys may not work inside preview frames, embedded browsers, non-secure connections, or apps that do not expose the browser passkey prompt.
+
+
+</Callout>
+
+## Understand the Synced badge
+
+When ModelBoard describes a passkey as synced, your operating system or password manager can make that passkey available on your other trusted devices. For example, iCloud Keychain, Google Password Manager, and 1Password can sync passkeys when you are signed in to the same account and have syncing enabled.
+
+A synced passkey is still protected by the device or password manager that stores it. If syncing is disabled, if you change devices, or if your organization restricts password managers, add another passkey or keep backup access available before you sign out.
+
+## Browser support expectations
+
+Passkeys require modern WebAuthn support from your browser and device. Current versions of Chrome, Edge, Safari, and Firefox are expected to work, but in-app browsers and outdated mobile browsers may not show the passkey option.
+
+<Tabs>
+
+  <Tab title="Desktop" icon="monitor">
+
+Use an up-to-date desktop browser and complete the system prompt with your device biometric, device PIN, password manager, or hardware security key. If the prompt does not appear, update your browser and try again from the main ModelBoard site.
+
+
+  </Tab>
+  <Tab title="iPhone and iPad" icon="apple">
+
+Use Safari for the most reliable passkey experience. If you opened ModelBoard from another app, switch to Safari before registering or signing in with a passkey.
+
+
+  </Tab>
+  <Tab title="Android" icon="smartphone">
+
+Use an up-to-date Chrome browser and keep Google Play Services current. If the passkey prompt does not open, update Chrome and try again outside embedded app browsers.
+
+
+  </Tab>
+  <Tab title="Security keys" icon="shield">
+
+Use a compatible USB, NFC, or Bluetooth security key when you want a portable passkey that is not tied to a single device account. Keep the key in a safe place and register a backup method before relying on it as your only sign-in option.
+
+
+  </Tab>
+</Tabs>
+
+## Keep backup access available
+
+Backup codes help you regain access when you cannot use your passkey, such as after replacing a device or losing access to a password manager. Generate them from Settings and Security, save them immediately, and store them somewhere only you can access.
+
+<Steps>
+
+  <Step title="Generate backup codes" icon="plus">
+
+Create codes from the security settings area. Follow the prompts in security settings and save the codes when they are shown.
+
+
+  </Step>
+  <Step title="Save the codes offline" icon="download">
+
+Download or copy the codes and keep them in a secure location, such as an encrypted password manager or a protected offline record.
+
+
+  </Step>
+  <Step title="Replace codes when needed" icon="refresh-cw">
+
+Generate or replace backup codes when you have used several codes, changed devices, or suspect a code was exposed. Follow the confirmation prompts so you understand which codes remain usable.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="danger">
+
+Do not store backup codes in the same place as a device you may lose. A backup code is a recovery method, so treat each code like a temporary password.
+
+
+</Callout>
+
+## Why sign-in errors stay generic
+
+ModelBoard uses the same message when an email address is invalid and when a password is wrong. This protects account privacy by avoiding clues about whether a specific email address has a ModelBoard account.
+
+If you see an invalid credentials message, check both fields before trying again:
+
+- Confirm the email address is spelled correctly.
+- Confirm that the password belongs to the same ModelBoard account.
+- Use password reset or another approved recovery method if you are unsure.
+- Contact your organization admin if you use an organization-managed account and your access may have changed.
+
+## After too many sign-in attempts
+
+Repeated sign-in, verification, or recovery attempts may be temporarily limited to protect accounts from abuse. When this happens, ModelBoard shows a rate-limit message and may include how long to wait before trying again.
+
+<Callout kind="alert">
+
+Do not keep retrying while a rate limit is active. Wait for the displayed retry period, then try once with the correct sign-in method. If you are unsure which method to use, switch to an approved recovery option instead of repeating the same failed attempt.
+
+
+</Callout>
+
+If you still cannot access your account after the retry period, use the recovery path that matches your setup:
+
+- Use a registered passkey if password sign-in is failing.
+- Use a backup code if passkey-only sign-in is active and your device is unavailable.
+- Use an approved recovery option shown on the sign-in screen or in your account security settings.
+- Ask your organization owner or admin to confirm whether your role or account status changed.
+
+## Safe redirects after sign-in
+
+ModelBoard may send you back to the page you originally tried to open after a successful sign-in. For safety, ModelBoard only follows trusted internal destinations. If a sign-in link points somewhere untrusted or cannot be used safely, ModelBoard sends you to a safe destination such as onboarding or your dashboard instead.
+
+This behavior prevents malicious links from using ModelBoard sign-in to redirect you to an unrelated website. If you expected to land on a specific page, sign in normally and navigate to that page from your dashboard.
+
+## Troubleshooting authentication
+
+<ExpandableGroup>
+
+  <Expandable title="I do not see the passkey option">
+
+Your browser or current browsing context may not support passkeys. Update your browser, open ModelBoard directly instead of inside another app, or use email and password to sign in.
+
+
+  </Expandable>
+  <Expandable title="My passkey prompt keeps closing">
+
+The prompt may have been cancelled, timed out, or blocked by the browser context. Reopen the sign-in page, start the passkey flow again, and complete the device prompt before it expires.
+
+
+  </Expandable>
+  <Expandable title="I replaced my phone or laptop">
+
+Use another synced device, a hardware security key, or a backup code if available. After you regain access, add a new passkey for the replacement device.
+
+
+  </Expandable>
+  <Expandable title="I am redirected to the dashboard instead of the page I expected">
+
+The original destination may not have been a trusted internal page, or your account may need onboarding or profile checks first. Use the dashboard navigation to open the page after sign-in.
+
+
+  </Expandable>
+</ExpandableGroup>
