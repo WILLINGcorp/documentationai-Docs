@@ -1,0 +1,364 @@
+---
+title: MB Events
+description: Create and manage industry events with ticketing, attendee check-in, networking tools, and developer API access for event data.
+---
+
+## Overview
+
+Create and manage industry events in ModelBoard, sell tickets, check in attendees, help guests connect with each other, and access event data through the Events API Developer Portal. MB Events supports the full event lifecycle for organizers who need one place to publish events, track registrations, and run attendee-facing experiences.
+
+MB Events is available to **Business**, **Studio**, and **Enterprise** accounts.
+
+<Callout kind="info">
+
+Install MB Events from the MB App Store before you can create events or open the developer portal.
+
+
+</Callout>
+
+## Create an event
+
+Set up a new event with a four-step creation flow that collects your event details, scheduling, access rules, and publishing settings.
+
+<Steps>
+
+  <Step title="Event details" icon="edit" title-type="p">
+
+  Add the core information attendees see first.
+
+  - **Title** (required)
+  - **Category** (required)
+  - **Description**
+  - **Tags**
+  - **Event Website** (optional)
+
+  Choose one category for the event:
+
+  - Meetup
+  - Content Launch
+  - Masterclass
+  - Convention
+  - Workshop
+  - Networking
+  - Conference
+  - Webinar
+  - Premiere
+  - Fan Meet
+
+
+  </Step>
+  <Step title="Schedule and location" icon="calendar" title-type="p">
+
+  Set when the event happens and how attendees join.
+
+  - **Start date and time** (required)
+  - **End date and time**
+  - **Timezone**
+
+  Select a location type:
+
+  - **Physical** — venue name and address
+  - **Virtual** — platform and meeting link
+  - **Hybrid** — combine in-person and virtual access
+
+  For virtual events, choose from:
+
+  - Zoom
+  - Teams
+  - Google Meet
+  - Discord
+  - Custom
+
+
+  </Step>
+  <Step title="Access and ticketing" icon="lock" title-type="p">
+
+  Control who can discover and register for the event.
+
+  - **Visibility** — Public, Members Only, Invite Only, or Private
+  - **Max attendees** (optional)
+  - **Approval** toggle for registration review
+  - **Ticket type** — Free or Paid
+
+  For paid events, enter the ticket price in **USD**.
+
+
+  </Step>
+  <Step title="Review and publish" icon="check-circle" title-type="p">
+
+  Review the event summary before making it live. The final screen shows all details from the previous steps so you can confirm timing, location, access, and ticket settings.
+
+  Select **Publish** when everything looks correct. After publishing, the event becomes available according to the visibility setting you chose.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+
+Review the full event summary before publishing, especially date, timezone, location links, and ticket pricing. Small errors in these fields create the most attendee support issues later.
+
+
+</Callout>
+
+## Manage your event
+
+Use the event management dashboard to monitor registrations, update event settings, and handle attendee operations after the event is live. Each tab focuses on one operational area so you can move quickly between planning, ticketing, check-in, and follow-up.
+
+| Tab | What it does |
+| --- | --- |
+| Overview | Shows attendance stats, registration trends, and revenue charts |
+| Tickets | Manages ticket tiers and availability |
+| Schedule | Manages sessions, agenda items, and timing |
+| Attendees | Shows the registration list and attendee management tools |
+| Check-In | Handles QR code and manual attendee check-in |
+| Networking | Provides the attendee directory, connection requests, and AI-suggested connections |
+| Speakers | Manages speaker profiles and related event participation |
+| Feedback | Collects post-event attendee feedback |
+| Financial | Tracks revenue and payout management |
+
+<Callout kind="info">
+
+The **Feedback** and **Financial** tabs are marked as coming soon.
+
+
+</Callout>
+
+## Ticketing and packages
+
+Configure ticket tiers to match how you sell access to the event. Each tier includes a **tier name**, **description**, **price**, **available quantity**, and an **active or inactive** toggle so you can pause sales without deleting the tier.
+
+Adjust pricing for specific sales strategies with **early bird pricing** and **group discounts**. Early bird pricing uses a discounted price plus a deadline, while group discounts use a percentage off plus a minimum group size.
+
+Refine purchasing rules with **discount codes**, **refundable** and **transferable** flags, and a **maximum quantity per order** setting. These controls help you manage promotions while reducing overselling or misuse.
+
+Offer more than one item together with **packages**. Packages let you bundle tickets with other event offerings, and **promo codes** let you run targeted promotions for audiences, partners, or campaigns.
+
+## Attendee check-in
+
+Track event arrival in real time from the check-in dashboard. The dashboard shows **total registered**, **checked in**, **pending**, and overall **attendance rate**, so you can see turnout as the event progresses.
+
+Check attendees in with a **QR code scanner** or use the **manual check-in** option when scanning is not available. Search for an attendee by name to resolve entry issues quickly at the door or virtual access desk.
+
+Export check-in records as **CSV** when you need attendance data for reporting or follow-up. A recent activity feed also shows the latest check-ins and identifies whether each check-in happened by **QR** or **manual** method.
+
+## Networking
+
+Help attendees connect before, during, and after the event through the networking workspace. The networking area is organized into three focused tabs.
+
+<Tabs>
+
+  <Tab title="Attendees" icon="users">
+
+  Browse all event attendees in one place. Use this tab to review who is participating and discover relevant people connected to the event.
+
+
+  </Tab>
+  <Tab title="Connections" icon="link">
+
+  Send and receive connection requests with other attendees. This tab helps you manage pending requests and build direct professional relationships from the event.
+
+
+  </Tab>
+  <Tab title="Suggested" icon="zap">
+
+  Review AI-powered suggested connections based on shared interests. Suggested matches help attendees find relevant people faster without manually searching the full attendee list.
+
+
+  </Tab>
+</Tabs>
+
+## Events API Developer Portal
+
+<Callout kind="info">
+
+The Events API Developer Portal is a new MB Events feature for teams that want to build programmatic integrations on top of event data and attendee workflows.
+
+
+</Callout>
+
+### Access the developer portal
+
+Open the developer portal from the MB Events developer portal route after MB Events is installed on your account. Developer access is available to **Business**, **Studio**, and **Enterprise** accounts with MB Events installed.
+
+If your account is eligible but MB Events is not installed yet, the portal shows a prompt to install MB Events first. On the Business Dashboard, the **Developer Section** shows whether developer access is **unlocked** or **locked**.
+
+### Create API credentials
+
+Create OAuth client credentials with a three-step flow. You choose application details first, then scopes, then save the secret that ModelBoard shows once.
+
+<Steps>
+
+  <Step title="Application details" icon="edit" title-type="p">
+
+  Enter the details for the integration.
+
+  - **Application name** (required, minimum 3 characters)
+  - **Description** (optional)
+  - **Contact email** (optional)
+  - **Redirect URIs** (required)
+
+  Add at least one redirect URI. Each URI must use `https://`, except for local development where `localhost` is allowed.
+
+
+  </Step>
+  <Step title="Select scopes" icon="shield" title-type="p">
+
+  Choose the scopes the integration needs.
+
+  Three base scopes are required and cannot be unchecked:
+
+  - **Authentication**
+  - **Refresh token**
+  - **Profile**
+
+  Add additional scopes based on the APIs your integration uses. Sensitive scopes are marked with a badge so you can review them more carefully before saving.
+
+
+  </Step>
+  <Step title="Save your client secret" icon="lock" title-type="p">
+
+  Copy the **Client ID** and **Client Secret** when ModelBoard shows them. The client secret appears only once and cannot be retrieved later.
+
+  Store the client secret in a secure secret manager or deployment environment before closing the screen.
+
+
+  </Step>
+</Steps>
+
+### Manage existing credentials
+
+Manage saved credentials from the developer portal credential list. Each credential card shows the **client name**, **status badge** for active or inactive state, **client ID**, and **last used** timestamp.
+
+Active credentials support three management actions:
+
+- **Rotate** — Generates a new client secret. The old secret stops working immediately, and the new secret appears once for secure storage.
+- **Revoke** — Permanently disables the credential. Existing access tokens continue working until they expire, but the credential cannot issue new tokens. Revocation requires confirmation.
+- **Edit Redirect URIs** — Add, update, or remove redirect URIs inline.
+
+Each credential supports up to **20 redirect URIs**. Redirect URIs must use `https://`, while `localhost` and `127.0.0.1` are allowed for development use.
+
+You can create up to **10 OAuth clients per account**.
+
+### Available API scopes
+
+Use scopes to limit each integration to the data and actions it needs.
+
+| Scope | Label | Access |
+| --- | --- | --- |
+| `openid` | Authentication | Required. Supports Single Sign-On with PKCE |
+| `offline_access` | Refresh token | Required. Supports refresh tokens for PWA use cases |
+| `profile:read` | Profile | Required. Reads display name, username, and avatar |
+| `attendees:read` | List Attendees | Reads event attendee lists |
+| `collaboration:read` | Collab Workflow | Reads collaboration details and participants |
+| `collaboration:write` | Manage Collabs | Creates and updates collaboration proposals, workflow, and approvals |
+| `industry_profile:read` | Industry Profile | Reads rich industry profile data |
+| `event_chat:read` | Event Chat | Reads event attendee group chat messages |
+| `event_chat:write` | Event Chat | Posts messages to event attendee group chat |
+| `messaging:dm:send` | Direct Messages | Sends direct messages to other users |
+
+### Quickstart API examples
+
+<Callout kind="info">
+
+These examples use bearer token authentication. Request the scopes listed for each endpoint before calling the API.
+
+
+</Callout>
+
+Use these examples to validate your credentials and confirm the scopes your integration needs. Full API reference documentation is available at [developers.modelboard.net/events](https://developers.modelboard.net/events).
+
+#### Event Attendees API
+
+Requires the `attendees:read` scope.
+
+<CodeGroup tabs="cURL">
+```bash
+curl --request GET \
+  --url https://api.modelboard.net/v1/events/evt_9f2ac41e/attendees \
+  --header "Authorization: Bearer mb_example_token_7ks29dmq" \
+  --header "Accept: application/json"
+```
+</CodeGroup>
+
+#### Collab Proposal API
+
+Requires the `collaboration:read` and `collaboration:write` scopes.
+
+<CodeGroup tabs="cURL">
+```bash
+curl --request POST \
+  --url https://api.modelboard.net/v1/collab/proposals \
+  --header "Authorization: Bearer mb_example_token_7ks29dmq" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to_user_id": "usr_72ac9d1f",
+    "message": "Let'\''s collab"
+  }'
+```
+</CodeGroup>
+
+#### Rich Profiles API
+
+Requires the `industry_profile:read` scope.
+
+<CodeGroup tabs="cURL">
+```bash
+curl --request GET \
+  --url https://api.modelboard.net/v1/profiles/usr_72ac9d1f \
+  --header "Authorization: Bearer mb_example_token_7ks29dmq" \
+  --header "Accept: application/json"
+```
+</CodeGroup>
+
+#### Event attendee group chat API
+
+Requires the `event_chat:read` and `event_chat:write` scopes.
+
+<CodeGroup tabs="cURL">
+```bash
+curl --request GET \
+  --url https://api.modelboard.net/v1/events/evt_9f2ac41e/chat/messages \
+  --header "Authorization: Bearer mb_example_token_7ks29dmq" \
+  --header "Accept: application/json"
+```
+</CodeGroup>
+
+#### Send DM API
+
+Requires the `messaging:dm:send` scope.
+
+<CodeGroup tabs="cURL">
+```bash
+curl --request POST \
+  --url https://api.modelboard.net/v1/messaging/dm \
+  --header "Authorization: Bearer mb_example_token_7ks29dmq" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to_user_id": "usr_18ce47ab",
+    "body": "Hi"
+  }'
+```
+</CodeGroup>
+
+## Related
+
+<Columns cols={3}>
+
+  <Card title="MB App Store" href="mb-apps" icon="package" cta="Explore apps" horizontal="false">
+
+    Find and manage apps that extend your ModelBoard workflows.
+
+  </Card>
+  <Card title="Integrations" href="integrations" icon="link" cta="View integrations" horizontal="false">
+
+    Connect ModelBoard with external tools and services.
+
+  </Card>
+  <Card title="Getting Started Guide" href="getting-started" icon="rocket" cta="Set up your account" horizontal="false">
+
+    Learn the core setup steps for using ModelBoard effectively.
+
+  </Card>
+
+</Columns>
