@@ -1,6 +1,8 @@
 ---
 title: Organizations
-description: Understand how organizations, sub-accounts, roles, and account switching work in ModelBoard for Business, Studio, and Enterprise teams.
+description: >-
+  Understand how organizations, sub-accounts, roles, and account switching work
+  in ModelBoard for Business, Studio, and Enterprise teams.
 ---
 
 ## What an organization is in ModelBoard
@@ -12,6 +14,8 @@ An organization has its own profile, settings, and features, and then links team
 <Callout kind="info">
 
 ModelBoard is the operating system and professional networking platform for the adult entertainment industry. Organizations sit at the center of that experience for teams and companies.
+
+
 
 </Callout>
 
@@ -28,6 +32,8 @@ ModelBoard is the operating system and professional networking platform for the 
 
 A top-level business, studio, or enterprise profile that owns settings, billing, and organization-wide features.
 
+
+
 </Card>
 
 <Card
@@ -38,6 +44,8 @@ A top-level business, studio, or enterprise profile that owns settings, billing,
 >
 
 Team members connect as sub-accounts with a role of owner or staff. Permissions are role-based, not free-form.
+
+
 
 </Card>
 
@@ -50,7 +58,11 @@ Team members connect as sub-accounts with a role of owner or staff. Permissions 
 
 A single user can switch between creator, business, studio, and enterprise contexts through the account switcher.
 
+
+
 </Card>
+
+
 
 </Columns>
 
@@ -82,6 +94,8 @@ This design keeps each person's identity and access separate, while still lettin
 
 Use separate sub-accounts for each person in your team. Do not share logins. This keeps permissions clear and makes audits accurate.
 
+
+
 </Callout>
 
 ## Roles in an organization: Owner vs Staff
@@ -109,7 +123,11 @@ Owners are the only role that can approve membership and confirm transfers betwe
 
 Assign owner only to people you fully trust with your organization's identity, relationships, and sensitive configuration.
 
+
+
 </Callout>
+
+
 
 </Tab>
 
@@ -124,6 +142,16 @@ Typical staff responsibilities include:
 - Using apps and features assigned to the organization
 
 Staff permissions can be more granular depending on whether the organization is a Business, Studio, or Enterprise account, but staff never gains full ownership or approval rights.
+
+<Callout kind="info">
+
+Staff members cannot change their own permissions, activation status, or role. Only organization owners or platform administrators can modify these fields for a staff account.
+
+
+
+</Callout>
+
+
 
 </Tab>
 
@@ -143,6 +171,8 @@ If you are setting up the team, start by creating or claiming the **Business**, 
 
 If your organization profile already exists, confirm who the current **Owner** is. They will handle approvals.
 
+
+
 </Step>
 
 <Step title="2. Submit a join request as a sub-account" icon="users">
@@ -150,6 +180,8 @@ If your organization profile already exists, confirm who the current **Owner** i
 When someone wants to join the organization, they submit a **join request** as a sub-account linked to that organization.
 
 This creates a **pending membership request** that signals the owner to review the new team member.
+
+
 
 </Step>
 
@@ -160,6 +192,8 @@ Organization owners review pending join requests and choose to **approve** or **
 - **Approve**: the sub-account becomes a member of the organization with the assigned role (owner or staff).
 - **Reject**: the pending request is closed and access is not granted.
 
+
+
 </Step>
 
 <Step title="4. Membership becomes active" icon="zap">
@@ -168,6 +202,8 @@ After approval, the new member sees the organization in their account switcher a
 
 The request-based flow ensures your organization stays secure and intentional about who has access.
 
+
+
 </Step>
 
 </Steps>
@@ -175,6 +211,8 @@ The request-based flow ensures your organization stays secure and intentional ab
 <Callout kind="info">
 
 All membership changes flow through explicit join requests and approvals. There are no public invite links that allow unknown users to join your organization.
+
+
 
 </Callout>
 
@@ -193,6 +231,8 @@ Transfers help you keep historical continuity while still reflecting changes in 
 <Callout kind="info">
 
 Ownership and role changes are audited behind the scenes, so you retain a trail of who controlled an organization and when.
+
+
 
 </Callout>
 
@@ -218,6 +258,8 @@ From the main navigation, open the account switcher. You will see a list of prof
 
 Each entry represents a distinct context (for example, "Jane as Creator", "Sunset Studios", "Aurora Talent Agency").
 
+
+
 </Step>
 
 <Step title="2. Choose the profile or organization" icon="cursor-click">
@@ -225,6 +267,8 @@ Each entry represents a distinct context (for example, "Jane as Creator", "Sunse
 Select the profile or organization you want to switch into.
 
 ModelBoard updates your active context to that selection. Navigation, features, and data now reflect that account.
+
+
 
 </Step>
 
@@ -234,6 +278,8 @@ Check the header or context indicator to confirm you are acting as the intended 
 
 Before performing sensitive actions (like approvals or configuration changes), always verify you are in the correct organization.
 
+
+
 </Step>
 
 </Steps>
@@ -241,6 +287,8 @@ Before performing sensitive actions (like approvals or configuration changes), a
 <Callout kind="tip">
 
 Treat the account switcher as the "hat" you are wearing. Make sure you are wearing the right hat before approving requests or changing settings.
+
+
 
 </Callout>
 
@@ -268,6 +316,8 @@ If you work with integrations or need to design processes around ModelBoard's st
 
 This section describes concepts at a high level and is not an API reference. For concrete endpoints and schemas, refer to the API Reference.
 
+
+
 </Callout>
 
 - **Organization profiles** are special profiles whose type is business, studio, or enterprise.
@@ -287,11 +337,16 @@ Key principles:
 - Each person uses their own login and becomes a **sub-account** of the organization.
 - **Owners** must approve new members and ownership or organization transfers.
 - There are **no** public invite URLs that allow unknown users to join.
+- Staff members cannot modify their own permissions, role, or activation status — only organization owners or platform administrators can make those changes.
+- Join requests cannot be self-approved by the requester. Only the relevant organization owner can approve or reject a pending request.
+- Users can only view sub-account requests and sub-account lists for organizations they belong to.
 - Sensitive actions and ownership changes are recorded for auditability.
 
 <Callout kind="alert">
 
 Never share your personal login with team members. Instead, add them as staff or owners through the join-and-approve flow so their actions are tracked correctly.
+
+
 
 </Callout>
 
@@ -310,6 +365,8 @@ Use these resources to go deeper into how organizations fit into the rest of Mod
 
 See how Business, Studio, Enterprise, and individual profiles relate to each other.
 
+
+
 </Card>
 
 <Card
@@ -320,6 +377,8 @@ See how Business, Studio, Enterprise, and individual profiles relate to each oth
 >
 
 Understand which features become available when you operate as an organization.
+
+
 
 </Card>
 
@@ -332,6 +391,8 @@ Understand which features become available when you operate as an organization.
 
 Set up your first profile, then attach or create an organization and start collaborating.
 
+
+
 </Card>
 
 <Card
@@ -343,6 +404,10 @@ Set up your first profile, then attach or create an organization and start colla
 
 Browse guides and troubleshooting articles, or reach out if you are stuck on an organization flow.
 
+
+
 </Card>
+
+
 
 </Columns>
