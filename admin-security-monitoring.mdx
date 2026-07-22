@@ -1,0 +1,170 @@
+---
+title: Monitor security audit events
+description: >-
+  Review privacy-safe security audit events to spot suspicious sign-in activity,
+  investigate OAuth and passkey issues, and monitor account security patterns.
+---
+
+## Review security audit events
+
+ModelBoard gives you a privacy-safe audit log of security events so you can detect suspicious activity, investigate authentication failures, and monitor OAuth and passkey security.
+
+ModelBoard automatically records security-related events across sign-in, passkey, OAuth, and verification flows. Use the audit log to spot patterns such as brute-force attempts, credential stuffing, repeated passkey failures, and unauthorized OAuth origin requests without exposing sensitive personal data.
+
+### What the audit log tracks
+
+The audit log captures security events that help you understand what happened, when it happened, and whether a pattern deserves investigation. Each entry records the event type, when the event occurred, the response status, and privacy-safe identifiers such as hashed IP or hashed email when available.
+
+Because the log is designed for monitoring rather than profiling, ModelBoard stores only the information needed to investigate security behavior. That makes the log useful for detection and triage while reducing the risk of exposing personal data.
+
+### Event types
+
+<Tabs>
+
+  <Tab title="Authentication Failures" icon="lock">
+
+  Authentication failure events are logged when a sign-in attempt fails because the credentials are not valid. These events help you identify repeated failed access attempts against one or more accounts.
+
+  Each event can include a hashed IP and hashed email associated with the attempt. Review this category when you need to detect brute-force activity against a single account or credential stuffing patterns across many accounts.
+
+
+  </Tab>
+  <Tab title="Rate Limiting" icon="shield">
+
+  Rate limiting events are logged when ModelBoard blocks a request because it exceeded a security threshold. This includes both burst activity from a single source and repeated attempts tied to the same credential.
+
+  Review these events to identify excessive authentication traffic and confirm that protective limits are working as expected. A cluster of rate limiting events often points to automated attack behavior or a misconfigured client.
+
+
+  </Tab>
+  <Tab title="Passkey Errors" icon="key">
+
+  Passkey error events are logged when a passkey sign-in attempt cannot be completed successfully. This includes failed passkey verification as well as missing or expired challenges during the authentication flow.
+
+  Use this category to monitor WebAuthn-related issues and distinguish normal user friction from repeated failed passkey attempts that may need investigation. A short burst may indicate a user issue, while sustained failures from the same source may indicate abuse.
+
+
+  </Tab>
+  <Tab title="OAuth Rejections" icon="external-link">
+
+  OAuth rejection events are logged when an OAuth request is denied because the requesting origin is not allowed or because the request is malformed. These events help you find unauthorized access attempts and integration mistakes.
+
+  Review this category when you suspect a third-party application is misconfigured or when you want to confirm that only approved origins are trying to start OAuth flows. Repeated rejections from unfamiliar origins deserve immediate review.
+
+
+  </Tab>
+  <Tab title="Verification Errors" icon="alert-triangle">
+
+  Verification error events are logged when identity or document verification cannot complete because of an error in the verification process. These events help you monitor failures that affect trust and compliance workflows.
+
+  Review this category to separate isolated processing issues from recurring failures that may require escalation. If several errors appear in the same time window, investigate the affected verification flow first.
+
+
+  </Tab>
+</Tabs>
+
+### Privacy protections
+
+<Callout kind="info">
+
+ModelBoard stores security audit events in a privacy-safe format:
+
+- IP addresses are stored as cryptographic hashes. The original IP address is never saved.
+- Email addresses are stored as cryptographic hashes. The original email address is never saved.
+- User-agent values are reduced to broad categories: `bot`, `mobile`, `browser`, or `other`. Full browser and device details are discarded.
+- Origin values are stored as hostname only. Paths, query parameters, and fragments are removed.
+- No user identifiers are stored with audit events, so entries cannot be linked directly to specific accounts.
+- Additional metadata is sanitized before storage. ModelBoard keeps only simple values, limits text length, and removes nested structures.
+
+
+</Callout>
+
+These protections let you investigate patterns without exposing the raw personal data that often appears in security telemetry. You can still correlate repeated activity across events while keeping the audit log narrowly scoped to its monitoring purpose.
+
+### Access and permissions
+
+Only administrators can view the security audit log. If you do not have the appropriate admin access, ModelBoard does not expose audit entries in the admin experience.
+
+The log is append-only. ModelBoard writes events automatically, but no one, including administrators, can edit or remove existing entries after they are recorded.
+
+Client applications cannot create, update, or delete audit events. Every entry is generated automatically by ModelBoard systems as part of security monitoring.
+
+### Using the audit log
+
+<Steps>
+
+  <Step title="Filter by event type" icon="filter">
+
+  Start with the event category that matches your investigation. For example, review authentication failures to investigate failed sign-ins or OAuth rejections to investigate third-party access attempts.
+
+  Narrowing to one category first makes time-based patterns easier to see. If the result set is still noisy, combine the event type filter with a shorter time window.
+
+
+  </Step>
+  <Step title="Filter by time range" icon="bar-chart">
+
+  Focus on the time window around the incident you are investigating. Use a narrow range when you know when the event occurred, then widen the range if you need more context before or after the spike.
+
+  Success looks like a short list of events that align with the reported incident or suspicious activity window. If you see a sharp increase during that period, continue by correlating the entries.
+
+
+  </Step>
+  <Step title="Correlate repeated activity by IP hash" icon="shield">
+
+  Review entries that share the same IP hash to identify repeated attempts from the same source. This is useful when you want to confirm whether one source generated multiple failed sign-ins, passkey failures, or rate-limited requests.
+
+  A repeating IP hash across many events usually indicates a concentrated attack or an aggressive automated client. Compare the timestamps to see whether the activity was bursty or sustained.
+
+
+  </Step>
+  <Step title="Correlate repeated activity by email hash" icon="users">
+
+  Review entries that share the same email hash to see whether one account target is receiving repeated attempts. This helps you identify focused account takeover attempts and distinguish them from broad scanning activity.
+
+  If the same email hash appears across multiple IP hashes in a short period, credential stuffing is more likely. If one IP hash and one email hash repeat together, the pattern may indicate a direct brute-force attempt.
+
+
+  </Step>
+  <Step title="Review OAuth origin rejections" icon="external-link">
+
+  Check rejected OAuth origins to find applications that are misconfigured or attempting access from an unapproved hostname. Focus on repeated rejections first, especially if they come from origins your team does not recognize.
+
+  If the hostname belongs to a legitimate integration, compare it against your approved configuration. If the hostname is unfamiliar, treat the activity as unauthorized until your team confirms otherwise.
+
+
+  </Step>
+</Steps>
+
+### What to look for
+
+A single event rarely tells the whole story. Investigations become more reliable when you look for repeated patterns across event type, time range, IP hash, email hash, and origin hostname.
+
+Pay close attention to these signals:
+
+- Repeated authentication failures against the same email hash
+- The same IP hash triggering many failed attempts in a short period
+- Rate limiting events that follow bursts of failed authentication
+- Repeated passkey errors from one source over a short window
+- OAuth rejections from unknown or unexpected hostnames
+- Clusters of verification errors in the same time period
+
+### Related pages
+
+<Columns cols={2}>
+
+  <Card
+    title="OAuth Allowed Origins"
+    href="/oauth-allowed-origins"
+    icon="external-link"
+    cta="Review allowed origins"
+  />
+
+  <Card
+    title="Account Types"
+    href="/account-types"
+    icon="users"
+    cta="Compare account access"
+  />
+
+
+</Columns>

@@ -1,0 +1,139 @@
+---
+title: OAuth Allowed Origins
+description: Manage trusted OAuth redirect origins from the admin dashboard by adding exact URLs or regex patterns, toggling access, and updating changes quickly.
+---
+
+## What you can manage
+
+Control which origins ModelBoard trusts for OAuth redirects from the admin dashboard. Add exact URLs or regex patterns, enable or disable origins as needed, and update the trusted list without a code deployment.
+
+## Overview
+
+OAuth allowed origins are the trusted URLs and URL patterns that ModelBoard accepts when issuing redirect URIs during OAuth flows. Use this list to allow known production domains, staging environments, and preview URLs while blocking anything outside your approved set.
+
+This list used to be managed in code, which meant every change required a deployment. You now manage allowed origins directly in the admin dashboard, and changes take effect in approximately 30 seconds.
+
+## Access the page
+
+<Steps>
+
+  <Step title="Sign in to the Admin Dashboard" icon="lock">
+
+Sign in with an administrator account that can access platform tools.
+
+
+  </Step>
+  <Step title="Open the Tools tab" icon="settings">
+
+From the Admin Dashboard, open the **Tools** tab to view administrative utilities.
+
+
+  </Step>
+  <Step title="Click OAuth Allowed Origins" icon="shield">
+
+Select the **OAuth Allowed Origins** card to open the management page.
+
+
+  </Step>
+</Steps>
+
+## Manage origins
+
+Use the table on the page to review and maintain every trusted origin in one place. Each row represents one allowed origin or pattern.
+
+- **Kind** — Shows whether the entry is an **Exact** origin or a **Regex** pattern.
+- **Value** — Displays the trusted origin URL or regex pattern in monospace text.
+- **Label** — Shows an optional descriptive label. If no label is set, the table shows an em dash.
+- **Enabled** — Lets you turn an origin on or off with a toggle switch.
+- **Delete** — Removes the origin from the trusted list using the trash icon.
+
+Use labels to make the list easier to scan when you manage multiple environments. For example, labels such as `Production domain`, `Staging app`, or `Preview URLs` help you identify entries quickly.
+
+## Add a new origin
+
+<Steps>
+
+  <Step title="Click Add origin" icon="plus">
+
+Open the add origin dialog from the OAuth Allowed Origins page.
+
+
+  </Step>
+  <Step title="Choose the origin type" icon="edit">
+
+Select **Exact origin** for a fixed URL or **Regex pattern** for a dynamic pattern such as preview URLs.
+
+
+  </Step>
+  <Step title="Enter the origin value" icon="code">
+
+For an exact origin, enter the full URL without a trailing slash, such as `https://example.com`.
+
+For a regex pattern, enter a valid expression that matches the full origin string, such as `^https://[a-z0-9-]+\.example\.com$`.
+
+
+  </Step>
+  <Step title="Add an optional label" icon="tag">
+
+Enter a descriptive label if you want to identify the entry more easily later, such as `Production domain`.
+
+
+  </Step>
+  <Step title="Save the origin" icon="check-circle">
+
+Click **Add origin** to create the entry. When the save completes, the new origin appears in the table.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="info" collapsed="false">
+
+**Validation rules**
+
+- Exact origins must be valid `http` or `https` URLs without a trailing slash.
+- Regex patterns must be valid regular expressions and must match the full origin string.
+- The **Value** field is required.
+- The **Label** field is optional.
+
+
+</Callout>
+
+## Enable or disable origins
+
+Use the toggle in the **Enabled** column to temporarily disable an origin without deleting it. This is useful when you want to stop trusting a domain for a period of time but expect to restore it later.
+
+Disabled origins are not trusted by the OAuth system. After you change the toggle, a confirmation toast appears to show whether the origin was enabled or disabled successfully.
+
+## Delete origins
+
+Use the trash icon in the **Delete** column to remove an origin. Before ModelBoard deletes the entry, the page asks you to confirm the action.
+
+Deleting an origin removes it permanently from the trusted list. If you need the origin again later, add it as a new entry.
+
+<Callout kind="alert" collapsed="false">
+
+Deleting an origin removes it from the trusted list and can break OAuth flows for any application that still uses that origin for redirects.
+
+
+</Callout>
+
+## Propagation timing
+
+<Callout kind="tip" collapsed="false">
+
+Changes to allowed origins, including additions, enable or disable updates, and deletions, propagate within approximately 30 seconds. You do not need a code deployment or server restart.
+
+
+</Callout>
+
+## Related pages
+
+<Columns cols={2}>
+
+  <Card title="Admin Security Monitoring" href="/admin-security-monitoring" icon="shield" cta="Open page" />
+
+  <Card title="Account Types" href="/account-types" icon="users" cta="Open page" />
+
+
+</Columns>
