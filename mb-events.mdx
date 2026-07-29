@@ -1,0 +1,204 @@
+---
+title: MB Events
+description: Create and manage industry events on ModelBoard — choose between external ticketing or built-in native RSVP, engage attendees with group chat and direct messages, and control access with capacity limits.
+---
+
+## Overview
+
+MB Events helps you create, publish, and manage events inside ModelBoard, then keep attendees engaged before and during the event through registration flows, attendee visibility, chat, and messaging.
+
+<Callout kind="info" collapsed="false">
+
+MB Events is currently in **Limited Beta** and available to platform admins only. If you are not an admin, the MB App Store shows MB Events with a locked **Limited Beta — Admins only** button, and opening event pages redirects you back to the App Store.
+
+</Callout>
+
+MB Events supports two event models. Use **External** when you already sell or manage tickets somewhere else and want attendees to connect that ticket to their ModelBoard account. Use **Native** when you want ModelBoard to handle registration directly with built-in free RSVP.
+
+## Event modes
+
+Choose the mode that matches how your event already runs. The mode affects both what you configure as an organizer and what attendees must do to enter the Attendee Hub.
+
+<Tabs>
+  <Tab title="External" icon="external-link">
+
+  External mode keeps your existing ticketing flow in place.
+
+  - Add an external ticketing reference during setup.
+  - Optionally add a separate external registration URL.
+  - Attendees link their ModelBoard account to their ticket or wristband reference to access the Attendee Hub.
+  - Use this mode when ticket sales, check-in, or attendee verification already happen outside ModelBoard.
+
+  </Tab>
+
+  <Tab title="Native" icon="sparkles">
+
+  Native mode manages registration directly in ModelBoard.
+
+  - Attendees RSVP inside ModelBoard instead of linking an outside ticket.
+  - Free RSVP is built in.
+  - Paid tickets are not part of the current release.
+  - Optionally cap attendance.
+  - Optionally open or close RSVP without removing the event.
+
+  </Tab>
+</Tabs>
+
+## Create an event
+
+Create events through a short setup flow that changes slightly based on the mode you choose.
+
+<Steps>
+  <Step title="Choose an event mode" icon="settings" title-type="p">
+
+  - Select **External** if you use another ticketing provider and want attendees to connect their ModelBoard account to an existing ticket.
+
+  - Select **Native** if you want attendees to register directly in ModelBoard with built-in RSVP.
+
+  - Confirm your choice before moving on, because the final setup step changes based on the selected mode.
+
+  </Step>
+
+  <Step title="Add the event details" icon="edit" title-type="p">
+
+  - Enter the event title, description, date, time, and location details.
+
+  - Review the event summary carefully before continuing. These details appear on the event page and help attendees decide whether to register.
+
+  - When the event is saved, the event page uses these details to populate the main overview section and event info tiles.
+
+  </Step>
+
+  <Step title="Complete the mode-specific setup" icon="check-circle" title-type="p">
+
+  - For **External** events, complete the **Ticketing** step and add the external ticketing reference.
+
+  - For **Native** events, complete the **Registration** step and decide whether to cap attendance and whether RSVP should stay open.
+
+  - Native setup also shows that RSVP is currently free.
+
+  - If you use a separate ticketing or registration page, add the optional external registration URL. When that field is set, the event page sends attendees to that URL from the **Reserve Your Spot** button instead of registering them in ModelBoard.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip" collapsed="false">
+
+Use an external registration URL when your event already has a public ticket page and you want the event detail page to act as the handoff point rather than the registration system.
+
+</Callout>
+
+## Event detail page
+
+The event detail page is organized around three tabs so attendees can understand the event, see who is going, and join the conversation from one place.
+
+### Overview tab
+
+The **Overview** tab is the main event landing area. It combines event details, registration actions, and quick-access tools in one view.
+
+You see tiles for **Date**, **Time**, **Location**, and **Attendee count**. The attendee count updates as registrations change, which makes the page useful both before launch and while the event is active.
+
+The registration card includes the **Reserve Your Spot** action. Depending on how the organizer configured the event, that button either starts registration in ModelBoard or opens an external registration page in a new tab.
+
+You can also use:
+
+- **Add to Calendar** to open a Google Calendar entry for the event
+- **Share** to send the event to other people
+- **Favorite** to save the event for later
+
+If you created the event, the page also shows a **You're the Organizer** badge so it is clear you are viewing your own event.
+
+### Attendees tab
+
+The **Attendees** tab is visible to everyone who can access the event page. You do not need to be registered first to see that tab.
+
+This makes attendee visibility easier to browse before committing to the event. It also gives organizers and guests a consistent place to check who has joined.
+
+### Group Chat tab
+
+The **Group Chat** tab gives the event its own live conversation space. Rooms appear in a sidebar so attendees can move between channels without leaving the event page.
+
+Posting is gated by room membership. If you have not joined a room yet, the chat composer stays unavailable until you click **Join to chat**.
+
+Organizers can create additional rooms when they need separate spaces for announcements, logistics, or topic-based discussion. If a message is removed, the conversation shows **message deleted** in its place rather than disappearing silently.
+
+Keyboard behavior is optimized for live conversation:
+
+- Press <kbd>Enter</kbd> to send
+- Press <kbd>Shift</kbd> + <kbd>Enter</kbd> to start a new line
+
+## Attendee Hub
+
+The Attendee Hub changes based on the event mode so attendees see the action they need next.
+
+### External events
+
+External events ask attendees to connect their ModelBoard account to their ticket or wristband reference. That link is what unlocks the Attendee Hub experience.
+
+Once linked, attendees can participate as confirmed event participants inside ModelBoard even though the ticket itself came from another platform.
+
+### Native events
+
+Native events show a **Register for this event** card with an RSVP action. If the organizer set a capacity limit, the card also shows the current count against that limit.
+
+When the event has reached capacity, attendees see **Registration is full** and cannot submit another RSVP. The RSVP button is disabled until space becomes available.
+
+### Direct messages
+
+The Attendee Hub also includes a direct message directory for other linked attendees. Use **Message** beside a person's name to open a conversation in ModelBoard's main messaging inbox.
+
+<Callout kind="info" collapsed="false">
+
+Direct messages use ModelBoard's regular messaging system. MB Events helps you discover and open conversations with other attendees, but the messages themselves are not stored inside the event experience.
+
+</Callout>
+
+If no other attendees have linked their accounts yet, the direct message area shows an empty state until more people appear.
+
+## External registration URL
+
+An external registration URL changes what happens when someone clicks **Reserve Your Spot** on the event detail page.
+
+<Callout kind="info" collapsed="false">
+
+When you add an external registration URL, **Reserve Your Spot** opens that URL in a new tab instead of registering the attendee inside ModelBoard. Use this when your event has its own ticketing or registration page and you want ModelBoard to point attendees there.
+
+</Callout>
+
+This option is especially useful for branded ticket pages, venue-managed registration flows, or events that already depend on another provider for checkout and confirmation.
+
+## Capacity management
+
+Capacity controls are available for **Native** events only. Use them when you need ModelBoard to stop registrations automatically after a specific number of attendees.
+
+You can set the attendance cap during event creation and update it later from the event management view. If you do not set a cap, registration stays uncapped.
+
+When capacity is reached:
+
+- Attendees see **Registration is full**
+- The RSVP button is disabled
+- No additional registrations are accepted
+
+<Callout kind="success" collapsed="false">
+
+Capacity limits are enforced by the platform, so registrations cannot exceed the cap even if multiple people try to RSVP at the same time.
+
+</Callout>
+
+You can also control whether RSVP is open or closed. That gives you a way to pause registrations without removing the event or changing its core details.
+
+## Next steps
+
+<Columns cols="3">
+  <Card title="MB App Store" href="/mb-apps" icon="grid" cta="See app access details" horizontal="false">
+    Check how MB Events appears in the App Store, including Limited Beta access and app availability notes.
+  </Card>
+
+  <Card title="Account types" href="/account-types" icon="users" cta="Compare account roles" horizontal="false">
+    Understand which ModelBoard roles can access admin-only tools and how responsibilities differ across account types.
+  </Card>
+
+  <Card title="Getting Started" href="/getting-started" icon="map" cta="Follow the guide" horizontal="false">
+    Walk through core ModelBoard setup steps so your account, profile, and permissions are ready before creating events.
+  </Card>
+</Columns>
