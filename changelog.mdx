@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="Platform Update" href="#platform-update" icon="calendar" horizontal="false" target="_self">
+    MB Events Limited Beta with admin-only access and external registration URLs.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -20,11 +24,27 @@ Stay current with ModelBoard's evolution through our structured release cadence.
   <Card title="v0.39.19" href="#v0-39-19" icon="lucide-file-code" horizontal="false" target="_self">
     Implementing all new Passwordless & Credless Passkey Auth.
   </Card>
-
-  <Card title="v0.39.16" href="#v0-39-16" icon="file-code-icon" horizontal="false" target="_self">
-    Introducing Significant Upgrade of the Collaboration Hub.
-  </Card>
 </Columns>
+
+<Update label="2026-07-28" description="Platform Update" tags={["New Features","Improvements"]}>
+  ### MB Events enters Limited Beta with admin-only access, and event organizers can now route registrations to an external URL.
+
+  ## New Features
+
+  ✅ **NEW** MB Events is now available in Limited Beta, restricted to admin users. Non-admin users see a locked **Limited Beta — Admins only** button on the app card in the App Store and are redirected to the App Store if they attempt to access MB Events directly.
+
+  ✅ **NEW** Event creators can now set an **External Registration URL** when creating or editing an event. When set, the **Reserve Your Spot** button on the event detail page opens the external URL in a new tab instead of registering the attendee on ModelBoard.
+
+  ## Improvements
+
+  🪄 **Added** App Store cards for Limited Beta apps now display an amber **Limited Beta** badge so users can identify apps that are not yet broadly available.
+
+  🪄 **Added** The **Reserve Your Spot** button on event detail pages now shows an external link icon when an external registration URL is configured, making it clear that the user will be taken to an external page.
+
+  \---
+
+  ###### *This version may also include more undocumented changes fixing various small bugs and implementing minor security upgrades.*
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
