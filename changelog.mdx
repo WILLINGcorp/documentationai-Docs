@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.41.01" href="#v0-41-01" icon="file-code-icon" horizontal="false" target="_self">
+    MB Events now open to all users, external registration support, and navigation fixes.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -25,6 +29,31 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-08-11" description="v0.41.01" tags={["New Features","Improvements","Fixes"]}>
+
+  ### This update opens MB Events to all logged-in users, adds external registration support for events, and fixes several navigation issues.
+
+  ## New Features
+
+  ✅ **NEW** MB Events are now accessible to all logged-in users. Event detail pages were previously restricted to admins only — any authenticated user can now browse and register for events.
+
+  ✅ **NEW** Event creators can now specify an External Registration URL when creating or editing an event. When set, the "Reserve Your Spot" button on the event detail page links directly to the external registration page instead of registering attendees through ModelBoard. Use this when you handle ticketing through a third-party platform.
+
+  ## Improvements
+
+  🪄 **Added** The Press Kit page is now served directly within the ModelBoard app instead of redirecting to an external marketing site.
+
+  🪄 **Added** Post-login redirects now support cross-subdomain ModelBoard URLs with improved open-redirect protection.
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** Resolved a routing conflict that caused the Ambassadors page to redirect to the marketing site instead of displaying the in-app page.
+
+  ---
+  
+  ###### *This version may also include more undocumented changes fixing various small bugs and implementing minor security upgrades.*
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
