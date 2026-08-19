@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.41.0" href="#v0-41-0" icon="file-code-icon" horizontal="false" target="_self">
+    Authentication redirect improvements and Press Kit fix.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -25,6 +29,25 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-08-15" description="v0.41.0" tags={["Improvements","Fixes"]}>
+  ### This update improves authentication redirect handling and fixes the in-app Press Kit page.
+
+  ## Improvements
+
+  🪄 **Added** Post-sign-in redirects now support cross-subdomain URLs on `*.modelboard.net`, enabling seamless navigation across ModelBoard subdomains after authentication. Redirects to non-ModelBoard domains are blocked for security.
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** Standardized the post-authentication redirect parameter from `returnTo` to `return_to` for consistent URL formatting.
+
+  🛠️ **Fixed** The Press Kit page now renders in-app instead of redirecting to an unavailable external URL.
+
+  ---
+
+  ###### *This version may also include more undocumented changes fixing various small bugs and implementing minor security upgrades.*
+
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
