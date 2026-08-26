@@ -1,0 +1,201 @@
+---
+title: Admin Security Monitoring
+description: Review security events across authentication, passkey, and OAuth flows to detect and investigate suspicious activity.
+---
+
+## Monitor security activity across the platform
+
+The security audit log helps you detect suspicious activity across login, passkey, and OAuth flows without exposing raw personal data.
+
+<Callout kind="info">
+
+Only platform administrators can view the security audit log. Standard users, organization members, and creators cannot access these records.
+
+</Callout>
+
+Use the audit log when you need to answer questions such as which authentication patterns are failing, whether a client is being rate-limited, or whether an OAuth request is coming from an unapproved origin. Entries are written automatically by the platform backend as security-sensitive events happen.
+
+Because the log is append-only from the client perspective, you can treat it as a reliable operational record. Users cannot create, edit, or delete audit entries themselves.
+
+## What gets monitored
+
+The audit log focuses on security-relevant events rather than general product activity. It records failures, rejections, and unexpected errors that matter during investigation.
+
+The platform currently tracks six administrator-visible event categories:
+
+- **Authentication failures** when a credential-based sign-in attempt fails.
+- **Rate-limited authentication** when repeated requests from the same source cross protection thresholds.
+- **Passkey verification failures** when a submitted passkey response cannot be validated.
+- **Invalid passkey challenges** when a passkey challenge is missing, expired, or no longer usable.
+- **Rejected OAuth origins** when an OAuth request comes from an origin that is not allowed.
+- **Unexpected verification errors** when a security-critical verification flow ends in an unhandled error.
+
+Each entry includes the event category, the affected security flow, the outcome status, and sanitized context that helps you correlate related activity over time.
+
+## Event types
+
+Use these categories to interpret what a log entry means and how urgently it needs attention.
+
+<ParamField body="Authentication failures" param-type="event category" required="true" show-location="false">
+
+Recorded when a credential-based login attempt fails because the submitted credentials do not match a valid account.
+
+From an investigation perspective, repeated failures against the same hashed email or IP fingerprint can indicate password guessing, credential stuffing, or a user who is locked in a retry loop.
+
+</ParamField>
+
+<ParamField body="Rate-limited authentication" param-type="event category" required="true" show-location="false">
+
+Recorded when the platform blocks authentication traffic because request volume exceeds allowed limits.
+
+This category covers both **IP burst behavior** and **per-credential repetition**. In practice, this means too many requests from the same IP within one minute, or too many attempts for the same email within a 15-minute window.
+
+</ParamField>
+
+<ParamField body="Passkey verification failures" param-type="event category" required="true" show-location="false">
+
+Recorded when a passkey response is submitted but cannot be verified successfully.
+
+Common meanings include a passkey credential that the platform cannot match, or a verification result that fails signature validation. Investigate repeated failures to distinguish isolated user issues from broader abuse or configuration problems.
+
+</ParamField>
+
+<ParamField body="Invalid passkey challenges" param-type="event category" required="true" show-location="false">
+
+Recorded when a passkey challenge is missing, expired, or has already been used.
+
+This category often points to stale browser state, replay attempts, or interrupted authentication flows. A cluster of these events from the same hashed IP can indicate automation or a misbehaving client.
+
+</ParamField>
+
+<ParamField body="Rejected OAuth origins" param-type="event category" required="true" show-location="false">
+
+Recorded when an OAuth request originates from a hostname that is not on the approved allowlist.
+
+Treat this as a configuration or security review signal. A single event may reflect a deployment mismatch, while repeated events from unfamiliar hostnames may indicate probing or misuse.
+
+</ParamField>
+
+<ParamField body="Unexpected verification errors" param-type="event category" required="true" show-location="false">
+
+Recorded when a security-critical verification flow fails with an unexpected internal error instead of a normal handled rejection.
+
+These events deserve prompt review because they can hide a reliability issue, a malformed request pattern, or a security control that did not complete as expected.
+
+</ParamField>
+
+<Callout kind="tip">
+
+Logging runs alongside authentication and OAuth processing instead of blocking it. A recorded event should not add noticeable delay to sign-in or verification flows.
+
+</Callout>
+
+## How personal data is protected
+
+The security audit log is designed to support investigation while minimizing exposure of personal data.
+
+<Callout kind="alert">
+
+Treat audit data as sensitive operational information even though the platform removes or reduces direct identifiers. Limit access to administrators who need it for security review, incident response, or compliance work.
+
+</Callout>
+
+<Callout kind="info">
+
+The platform protects personal data in the audit log in several ways:
+
+- IP addresses are cryptographically hashed before storage and are never stored in raw form.
+- Email addresses are cryptographically hashed before storage and are never stored in raw form.
+- User agent strings are reduced to a coarse category such as `browser`, `bot`, `mobile`, or `other`, and the full string is discarded.
+- Origin URLs are reduced to the hostname only. Paths and query strings are not retained.
+- Metadata is sanitized so only simple values are stored, nested objects are removed, and long strings are truncated.
+- No user IDs are stored in the audit log. Entries are anonymous by design.
+
+</Callout>
+
+These protections change how you investigate activity. You do not identify individuals directly from the log. Instead, you correlate repeated behavior through hashed identifiers, event timing, request origin, and event type patterns.
+
+## Access and permissions
+
+Access to the security audit log is restricted to platform administrators.
+
+Administrators can review entries for investigation and monitoring, but regular users cannot read them. Audit entries are created automatically by the platform backend, and users cannot submit forged records through normal client access.
+
+The log is also append-only from the client side. That means entries are added over time but cannot be altered or removed by end users, which preserves the integrity of the investigation record.
+
+## Use the audit log to investigate suspicious activity
+
+Start with the event category and time window. A single failed login may be routine, but repeated failures followed by rate-limited authentication entries often point to automated attempts or a targeted attack pattern.
+
+Next, correlate by hashed IP and hashed email where available. When multiple entries share the same hashed values across a short period, you can usually treat them as the same source or target even though the raw personal data is not visible.
+
+Then look at supporting context:
+
+- **HTTP status** helps you separate handled rejections from unexpected failures.
+- **Origin hostname** helps you spot requests coming from unapproved or unfamiliar domains.
+- **User agent class** helps you distinguish likely browser traffic from bot-like patterns.
+- **Metadata** can add narrow context without exposing raw nested payloads.
+
+<Callout kind="tip">
+
+Look for sequences, not isolated events. For example, repeated authentication failures from one hashed IP followed by rate-limited authentication suggests abusive volume, while rejected OAuth origins from a new hostname may point to an allowlist gap or an unauthorized client.
+
+</Callout>
+
+A useful review pattern is to move from broad to narrow. First identify spikes by category, then inspect repeated hashed identifiers, then compare origin hostname and user agent class to confirm whether the events look like a normal user struggle, a broken integration, or deliberate abuse.
+
+## FAQs
+
+<ExpandableGroup>
+  <Expandable title="Can administrators see raw IP addresses or email addresses?" default-open="false">
+
+  No. The audit log stores cryptographically hashed IP addresses and email addresses instead of raw values.
+
+  You can still correlate repeated activity because the same input produces the same stored hash, but you cannot read the original IP or email from the log.
+
+  </Expandable>
+
+  <Expandable title="Can users or attackers tamper with audit entries?" default-open="false">
+
+  No. Audit entries are written automatically by the platform and are not editable from the client side.
+
+  From an administrator perspective, the log behaves as an append-only record of security events.
+
+  </Expandable>
+
+  <Expandable title="Why does the log not show a user ID?" default-open="false">
+
+  The audit log is anonymous by design. It prioritizes investigation patterns over direct personal identity.
+
+  This design reduces exposure of personal data while still letting you correlate repeated activity through hashed identifiers, timing, and event context.
+
+  </Expandable>
+
+  <Expandable title="Does security logging slow down sign-in or OAuth flows?" default-open="false">
+
+  No meaningful delay should be visible during normal use. Security events are recorded in a non-blocking way so authentication and verification flows can continue without waiting on log storage.
+
+  </Expandable>
+
+  <Expandable title="What should I investigate first during a suspected attack?" default-open="false">
+
+  Start with clusters of repeated failures, rate-limited authentication events, and rejected OAuth origins in a narrow time window.
+
+  Then correlate by hashed IP, hashed email, origin hostname, and user agent class to determine whether the pattern looks like user error, integration drift, or deliberate abuse.
+
+  </Expandable>
+</ExpandableGroup>
+
+## Where to go next
+
+<Columns cols={3}>
+  <Card title="Review OAuth allowed origins" href="/oauth-allowed-origins" icon="shield" cta="Open page">
+    Confirm which hostnames are approved for OAuth requests and reduce rejected-origin events.
+  </Card>
+  <Card title="Manage organization access" href="/organizations" icon="users" cta="Open page">
+    Review role and approval controls for teams that need elevated access to sensitive features.
+  </Card>
+  <Card title="Find support procedures" href="/help-center" icon="help-circle" cta="Open page">
+    Use support guidance when you need operational follow-up after identifying suspicious activity.
+  </Card>
+</Columns>

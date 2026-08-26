@@ -1,0 +1,225 @@
+---
+title: OAuth Allowed Origins
+description: Control which domains can receive OAuth redirects to keep third-party integrations and authorization flows secure.
+---
+
+## Control which domains can receive OAuth redirects
+
+OAuth Allowed Origins lets platform administrators decide which web origins are trusted to receive OAuth redirect traffic. Use it to approve production domains, support approved development environments, and reduce the risk of redirecting authorization flows to untrusted sites.
+
+<Callout kind="info">
+
+Only administrators with access to the admin dashboard can manage OAuth Allowed Origins. Open the admin dashboard, go to **Administration**, and then manage the allowed origin list from there.
+
+</Callout>
+
+Each origin rule represents a domain that the platform can trust during OAuth flows. When a third-party integration or internal workflow starts an authorization request from a trusted origin, ModelBoard can send the user back to the correct callback path on that domain.
+
+## How origin matching works
+
+Allowed origins support two matching methods: **exact URL** and **regex pattern**. Exact origins match only one full origin string, while regex patterns let you approve a controlled set of origins with one rule.
+
+For an approved origin, the platform builds the redirect URI by appending `/auth/callback` to the matched origin. If the request origin does not match the allowlist, the platform falls back to the production default redirect URI instead of using the untrusted origin.
+
+<Callout kind="tip">
+
+Changes propagate within approximately 30 seconds. If you add, disable, or delete an origin and do not see the result immediately, wait briefly and try the OAuth flow again.
+
+</Callout>
+
+If the origin database is temporarily unavailable, the platform backend uses a built-in set of trusted default origins as a fallback. That fallback helps keep essential authentication flows working while preventing broad trust of unknown domains.
+
+Rejected origin attempts are recorded for security review. If you need to investigate repeated rejections or unexpected redirect behavior, review your security monitoring workflow in [Admin security monitoring](/admin-security-monitoring).
+
+### Matching behavior to expect
+
+- **Exact origin** uses strict matching against the full origin.
+- **Regex pattern** must match the full origin string, not only part of it.
+- **Disabled origins** are ignored until you enable them again.
+- **Sorting in the admin list** shows exact origins first, then regex patterns, and then sorts by value within each type.
+
+## Manage allowed origins
+
+Manage the list directly from the admin dashboard. The most common tasks are adding a new origin, temporarily disabling a rule, and deleting an outdated rule.
+
+<Steps>
+
+<Step title="Add a new origin" icon="plus">
+
+Click **Add origin** from the OAuth Allowed Origins page in **Administration**.
+
+Choose the origin **kind**:
+
+- **Exact origin** for one specific origin such as `https://app.modelboard.com`
+- **Regex pattern** for a controlled pattern such as `^https://[a-z0-9-]+\.partner-site\.com$`
+
+Enter the **value** and, if helpful, add a **label** such as `Production domain` or `Partner sandbox`.
+
+Save the origin. The new rule appears in the origin table with its kind, value, label, current enabled state, and delete action.
+
+A successful save means the new origin is listed in the table and can be used after the propagation delay.
+
+</Step>
+
+<Step title="Enable or disable an origin" icon="settings">
+
+Find the origin in the table and use the **Enabled** toggle to change its state.
+
+Enable a rule when the domain is approved for current use. Disable a rule when you need to pause redirects for a domain without removing the rule entirely.
+
+A successful update shows a confirmation message that the origin was enabled or disabled.
+
+</Step>
+
+<Step title="Delete an origin" icon="trash">
+
+Click the delete action for the origin you want to remove.
+
+Confirm the deletion when prompted. Use deletion for rules you no longer need and do not expect to restore.
+
+A successful delete removes the origin from the table and shows a confirmation message.
+
+</Step>
+
+</Steps>
+
+## Origin types and validation
+
+Use these fields when you create or review an allowed origin entry.
+
+<ParamField body="kind" param-type="exact | regex" required="true" show-location="false">
+
+The matching method for the rule.
+
+- **`exact`** approves one specific origin only.
+- **`regex`** approves origins that match a regular expression.
+
+Choose `exact` unless you have a clear need to support multiple origins with one pattern.
+
+</ParamField>
+
+<ParamField body="value" param-type="string" required="true" show-location="false">
+
+The exact origin URL or regex pattern used for matching.
+
+For **exact origins**:
+
+- The value cannot be blank.
+- The value must be a valid URL.
+- The protocol must be `http` or `https`.
+- The value must not end with a trailing slash.
+
+For **regex patterns**:
+
+- The value cannot be blank.
+- The value must be a valid regular expression.
+- The pattern should be specific enough to avoid matching unintended domains.
+
+</ParamField>
+
+<Callout kind="alert">
+
+Regex patterns can grant broader access than intended if they are too permissive. Anchor patterns carefully and review them as if they were security rules, because they are.
+
+</Callout>
+
+<ParamField body="label" param-type="string" required="false" show-location="false">
+
+An optional human-readable name for the rule, such as `Production`, `Staging`, or `Partner integration`. Labels help your team understand why a rule exists without reading the full value.
+
+</ParamField>
+
+<ParamField body="enabled" param-type="boolean" required="true" show-location="false">
+
+Controls whether the rule is active.
+
+- **Enabled** rules can be used for origin matching.
+- **Disabled** rules stay in the list but are ignored until re-enabled.
+
+Use the enabled state when you want to pause an origin without deleting its configuration.
+
+</ParamField>
+
+## FAQs
+
+<ExpandableGroup>
+
+<Expandable title="When should I use an exact origin instead of a regex pattern?" default-open="true">
+
+Use an exact origin for most entries. Exact matches are easier to review, harder to misconfigure, and better for known production domains.
+
+Use a regex pattern only when you need to support a controlled range of origins, such as tenant subdomains or approved partner environments.
+
+</Expandable>
+
+<Expandable title="Why did my new origin not work immediately?">
+
+Origin changes do not apply instantly. The platform refreshes origin rules on a short cache interval, so allow about 30 seconds before testing again.
+
+</Expandable>
+
+<Expandable title="What happens if an origin is rejected?">
+
+The platform does not build a redirect URI from an unapproved origin. Instead, it falls back to the production default redirect URI and logs the rejected attempt for security monitoring.
+
+</Expandable>
+
+<Expandable title="Should I disable or delete an origin?">
+
+Disable an origin when you may need it again later, such as during a temporary rollout pause or partner maintenance window.
+
+Delete an origin when the domain is permanently retired or should no longer appear in the approved list.
+
+</Expandable>
+
+<Expandable title="Can I use localhost or development origins?">
+
+Use development origins only when your admin policy allows them. If you approve development origins, keep them specific and review them regularly so temporary access does not remain longer than intended.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+Use these related pages to review security activity, understand account structure, and direct team members to broader support resources.
+
+<Columns cols={2}>
+
+<Card
+  title="Admin security monitoring"
+  href="/admin-security-monitoring"
+  icon="shield"
+  cta="Review rejected origin activity"
+  horizontal="false"
+>
+
+Monitor security-related events and investigate rejected origin attempts alongside other admin-visible activity.
+
+</Card>
+
+<Card
+  title="Organizations"
+  href="/organizations"
+  icon="users"
+  cta="Understand account structure"
+  horizontal="false"
+>
+
+Review how organizations, sub-accounts, roles, and administrative responsibilities are structured across the platform.
+
+</Card>
+
+<Card
+  title="Help Center"
+  href="/help-center"
+  icon="help-circle"
+  cta="Find broader support guidance"
+  horizontal="false"
+>
+
+Send teammates to general support and product guidance when they need help outside administrator workflows.
+
+</Card>
+
+</Columns>
