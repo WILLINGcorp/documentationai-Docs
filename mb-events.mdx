@@ -1,0 +1,233 @@
+---
+title: MB Events
+description: Create and manage professional industry events with external ticketing, event details, registration, and attendee networking in ModelBoard.
+---
+
+## Overview
+
+MB Events helps you list professional events, manage event operations, and give attendees a place to connect before and during the event. Use it to publish event details, coordinate schedules and attendees, monitor registration activity, and support networking through chat and collaboration tools.
+
+MB Events is designed for Business, Studio, and Enterprise account holders who organize industry events. Attendees can view event information, register, search confirmed attendees, join group conversations, and use the Attendee Hub when the event supports it.
+
+## Access and eligibility
+
+MB Events is currently in Limited Beta and is restricted to admin users. Non-admin users see a locked **Limited Beta, Admins only** button in the MB App Store and are redirected to the App Store if they try to open the app directly.
+
+<Callout kind="info" collapsed="false">
+
+Only admins with a Business, Studio, or Enterprise account type can create events. An admin with another account type may access the app but will not see the **Create a New Event** button.
+
+</Callout>
+
+## Create an event
+
+Create an event from the **Create a New Event** button. The event manager currently supports external ticketing, while native ModelBoard ticketing is planned for a future release.
+
+<Steps>
+  <Step title="Choose event mode" title-type="p">
+
+    Select **External** to list an event with its own external ticketing while using ModelBoard networking and a gated Attendee Hub.
+
+    **Native (Fully Featured)** is displayed with a **Coming Soon** badge and cannot be selected yet. Select **External** to enable the **Next** button.
+
+  </Step>
+  <Step title="Enter event details" title-type="p">
+
+    Enter the information attendees need to understand when, where, and how your event takes place.
+
+    - **Title**: Enter the event name. This field is required.
+    - **Description**: Add the event overview and any information attendees should read before registering.
+    - **Format**: Select **Virtual**, **In-Person**, or **Hybrid**.
+    - **Starts**: Set the event start date and time. This field is required.
+    - **Ends**: Set the event end date and time. This field is required.
+    - **Multi-day/recurring**: Enable this option when the event spans multiple days or repeats. Recurring events can generate daily sessions and use recurrence rules such as `FREQ=YEARLY;INTERVAL=1`.
+
+    Select **Next** after entering the required details. The ticketing step opens when the details are valid.
+
+  </Step>
+  <Step title="Configure ticketing" title-type="p">
+
+    Select a ticketing provider for the external event.
+
+    - **The Grabbys**: The currently available provider, labeled **In-house**.
+    - **Other providers**: Additional providers, including Eventbrite and Ticketmaster, are listed as **Coming Soon** and cannot be selected yet.
+    - **External event reference**: Enter the The Grabbys event slug or ID, such as `grabbys-europe-2026`. This field is required to complete setup.
+
+    In the legacy event creation wizard, you can also enter an optional **External Registration URL**, such as `https://tickets.yourevent.com`. When you provide this URL, **Reserve Your Spot** opens the external ticketing page instead of creating a ModelBoard registration.
+
+  </Step>
+  <Step title="Review and publish" title-type="p">
+
+    Review the event details and ticketing configuration, then choose one of the available actions:
+
+    - **Save as Draft**: Keep the event private while you continue preparing it.
+    - **Publish**: Make the event available for attendees to view and register.
+
+    A published event appears in your event listings and can be opened from its event detail page.
+
+  </Step>
+</Steps>
+
+## Manage your events
+
+After you create events, use the MB Events workspace to review event activity, manage individual events, and inspect dates across your event calendar.
+
+### Dashboard
+
+The **Dashboard** tab opens the management workspace. Its views cover the main areas of event operations:
+
+- **Overview**: Review attendance statistics, registration trends, and revenue information.
+- **Tickets**: Review ticket-related information.
+- **Schedule**: Manage event timing and sessions.
+- **Attendees**: Review registered attendees.
+- **Check-In**: Track attendee check-ins.
+- **Networking**: Manage networking activities.
+- **Speakers**: Review speaker information.
+- **Chat**: Manage event conversations.
+- **Feedback**: Review attendee feedback.
+- **Financial**: Review financial information.
+
+The overview is centered on the first event in your event list. Open an individual event when you need to work with a specific event.
+
+### My Events
+
+The **My Events** tab displays your events as cards. Each card can include the event banner, category, featured status, title, description, date and time, location, registration and view counts, paid or free status, and organizer information.
+
+Use **View Event Details** to open the attendee-facing event page. Open the event overflow menu to choose:
+
+- **Edit Event**: Change the event information.
+- **Manage**: Open the event management views.
+- **Delete**: Remove the event.
+
+If you have not created an event, the page shows **No events found** and **You haven't created any events yet.**
+
+### Calendar
+
+The **Calendar** tab displays a month view with event dates highlighted. Use the previous and next month controls to browse the calendar, select a date to view its events, and review monthly totals for total, free, and virtual events.
+
+## Event detail page
+
+The event detail page gives attendees the information and actions they need before joining an event.
+
+<Tabs>
+  <Tab title="Overview">
+
+    The header shows the event title, a shortened description, the organizer's avatar and display name, and an organizer badge when you own the event.
+
+    Header actions include:
+
+    - **Add to Calendar**: Generate a Google Calendar link for the event.
+    - **Share**: Use your device's native sharing options or copy the event URL.
+    - **Favorite**: Save the event using the heart icon.
+
+    Information tiles show the event **Date**, **Time**, **Location**, and confirmed **Attendees** count. The Overview tab also includes:
+
+    - **About This Event**: The full event description.
+    - **Sponsors**: Sponsor names displayed as labels.
+    - **Venue**: Venue name, city, country, and address.
+    - **Registration**: Ticket price, reservation count, and the **Reserve Your Spot** button.
+
+  </Tab>
+  <Tab title="Attendees">
+
+    The **Attendees** tab shows confirmed attendees and includes a **Search attendees...** field.
+
+    Each attendee card can show an avatar, display name, ticket type badge, and a **Checked In** indicator. Use search to find a confirmed attendee by name.
+
+  </Tab>
+  <Tab title="Group Chat">
+
+    The **Group Chat** tab organizes conversations into rooms or channels. Select a room to view its message history, or select **Join to chat** when you have not joined that room yet.
+
+    Organizers can create channels with a name, description, and optional wristband-tier restrictions. Channel messages update in real time. Enter sends a message, while **Shift+Enter** creates a new line.
+
+    Tier-restricted channels display a shield icon and a **Tier-restricted** label.
+
+  </Tab>
+</Tabs>
+
+## Registration
+
+Events support native ModelBoard registration and external registration.
+
+<Tabs>
+  <Tab title="Native registration">
+
+    Use native registration when the event does not have a configured external registration URL. Attendees select **Reserve Your Spot** to RSVP directly on ModelBoard.
+
+    After a successful reservation, the button changes to **You're registered**.
+
+  </Tab>
+  <Tab title="External registration">
+
+    Use external registration when the event includes a valid HTTP or HTTPS registration URL. Selecting **Reserve Your Spot** opens the external ticketing page in a new browser tab and displays an external-link icon.
+
+    External registration does not create a ModelBoard registration. The external ticketing provider records the reservation instead.
+
+  </Tab>
+</Tabs>
+
+<Callout kind="info" collapsed="false">
+
+Capacity limits may apply. When an event has a capacity, the registration card shows the number of reserved spots against the total available spots.
+
+</Callout>
+
+## Attendee Hub
+
+The Attendee Hub provides networking features for events created with the Events Manager. You must link your ModelBoard account before you can access its chat rooms, direct messages, and collaboration proposals.
+
+<Callout kind="tip" collapsed="false">
+
+Linking your ModelBoard account connects your event identity to your ModelBoard profile and unlocks the Attendee Hub networking features. You can optionally provide a ticket or wristband reference during linking.
+
+</Callout>
+
+### Direct messages
+
+After linking your account, browse the other attendees who have also linked their accounts. Select **Message** next to an attendee to open a private conversation in your ModelBoard inbox.
+
+The list excludes your own account. If no other attendees have linked their accounts, the Attendee Hub shows **No other linked attendees yet. Once other guests link their accounts, they will appear here.**
+
+### Chat rooms
+
+Chat rooms provide multiple event channels for real-time conversations. Select a channel from the room list to read its messages and send a reply.
+
+Organizers can create channels with:
+
+- **Name**: The channel name, such as `general`.
+- **Description**: A short explanation of the channel's purpose.
+- **Restrict to wristband tiers**: An optional restriction that limits access to selected wristband tiers.
+
+A blank tier restriction leaves the channel open to all linked attendees. Restricted channels show a shield icon and a **Tier-restricted** label.
+
+### Collaboration proposals
+
+Send a collaboration proposal to a linked attendee from the Attendee Hub.
+
+1. Select a linked attendee.
+2. Add an optional note.
+3. Propose start and end dates.
+4. Send the proposal.
+5. Review proposals in **Received** or **Sent**.
+6. Choose **Agree**, **Refuse**, or **Withdraw** when the proposal status allows the action.
+
+## Next steps
+
+<Columns cols={3}>
+  <Card title="Explore the MB App Store" href="/mb-apps" icon="package" cta="Browse MB Apps" horizontal="false">
+
+    Add focused apps to your ModelBoard account and extend your profile workflows.
+
+  </Card>
+  <Card title="Connect external tools" href="/integrations" icon="cloud" cta="View integrations" horizontal="false">
+
+    Review ways to connect ModelBoard with external systems and services.
+
+  </Card>
+  <Card title="Get started with ModelBoard" href="/getting-started" icon="rocket" cta="Open the getting started guide" horizontal="false">
+
+    Learn the core ModelBoard workflows before managing your event program.
+
+  </Card>
+</Columns>
