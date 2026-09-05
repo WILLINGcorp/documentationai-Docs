@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.41.01" href="#v0-41-01" icon="file-code-icon" horizontal="false" target="_self">
+    Identity verification now powered by vAulth, plus security hardening.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -25,6 +29,28 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-09-05" description="v0.41.01" tags={["New Features","Improvements","Security"]}>
+  ### Identity verification is now powered by vAulth, along with security hardening across sub-account and compliance systems.
+
+  ## New Features
+
+  ✅ **NEW** Identity verification is now performed entirely by vAulth. When you start verification, you're taken to vAulth in the same browser tab and returned to ModelBoard automatically once complete — no more separate in-app verification wizard. See [Compliance](/compliance) for details.
+
+  ## Improvements
+
+  🪄 **Added** Unified verification status across compliance, onboarding, and account settings — showing Not Started, Pending, or Verified consistently everywhere.
+
+  🪄 **Added** Onboarding now waits for verification to be confirmed before letting you continue, preventing incomplete accounts from proceeding.
+
+  ## Security Fixes
+
+  🛠️ **Fixed** Sub-account API requests now reject malformed organization identifiers, preventing unauthorized access attempts. See [Sub-Accounts](/sub-accounts) for more.
+
+  🛠️ **Fixed** Compliance API credentials are no longer exposed to client-side roles, closing a potential access gap.
+
+  🛠️ **Fixed** OAuth trust-tier assignments are now enforced at the database level, preventing unauthorized elevation of trust levels.
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
