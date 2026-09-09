@@ -1,0 +1,381 @@
+---
+title: MB Events
+description: Discover industry events, register or buy tickets, connect with attendees, and manage events through your ModelBoard account.
+---
+
+## What MB Events is
+
+MB Events brings industry event discovery, registration, attendance, and networking into ModelBoard. Use it to find relevant events, review event details, register or buy tickets, and connect with other attendees.
+
+Organization owners and managers can use Events Manager to create, publish, and manage events, attendees, ticketing, and event-day information.
+
+<Callout kind="info">
+
+You use your existing ModelBoard account for MB Events. You do not need a separate account.
+
+</Callout>
+
+## Discovering events
+
+Open the public events page at `/events` to browse upcoming and past industry events. A featured event strip highlights selected events before the main event listings.
+
+Use search and filters to narrow the results:
+
+- **Search:** Search by event title, city, venue, or description.
+- **Category:** Filter by categories such as convention, premiere, masterclass, or meetup.
+- **City:** Show events in a specific city.
+- **Ticketing:** Choose Any ticketing, On ModelBoard, or External.
+- **Format:** Filter by In person, Virtual, or Hybrid.
+- **Price:** Choose Any price, Free, or Paid.
+- **Date range:** Choose This month, Next 3 months, All upcoming, or Past events.
+
+When you change a filter, select **Reset filters** to return to the full event list. If your search returns no events, select **Clear filters** to remove the active search and filters.
+
+## What event listings show
+
+Each event appears as a clickable event card. Select anywhere on the card to open the event detail page.
+
+An event card can include:
+
+- **Banner:** The organizer's uploaded banner image, or a branded fallback using the first two letters of the event title.
+- **Featured badge:** Indicates that the event is featured.
+- **Ticketing badge:** Shows **On ModelBoard** with a ticket icon for native events, or **External** with an external-link icon for events handled by another provider.
+- **Category:** The event category.
+- **Format:** In person, Virtual, or Hybrid.
+- **Title and description:** The event title and a description truncated to two lines. Featured cards may use a compact layout without the description.
+- **Date and time:** The event date, start time, end time when available, and timezone when the date is not fully specified. Multi-day events show a date range.
+- **Location:** The city and venue when location information is available.
+- **Attendance:** The current number of attendees.
+- **Organizer:** The organizer's avatar and name, with a verified-organizer badge when applicable.
+- **Price:** Free, a currency amount, or a starting price.
+
+## Event detail pages
+
+Select an event card to open its detail page at `/events/:slug`. The page gives you the information you need before you register, buy a ticket, or follow an external ticketing link.
+
+### Event information
+
+The page includes:
+
+- An **All events** back link.
+- The uploaded event banner, or a branded fallback with the first two letters of the event title.
+- Badges for the event category, format, and Featured status when applicable.
+- The event title.
+- A timezone-aware date and time range.
+- The current attendee count and capacity when the organizer configured one.
+- An **About this event** section with the organizer's full description. Line breaks in the description remain visible.
+- A **Programme** section when the event has configured event days. Each day shows its full date, start time, and end time when available.
+- Event tags displayed as hashtag-style badges, such as `#networking` or `#masterclass`.
+
+Single-day events show the start and end time together. Multi-day events show both dates and times. When the organizer has not added a date, the page shows **Date to be announced**.
+
+### Location and organizer
+
+When location information is available, the Location card shows the venue name, address, city, region, and country code. Select **Open in maps** to open a Google Maps search in a new tab. Virtual events may not show a location card.
+
+The **Organized by** card shows the organizer's avatar, name, username, and verified-organizer badge when applicable. Select **View organizer profile** to open the organizer's ModelBoard profile when a profile link is available.
+
+If the event cannot be found, the page shows **Event not found** and explains that the event may have been unpublished or that the link is outdated. Select **Browse industry events** to return to `/events`.
+
+Legacy UUID-based event links redirect to the canonical slug-based event page.
+
+## Registration and ticketing
+
+Event pages use one of three registration or ticketing modes. The page identifies the available action in the registration card.
+
+### Native free events
+
+Free events show **Registration: Free**. If you are signed out, select **Sign in to register**. ModelBoard sends you to authentication and preserves the return path so you can come back to the event page after signing in.
+
+Signed-in users select **Register**. The button changes to **Registering…** while the registration is processed. After registration succeeds, the page shows **You have a ticket** and an **Open the Attendee Hub** button.
+
+### Native paid events
+
+Paid events show **Registration: price** and a **Buy tickets** button. The purchase takes place through MB Events.
+
+> Tickets are sold through MB Events. You'll come straight back here once your purchase is complete.
+
+When you return after a successful purchase, MB Events verifies the order, confirms that it belongs to your ModelBoard account, and checks the payment status before updating your registration. The purchase information in the return link only points MB Events to the order. It does not serve as proof of payment.
+
+A confirmed purchase displays **Your ticket is confirmed. See you there!** If payment is still being reconciled, the page displays **We're still confirming your order. Your ticket will appear here shortly.**
+
+The purchase information is removed from the page URL after verification.
+
+### External ticketing events
+
+External events show a Tickets card with the starting price or the event's configured price label. The action may say **Get tickets on provider name** or **Get tickets on the organizer's site** when no provider name is configured.
+
+Select the button to open the configured ticketing URL in a new tab. The event page tells you that you are leaving ModelBoard and that the external provider handles registration. ModelBoard does not complete the external registration.
+
+If you already have a linked attendee record for the event, the page shows your registered or ticketed state and an **Open the Attendee Hub** button instead of the purchase action.
+
+### Complete a registration flow
+
+<Steps>
+
+<Step title="Choose the event action" icon="check-circle" title-type="p">
+
+Open the event detail page and review the registration card. Select **Register** for a native free event, **Buy tickets** for a native paid event, or the external provider button for an externally ticketed event.
+
+</Step>
+
+<Step title="Complete registration or payment" icon="edit" title-type="p">
+
+For a free event, sign in when prompted and confirm your registration. For a paid event, complete the MB Events purchase flow. For an external event, finish registration on the provider's website.
+
+</Step>
+
+<Step title="Open the Attendee Hub" icon="users" title-type="p">
+
+After your registration is confirmed, select **Open the Attendee Hub** to connect your attendance with your ModelBoard account and use the event networking tools.
+
+</Step>
+
+</Steps>
+
+<Callout kind="tip">
+
+Register before the event so your attendee record is connected to your ModelBoard account. This gives you access to the Attendee Hub features available for that event.
+
+</Callout>
+
+## Attendee Hub
+
+The Attendee Hub is available at `/attendee-hub/:eventId`. It connects your event attendance to your ModelBoard identity and provides event-specific networking tools.
+
+You must be signed in to access the hub. If your account is not linked to an attendee record, the page shows **Link your ModelBoard account to enter the Attendee Hub**.
+
+### Link your account
+
+Linking your account unlocks:
+
+- Event chat rooms.
+- Direct messages with other linked attendees.
+- Collaboration proposals.
+
+Enter a **Ticket / wristband reference** when you need to match an existing imported attendee record. The field is optional. If you leave it blank or no matching record exists, MB Events creates a native attendee record for your account.
+
+Select **Link my ModelBoard account** to continue. Your existing ModelBoard single sign-on identity is used, so you do not need another sign-in. A ticket or wristband reference that is already linked to another account cannot be reused.
+
+### Event header and availability
+
+After you enter the hub, the event header shows:
+
+- Event title.
+- Native or External badge.
+- Publication status.
+- Event date and time range.
+- Event description when available.
+
+If the organizer has not published the event, the page shows **Hub not yet open** and explains that the organizer has not opened the event hub.
+
+### Chat Rooms
+
+Chat Rooms provide event-specific channels for attendees and organizers. You can:
+
+- Browse channels with names and descriptions.
+- Select a channel.
+- Read messages with the sender's name, avatar or initials, relative timestamp, and message body.
+- Write and send messages.
+- Press Enter to send a message.
+- Receive new messages in real time.
+
+Some channels are **Tier-restricted**. A shield icon identifies restricted channels, and access can depend on your wristband tier.
+
+Organizers can create channels, add descriptions, and restrict channels to specific wristband tiers.
+
+### Direct Messages
+
+Direct Messages lists other linked attendees with their avatar, display name, and **Linked attendee** label. Select **Message** to open the normal ModelBoard messaging center.
+
+The Attendee Hub provides the event context, but it does not create a separate messaging system.
+
+### Collab Proposals
+
+Use Collab Proposals to suggest a potential collaboration with another linked attendee.
+
+You can:
+
+- Choose another linked attendee.
+- Add an optional note.
+- Select a proposed start date and end date.
+- Send the proposal.
+
+The proposed dates must fall within the event's date range.
+
+Received proposals show the sender, status, proposed dates, and optional note. Available actions include **Agree** and **Refuse**. Sent proposals show the recipient, status, dates, and note. Select **Withdraw** while a proposal is still pending.
+
+Agreeing to a proposal creates a ModelBoard collaboration proposal and takes you into the normal collaboration workspace.
+
+## Events Manager
+
+Events Manager is available at `/events-manager` for organization owners and managers. Creator accounts are redirected to the main dashboard.
+
+The dashboard is titled **Events Manager** and includes a **Create New Event** button. Use Events Manager to create, publish, monitor, and update events across your organization.
+
+### Next Event
+
+When you have an upcoming published event, the Next Event panel shows:
+
+- Event title.
+- Format badge.
+- Native or External ticketing badge.
+- Date and time range.
+- Live countdown in days, hours, minutes, and seconds.
+- Attendee count.
+- Percentage of attendees linked to ModelBoard accounts.
+
+Select **Open management hub** to manage the event. Select **View public listing** to open the event detail page that attendees see.
+
+When no upcoming event exists, the dashboard shows **No upcoming events** and another **Create New Event** button.
+
+### Event list
+
+The event list is organized into:
+
+- **Upcoming**
+- **Past**
+- **Drafts**
+
+Each tab includes an event count. Every event row shows:
+
+- Event title.
+- Publication state: Draft, Published, or Archived.
+- Date range.
+- Format badge.
+- Native or External ticketing badge.
+- Total attendee count.
+- Percentage of attendees linked to ModelBoard accounts.
+
+Select an event row to open its management hub.
+
+### Event management hub
+
+Each event management hub includes Overview, Attendees, Attendee Hub, and Settings tabs.
+
+#### Overview
+
+The Overview tab shows the event title, date range, format, ticketing mode, publication state, and recurring badge when applicable.
+
+The available state action depends on the current publication state:
+
+- **Draft:** Publish the event.
+- **Published:** Archive the event or unpublish it back to Draft.
+- **Archived:** Restore the event to Draft.
+
+Each state change requires confirmation before it takes effect.
+
+Overview statistics include:
+
+- Total attendees.
+- Linked attendees.
+- Link rate.
+- Checked-in attendees.
+- Wristbands.
+- Event days or the duration of a single event.
+
+You can also review the overall date range and the times for individual event days.
+
+#### Attendees
+
+The Attendees tab shows counts for linked and checked-in attendees. The attendee list includes:
+
+- Name.
+- Source.
+- Link status.
+- Wristband serial and tier.
+- Checked-in status.
+- On-site lodging status or lodging label.
+
+#### Attendee Hub
+
+The Attendee Hub tab shows whether the hub has been provisioned and whether it is available after the event is published.
+
+The management view also includes **Preview Hub (coming soon)**. This control is currently disabled. The attendee-facing hub remains available to linked attendees when the event is published and accessible.
+
+#### Settings
+
+Use Settings to update:
+
+- Event title.
+- Description.
+- Format.
+- Start time.
+- End time.
+- External ticketing reference.
+
+Select **Save changes** to apply your updates.
+
+## Frequently asked questions
+
+<ExpandableGroup>
+
+<Expandable title="Do I need a separate account for MB Events">
+
+No. Your ModelBoard account works with MB Events.
+
+Free events use native registration. Paid native events use MB Events ticketing, while external events send you to the configured ticketing provider.
+
+</Expandable>
+
+<Expandable title="What happens if I click an old event link">
+
+Legacy event links redirect to the new event pages. Older `/app/mb-events` management links redirect to Events Manager.
+
+</Expandable>
+
+<Expandable title="Can organizers message attendees">
+
+Yes. Organizers can use Attendee Hub chat rooms to communicate with attendees. Organizers can also create channels, add descriptions, and restrict channels by wristband tier.
+
+</Expandable>
+
+<Expandable title="How do I become a verified organizer">
+
+Verification is managed through vAulth. Review the [compliance documentation](/creator-compliance) for the requirements and next steps.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Where to go next
+
+<Columns cols={3}>
+
+<Card
+  title="Collaboration Hub"
+  href="/collaboration-hub"
+  icon="users"
+  cta="Manage collaborations"
+  horizontal="false"
+>
+
+Review collaboration proposals and continue work started through Attendee Hub.
+
+</Card>
+
+<Card
+  title="Compliance"
+  href="/compliance"
+  icon="shield"
+  cta="Review compliance requirements"
+  horizontal="false"
+>
+
+Keep releases, approvals, and other compliance work organized across your ModelBoard projects.
+
+</Card>
+
+<Card
+  title="Creator Dashboard"
+  href="/creator-dashboard"
+  icon="bar-chart"
+  cta="Open your dashboard"
+  horizontal="false"
+>
+
+Manage your profile, portfolio, collaborations, notifications, and account settings from one place.
+
+</Card>
+
+</Columns>

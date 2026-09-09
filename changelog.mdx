@@ -13,6 +13,14 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.41.0" href="#v0-41-0" icon="calendar" horizontal="false" target="_self">
+    MB Events system migration with Attendee Hub and Events Manager.
+  </Card>
+
+  <Card title="v0.40.04" href="#v0-40-04" icon="shield" horizontal="false" target="_self">
+    Identity verification moved to vAulth compliance hub.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -25,6 +33,58 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-09-08" description="v0.41.0" tags={["New Features","Improvements","Removals"]}>
+  ### This update migrates the MB Events system to a new event model with improved event discovery, native registration, ticketing, and attendee networking.
+
+  ## New Features
+
+  ✅ **NEW** Public event discovery at `/events` with search, category, city, format, price, ticketing, and date-range filters.
+
+  ✅ **NEW** Event detail pages at `/events/:slug` with timezone-aware dates, programme schedules, location maps, organizer profiles, and event tags.
+
+  ✅ **NEW** Native event registration for free events directly through your ModelBoard account.
+
+  ✅ **NEW** Paid ticket purchases through MB Events with automatic order verification on return.
+
+  ✅ **NEW** External ticketing support for events sold through third-party providers.
+
+  ✅ **NEW** Attendee Hub at `/attendee-hub/:eventId` with event chat rooms, direct messages, and collaboration proposals.
+
+  ✅ **NEW** Events Manager dashboard at `/events-manager` for organization owners and managers to create, publish, and manage events, attendees, and ticketing.
+
+  ## Improvements
+
+  🪄 **Added** Event cards now show ticketing mode badges, category, format, location, attendance, organizer, and pricing information.
+
+  🪄 **Added** Legacy UUID-based event URLs automatically redirect to canonical slug-based URLs.
+
+  🪄 **Added** Old `/app/mb-events` management links redirect to Events Manager.
+
+  ## Removals
+
+  🗑️ **Removed** Legacy event creation wizard, sales dashboard, registration management, attendance tracking, check-in dashboard, attendee directory, sponsor dashboard, payout management, transaction history, QR ticket display, and event discussion features. These capabilities are replaced by the new Events Manager and Attendee Hub.
+</Update>
+
+<Update label="2026-09-05" description="v0.40.04" tags={["Improvements","Removals"]}>
+  ### Identity verification has moved to vAulth, ModelBoard's dedicated compliance hub. ModelBoard no longer captures or stores ID photos or selfies directly.
+
+  ## Improvements
+
+  🪄 **Added** New verification handoff flow: select **Verify with vAulth** to continue identity verification in vAulth in the same browser tab and return to ModelBoard automatically.
+
+  🪄 **Added** Verification status now reads from vAulth's authoritative result. Use **Check again** to refresh your status or **Resume verification in vAulth** to continue an incomplete flow.
+
+  🪄 **Added** Compliance Center now displays vAulth-owned identity records as read-only entries with status, submission dates, and verification dates.
+
+  🪄 **Added** Loading, error, retry, and empty states for compliance documents. The Compliance Center refreshes in place after uploads instead of reloading the page.
+
+  ## Removals
+
+  🗑️ **Removed** In-app identity verification wizard and document capture. ModelBoard no longer collects ID images or selfies for identity verification, all capture happens in vAulth.
+
+  🗑️ **Removed** Client-side verification status writes. Verification status is now set exclusively by vAulth's server-side completion flow.
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
@@ -199,4 +259,3 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 <Callout kind="tip" collapsed="false">
   To update your instance, check the dashboard settings or contact support for enterprise deployments. Provide feedback via our [feedback form](https://modelboard.net/feedback).
 </Callout>
-
