@@ -1,0 +1,211 @@
+---
+title: MB Events
+description: Discover industry events, purchase tickets, access QR entry codes, and connect with other attendees through the ModelBoard Attendee Hub.
+---
+
+## Overview
+
+MB Events helps ModelBoard users discover industry events, purchase paid or free tickets, and participate before and during an event. After you get a ticket, the Attendee Hub gives you access to event details, your ticket information, the programme, attendee conversations, and collaboration tools.
+
+Creators, businesses, studios, and enterprises can use MB Events to:
+
+<Columns cols={3}>
+  <Card title="Discover events" href="#discovering-events" icon="book-open" horizontal="false">
+
+  Browse public event pages for dates, venues, organizers, ticket options, and event information.
+
+  </Card>
+
+  <Card title="Manage tickets" href="#buying-tickets" icon="lock" horizontal="false">
+
+  Purchase paid tickets or claim free tickets, then access your ticket details from the Attendee Hub.
+
+  </Card>
+
+  <Card title="Connect with attendees" href="#the-attendee-hub" icon="users" horizontal="false">
+
+  Join event chat rooms, send collaboration proposals, and start private conversations with linked attendees.
+
+  </Card>
+</Columns>
+
+<Callout kind="tip" collapsed="false">
+
+Sign in before you purchase a ticket or open the Attendee Hub. If you are not signed in, ModelBoard sends you to sign in and then returns you to the event.
+
+</Callout>
+
+## Discovering events
+
+Browse the MB Events directory to find industry events that match your interests and schedule. Open an event page to review its banner, title, date and time, venue, city, organizer, and available ticket types.
+
+Event pages show ticket availability without exposing inventory counts. Depending on the ticket type, you may see:
+
+- **On sale:** Tickets are available for purchase.
+- **On sale at a scheduled time:** Sales have not started yet.
+- **Not yet on sale:** The organizer has not opened sales.
+- **Sales closed:** The sales period has ended.
+- **Sold out:** No tickets are currently available.
+
+Public event pages and event cards do not show attendance counts, capacity numbers, or view counts. This keeps attendance information private while still showing the details you need to decide whether to attend.
+
+## Buying tickets
+
+Purchase a ticket from the event page and complete the flow through the Attendee Hub.
+
+<Steps>
+  <Step title="Browse an event" icon="book-open" title-type="p">
+  
+  Open an event from the MB Events directory and review its date, venue, organizer, and ticket options. Paid and free tickets use the same event flow.
+
+  </Step>
+
+  <Step title="Open the Attendee Hub" icon="users" title-type="p">
+  
+  Select the option to continue to the event's Attendee Hub. You must be signed in to continue.
+
+  </Step>
+
+  <Step title="Choose a ticket type and quantity" icon="plus" title-type="p">
+  
+  Select an available ticket type and choose a quantity from one ticket up to the organizer's maximum per order. The ticket row shows the ticket name, description when available, price, and availability.
+
+  </Step>
+
+  <Step title="Review the total" icon="check-circle" title-type="p">
+  
+  Confirm the quantity and displayed total before continuing. Free tickets show a total of **Free**.
+
+  </Step>
+
+  <Step title="Complete checkout" icon="lock" title-type="p">
+  
+  Select **Buy** for a paid ticket or **Get ticket** for a free ticket. MB Events handles payment on ModelBoard's behalf and sends you through the checkout flow when payment is required.
+
+  </Step>
+
+  <Step title="Return to the Attendee Hub" icon="arrow-right" title-type="p">
+  
+  After checkout, you return to the event's Attendee Hub. The hub refreshes with your ticket confirmation or the current payment status.
+
+  </Step>
+</Steps>
+
+If payment is still being confirmed, the hub displays a payment confirmation status while it checks the result. If availability changes before checkout starts, the purchase may fail and the hub shows the resulting error message.
+
+## The Attendee Hub
+
+The Attendee Hub is a private, event-specific page at `/events/:slug/attendee-hub`. It presents event information and attendee features as one vertically stacked page.
+
+<Tabs>
+  <Tab title="Event information" icon="book-open">
+
+  ### Event summary
+
+  The summary includes the event banner, title, start date and time in the event's timezone, venue, city, and organizer. A verification badge appears when the organizer is verified. Use **Back to the event** to return to the public event page.
+
+  ### Your tickets
+
+  After you purchase a paid ticket, the hub replaces the purchase panel with your ticket details and QR code. Each paid order shows its ticket quantity, total paid, order date, and order ID.
+
+  ### Attendee profile
+
+  When the organizer has linked an attendee profile to your ticket, the hub shows your display name and ticket reference. The organizer manages this profile, so contact the organizer if the information needs to change.
+
+  ### Programme
+
+  Review the event schedule by day. Each event day can include its date, start time, and end time when the organizer has provided one.
+
+  </Tab>
+
+  <Tab title="Connect with attendees" icon="users">
+
+  ### Chat rooms
+
+  Join event channels to read and send messages with other attendees. Chat rooms support real-time new messages, sender names and avatars, relative timestamps, and up to 200 recent messages per channel.
+
+  Some channels are restricted to specific ticket or wristband tiers. A **Tier-restricted** label identifies these channels.
+
+  ### Collaboration proposals
+
+  Send a collaboration proposal to another linked attendee with an optional note and proposed start and end dates. The proposed dates must stay within the event's date range.
+
+  Review received proposals and choose **Agree** or **Refuse**. Agreeing opens or creates a ModelBoard collaboration workspace with the event and agreed dates. For proposals you sent, you can review the status and withdraw a pending proposal.
+
+  Proposal statuses include `sent`, `agreed`, and `refused`.
+
+  ### Direct messages
+
+  Browse other attendees whose ModelBoard accounts are linked to the event. Each person appears with their avatar, display name, and a **Linked attendee** label. Select **Message** to open a private conversation in your ModelBoard inbox.
+
+  </Tab>
+</Tabs>
+
+## QR tickets
+
+Each paid ticket order generates a QR code in the Attendee Hub. Open the event hub, find the order under **Your tickets**, and show the code to event staff at the entrance.
+
+The QR code represents the event order and, when applicable, the attendee linked to that order. Each order appears separately when you have more than one paid order.
+
+<Callout kind="info" collapsed="false">
+
+QR codes are available only for paid ticket orders. Free tickets do not generate an entrance QR code in the Attendee Hub.
+
+</Callout>
+
+Refunded orders do not count as valid paid tickets. If an order is awaiting payment, expired, cancelled, or refunded, the hub shows its current order status under **Your other orders**.
+
+## My Tickets
+
+Open **My Tickets** from your profile menu to see your tickets across events. The page separates events into **Upcoming** and **Past**.
+
+Each event card shows:
+
+- Event banner or a fallback event image
+- Event title
+- Event date and time
+- Venue and city
+- Number of tickets
+- Total price or **Free**
+
+Select an event card to open that event's Attendee Hub. The My Tickets page is an event index and does not display QR codes. Open the relevant event hub to show a QR code at the entrance.
+
+If you do not have any paid tickets, My Tickets displays an empty state with a link to browse industry events.
+
+## Privacy
+
+<Callout kind="info" collapsed="false">
+
+MB Events no longer displays attendance counts, capacity numbers, or view counts on public event pages or event cards. Ticket stock counts are also not exposed. Event pages show availability states such as **Sold out**, **Sales closed**, and **Not yet on sale** instead.
+
+</Callout>
+
+This allows you to evaluate an event using its schedule, location, organizer, and ticket information without exposing how many people are attending or viewing the event.
+
+## Frequently asked questions
+
+<ExpandableGroup>
+  <Expandable title="Do I need an account to buy tickets?">
+
+  Yes. Sign in to ModelBoard before purchasing a ticket. Signing in also gives you access to the event's Attendee Hub after checkout.
+
+  </Expandable>
+
+  <Expandable title="Can I get a refund?">
+
+  Refund status appears on your order in the Attendee Hub. Contact the event organizer for questions about a refund or to request help with your order.
+
+  </Expandable>
+
+  <Expandable title="Where do I find my QR code?">
+
+  Open the relevant event's Attendee Hub and find the order under **Your tickets**. The QR code appears with the paid order details.
+
+  </Expandable>
+
+  <Expandable title="Are free events ticketed?">
+
+  Yes. Free events use the same flow as paid events. Select **Get ticket**, complete the flow, and return to the Attendee Hub to view your event access details.
+
+  </Expandable>
+</ExpandableGroup>

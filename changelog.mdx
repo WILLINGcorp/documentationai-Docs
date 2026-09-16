@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.41.00" href="#v0-41-00" icon="lucide-file-code" horizontal="false" target="_self">
+    Unified MB Events ticketing, Attendee Hub, and QR tickets.
+  </Card>
+
   <Card title="v0.40.03" href="#v0-40-03" icon="file-code-icon" horizontal="false" target="_self">
     Massive Collab Workflow Feature upgrade & redesign.
   </Card>
@@ -25,6 +29,30 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-09-14" description="v0.41.00" tags={["New Features","Improvements","Removals"]}>
+  ## New Features
+
+  ✅ **NEW** Attendee Hub: A unified event page where users can purchase tickets, view event details, display QR entry codes, browse the event programme, join chat rooms, send collaboration proposals, and direct message other attendees.
+
+  ✅ **NEW** QR ticket codes: Each paid ticket order generates a QR code in the Attendee Hub that attendees show at the event entrance.
+
+  ✅ **NEW** My Tickets page: Accessible from the profile menu, this page shows all ticketed events split into Upcoming and Past, with quick access to each event's Attendee Hub.
+
+  ✅ **NEW** Event chat rooms with real-time messaging, tier-restricted channels, and sender avatars.
+
+  ✅ **NEW** Collaboration proposals between linked attendees, with date constraints within the event range and the ability to agree, refuse, or withdraw.
+
+  ## Improvements
+
+  🪄 **Added** Unified ticket purchase flow: Paid and free tickets now route through the Attendee Hub instead of a separate ticketing page. The event page shows the lowest available ticket price and a Tickets option.
+
+  🪄 **Added** Ticket availability states: Sold out, Sales closed, Not yet on sale, and On sale now replace raw stock counts on event pages.
+
+  ## Removals
+
+  🗑️ **Removed** Attendance counts ("N attending"), capacity numbers, and view counts are no longer displayed on public event pages or event cards to protect attendee privacy.
+</Update>
 
 <Update label="2026-04-02" description="v0.40.03" tags={["New Features","Improvements","Fixes"]}>
   ### This latest update of the ModelBoard Platform introduces various new features, additions to existing features, fixes bugs, and removals of overlapping elements or unnecessary UI elements cluttering the app. Updates&#x20;
@@ -199,4 +227,3 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 <Callout kind="tip" collapsed="false">
   To update your instance, check the dashboard settings or contact support for enterprise deployments. Provide feedback via our [feedback form](https://modelboard.net/feedback).
 </Callout>
-
