@@ -1,0 +1,321 @@
+---
+title: Model Releases
+description: Create, customize, review, and manage model release documents with business model presets, jurisdiction packs, clause checks, and signer previews.
+---
+
+## Build and manage model releases
+
+Create model release documents for collaborations and productions, choose the business model that fits your project, assign parties and financial terms, add jurisdiction-specific clauses, and prepare the release for review.
+
+## Where to start
+
+Start a release from either location where project compliance is managed:
+
+- Open a collaboration and switch to its **Compliance** tab.
+- Open a production and go to its compliance page.
+
+Select the **Model Release Builder** card to begin. You can also open **My model releases** directly to review releases where you are involved or where you are the author.
+
+<Callout kind="info">
+
+The Model Release Builder uses legal identity information from vAulth for release parties. Profile fields do not replace verified legal identity information.
+
+</Callout>
+
+## My model releases
+
+The **My model releases** page lists releases where you are a party or the author. Use **Filter by status** to narrow the list to a specific release stage, or select **All statuses** to view every release.
+
+Each release includes the following information:
+
+- **Release:** The first eight characters of the release ID.
+- **Context:** The related collaboration or production.
+- **My role:** Your role in the release, such as Owner, Participant, Performer, Licensor, Licensee, or Crew.
+- **Model:** The selected business model.
+- **Parties:** The number of parties associated with the release.
+- **Status:** The current release status and, when applicable, a **test** badge.
+- **Updated:** The date of the latest update.
+- **Open:** Opens the release or release set in the builder.
+
+If you have not created or joined a release, the page displays:
+
+> No release yet. Start one from a collaboration's Compliance tab or from a production.
+
+## Creating a new release
+
+The new-release wizard guides you through the business model, parties, jurisdictions, and clauses before opening the editing canvas. The project panel beside the wizard provides the project facts used while building the release.
+
+The project panel shows:
+
+- **Title**, sourced from the proposal
+- **Filming location**, sourced from the proposal
+- **Shoot date**, sourced from the schedule
+- **Boundaries**, sourced from the checklist
+
+When project information is unavailable, the panel uses values such as **Untitled**, **Not set**, **Not scheduled**, and **No checklist yet**. If the project has a shoot date, the wizard also displays a reminder that all parties must sign before the shoot.
+
+<Steps>
+
+<Step title="Choose a business model">
+
+Select the model that matches how the project will be owned, used, and paid for. You must select a business model before **Continue** becomes available.
+
+<ParamField body="shared-ownership-indie-licensing" param-type="business model" show-location="false">
+
+**Shared Ownership + Indie Licensing**
+
+**Owns:** All co-owners jointly.  
+**Exploits:** Each co-owner independently.  
+**Money:** Each co-owner keeps what they earn on their own channels.  
+**Structure:** One multi-party release.
+
+</ParamField>
+
+<ParamField body="revenue-share" param-type="business model" show-location="false">
+
+**Revenue Share**
+
+**Owns:** The owner or producer.  
+**Exploits:** The owner or producer.  
+**Money:** Each participant receives a share of net receipts.  
+**Structure:** One release per participant.
+
+</ParamField>
+
+<ParamField body="paid-performance-full-transfer" param-type="business model" show-location="false">
+
+**Paid Performance + Full Transfer**
+
+**Owns:** The producer, with full transfer.  
+**Exploits:** The producer.  
+**Money:** A flat performance fee.  
+**Structure:** One release per performer.
+
+</ParamField>
+
+<ParamField body="limited-license" param-type="business model" show-location="false">
+
+**Limited License**
+
+**Owns:** The licensor keeps copyright.  
+**Exploits:** The licensee within the licensed scope.  
+**Money:** A licence fee and/or royalty.  
+**Structure:** One release per licensor.
+
+</ParamField>
+
+</Step>
+
+<Step title="Add the parties">
+
+Select the owner and assign each person a role in the release. Available roles depend on the business model.
+
+The wizard displays each party's masked legal identity, country, jurisdiction pack, and verification state. Legal identity comes from vAulth, never from profile fields.
+
+Verification badges show whether a party is ready for signing:
+
+- **vAulth-verified**
+- **Not verified, must verify before signing**
+
+Enter the financial terms required by the selected model:
+
+- **Share %** for Shared Ownership + Indie Licensing
+- **Participation %** for Revenue Share
+- **Performance fee** for Paid Performance + Full Transfer
+- **Licence fee** for Limited License
+- **Currency:** USD, EUR, GBP, or CAD
+
+You must select an owner before continuing. For shared ownership, the total shares must equal 100 percent. The wizard displays the current total while you enter the shares. Use **Exclude from release** to leave crew members out of the release.
+
+<Callout kind="tip">
+
+Review each party's role and verification badge before continuing. A party marked **Not verified, must verify before signing** needs verification before that party can sign.
+
+</Callout>
+
+</Step>
+
+<Step title="Set the jurisdictions">
+
+Select at least one jurisdiction pack and a governing law. Jurisdiction packs add the requirements that apply to the release and influence the clauses included in the next step.
+
+The **Jurisdiction packs** section lets you add or remove packs. The governing-law selector uses the format of a jurisdiction code followed by its name. When no pack is selected, the wizard displays **No pack selected yet**.
+
+Some packs display additional requirements:
+
+- **CA-QC:** French version is shown first to Québec signers under the Charter of the French Language.
+- **EU or UK:** A removal procedure, **C-OPT-12**, is required.
+
+You must select both a jurisdiction pack and governing law before continuing.
+
+</Step>
+
+<Step title="Review the clauses and create the draft">
+
+The wizard summarizes the preset clauses that will be added for the selected business model and jurisdiction packs. The summary includes the clause count, clause keys, and release structure.
+
+The release structure determines how many documents the builder creates:
+
+- **One multi-party release**
+- **One release per participant**
+- **One release per performer**
+- **One release per licensor**
+
+For a per-party structure, the wizard also shows the number of releases it will create.
+
+Select **Create draft and open the builder** to create the draft. The success message confirms either **Draft release created** or the number of releases created for the selected structure.
+
+</Step>
+
+</Steps>
+
+## Editing a release
+
+The editing canvas organizes the release into a clause library, assembled document, and clause inspector. Changes are saved automatically while you work.
+
+### Clause library
+
+Use the **Clause library** to find and add clauses. Search by clause name or key with **Search clauses**, then filter by category:
+
+- All
+- Protection
+- Distribution
+- Money
+- Governance
+
+Each clause shows its key, edit policy, title, and any jurisdiction requirement such as **Required by [code] pack**. Select **Add** to include a clause, or drag it into the document. Clauses already included in the document show **Added**.
+
+### Document
+
+The document area contains three groups:
+
+- **Core · always included:** Required core clauses, including parties, consent, age, boundaries, removal, and signature terms. Core clauses are locked.
+- **Business model module:** Clauses specific to the selected business model.
+- **Optional Clauses:** Additional clauses that you choose to include.
+
+The document shows how many core clauses are included and locked. You can select clauses, show or hide core clauses, move editable clauses up or down, drag clauses to reorder them, and remove non-core clauses. Drop new clauses into the area labeled **Drop a clause here**.
+
+Clause badges identify whether a clause is **Locked**, **Editable**, a **Rider**, **Modified from standard**, or a **Custom rider** with its current character count.
+
+### Clause inspector
+
+Select a clause to open its details in the **Clause inspector**. The inspector shows:
+
+- Clause key and edit policy
+- Clause title
+- **What this means**, with a plain-language summary
+- Variable fields that you can complete
+- The source of editable values, such as `source: pack default`, `source: author`, or `source: schedule`
+- Optional custom text editing
+
+If you change editable clause text, select **Restore the standard text** to return to the standard version. Custom riders are limited to 2,000 characters and display a counter such as **0 / 2,000 characters**.
+
+<Callout kind="info">
+
+The clause summary is approved with the clause, but it is not legal advice. Use it to understand the document, and consult qualified counsel when you need legal guidance.
+
+</Callout>
+
+### Save, preview, and submit
+
+The canvas displays the current save state:
+
+- **Saving…**
+- **Unsaved changes**
+- **Saved**
+
+Use **Preview as signer locale** to view the document as a signer in a selected locale, such as **Preview as · EN** or **Preview as · FR**. Select **Preview** to enter preview mode, then select **Back to editing** to return to the canvas.
+
+When the release has no blocking issues, select **Mark Ready for Review**. The displayed status changes to **In review**. If blocking issues remain, the action is disabled and shows the number of issues, such as **1 Blocking Issue** or **3 Blocking Issues**.
+
+## Release statuses
+
+The release status tells you where the document is in its workflow.
+
+<ParamField body="status" param-type="string" enum="Draft,In review,Signing,Executing,Executed,Amended,Terminated,Expired,Voided" show-location="false">
+
+The current stage of the release. Available statuses are **Draft**, **In review**, **Signing**, **Executing**, **Executed**, **Amended**, **Terminated**, **Expired**, and **Voided**.
+
+</ParamField>
+
+<ParamField body="editable-statuses" param-type="string" show-location="false">
+
+Releases are editable only when their status is **Draft** or **In review**. Releases in other statuses are read-only.
+
+</ParamField>
+
+Selecting **Mark Ready for Review** moves the displayed status from **Draft** to **In review**. The product does not use a separate **Ready for review** status.
+
+## Validation and coverage checks
+
+The builder checks the release as you assemble it. Blocking issues prevent you from marking the release ready for review. Examples include a missing core clause, incompatible clauses, a required jurisdiction clause that is missing, incomplete variable fields, ownership shares that do not total 100 percent, or a custom rider longer than 2,000 characters.
+
+When an issue has a direct fix, the builder can show an action such as **Add [clause key]**. If a clause cannot be added because no text version is available, the builder displays **This clause has no text available yet**.
+
+The checks area can also show non-blocking guidance:
+
+- **Warnings:** For example, one clause normally goes with another, or an exclusivity period exceeds a specified number of days.
+- **Suggestions:** For example, **Consider adding [clause]**.
+- **No issues found:** Displays when there are no errors, warnings, or suggestions.
+
+### Coverage Check
+
+**Coverage Check** identifies topics that the document does not cover. It is labeled **Facts, not a score**.
+
+Possible missing items include:
+
+- No exit or buyout terms
+- No payment deadline
+- No reversion if unpaid
+- No takedown on expiry
+- No dispute resolution clause
+- No watermark or fingerprint registration
+- No AI or digital-replica protection
+
+Select an action such as **Add BM-RS-04** when you want to address a missing item. If nothing is missing, the panel displays **Nothing missing from this list**.
+
+<Callout kind="tip">
+
+Coverage Check describes what the document does not cover. It is not a fairness verdict and does not replace legal review.
+
+</Callout>
+
+### Test releases
+
+The preview displays the watermark **`TEST — NOT BINDING`** when at least one included clause is based on a version that counsel has not approved. The canvas also shows:
+
+> TEST RELEASE — contains clauses not yet approved by counsel. Not legally binding.
+
+The watermark indicates the state of the included clause versions. A release does not receive the watermark merely because its status is **Draft**.
+
+<Callout kind="alert">
+
+Model releases are legal documents. Review the completed release with qualified legal counsel before relying on it, especially when the release includes custom riders, ownership transfers, licensing terms, or jurisdiction-specific requirements.
+
+</Callout>
+
+## Where to go next
+
+Use these related pages to continue managing project compliance and rights.
+
+<Columns cols={2}>
+
+<Card title="Compliance" href="/compliance" icon="shield" cta="Open guide" horizontal="false">
+
+Track required documentation, agreements, and verification for everyone involved in a project.
+
+</Card>
+
+<Card title="Licensing" href="/licensing" icon="lock" cta="Review licensing" horizontal="false">
+
+Manage licenses, usage rights, and downstream distribution for assets created in your projects.
+
+</Card>
+
+<Card title="Collaboration Hub" href="/collaboration-hub" icon="users" cta="Open hub" horizontal="false">
+
+Review project workflows and move between collaboration details, collaborators, files, and compliance.
+
+</Card>
+
+</Columns>
