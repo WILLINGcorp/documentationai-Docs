@@ -1,0 +1,237 @@
+---
+title: Custom Release Templates
+description: Write a custom model release once, reuse it across collaborations and productions, and preserve the exact version used for every release.
+---
+
+## Reuse your own model-release language
+
+Write a custom model release once and reuse it across collaborations and productions. Each release records the exact template version used, so you can trace the legal text that produced it.
+
+<Callout kind="alert">
+
+Custom templates contain user-authored legal text. ModelBoard does not represent this text as ModelBoard-approved legal language. Consult qualified legal counsel before creating or using a template.
+
+</Callout>
+
+<Callout kind="info">
+
+Custom release templates currently support English templates.
+
+</Callout>
+
+## Where to manage templates
+
+Manage templates from the **Custom release templates** section in your collaboration or production settings.
+
+The template list shows each template's structure, version, short SHA-256 fingerprint, usage count, last-used date, visibility, default status, and archive status. Archived templates stay hidden until you turn on **Show archived**.
+
+## Create a template
+
+Create a template with the legal text, party structure, and default project settings you want to reuse.
+
+<Steps>
+
+<Step title="Enter the template name and description">
+
+Use a name that helps you identify the release when you select it during release creation.
+
+<ParamField body="name" param-type="string" required="true" show-location="false">The template name. Maximum 80 characters.</ParamField>
+
+<ParamField body="description" param-type="string" required="false" show-location="false">A description of the template. Maximum 2,000 characters.</ParamField>
+
+</Step>
+
+<Step title="Choose visibility and party structure">
+
+Set who can see the template and how ModelBoard should create releases from it.
+
+<ParamField body="visibility" param-type="string" required="true" show-location="false" enum="Private,Shared with studio">Choose **Private** to keep the template visible only to you, or **Shared with studio** to share it with members of your studio organization.</ParamField>
+
+<ParamField body="party_structure" param-type="string" required="true" show-location="false" enum="single,per_performer">Choose **One release for all parties** for a single release that includes the selected parties. Choose **One release per performer** to create an individual release for each selected performer.</ParamField>
+
+</Step>
+
+<Step title="Set the default legal context">
+
+Choose the defaults that should appear when someone uses the template. You can confirm or change these values during release creation.
+
+<ParamField body="governing_law" param-type="string" required="false" show-location="false">The default governing law for releases created from the template.</ParamField>
+
+<ParamField body="jurisdictions" param-type="array" required="false" show-location="false">The default jurisdiction codes for releases created from the template.</ParamField>
+
+</Step>
+
+<Step title="Add the document title and legal text">
+
+Enter the title shown on the rendered release and write the legal text in Markdown.
+
+<ParamField body="document_title" param-type="string" required="true" show-location="false">The title displayed on the generated release document.</ParamField>
+
+<ParamField body="legal_text" param-type="string" required="true" show-location="false">The user-authored legal text in Markdown. Maximum 200,000 characters.</ParamField>
+
+The editor includes controls for headings, bold text, italics, numbered lists, bulleted lists, and dividers. A preview appears beside the editor on larger screens. On mobile, switch between the editor and preview tabs.
+
+</Step>
+
+<Step title="Save the template">
+
+Select **Save** to create the first immutable template version. The first save creates version 1. Later saves create a new version when the content changes.
+
+Your saved template appears in the Custom release templates list with its version, short fingerprint, and current usage details.
+
+</Step>
+
+</Steps>
+
+## Import legal text
+
+Import text into the editor instead of entering it manually. You can type or paste content, import a `.txt` or `.md` file, or import a `.docx` file.
+
+PDF import is disabled because text extraction from PDF files is not reliable enough for a document that people will sign.
+
+Word imports can display warnings when the file contains images, tables, tracked changes, comments, or conversion issues. Review the converted text and preview before saving. Imported content is not saved until you select **Save**.
+
+## Add merge fields
+
+Merge fields let one template insert project, studio, party, shoot, or performer data into each release. Write a field as a placeholder in double braces, such as `{{project.title}}` or `{{governing_law}}`.
+
+Use **Insert field** to search available fields and review each field's description and scope restrictions. ModelBoard extracts and deduplicates fields in the order they appear in the document.
+
+Common field categories include:
+
+- Project details, such as `{{project.title}}`
+- Studio details, such as `{{studio.name}}`
+- Party information, such as `{{parties.list}}`
+- Shoot details, such as `{{shoot.date}}`
+- Release settings, such as `{{governing_law}}`
+- Performer details, such as `{{performer.stage_name}}`
+
+When you preview a template for a project, ModelBoard resolves fields from the project's data. Fields without a matching value appear as unresolved. During release creation, you must enter a manual value for every unresolved field before you can create the release.
+
+The editor rejects unknown fields. Performer-specific fields are valid only when the template uses **One release per performer**. ModelBoard never exposes a performer's legal first or last name as a merge field.
+
+## Save versions and view history
+
+Every changed save creates a new immutable version. Each version receives a SHA-256 fingerprint, and earlier versions remain unchanged after you edit the template.
+
+Saving an identical copy is rejected with **No changes to save**. The rejection means the current editor content matches the latest saved version.
+
+Select **View history** to open a read-only drawer containing:
+
+- Version number
+- Creation date and time
+- Creator's stage name
+- Short SHA-256 hash
+- A **View** action for each version
+
+Viewing a version renders the exact document title and legal text saved in that version. You cannot edit an earlier version. Releases already created from an earlier version continue to use that version.
+
+## Duplicate a template
+
+Use the template action menu and select **Duplicate** to create a separate template with the existing settings and legal text prefilled.
+
+ModelBoard changes the new name to **Original name (copy)**. The duplicate has its own version history and can be edited without changing the original template.
+
+## Archive and restore templates
+
+Archive a template to remove it from the normal template list. Archiving is reversible and does not delete the template's versions or releases created from it.
+
+An archived template:
+
+- Appears only when **Show archived** is enabled
+- Displays an **Archived** badge
+- Cannot be edited
+- Cannot be used to create new releases
+- Loses its default status if it was the default template
+
+Select **Restore** to make the template visible and usable again.
+
+## Set Collab and Production defaults
+
+Set defaults independently for collaborations and productions. Open a template's action menu and choose **Set as default for Collabs** or **Set as default for Productions**.
+
+The current default displays a star. Only one template can be the default for each context. Setting another template as the default replaces the previous one.
+
+<Callout kind="tip">
+
+When you open the release-creation flow, ModelBoard preselects the default template for the project's type. If no default exists, ModelBoard selects the first available template.
+
+</Callout>
+
+## Share templates with your organization
+
+Choose **Private** when only you should see and use a template. Choose **Shared with studio** when members of the same studio organization should be able to see and use it.
+
+Organization sharing is available only to studio or organization-associated accounts. Non-studio accounts cannot select the organization-sharing option. Sub-accounts inherit access through their organization.
+
+Sharing controls visibility, not ownership. Other organization members can use a shared template, but ownership and edit permissions remain separate. Private templates are not visible to other organization members.
+
+## Use a template to create releases
+
+From a collaboration or production, select **Use a template**. The release-creation flow has five steps:
+
+1. **Template:** Select a template and review its structure, version, and short hash.
+2. **Parties:** Select the people included in the release.
+3. **Details:** Confirm or change the governing law, jurisdiction codes, and whether to link the project's boundary checklist.
+4. **Fields:** Review resolved merge fields and enter values for unresolved fields.
+5. **Review:** Inspect the rendered document before creating the draft release or releases.
+
+### Select parties for a single release
+
+For a template using **One release for all parties**, select at least two parties. You can identify the project owner as the owner party and exclude crew members when they do not belong in the release.
+
+ModelBoard hides legal identity details during party selection.
+
+### Select performers for per-performer releases
+
+For a template using **One release per performer**, select performers from the project's cast or collaborators. Select between 1 and 50 performers.
+
+A performer with a non-voided release already in progress is disabled and marked **Already has a release in progress**. ModelBoard creates one individual draft release for each selected performer.
+
+### Complete fields and create drafts
+
+Review the values ModelBoard resolved from the project. Enter a manual value for every unresolved field before continuing.
+
+The final review displays the rendered document. Select **Create draft release** for a single-release template or **Create N draft releases** for a per-performer template.
+
+Template use creates draft releases only. Review each draft and send it for signature separately.
+
+## Check template provenance on a release
+
+A release created from a custom template includes a provenance note in the editable custom-release view and the rendered read-only document.
+
+The note identifies the owner's template by name and includes the eight-character version hash. The release also displays the **Own legal text** badge, identifying it as user-authored legal content.
+
+## Studio PRO access
+
+Active Studio PRO users can create, edit, duplicate, archive, restore, and share templates. They can also set defaults and use templates to create releases.
+
+Sub-accounts inherit these capabilities through their organization.
+
+Non-Studio-PRO users see a locked Custom release templates section with blurred placeholder rows, a lock message, and **Upgrade to Studio PRO** checkout actions. They cannot open the template editor or create releases from custom templates.
+
+When a Studio PRO plan ends, existing templates remain available for viewing, and their version histories remain available. Editing, sharing changes, default management, and release creation from those templates are disabled until the plan becomes active again. Existing sent or signed releases are unaffected.
+
+## Where to go next
+
+<Columns cols={3}>
+
+<Card title="Model releases" href="/model-releases" icon="file-text" cta="Manage releases">
+
+Create, customize, review, and manage model release documents.
+
+</Card>
+
+<Card title="Compliance" href="/compliance" icon="shield" cta="Review compliance">
+
+Manage project compliance and the workflows connected to your releases.
+
+</Card>
+
+<Card title="Collaboration hub" href="/collaboration-hub" icon="users" cta="Open collaborations">
+
+Open collaborations and manage the projects where you create releases.
+
+</Card>
+
+</Columns>

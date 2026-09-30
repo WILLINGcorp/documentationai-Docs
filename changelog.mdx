@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.42.0" href="#v0-42-0" icon="file-code-icon" horizontal="false" target="_self">
+    Custom release templates for Studio PRO and billing enforcement with usage limits.
+  </Card>
+
   <Card title="v0.41.0" href="#v0-41-0" icon="file-code-icon" horizontal="false" target="_self">
     Model Release Builder for structured release documents.
   </Card>
@@ -29,6 +33,48 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-09-29" description="v0.42.0" tags={["New Features","Improvements"]}>
+  ### This update introduces custom release templates for Studio PRO accounts and billing enforcement with usage limits, Compliance gating, and temporary release storage.
+
+  ## New Features
+
+  ✅ **NEW** Custom Release Templates: Studio PRO users can create reusable model-release templates with their own legal text, merge fields, and version history.
+
+  ✅ **NEW** Template editor with Markdown formatting, merge field insertion, and document preview.
+
+  ✅ **NEW** Import legal text from `.txt`, `.md`, or `.docx` files.
+
+  ✅ **NEW** Template version history with immutable versions and SHA-256 fingerprints.
+
+  ✅ **NEW** Template organization sharing for studio accounts, with private and shared-with-studio visibility options.
+
+  ✅ **NEW** Set default templates independently for collaborations and productions.
+
+  ✅ **NEW** Archive and restore templates without losing version history or existing releases.
+
+  ✅ **NEW** Five-step release creation from a template: Template, Parties, Details, Fields, and Review.
+
+  ✅ **NEW** Template provenance on releases, showing the template name and version hash.
+
+  ✅ **NEW** Billing enforcement with usage meters for Collabs and Productions.
+
+  ✅ **NEW** Billing-limit dialogs with upgrade and extra-purchase options.
+
+  ✅ **NEW** Compliance gating by billing state: uncovered projects show a locked Compliance tab with upgrade or coverage purchase options.
+
+  ✅ **NEW** Temporary release storage: uncovered Collab release assets share a 15 GB quota and expire after 14 days.
+
+  ✅ **NEW** Project coverage purchasing from the locked Compliance tab or the past-projects coverage page.
+
+  ## Improvements
+
+  🪄 **Added** Usage meters display current Collab and Production usage with purchased credits for active Pro plans.
+
+  🪄 **Added** Billing-aware error handling for release-asset uploads when storage quota is exceeded.
+
+  🪄 **Added** Release-asset listings show expiry information for temporary storage on uncovered projects.
+</Update>
 
 <Update label="2026-09-19" description="v0.41.0" tags={["New Features"]}>
   ### This latest update of the ModelBoard Platform introduces the Model Release Builder for creating structured model release documents.
