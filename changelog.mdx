@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.42.0" href="#v0-42-0" icon="file-code-icon" horizontal="false" target="_self">
+    Custom release templates, redesigned billing, vAulth QR verification, live signature tracking.
+  </Card>
+
   <Card title="v0.41.0" href="#v0-41-0" icon="file-code-icon" horizontal="false" target="_self">
     Model Release Builder for structured release documents.
   </Card>
@@ -29,6 +33,54 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-10-05" description="v0.42.0" tags={["New Features","Improvements","Fixes"]}>
+  ### This update introduces custom model release templates, a redesigned billing experience, vAulth QR-based identity verification, live release signature tracking, and a range of fixes across onboarding, SSO, and mobile collaboration.
+
+  ## New Features
+
+  ✅ **NEW** Custom model release templates for Studio Pro: Create, edit, duplicate, archive, and restore reusable templates. Import from `.txt`, Markdown, or `.docx` files, preview merge fields, and view immutable version history. Generate one release for all parties or one per performer, then send drafts for signature. Lapsed Studio accounts retain read-only access. See [Model Releases](/model-releases).
+
+  ✅ **NEW** Redesigned billing and pricing: A live plan catalogue replaces legacy pricing pages, showing Creator, Business, and Studio Free/Pro plans with monthly and yearly options, extra-project and compliance add-on prices, and a shared upgrade dialog used throughout the app. A new Billing settings page shows your plan, usage, credits, and charges with payment-management links. Old subscription routes redirect to the new pages.
+
+  ✅ **NEW** vAulth QR handoff for identity verification: Desktop users receive a QR code to continue verification on a phone, while mobile users can launch verification directly. QR sessions include expiry timers, status polling, copy-link support, regeneration, and retry handling. An expandable help panel covers accepted documents, privacy, and troubleshooting.
+
+  ✅ **NEW** Live release signature tracker: See each collaborator's signing state — signed, awaiting, draft, expired, voided, or not sent — alongside reminder timestamps, identity-verification status, and custody information. See [Compliance](/compliance).
+
+  ✅ **NEW** Per-person collaboration PDFs: Generate a separate signed PDF for each participant in a collaboration release.
+
+  ✅ **NEW** Pending collaborations now appear in collaboration lists alongside active and archived projects.
+
+  ## Improvements
+
+  🪄 **Added** Identity verification now handles IDs with a date of birth printed on the back — the system prompts for the reverse side instead of counting it as a failure.
+
+  🪄 **Added** A human-review path for ambiguous OCR or borderline face-match results during identity verification, replacing the previous terminal-failure behavior.
+
+  🪄 **Added** vAulth handoff sessions now reuse an active phone verification instead of showing an error, keep QR codes alive while the page is visible, and reflect inactivity-based expiry messaging.
+
+  🪄 **Added** Collaboration join QR is now prominent on mobile with an "Invite people on set" action on Project Overview and responsive layout for small screens.
+
+  🪄 **Added** Identity verification help panel explaining accepted documents, privacy, camera tips, and troubleshooting for glare, expiration, and status updates.
+
+  🪄 **Added** Users can now download their own PDF copy from the compliance and release flow.
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** Studio and organization owners no longer fall into the wrong onboarding flow. The system now correctly resolves account type, uses organization IDs for profile writes, and shows a loading state instead of defaulting to Business.
+
+  🛠️ **Fixed** Duplicate accounts from GRABBYS/ModelBoard SSO: placeholder emails are mapped back to existing users, preventing duplicate auto-provisioning and repeated profile-repair retries. Clearer sign-in errors are shown when issues occur.
+
+  🛠️ **Fixed** Upload and custom-template controls no longer freeze due to unstable internal state updates.
+
+  🛠️ **Fixed** Single-person collaboration releases now show a clear message to invite collaborators first, instead of a generic error.
+
+  🛠️ **Fixed** QR dialog infinite spinner: a 15-second timeout and proper error recovery were added.
+
+  🛠️ **Fixed** Archived duplicate records no longer remain locked or unavailable in workflows.
+
+  🛠️ **Fixed** Admin navigation now targets the correct portal routes, and legacy admin pages have been removed or redirected.
+</Update>
 
 <Update label="2026-09-19" description="v0.41.0" tags={["New Features"]}>
   ### This latest update of the ModelBoard Platform introduces the Model Release Builder for creating structured model release documents.
