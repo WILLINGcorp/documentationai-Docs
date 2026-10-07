@@ -203,6 +203,24 @@ Audit-style history of delegated 2257 signature activity. Use this to confirm wh
 
 </ParamField>
 
+### Identity verification statuses
+
+When a collaborator starts identity verification, their compliance card may show intermediate statuses that indicate follow-up steps or review states.
+
+<ParamField body="verification-status" param-type="enum" show-location="false">
+
+Overall identity verification state for a collaborator. Beyond the standard `not started`, `in review`, and `verified` states, you may see:
+
+- `needs_back` — the system needs a photo of the back of the collaborator's ID, usually because the date of birth was not found on the front
+- `needs_expiry_check` — the collaborator must confirm their document's expiry date
+- `liveness_failed` — the live face check did not pass; the collaborator should retry with a genuine live capture
+- `liveness_unconfirmed` — repeated liveness failures escalated the case to manual review
+- `pending_review` — a reviewer is assessing the submission, typically within 24 hours
+
+The `needs_back` and `needs_expiry_check` statuses are intermediate requests for more information, not failures. If a collaborator's live face check already passed, they will not need to repeat it for these follow-up steps.
+
+</ParamField>
+
 ### Boundaries and consent
 
 <ParamField body="boundaries-consent-status" param-type="enum" show-location="false">
@@ -319,6 +337,16 @@ You might not see the QR scan action if:
 - The project does not require QR-based in-person verification for that collaborator.
 
 If you still believe a QR scan should be available, confirm the collaborator's current compliance status and project requirements before contacting support.
+
+</Expandable>
+
+<Expandable title="A collaborator's verification shows liveness_failed or liveness_unconfirmed. What should I do?">
+
+A `liveness_failed` status means the live face check did not pass. Ask the collaborator to retry with a genuine live capture — their face should be clearly visible, well lit, and facing the camera directly. They should avoid photos of screens, printed pictures, or heavily filtered camera inputs.
+
+A `liveness_unconfirmed` status means repeated liveness failures escalated the case to manual review. No further action is required from the collaborator while the review is in progress. Reviews are typically completed within 24 hours.
+
+If the status does not update after the review period, contact support and mention the collaborator's current verification status.
 
 </Expandable>
 

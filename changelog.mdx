@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.42.0" href="#v0-42-0" icon="file-code-icon" horizontal="false" target="_self">
+    Live Face Liveness check for identity verification.
+  </Card>
+
   <Card title="v0.41.0" href="#v0-41-0" icon="file-code-icon" horizontal="false" target="_self">
     Model Release Builder for structured release documents.
   </Card>
@@ -24,11 +28,29 @@ Stay current with ModelBoard's evolution through our structured release cadence.
   <Card title="v0.39.19" href="#v0-39-19" icon="lucide-file-code" horizontal="false" target="_self">
     Implementing all new Passwordless & Credless Passkey Auth.
   </Card>
-
-  <Card title="v0.39.16" href="#v0-39-16" icon="file-code-icon" horizontal="false" target="_self">
-    Introducing Significant Upgrade of the Collaboration Hub.
-  </Card>
 </Columns>
+
+<Update label="2026-10-07" description="v0.42.0" tags={["New Features","Improvements"]}>
+  ### This update introduces Live Face Liveness to the identity verification flow, adding a real-time camera check and new intermediate verification statuses.
+
+  ## New Features
+
+  ✅ **NEW** Live Face Liveness check: During identity verification, users complete a live camera check that confirms they are physically present, replacing the static selfie upload in supported regions.
+
+  ✅ **NEW** Intermediate verification statuses: Users may now see `needs_back` (photo of the back of the ID required) and `needs_expiry_check` (confirm the document's expiry date) as follow-up steps during verification.
+
+  ✅ **NEW** Human review escalation: Repeated liveness failures within 24 hours can escalate to manual review with a `liveness_unconfirmed` status instead of continuing to fail automatically.
+
+  ✅ **NEW** `pending_review` status: When a verification is sent for manual review, users see a pending review state with an estimated 24-hour turnaround.
+
+  ## Improvements
+
+  🪄 **Improved** The reference image captured during the live face check is used for face comparison and storage, eliminating the need for a separate selfie upload when Face Liveness is available.
+
+  🪄 **Improved** A passed liveness session can be briefly reused for the same verification attempt when follow-up steps are needed (such as providing the back of an ID or confirming an expiry date), so users do not repeat the live check unnecessarily.
+
+  🪄 **Improved** In regions where Face Liveness is not available, the existing selfie upload and heuristic verification path continues to work without interruption.
+</Update>
 
 <Update label="2026-09-19" description="v0.41.0" tags={["New Features"]}>
   ### This latest update of the ModelBoard Platform introduces the Model Release Builder for creating structured model release documents.

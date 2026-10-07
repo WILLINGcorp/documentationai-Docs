@@ -37,6 +37,22 @@ Typical actions include:
 
 These actions feed into the status collaborators see on your profile and inside projects.
 
+### Live face check during identity verification
+
+When you start identity verification, ModelBoard may ask you to complete a live face check using your device camera. This step confirms that you are physically present rather than submitting a photo of a screen or a printed picture.
+
+During the live face check:
+
+- You use your camera to complete a short real-time interaction
+- The image captured during the check is used as your reference photo for face comparison and storage, so you do not need to upload a separate selfie in this path
+- If the check passes but additional information is needed (such as a photo of the back of your ID or confirmation of your document's expiry date), the same successful session is reused briefly so you do not have to repeat the live check
+
+<Callout kind="info" collapsed="false">
+  The live face check is available in supported regions. In regions where it is not available, the existing selfie upload path continues to work without interruption.
+</Callout>
+
+If the live check fails, you will see a `liveness_failed` status and can retry with a genuine live capture. After repeated failures within 24 hours, your case may be escalated to manual review with a `liveness_unconfirmed` status. When this happens, no further action is required from you while the review is in progress.
+
 ### Compliance signals on your creator profile
 
 Your creator profile exposes a high‑level compliance and verification signal to others in the Collaboration Hub.
@@ -144,6 +160,14 @@ Use these as a quick check that your account is in a good state before taking on
 
 <ParamField body="verificationStatus" param-type="string" required="false" deprecated="false" show-location="false">
   High‑level indicator of your account verification and compliance standing, surfaced on your creator profile and in the Collaboration Hub. Typical values may include states like `not started`, `in review`, or `verified`, depending on how ModelBoard represents statuses in your region.
+</ParamField>
+
+### Identity verification statuses
+
+During identity verification, you may encounter these statuses as the system processes your documents and live face check.
+
+<ParamField body="verificationStatus" param-type="enum" required="false" deprecated="false" show-location="false">
+  Overall identity verification state. In addition to `not started`, `in review`, and `verified`, you may see intermediate statuses such as `needs_back` (the system needs a photo of the back of your ID), `needs_expiry_check` (confirm your document's expiry date), `liveness_failed` (the live face check did not pass), `liveness_unconfirmed` (repeated liveness failures sent your case to manual review), or `pending_review` (a reviewer is assessing your submission, usually within 24 hours).
 </ParamField>
 
 ### Project‑level compliance actions and statuses
@@ -350,6 +374,21 @@ Keep these practices in mind:
     - Downloadable items like signed release PDFs are available only after all required signatures are collected
 
     If someone asks you to send raw copies of your documents outside these flows, treat that as a red flag and consider involving support.
+  </Expandable>
+
+  <Expandable title="The live face check failed. What should I do?" default-open="false">
+    If you see a `liveness_failed` status, the live camera check could not confirm that you were physically present. Retry with a genuine live capture by ensuring your face is clearly visible, well lit, and facing the camera directly. Avoid photos of screens, printed pictures, or heavily filtered camera inputs.
+
+    If the status changes to `liveness_unconfirmed` after repeated failures, your case has been sent for manual review. No further action is required from you while the review is in progress. Reviews are typically completed within 24 hours.
+  </Expandable>
+
+  <Expandable title="I was asked to provide the back of my ID or confirm an expiry date. Why?" default-open="false">
+    During verification, the system may request additional information before completing your check:
+
+    - A `needs_back` status means the system could not find your date of birth on the front of your ID and needs a photo of the back. If your document has no back-side information, follow the prompt to indicate that.
+    - A `needs_expiry_check` status means the system found an expiry date that needs confirmation. Confirm the date or indicate that the document has no printed expiry date as prompted.
+
+    These are intermediate requests, not failures. If your live face check already passed, you will not need to repeat it for these follow-up steps.
   </Expandable>
 </ExpandableGroup>
 
