@@ -1,0 +1,260 @@
+---
+title: Blog Publishing
+description: Create, optimize, translate, and publish ModelBoard blog posts with SEO controls, reusable byline authors, and managed publishing workflows.
+---
+
+## Create and publish blog content
+
+ModelBoard administrators can create, edit, translate, and publish blog posts with rich content tools, SEO controls, bilingual support, reusable byline authors, and scheduled publishing.
+
+## Overview
+
+Manage blog content from the admin Content Hub. The hub includes separate areas for posts, authors, and supporting media.
+
+- **Blog Posts:** Create and manage posts, comments, and analytics.
+- **Blog Authors:** Manage reusable public-facing byline profiles.
+- **Media Library:** Reserved for future media management.
+- **Videos:** Reserved for future video management.
+
+<Callout kind="info">
+
+Blog publishing is available to administrators from the admin Content Hub. Visitors and standard account users cannot access these controls.
+
+</Callout>
+
+## Blog Post Editor
+
+The editor uses two columns to keep writing tools separate from publishing controls.
+
+- **Main column:** Title, slug, excerpt, rich-text content, photo gallery, and gallery caption.
+- **Side column:** Status, category, tags, language, byline author, SEO settings, cover image, and featured post controls.
+
+### Create a blog post
+
+<Steps>
+  <Step title="Open the Blog Posts area">
+
+  Open the admin Content area, select **Content Hub**, and then select **Blog Posts**. Choose the option to create a new post.
+
+  The editor opens with the main writing fields and publishing settings available.
+
+  </Step>
+
+  <Step title="Add the post content">
+
+  Enter a title, review the generated slug, and add an excerpt. Write the article in the rich-text editor, then add images, videos, tables, links, or a call-to-action when needed.
+
+  Use the preview controls to check the post in desktop and mobile layouts. The editor also shows the word count and estimated reading time.
+
+  </Step>
+
+  <Step title="Configure the post">
+
+  Select the category, add tags, choose the language, and assign a byline author. Add a cover image and configure the SEO fields before publishing.
+
+  The SEO panel displays a search preview and diagnostics so you can resolve content issues before the post goes live.
+
+  </Step>
+
+  <Step title="Save or publish the post">
+
+  Save the post as a draft, publish it immediately, or schedule it for a future date and time. Review the status after saving to confirm that the post entered the intended publishing state.
+
+  </Step>
+</Steps>
+
+## Manage slugs
+
+A slug creates the public URL for a post. ModelBoard generates the slug from the title, but you can edit it manually before saving.
+
+Slugs are normalized to lowercase characters without accents, with words separated by hyphens. Each slug can contain up to 120 characters and must be unique across every language and post status.
+
+<Callout kind="alert">
+
+A slug conflict blocks saving. ModelBoard checks all languages and statuses and displays `That slug is already used by another post (in any language).` when another post already uses the slug.
+
+</Callout>
+
+## Choose a category
+
+Select one category for each post:
+
+- Announcements
+- Events
+- Partnerships
+- New Features
+- Guides & Tutorials
+- Industry Insights
+
+Category labels change with the post language.
+
+<Tabs>
+  <Tab title="English">
+
+  - Announcements
+  - Events
+  - Partnerships
+  - New Features
+  - Guides & Tutorials
+  - Industry Insights
+
+  </Tab>
+  <Tab title="Français">
+
+  - Annonces
+  - Événements
+  - Partenariats
+  - Nouvelles fonctionnalités
+  - Guides et tutoriels
+  - Analyses de l'industrie
+
+  </Tab>
+</Tabs>
+
+## Add tags
+
+Tags help group related posts and support content discovery.
+
+Type a tag and press **Enter** or **comma** to add it. The field suggests existing tags, showing up to eight matches. ModelBoard trims whitespace, converts tags to lowercase, and removes duplicate values when the post is saved.
+
+## Manage language and translations
+
+Posts support two languages: English and French. Changing the language updates localized category labels and determines the target language used when you create a translation.
+
+### Create a translation draft
+
+Use the translation action from the post editor to create a draft in the other language. ModelBoard copies the source post's content and metadata, applies the target locale, and generates a target-language slug.
+
+<Callout kind="info">
+
+Translation drafts always start with **Draft** status. They are not featured and do not receive publication timestamps until you review and save them. ModelBoard prevents duplicate translations for the same language.
+
+</Callout>
+
+Review translated text, metadata, links, image alt text, and SEO fields before publishing the translation.
+
+## Manage byline authors
+
+Byline authors are separate from administrator accounts. The selected author controls the public-facing name and profile associated with a blog post.
+
+Manage reusable authors from the **Blog Authors** tab in the Content Hub. Each author record can include:
+
+- **Name:** Required public display name.
+- **Photo URL:** Optional author image.
+- **Bio (EN):** Optional English biography.
+- **Bio (FR):** Optional French biography.
+- **Website:** Optional external website.
+- **Twitter / X:** Optional social profile.
+- **Instagram:** Optional social profile.
+
+The author list displays the photo, display name, and English bio. If an author has no photo, ModelBoard displays a fallback avatar based on the author's name.
+
+## Configure SEO
+
+Use the SEO panel to control how a post appears in search results and when it is shared.
+
+- **Meta title:** Recommended maximum of 60 characters.
+- **Meta description:** Recommended maximum of 155 characters.
+- **Canonical URL:** Optional URL that identifies the preferred version of the content.
+- **Open Graph image:** Image used when the post is shared. The cover image is used by default.
+- **Noindex:** Prevents search engines from indexing the post.
+
+The live search preview shows the public URL using the selected slug, such as `modelboard.net/blog/{slug}`. SEO diagnostics check the post for an H1 heading, missing image alt text, empty links, and meta title or description length issues.
+
+<Callout kind="tip">
+
+Write a distinct meta title and description for each post. Add descriptive alt text to every image, confirm that links have meaningful destinations, and use a canonical URL when substantially similar content exists elsewhere.
+
+</Callout>
+
+## Publish a post
+
+ModelBoard supports three publishing statuses:
+
+- **Draft:** Keeps the post unavailable to the public while you continue editing.
+- **Published:** Makes the post available at its public blog URL.
+- **Scheduled:** Publishes the post automatically at a future date and time.
+
+Scheduled posts require a future time and a timezone. Available timezones include America/Toronto, America/Bogota, America/New_York, America/Los_Angeles, Europe/London, Europe/Paris, and UTC.
+
+### Publish immediately
+
+<Steps>
+  <Step title="Review the post">
+
+  Check the title, slug, content, language, category, tags, byline author, cover image, and SEO settings. Resolve any diagnostics that could affect the public page.
+
+  </Step>
+
+  <Step title="Select Published">
+
+  Set the status to **Published**. If the post is eligible to be highlighted, enable **Featured Post**.
+
+  Featured Post is available only when the status is Published.
+
+  </Step>
+
+  <Step title="Save the post">
+
+  Select **Create Post** for a new post or **Update Post** for an existing post. Confirm that the editor closes or shows the saved state and that the post appears as Published.
+
+  </Step>
+</Steps>
+
+### Schedule publication
+
+<Steps>
+  <Step title="Set the publishing time">
+
+  Select **Scheduled**, choose a future date and time, and select the timezone that should interpret the scheduled time.
+
+  </Step>
+
+  <Step title="Save the schedule">
+
+  Save the post and confirm that its status is Scheduled. The post remains unavailable to the public until the scheduled time.
+
+  </Step>
+</Steps>
+
+Draft posts autosave every 30 seconds, but autosave applies only to existing drafts. Save a new post manually before relying on autosave.
+
+## Review revision history
+
+ModelBoard retains up to 50 revisions for a post. Loading a revision places its content in the editor as unsaved changes.
+
+Review the loaded content carefully and select **Update Post** to persist it. Loading a revision alone does not change the saved post.
+
+## Add cover images and galleries
+
+### Cover image
+
+Add a JPEG, PNG, or WebP cover image. The editor provides a 16:9 crop with zoom controls from 1x to 3x.
+
+Alt text is required when a cover image is present. Write a concise description that communicates the image's purpose or content to readers who cannot see it.
+
+### Photo gallery
+
+Add up to 20 images to the post's photo gallery. A gallery caption is optional and appears with the gallery content.
+
+Images added inside rich-text content also require alt text. Use the preview to verify image placement and confirm that captions and alternative text communicate the intended context.
+
+## RSS and sitemap distribution
+
+Published blog posts are added automatically to the public RSS feed and sitemap. RSS content uses localized descriptions, and each feed is specific to a locale.
+
+The sitemap includes translation alternates and applies canonical URL rules. Posts with an off-site canonical URL are excluded from the sitemap. Feed content is cached for up to 10 minutes, and the RSS feed includes a last build timestamp.
+
+## Where to go next
+
+<Columns cols={3}>
+  <Card title="Changelog" href="/changelog" icon="clock" cta="View updates" horizontal="false" target="_self">
+    Review product changes, publishing updates, and fixes that may affect your workflow.
+  </Card>
+  <Card title="Features" href="/features" icon="zap" cta="Explore features" horizontal="false" target="_self">
+    Learn how ModelBoard tools support profiles, projects, compliance, and casting workflows.
+  </Card>
+  <Card title="MB App Store" href="/mb-apps" icon="package" cta="Browse apps" horizontal="false" target="_self">
+    Add focused apps to your ModelBoard account and connect related workflows.
+  </Card>
+</Columns>
