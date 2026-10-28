@@ -36,11 +36,41 @@ From the hub you can:
 
 To start a new project, use the actions in the hub:
 
-- **New Blank Project** – creates a draft proposal/project and takes you straight into the workflow page so you can add details and invites.
+- **New Draft Project**: available in **Extended** mode. It creates a draft proposal/project and takes you straight into the workflow page so you can add details and invites.
 
-- **New Collaboration** (where available) – starts a new proposal, typically with some context prefilled (for example, from another surface in the app).
+- **New Collaboration**: available where supported in both modes. It starts a new proposal, typically with some context prefilled, for example from another surface in the app.
+
+- **Join a Project**: available in **Essentials** mode for joining an existing project.
+
+**New Draft Project** is hidden in Essentials mode. Essentials keeps **Join a Project** and **New Collaboration**.
 
 Once you create a project, ModelBoard saves the project proposal and updates its lifecycle as participants act on the invite.
+
+### Essentials and Extended modes
+
+**Essentials** is a mobile-only mode for starting or joining collaborations with a shorter proposal flow. **Extended** retains the full collaboration workflow, including the New Draft Project action.
+
+The Essentials **New Collaboration** flow has three steps:
+
+1. Choose one creator and optionally enter a project title and message.
+
+   - The project title can contain up to 120 characters.
+
+   - The message can contain up to 500 characters.
+
+2. Choose **Standard Model Release** or, when available, choose a custom template.
+
+3. Review the proposal and send it.
+
+The proposal flow does not collect a shoot date. Add scheduling details later through the available project workflow surfaces.
+
+Essentials hides the **Collaborators** and **Scheduling** hub sections, along with the **Add Tasks** and **Set Schedule** shortcuts on project cards. **Chat** and **Project Files** remain available.
+
+- **Chat** opens the project's group chat.
+
+- **Files** opens **Project Files**.
+
+Essentials hides these entry points in the mobile experience, but it does not mean that the underlying task or schedule functionality has been removed.
 
 ## Collaboration lifecycle and statuses
 
@@ -75,7 +105,7 @@ Use this walkthrough as the concrete, in-app flow from creating a Collabs projec
   <Step title="Create a new project from the Collabs hub" icon="rocket" title-type="p">
     Start at the Collabs hub at `/collabs`.
 
-    - Click **New Blank Project** (or **New Collaboration** where available).
+    - Click **New Draft Project** in Extended mode.
 
     - Confirm that ModelBoard opens a workflow page at a URL like `/collab/{id}`.
 

@@ -1,0 +1,138 @@
+---
+title: Configure MB Trophy nomination forms and embeds
+description: Build nomination forms, collect submissions, and embed Trophy voting experiences while guiding participants through categories, required fields, and verification.
+---
+
+## Create a nomination form
+
+Build a published form for each award category using the MB Trophy form builder. Organizers can set a label and key, mark fields as required, add help text, reorder or delete fields, and publish a versioned form.
+
+### Supported field types
+
+<ParamField body="short_text" param-type="field type" show-location="false">
+
+A single-line text input for short responses.
+
+</ParamField>
+
+<ParamField body="long_text" param-type="field type" show-location="false">
+
+A multi-line text area for detailed responses.
+
+</ParamField>
+
+<ParamField body="single_select" param-type="field type" show-location="false">
+
+A select menu where the participant chooses one option. Add the available options in the form builder.
+
+</ParamField>
+
+<ParamField body="multi_select" param-type="field type" show-location="false">
+
+A field where the participant chooses multiple options. Add the available options in the form builder.
+
+</ParamField>
+
+<ParamField body="checkbox" param-type="field type" show-location="false">
+
+A single agreement checkbox or a group of checkbox options.
+
+</ParamField>
+
+<ParamField body="url" param-type="field type" show-location="false">
+
+A field for a web address.
+
+</ParamField>
+
+<ParamField body="image_upload" param-type="field type" show-location="false">
+
+An upload field that accepts image files.
+
+</ParamField>
+
+<ParamField body="video_upload" param-type="field type" show-location="false">
+
+An upload field that accepts video files.
+
+</ParamField>
+
+<ParamField body="file_upload" param-type="field type" show-location="false">
+
+An upload field for a file. The field accepts one file.
+
+</ParamField>
+
+<Callout kind="info">
+
+The form interface enables public submissions during the **Call for submissions** phase. Participants must sign in, choose an active category, complete every required field, and submit the form while submissions are open. Each upload field accepts one file, and image or video files must match the selected field type.
+
+</Callout>
+
+## Publish a form and share it
+
+<Steps>
+<Step title="Add and configure fields" icon="edit" title-type="p">
+
+Add the fields participants need. Set labels, required status, help text, and options for select, multi-select, and checkbox fields.
+
+</Step>
+
+<Step title="Arrange the form" icon="settings" title-type="p">
+
+Reorder fields so participants encounter them in a clear sequence. Delete fields that do not belong in the nomination form.
+
+</Step>
+
+<Step title="Publish the form" icon="check-circle" title-type="p">
+
+Save and publish the form for the category. Participants can use the form only when the category is active and the edition is accepting submissions.
+
+**Success looks like:** The published form appears for the selected active category on the public nomination page.
+
+</Step>
+
+<Step title="Copy an embed" icon="code" title-type="p">
+
+Open the Trophy embed controls and copy either the iframe snippet or the script snippet for the nomination form. Paste the selected snippet into the organization’s official website.
+
+**Success looks like:** The nomination form appears on your website and reflects the published form for the business.
+
+</Step>
+</Steps>
+
+## Submit a nomination
+
+Participants sign in before submitting a nomination. After signing in, they select an active award category and complete the published form for that category.
+
+Required fields must contain a value before submission. Required upload fields must include a file, and image or video uploads must use the matching file type.
+
+When the submission is accepted, the interface confirms that the submission was received and that moderators will review it.
+
+## What appears on the public profile
+
+An eligible MB Trophy public profile can include these tabs:
+
+- **Award Categories:** Lists active categories and provides the nomination action while the interface is accepting submissions.
+- **Submissions & Nominations:** Shows announced, non-withdrawn nominees to ordinary public viewers.
+- **Voting & Results:** Provides voting access when the edition exposes voting and displays available voting or results information.
+
+<Callout kind="info">
+
+Public viewers see the announced, non-withdrawn nominee list. Trophy staff and administrators see the submission review view in the **Submissions & Nominations** area instead.
+
+</Callout>
+
+## Create a voting embed
+
+Organizers can create a voting embed token for an edition and optionally restrict it to one category. The embed settings also support an optional label and allowed origins.
+
+Copy the iframe or script snippet shown after creating the token, then add it to the organization’s website. The widget displays announced, non-withdrawn nominees and can allow visitors to vote by category.
+
+Depending on the edition’s voting settings, voters may need to verify their email address before the vote is recorded. Organizers can revoke a token at any time. A widget using a revoked token stops working.
+
+<Callout kind="info">
+
+Nomination and voting availability depends on the edition configuration and the actions exposed in the public interface. Check the current edition phase and settings before sharing an embed with participants.
+
+</Callout>
