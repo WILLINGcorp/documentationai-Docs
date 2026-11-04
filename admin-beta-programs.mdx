@@ -1,0 +1,61 @@
+---
+title: Review beta access requests
+description: Review limited-beta access requests in ModelBoard, filter by status, inspect request details, and record grant, decline, or revoke decisions.
+---
+
+## Review limited-beta access requests
+
+Use the `/admin/beta` area to find beta access requests, review their context, and record a decision with a reason.
+
+<Callout kind="info">
+
+You need staff access with the premium features permission to open the beta review area and make decisions.
+
+</Callout>
+
+## Review and decide on a request
+
+<Steps>
+  <Step title="Open the beta review area" icon="folder" title-type="p">
+
+    Open `/admin/beta`. The list opens with the **Pending** filter selected.
+
+    Use the filters **Pending**, **Granted**, **Declined**, **Revoked**, or **All** to find requests by their current status.
+
+  </Step>
+  <Step title="Review the request details" icon="file-text" title-type="p">
+
+    Check the request row before making a decision. The row includes:
+
+    - **App:** The app requested for beta access.
+    - **Organization:** The requesting organization. The list shows “Unnamed business” when no organization name is available.
+    - **Requester:** The person who submitted the request, when available.
+    - **Applicant note:** Additional context from the requester, when provided.
+    - **Status:** The current request state.
+    - **Decision reason:** The reason recorded for an earlier decision, when available.
+
+  </Step>
+  <Step title="Record a documented decision" icon="edit" title-type="p">
+
+    Enter a reason with at least three characters, then choose the action allowed for the request:
+
+    - **Grant:** Available for requests that are not already granted.
+    - **Decline:** Available only for pending requests.
+    - **Revoke:** Available only for granted requests.
+
+    After you save the decision, the list reloads with the updated status and recorded reason.
+
+  </Step>
+</Steps>
+
+## Decision outcomes
+
+A **granted** request allows the organization to pass the beta access check and install the app from the App Store. ModelBoard also attempts to notify the organization that the app is available to install.
+
+A **declined** request remains recorded with the decision reason. ModelBoard does not send a decline notification.
+
+A **revoked** request no longer satisfies the beta access check. The organization loses beta access even though the request history and reason remain available to staff.
+
+## Beta review and app eligibility are separate
+
+Beta access review controls whether an organization has access to a limited-beta app. The App Store performs ordinary app eligibility checks separately, so granting beta access does not replace those checks.
