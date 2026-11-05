@@ -13,6 +13,10 @@ description: >-
 Stay current with ModelBoard's evolution through our structured release cadence. We release updates bi-weekly, focusing on stability, performance, and user-requested features.
 
 <Columns cols="3">
+  <Card title="v0.42.0" href="#v0-42-0" icon="file-code-icon" horizontal="false" target="_self">
+    MB Credits, MB Trophy limited beta & public award pages.
+  </Card>
+
   <Card title="v0.41.0" href="#v0-41-0" icon="file-code-icon" horizontal="false" target="_self">
     Model Release Builder for structured release documents.
   </Card>
@@ -29,6 +33,52 @@ Stay current with ModelBoard's evolution through our structured release cadence.
     Introducing Significant Upgrade of the Collaboration Hub.
   </Card>
 </Columns>
+
+<Update label="2026-11-05" description="v0.42.0" tags={["New Features","Improvements","Fixes"]}>
+  ### This update introduces MB Credits, an MB Trophy limited beta with public award pages, Industry Recognition on profiles, and redesigned creator cards.
+
+  ## New Features
+
+  ✅ **NEW** MB Credits: earn credits by completing onboarding, profile, and feature steps, then use them from a project's [Compliance](/compliance) tab to cover a project (1,000 MB Credits each). Credits have no cash value and never expire.
+
+  ✅ **NEW** MB Credits page: see your balance, your progress toward covering a project, every available reward grouped by where it is earned, and a full credit history. A short animation confirms each credit you earn.
+
+  ✅ **NEW** MB Trophy Limited Beta: Business Pro accounts can ask to join the waitlist from an app's details in the [MB App Store](/mb-apps), optionally describing their award show, and follow the request status there.
+
+  ✅ **NEW** Install consent and staff access for MB Trophy: approved award shows review the exact permissions requested before installing, and the owner chooses which staff accounts can work on the app as Manager, Jury, or Production.
+
+  ✅ **NEW** Industry Recognition: awards a creator or studio has won now appear on their profile and studio listing once results are public, with the category, award show, and edition.
+
+  ✅ **NEW** Public awards and nominations page: share one link so anyone can browse an edition's categories and submit a nomination without an account. Forms accept text, links, choices, checkboxes, and image, video, or file uploads, and close automatically outside the submission phase.
+
+  ✅ **NEW** Embeds for award shows: copy an iframe or script snippet to show nomination forms on your official website, and create embed tokens to place a voting widget on partner sites with optional allowed domains.
+
+  ✅ **NEW** Start a collaboration from a creator: shared links now open the collaboration flow with the recipient already filled in.
+
+  ## Improvements
+
+  🪄 **Added** Redesigned creator cards and network grid, with orientation and content-type icons, next travel stop and trip dates, a last-seen label, and updated filters.
+
+  🪄 **Added** Redesigned mobile dashboards for business and studio accounts, with clearer status tiles and quick actions.
+
+  🪄 **Added** Mobile collaboration essentials: the General section now comes first, project cards are simpler, creating a collaboration takes three steps, and links open a project's group chat or files directly.
+
+  🪄 **Added** Authoring tools in [MB Studio News](/mb-studio-news): custom slugs, SEO fields, tags, a byline, and reading time for each post.
+
+  🪄 **Added** Further security hardening across uploads, notifications, and connected integrations.
+
+  ## Bug Fixes
+
+  🛠️ **Fixed** Get Verified now resolves the correct business page for organization owners and sub-accounts.
+
+  🛠️ **Fixed** Autosave in the Studio News editor no longer locks the editor while you write.
+
+  🛠️ **Fixed** Studio News feeds and post links: RSS and HTML feeds publish correctly again, and post slugs stay unique.
+
+  🛠️ **Fixed** Header and sidebar overlap on smaller screens, and the mobile warning card no longer covers page content.
+
+  🛠️ **Fixed** Creator card display and search issues on the network.
+</Update>
 
 <Update label="2026-09-19" description="v0.41.0" tags={["New Features"]}>
   ### This latest update of the ModelBoard Platform introduces the Model Release Builder for creating structured model release documents.
@@ -125,31 +175,31 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 
   ## New Features
 
-  ✅ **NEW** Project configuration wizard on first-time opening of the project for the project sender.  
+  ✅ **NEW** Project configuration wizard on first-time opening of the project for the project sender.  
 
-  ✅ **NEW** Wizard sets the type of ownership.  
+  ✅ **NEW** Wizard sets the type of ownership.  
 
-  ✅ **NEW** Wizard asks to add extra collaborators to the project, either by searching for an existing user or by sending an email invite to a collaborator not yet on ModelBoard.  
+  ✅ **NEW** Wizard asks to add extra collaborators to the project, either by searching for an existing user or by sending an email invite to a collaborator not yet on ModelBoard.  
 
-  ✅ **NEW** Created a whole new release form signature flow accessible directly from the Compliance tab of the Collab workflow. 
+  ✅ **NEW** Created a whole new release form signature flow accessible directly from the Compliance tab of the Collab workflow. 
 
   ✅ **NEW** Signed release forms are backed up in an all new dedicated vAulth section.
 
-  ✅ **NEW** Added more data to vAulth account overview.  
+  ✅ **NEW** Added more data to vAulth account overview.  
 
-  ✅ **NEW** Updates log trail to the Collab project overview tab, allowing all project collaborators to view every edit applied to the project.  
+  ✅ **NEW** Updates log trail to the Collab project overview tab, allowing all project collaborators to view every edit applied to the project.  
 
-  ✅ **NEW** Backup codes and account security subtab on the Settings page, allowing users to generate 10 backup codes and download them as a PDF.  
+  ✅ **NEW** Backup codes and account security subtab on the Settings page, allowing users to generate 10 backup codes and download them as a PDF.  
 
-  ✅ **NEW** Implemented Email-less, One-click Passwordless Passkey Authentication for new Passkey registrations. 
+  ✅ **NEW** Implemented Email-less, One-click Passwordless Passkey Authentication for new Passkey registrations. 
 
   ##### ⚠️ *Existing Passkeys must be deleted and Regenerated to allow for Email-less, One-click Passwordless Passkey Authentication.*
 
   ## Improvements
 
-  �&#xDE84;**&#x20;Added** Refactored model grid for desktop. New horizontal layout with more detail for each model without opening their profile.  
+  �&#xDE84;**&#x20;Added** Refactored model grid for desktop. New horizontal layout with more detail for each model without opening their profile.  
 
-  🪄 **Added** Implemented the capability to remove a collaborator from a Collab project.  
+  🪄 **Added** Implemented the capability to remove a collaborator from a Collab project.  
 
   🪄 **Added** When<u> two passkeys</u> are registered in the account, *plus* backup codes are<u> generated + downloaded</u>, your account automatically switches to passkey-only authentication for enhanced security.
 
@@ -161,17 +211,17 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 
   ## Bug Fixes
 
-  🛠️ **Fixed** New vAulth notification menu.  
+  🛠️ **Fixed** New vAulth notification menu.  
 
-  🛠️ **Fixed** Replaced the second authentication factor with passkeys. Passkeys for ModelBoard are now synced with vAulth. Passkeys are stronger than TOTP  (phishing-resistant, and hardware-backed).  
+  🛠️ **Fixed** Replaced the second authentication factor with passkeys. Passkeys for ModelBoard are now synced with vAulth. Passkeys are stronger than TOTP  (phishing-resistant, and hardware-backed).  
 
-  🛠️ **Fixed** vAulth's tab navigation.  
+  🛠️ **Fixed** vAulth's tab navigation.  
 
   ## Deleted
 
   **🗑️ Deleted** Decluttered vAulth's interface by removing unnecessary widgets.
 
-  \--- 
+  \--- 
 
   ###### *This version may also include more undocumented changes fixing various small bugs and implementing minor security upgrades.*
 </Update>
@@ -181,11 +231,11 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 
   ## New Features
 
-  ✅ ***NEW&#x20;*** "Props" sub-tab for Props Management accessible from the Screenplay Tab
+  ✅ ***NEW&#x20;***  "Props" sub-tab for Props Management accessible from the Screenplay Tab
 
-  ✅ ***NEW &#x20;***&#x52;elease Assets Storage is now permanent with Unlimited Storage Capacity and no file-size limitation for **Pro&#x20;**&#x41;ccounts, Supports up to 4K resolution.
+  ✅ ***NEW  &#x20;***&#x52;elease Assets Storage is now permanent with Unlimited Storage Capacity and no file-size limitation for **Pro&#x20;**&#x41;ccounts, Supports up to 4K resolution.
 
-  ✅ ***NEW &#x20;***&#x46;ully featured User Sub-Account System for Business / Studio / Enterprise Organizations Accounts
+  ✅ ***NEW  &#x20;***&#x46;ully featured User Sub-Account System for Business / Studio / Enterprise Organizations Accounts
 
   ## Improvements
 
@@ -193,7 +243,7 @@ Stay current with ModelBoard's evolution through our structured release cadence.
 
   🪄 **Added** Randomized attribution of unused Featured Ad Spots at every page load on the network page
 
-  ####  Significant Upgrade of the Collab Workflow with more in the
+  ####  Significant Upgrade of the Collab Workflow with more in the
 
   #### &#x20;Upcoming Version
 
