@@ -1,0 +1,236 @@
+---
+title: Admin Security Monitoring
+description: Monitor suspicious logins, unusual document access, and failed verification runs, then triage alerts and tune detection thresholds.
+---
+
+Security Monitoring gives you a live feed of suspicious logins, unusual document access, and failed verification runs across ModelBoard, so you can catch a problem while it is still small. Alerts arrive as they happen, each one records its own severity and subject, and every status change you make is written to an audit history you can read back later.
+
+## Who can open security monitoring
+
+Only signed-in users with the admin role can open the page. If your account does not hold the admin role, the page is not available to you.
+
+Open it from the **Admin Dashboard** by selecting the **Security Monitoring** card, which is described as "Live alerts for suspicious logins, unusual document access, and failed verifications."
+
+The page header reads **Security Monitoring** with the subtitle "Live feed of suspicious logins, unusual document access, and failed verification runs." Two controls sit in the header: a **Back to Admin** link that returns you to the Admin Dashboard, and a **Refresh** button that reloads the feed on demand. You rarely need the Refresh button, because new alerts arrive on their own.
+
+## Read the summary counters
+
+Four counters sit above the table and describe the alerts currently loaded.
+
+| Counter | What it tells you |
+| --- | --- |
+| **Open alerts** | How many loaded alerts still have the open status. |
+| **High / Critical (open)** | How many of those open alerts are high or critical severity. |
+| **Last 24 hours** | How many loaded alerts were raised in the past day. |
+| **Loaded** | How many alerts are in the current view. Up to 200 alerts load at a time. |
+
+Read the counters as a quick health check rather than a full inventory: they describe the 200 alerts at most that are currently loaded, not the entire history of the organization.
+
+## Alert types
+
+Four types of alert can appear in the feed.
+
+**Failed login burst** is raised when failed sign-in attempts against an account exceed the configured number within the configured time window.
+
+**Document access from new IP** is raised when a document is accessed from an IP address that has fewer prior visits than the configured minimum inside the configured lookback period.
+
+**Verification failure burst** is raised when verification runs fail more often than the configured number within the configured time window.
+
+**Threshold changed** is raised whenever an administrator changes a detection threshold, so that tuning the detector is itself visible in the feed.
+
+### Severity levels
+
+Every alert carries one of four severities: critical, high, medium, or low. Critical and high are the two levels the table highlights with the strongest badge style, which makes them easy to spot when you scan a long list.
+
+## Triage an alert
+
+<Steps>
+
+<Step title="Scan the table">
+
+The table shows seven columns: **When**, **Type**, **Severity**, **Subject user**, **Details**, **Status**, and **Actions**. **Subject user** shows a shortened user identifier, or a dash when the alert is not tied to a specific user. **Details** shows a short summary of what happened.
+
+By default the list shows only open alerts, so anything you see on a fresh load is still waiting for a decision.
+
+</Step>
+
+<Step title="Open the full details">
+
+Select **View details** in the row's action buttons, or click the details summary, to open the full details dialog for the alert. Read the specifics there before you act, particularly on critical and high alerts where the difference between a genuine incident and a false positive affects what you do next.
+
+</Step>
+
+<Step title="Check the history if the alert is unfamiliar">
+
+If someone else may have already looked at this alert, or if the same alert has come back more than once, select **View audit history** to read every status change recorded against it.
+
+</Step>
+
+<Step title="Record your decision">
+
+Use **Ack**, **Dismiss**, or **Resolve** to set the alert's status. Pick based on what you actually intend to do:
+
+- **Ack** marks the alert as seen and being handled, without closing it.
+- **Resolve** marks the alert as dealt with.
+- **Dismiss** marks the alert as noted but not actionable.
+
+</Step>
+
+</Steps>
+
+<Callout kind="tip">
+
+The status buttons are context sensitive and change as an alert moves along. **Ack** disappears once an alert is acknowledged or resolved, **Dismiss** disappears once it is resolved or dismissed, and **Resolve** disappears once it is resolved. If a button you expected is missing, the alert has already moved past that state.
+
+</Callout>
+
+## What each alert status means
+
+| Status | What it means | Status buttons available |
+| --- | --- | --- |
+| **Open** | The alert has been raised and no administrator has acted on it yet. | Ack, Dismiss, Resolve |
+| **Acknowledged** | An administrator has seen the alert and is handling it. | Dismiss, Resolve |
+| **Resolved** | The alert has been dealt with and closed. | None |
+| **Dismissed** | An administrator has noted the alert and decided it needs no action. | Ack, Resolve |
+
+The Status filter carries the same four values plus **All**, so you can pull up closed work whenever you need to check what happened.
+
+## Review an alert's audit history
+
+Every status change on an alert is recorded with the administrator who made it, the previous status, the new status, and a timestamp, along with the IP address and user agent of the person who made the change. Select **View audit history** in a row's actions to read that record for a single alert.
+
+Use it when a closed alert reappears and you want to know who closed it last time, or when you are reviewing how a critical alert was handled.
+
+## Tune detection thresholds
+
+The **Detection thresholds** card lets you change how sensitive each detector is without waiting for anything to be rebuilt or redeployed.
+
+<Steps>
+
+<Step title="Find the rule you want to change">
+
+The card lists three rules. Each row carries an editable threshold number, a time window in minutes, an enabled switch, and a description of what the rule watches.
+
+</Step>
+
+<Step title="Set the threshold and window">
+
+Edit the threshold and the window to match how noisy or how quiet your organization is. The field labels differ per rule, and the table below lists the defaults you start from.
+
+</Step>
+
+<Step title="Save your changes">
+
+Save the card to apply the new values. **Reset to defaults** restores every rule to the values in the table below.
+
+</Step>
+
+</Steps>
+
+| Rule | Threshold field | Window field | Default |
+| --- | --- | --- | --- |
+| **Failed login burst** | Failed attempts | Window (minutes) | 5 failed attempts in 10 minutes |
+| **Document access from new IP** | Prior visits required | Lookback (minutes) | 1 prior visit required, lookback of 129600 minutes (about 90 days) |
+| **Verification failure burst** | Failed runs | Window (minutes) | 3 failed runs in 60 minutes |
+
+<Callout kind="alert">
+
+Turning a rule off stops that type of alert from being raised for as long as it stays off. Before you disable a rule, confirm that other monitoring covers the same activity, because nothing else on this page will tell you when it happens.
+
+</Callout>
+
+## What happens after you change a threshold
+
+Changing a threshold is itself an event. A **Threshold changed** alert appears in the feed, and the change is written to the separate threshold audit log card on the same page, which lists threshold changes so you can see what was adjusted and when.
+
+Two consequences follow from that:
+
+- Filtering the feed by the **Threshold changed** type gives you a chronological record of detection tuning separate from the alert triage list.
+- Every adjustment is attributable. If a detector suddenly stops raising alerts, the log tells you whether someone loosened the threshold or switched the rule off.
+
+## Live updates and notifications
+
+New alerts arrive in the feed without reloading the page. How prominently an alert is announced depends on its severity.
+
+<Tabs>
+
+<Tab title="High and critical alerts">
+
+A high or critical alert raises a prominent error-style notification that names the alert type and its severity. Treat these notifications as a prompt to open the alert and read the details, not as background noise.
+
+</Tab>
+
+<Tab title="Medium and low alerts">
+
+A medium or low alert raises a milder warning notification. These are worth reviewing in a batch, since they often describe a pattern that only becomes clear once several have accumulated.
+
+</Tab>
+
+</Tabs>
+
+## Use the filters
+
+Three dropdowns sit above the table and narrow the feed:
+
+- **Status** (All, Open, Acknowledged, Resolved, Dismissed): the list defaults to Open, so set it to **All** when you are hunting for something and the alert is not showing up.
+- **Severity** (All, Critical, High, Medium, Low): useful for isolating the high and critical alerts that need a decision.
+- **Type** (All, plus the four alert types above): useful for following a single detector over time.
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+<Expandable title="I am not seeing any alerts">
+
+The feed defaults to showing only open alerts. Work through these checks in order:
+
+- Set the **Status** filter to **All**. An alert you already handled will not appear under Open.
+- Confirm the **Severity** filter is set to **All**. A filter left on Critical will hide everything else.
+- Confirm the **Type** filter is set to **All**.
+- Check the **Detection thresholds** card and confirm the rule for the activity you care about is switched on. A disabled rule raises no alerts at all.
+
+</Expandable>
+
+<Expandable title="An alert keeps coming back">
+
+A recurring alert means the activity behind it still exceeds the threshold. Decide which is true for you: the activity is expected in your organization, or the threshold is too tight for your normal volume. If the activity is expected, raise the threshold or widen the window in the **Detection thresholds** card. If it is not expected, treat the alert as a live issue and work the underlying sign-in, document access, or verification failures instead of tuning the detector.
+
+</Expandable>
+
+<Expandable title="I need to know who resolved an alert">
+
+Select **View audit history** in that alert's row. The history records each status change with the administrator who made it, the previous and new status, a timestamp, the IP address, and the user agent.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Next steps
+
+<Columns cols={2}>
+
+<Card title="Manage OAuth allowed origins" href="/oauth-allowed-origins" icon="globe">
+
+Control which origins are trusted when users sign in through OAuth.
+
+</Card>
+
+<Card title="Organizations" href="/organizations" icon="users">
+
+Review the organizations in your workspace and who belongs to each one.
+
+</Card>
+
+<Card title="Account types" href="/account-types" icon="shield">
+
+Understand the account types that determine what each user can reach.
+
+</Card>
+
+<Card title="Visit the Help Center" href="/help-center" icon="life-buoy">
+
+Find answers to common questions or reach the support team.
+
+</Card>
+
+</Columns>

@@ -1,0 +1,232 @@
+---
+title: OAuth Allowed Origins
+description: Control which domains can complete a ModelBoard OAuth sign-in by adding exact origins or regex patterns, with no redeploy required
+---
+
+## Control which domains can complete OAuth sign-in
+
+You decide which domains are allowed to receive an OAuth redirect URI when someone connects their ModelBoard account. Add a production domain, a staging host, a preview pattern or a local development origin from the Admin Dashboard, and your change reaches the OAuth configuration service in about 30 seconds. No redeploy, no engineering ticket.
+
+## Why origins are checked
+
+An OAuth connection sends the user to ModelBoard to approve access, then returns them to a callback URL on the site they started from. The OAuth configuration service only builds that callback URL for origins on the allowed list. Without the check, any site could ask for a callback on its own domain and receive an authorization code meant for your application.
+
+When an origin is not on the list, the request still completes, but it falls back to the default callback at `https://vaulth.id/auth/callback` and the rejection is recorded as a security event named `oauth_origin_rejected` in ModelBoard's security audit log. There is not yet an admin screen that lists those rejections.
+
+## Where to find it
+
+The page is admin-only: you need the admin role to open it, and the same role governs both viewing and editing.
+
+<Steps>
+<Step title="Open the Admin Dashboard">
+
+Sign in with an account that holds the admin role, then open the Admin Dashboard.
+
+</Step>
+<Step title="Select the OAuth Allowed Origins card">
+
+The card opens the origin list. Its subtitle notes that changes propagate within about 30 seconds.
+
+</Step>
+<Step title="Review the current list">
+
+The page header shows a **Back to admin** link on the left and an **Add origin** button on the right.
+
+</Step>
+</Steps>
+
+## What the list shows
+
+Origins are sorted by kind, then by value, so all `exact` rules appear before all `regex` rules.
+
+| Column | What it tells you |
+|---|---|
+| **Kind** | A badge reading `exact` or `regex`. Exact rules compare the full origin string literally. Regex rules test the origin against a pattern. |
+| **Value** | The origin or the pattern itself. |
+| **Label** | A plain-language note such as "Production domain". Shows a dash when you leave it empty. |
+| **Enabled** | A toggle switch. Off means the row stays in the list but is ignored when matching origins. |
+| **Delete** | A trash button that removes the row after you confirm. |
+
+If nothing is configured, the table reads "No origins configured."
+
+## Add an origin
+
+<Steps>
+<Step title="Open the dialog">
+
+Select **Add origin**. A dialog titled **Add allowed origin** opens.
+
+</Step>
+<Step title="Choose the kind">
+
+Pick **Exact origin** for a fixed origin such as `https://app.example.com`, or **Regex pattern** when you need to cover a family of hosts such as preview deployments. A regex must match the full origin string, from the protocol to the last character.
+
+</Step>
+<Step title="Enter the value and an optional label">
+
+The value is required. The label is optional and only helps you and your team recognize the rule later, for example "Staging".
+
+</Step>
+<Step title="Save">
+
+The new row appears in the list immediately. Matching picks it up within about 30 seconds.
+
+</Step>
+</Steps>
+
+### Dialog fields
+
+| Field | Required | What to enter |
+|---|---|---|
+| **Kind** | Yes | **Exact origin** matches one origin literally. **Regex pattern** matches any origin the regular expression accepts. |
+| **Value** | Yes | The origin or the pattern. The field suggests `https://example.com` for an exact origin and `^https://[a-z0-9-]+\.example\.com$` for a regex. |
+| **Label** | No | A short note for your own reference, such as "Production domain". |
+
+Validation differs by kind. The rules below are enforced when you save.
+
+<Tabs>
+<Tab title="Exact origin" icon="link">
+
+- The value must be a valid URL.
+- The protocol must be `http` or `https`.
+- The value must not end with a trailing slash. Enter `https://staging.example.com`, not `https://staging.example.com/`.
+- Each kind and value pair must be unique. Saving a duplicate is rejected.
+
+</Tab>
+<Tab title="Regex pattern" icon="code">
+
+- The value must compile as a valid regular expression.
+- The pattern must match the full origin string. Anchor it at the start with `^` and at the end with `$`, as in `^https://[a-zA-Z0-9-]+\.example\.com$`.
+- Each kind and value pair must be unique. Saving a duplicate is rejected.
+
+</Tab>
+</Tabs>
+
+<Callout kind="tip">
+Two rules can have the same value under different kinds. An `exact` rule and a `regex` rule are stored separately, so a pattern that happens to equal a literal origin is not treated as a duplicate.
+</Callout>
+
+## Pause or remove an origin
+
+Turning off the **Enabled** toggle keeps the row and its label in the list but excludes it from matching. Use it when you want to retire a domain temporarily without losing how it was configured. A confirmation toast appears after the change, and matching reflects it within about 30 seconds.
+
+Deleting a row asks you to confirm first, quoting the origin value so you can check you are removing the right one. Deleting is permanent: the configuration is gone and you would have to add it again from scratch. If there is any chance you will need the rule back, disable it instead.
+
+<Callout kind="info">
+**Origin changes are stored, but there is not yet a screen for reviewing them.** There is no admin view that lists past changes to the allowed origins. Rejected origins are likewise not listed in any admin screen yet.
+</Callout>
+
+## Origins ModelBoard trusts by default
+
+A fresh configuration starts with the origins below. These are also the rules the service falls back to if the stored list cannot be read.
+
+| Kind | Value | Label |
+|---|---|---|
+| exact | `https://vaulth.id` | Production domain |
+| exact | `https://vaulth.modelboard.net` | ModelBoard production |
+| exact | `https://vaulth.lovable.app` | Lovable published |
+| regex | `^https://[a-zA-Z0-9-]+\.lovableproject\.com$` | Lovable preview pattern |
+| regex | `^http://localhost(:\d+)?$` | Local development |
+
+Before you disable or delete any of these, confirm that nothing in your environments still connects from that origin. The local development rule, for example, is what lets a developer complete a connection from a laptop.
+
+## How an incoming origin is matched
+
+<Steps>
+<Step title="The service reads the enabled rules">
+
+Only origins with the toggle turned on take part in matching. Disabled rows are ignored.
+
+</Step>
+<Step title="The incoming origin is tested against each rule">
+
+Exact rules compare the origin string directly. Regex rules test the full origin against the pattern.
+
+</Step>
+<Step title="A match sets the redirect URI">
+
+On a match, the redirect URI returned to the requesting site is that origin plus `/auth/callback`.
+
+</Step>
+<Step title="No match falls back and logs a rejection">
+
+The redirect URI becomes the default, `https://vaulth.id/auth/callback`, and the rejection is recorded as a security event named `oauth_origin_rejected`. Requests that carry no origin header are not logged as rejections.
+
+</Step>
+</Steps>
+
+<Callout kind="tip">
+Rules are cached for about 30 seconds before the service reads them again. If your change does not seem to have taken effect, wait half a minute and retry the connection rather than adding a second rule.
+</Callout>
+
+## What the OAuth connection requests
+
+Knowing what your users are granting helps you judge which origins deserve a place on the list.
+
+- **Authorization endpoint:** `https://modelboard.net/oauth/authorize`
+- **Token and user-info endpoints:** hosted on `api.modelboard.net`
+- **Flow:** authorization code with PKCE, using an S256 code challenge
+- **Scopes:** `profile:read`, `email:read`, `verification:read`, `compliance:read`
+
+An origin you trust can request all four scopes on behalf of the user who approves the connection. That is why the list should contain only domains you operate.
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+<Expandable title="Sign-in completes but lands on vaulth.id instead of my site">
+
+The origin that started the request is not on the allowed list, so the service issued the default callback. Check the exact origin in the browser address bar, including the protocol and port, then compare it to your rules. A rule for `https://app.example.com` does not match `http://app.example.com` or `https://app.example.com:3000`.
+
+</Expandable>
+
+<Expandable title="I added an origin but nothing changed yet">
+
+Rules are cached for about 30 seconds. Wait half a minute and retry the connection. If it still fails, confirm the row's **Enabled** toggle is on and that the value has no trailing slash.
+
+</Expandable>
+
+<Expandable title="My new origin was rejected as a duplicate">
+
+Each kind and value pair must be unique. An identical `exact` or `regex` entry already exists, possibly with the toggle turned off. Find the existing row and re-enable it instead of adding another.
+
+</Expandable>
+
+<Expandable title="My regex pattern never matches">
+
+The pattern must match the full origin string. Anchor it with `^` and `$`, include the protocol, and escape literal dots with a backslash as in `\.`. To cover optional ports, add them explicitly, for example `^https://preview\.example\.com(:\d+)?$`.
+
+</Expandable>
+
+<Expandable title="I want to see who is being turned away">
+
+Each rejection is recorded as a security event named `oauth_origin_rejected` in the security audit log. No admin screen surfaces those events yet, so there is no page in the dashboard that lists them. Requests with no origin header are not logged, so a quiet period does not mean nothing was attempted.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Next steps
+
+<Columns cols={4}>
+<Card title="Watch security activity" href="/admin-security-monitoring" icon="shield">
+
+Monitor suspicious logins, unexpected document access, and failed verification runs.
+
+</Card>
+<Card title="Manage organizations" href="/organizations" icon="users">
+
+Organize the teams that connect through your platform.
+
+</Card>
+<Card title="Connect integrations" href="/integrations" icon="zap">
+
+Configure the services your users link their accounts to.
+
+</Card>
+<Card title="Understand account types" href="/account-types" icon="lock">
+
+Know which roles can reach admin settings.
+
+</Card>
+</Columns>
